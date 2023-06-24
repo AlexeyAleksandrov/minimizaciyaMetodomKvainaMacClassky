@@ -296,24 +296,33 @@ void MainWindow::createSkleyka(QTableWidget *tableWidgetInput, QCheckBox **check
         warningError("Ошибка! Оба выбранных элемента прошли склейку, создание склейки невозможно!");
         return;
     }
+
     QStringList skleykaList; // получаем результат склейки
-    if(countChecked == 1) // если элемент всего 1
-    {
-        skleykaList = elements; // то просто прираниваем результат склейки в этому элементу (точнее приравниваем списки)
-        if(!isContainsSkleyki(elements, numSkleyka)) // если на этом этапе склейки хотя бы один элемент отсутствует
-        {
-            warningError("Ошибка! Данный элемент можно склеить!");  // обрабатываем склейку, т.е. должна ли она вообще быть
-            return;
-        }
-    }
-    else // иначе производим склейку
-    {
-        bool maked = false;
-        mdnfMacKlassky *mmk = new mdnfMacKlassky;
-        mmk->makeSkleyki(elements, skleykaList, maked); // производим склейку 2х элементов
-        delete mmk;
-        mmk = nullptr;
-    }
+
+    bool maked = false;
+    mdnfMacKlassky *mmk = new mdnfMacKlassky;
+    mmk->makeSkleyki(elements, skleykaList, maked); // производим склейку 2х элементов
+    delete mmk;
+    mmk = nullptr;
+
+//    if(countChecked == 1) // если элемент всего 1
+//    {
+//        skleykaList = elements; // то просто прираниваем результат склейки в этому элементу (точнее приравниваем списки)
+//        if(!isContainsSkleyki(elements, numSkleyka)) // если на этом этапе склейки хотя бы один элемент отсутствует
+//        {
+//            warningError("Ошибка! Данный элемент можно склеить!");  // обрабатываем склейку, т.е. должна ли она вообще быть
+//            return;
+//        }
+//    }
+//    else // иначе производим склейку
+//    {
+//        bool maked = false;
+//        mdnfMacKlassky *mmk = new mdnfMacKlassky;
+//        mmk->makeSkleyki(elements, skleykaList, maked); // производим склейку 2х элементов
+//        delete mmk;
+//        mmk = nullptr;
+//    }
+
     int skleykaListSize = skleykaList.size(); // получаем количество элементов в склейке
     if(skleykaListSize != 1) // если элементы не склеиваются
     {
@@ -344,12 +353,12 @@ void MainWindow::createSkleyka(QTableWidget *tableWidgetInput, QCheckBox **check
     }
     if(adding) // если добавлять можно
     {
-        // дополнительеая проверка, что данная склейка вообще должна быть
-        if(!isContainsSkleyki(QStringList() << skleyka, numSkleyka)) // проверяем, должна-ли быть эта склейка вообще, или можно склеить оптимальнее
-        {
-            warningError("Ошибка! Из данных элементов можно произвести склейку, но существует более эффективная комбинация!");  // обрабатываем склейку, т.е. должна ли она вообще быть
-            return;
-        }
+//        // дополнительеая проверка, что данная склейка вообще должна быть
+//        if(!isContainsSkleyki(QStringList() << skleyka, numSkleyka)) // проверяем, должна-ли быть эта склейка вообще, или можно склеить оптимальнее
+//        {
+//            warningError("Ошибка! Из данных элементов можно произвести склейку, но существует более эффективная комбинация!");  // обрабатываем склейку, т.е. должна ли она вообще быть
+//            return;
+//        }
         // добавляем
         if(adding) // если склейка еще не соджержится
         {
@@ -453,20 +462,20 @@ void MainWindow::moveSkleyka(QTableWidget *tableWidgetInput, QCheckBox **checkBo
             elements.append(listOnes[i]); // добавляем элемент в список
         }
     }
-    if(!isContainsSkleyki(elements, numSkleyka)) // если хотя бы один элемент не содержится в итоговой склейке
-    {
-        if(elements.count() == 1) // если переносится только один элемент и он не содержится, т.е. может быть скллен
-        {
-            warningError("Ошибка! Данный элемент можно склеить!");
-            return;
-        }
-        else
-        {
-            qDebug() << "Один или более элементов не могут быть склеены";
-            warningError("Ошибка! Один или более выбранных элементов могут быть склеены с другими!\nДобавление без склейки невозможно.");
-            return;
-        }
-    }
+//    if(!isContainsSkleyki(elements, numSkleyka)) // если хотя бы один элемент не содержится в итоговой склейке
+//    {
+//        if(elements.count() == 1) // если переносится только один элемент и он не содержится, т.е. может быть скллен
+//        {
+//            warningError("Ошибка! Данный элемент можно склеить!");
+//            return;
+//        }
+//        else
+//        {
+//            qDebug() << "Один или более элементов не могут быть склеены";
+//            warningError("Ошибка! Один или более выбранных элементов могут быть склеены с другими!\nДобавление без склейки невозможно.");
+//            return;
+//        }
+//    }
     QStringList outputTableWidgetDataList;
     getTWTextList(tableWidgetOutput, outputTableWidgetDataList); // считываем данные из таблицы, нужно для проверки, нет ли уже этой склейки в таблице
     bool contained = false; // флаг проверки наличия данной склейки в рассчитанном списке
@@ -598,6 +607,74 @@ bool MainWindow::proverkaTable(QTableWidget *tableWidgetInput, QStringList listO
 //    QMessageBox::information(this, "Правильно", "Правильно!"); // выводим, что все нормально
 //    message(); // выводим, что все павильно
     return true;
+}
+
+bool MainWindow::proverkaTable(QStringList listOfValues, QStringList listOfSkeyki)
+{
+    QMap<QString, bool> valuesContains;     // мап для проверки, что для каждого значения есть склейка, которая её реализует
+    for (const QString &value : listOfValues)
+    {
+        valuesContains.insert(value, false);    // забиваем все значения в мап и задаем флаг, что не найдено
+    }
+
+    // ищем, какие значения подходят под склейку
+    auto isValueOfSkleyka = [](QString value, QString skleyka)  // функция проверки, подходит-ли значение под склейку
+    {
+        if(value.size() != skleyka.size())  // если кол-во символов разное
+        {
+            return false;
+        }
+
+        int x_count = 0;    // кол-во позиций, которое перекрывается Х в склейке (значения отличаются)
+        int diff_position = -1;     // позиция на которой находится последний символ, который отличается
+        for (int i=0; i<value.size(); i++)
+        {
+            if(value[i] != skleyka[i])    // если значения разные и в склейке на позиции находится
+            {
+                x_count++;  // увеличиваем счётчик
+                diff_position = i;  // записываем позицию символа, который отчилается
+            }
+        }
+
+        if(x_count == 0)    // полное совпадение
+        {
+            return true;
+        }
+
+        if(x_count == 1)    // если разница только в 1 позиции
+        {
+            if(skleyka[diff_position].toUpper() == "X")     // если символ в позиции, который отличается является Х
+            {
+              return true;    // считаем, что значение подходит
+            }
+        }
+
+        return false;   // иначе - не подходит
+    };
+
+    // проверяем все значения и склейки
+    for (const QString &value : listOfValues)
+    {
+        for (const QString &skleyka : listOfSkeyki)
+        {
+            if(isValueOfSkleyka(value, skleyka))    // если склейка покрывает значение
+            {
+               valuesContains[value] = true;   // записываем в мап, соответствует ли значение склейки
+            }
+        }
+    }
+
+    // проверяем, что все значения покрыты склейками
+    for (const QString &value : valuesContains.keys())
+    {
+        if(!valuesContains[value])  // если значение не покрыто склейками
+        {
+            qDebug() << "Значение " + value + " не покрыто склейками!";
+            return false;
+        }
+    }
+
+    return true;    // если все значения покрыты склейками
 }
 
 void MainWindow::goToNextStep(QTableWidget *tableWidgetInput, QTableWidget *&tableWidgetOutput, int nextTabIndex)

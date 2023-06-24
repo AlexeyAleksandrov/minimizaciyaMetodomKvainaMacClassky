@@ -4,6 +4,9 @@
 //#define OPTYMIZE_TYPE_ONLY
 #define CUSTON_INPUT_FUNCTION
 
+// надо сделать проверку, что при добавлении значений без склейки из этих значений нельзя сделать склейки
+// надо сделать проверку, что есть более оптимальный способ склейки
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -72,7 +75,7 @@ MainWindow::MainWindow(QWidget *parent) :
     // таблица со значениями, где функция принимает значение 1
     //    connect(ui->pushButton_clearTableOneOnly, SIGNAL(clicked()), this, SLOT(pushButtonClearOneOnlyClicked()));
     connect(ui->pushButton_proverka_oneOnly, SIGNAL(clicked()), this, SLOT(pushButtonProverkaClicked()));
-    connect(ui->pushButton_tot_add_to_skeyki_1, SIGNAL(clicked()), this, SLOT(pushButtonAddTSkeyki_1()));
+//    connect(ui->pushButton_tot_add_to_skeyki_1, SIGNAL(clicked()), this, SLOT(pushButtonAddTSkeyki_1()));
     // таблица со склейками 1
     qDebug() << "Conntects skleiki 1";
     connect(ui->pushButton_add_skleyki_1, SIGNAL(clicked()), this, SLOT(pushButton_add_skleyki_2_clicked()));
@@ -229,7 +232,10 @@ MainWindow::MainWindow(QWidget *parent) :
     tableWidget_formulaEditor = ui->tableWidget_formulaEditor;
     tableWidget_kartaMinimizacii = ui->tableWidget_kartaMinimizacii;
 
-
+    tablesWidgetOnes = new QTableWidget*[3];
+    tablesWidgetOnes[0] = ui->tableWidget_one_only;
+    tablesWidgetOnes[1] = ui->tableWidget_skleiki_1;
+    tablesWidgetOnes[2] = ui->tableWidget_skleiki_2;
 
     qDebug() << "Задаем видимость";
 
@@ -453,10 +459,10 @@ void MainWindow::setNoMessage(bool value)
 }
 
 
-void MainWindow::pushButtonAddTSkeyki_1() // кнопка добавления склейки на основе таблицы со значениями, где функция принимает значение 1
-{
-    createSkleyka(tableWidgetOnesOnly, checkBoxes_ones, tableWidgetsSkleykiEditing[0], 1); // создаем склейку и добавляем её в таблицу
-}
+//void MainWindow::pushButtonAddTSkeyki_1() // кнопка добавления склейки на основе таблицы со значениями, где функция принимает значение 1
+//{
+//    createSkleyka(tableWidgetOnesOnly, checkBoxes_ones, tableWidgetsSkleykiEditing[0], 1); // создаем склейку и добавляем её в таблицу
+//}
 
 void MainWindow::pushButton_add_skleyki_2_clicked() // кнопка добаления склеек на основе таблицы склеек 1
 {
@@ -1684,3 +1690,11 @@ void MainWindow::on_pushButton_proverka_result_function_clicked()
         warningError();
     }
 }
+
+
+
+void MainWindow::on_pushButton_tot_add_to_skeyki_1_clicked()
+{
+    createSkleyka(tableWidgetOnesOnly, checkBoxes_ones, tableWidgetsSkleykiEditing[0], 1); // создаем склейку и добавляем её в таблицу
+}
+

@@ -11,19 +11,38 @@ bool MainWindow::proverkaOnesOnly()
     return proverkaTable(tableWidgetOnesOnlyEditing, mdnf->getListOnes(typeMin));
 }
 
+bool MainWindow::proverkaSkleyki(QTableWidget *tableValues, QTableWidget *tableSkleyki)
+{
+    QStringList values;     // список значений
+    QStringList skleyki;    // список склеек
+
+    if(!getTWTextList(tableValues, values))
+    {
+        return false;
+    }
+    if(!getTWTextList(tableSkleyki, skleyki))
+    {
+        return false;
+    }
+    return proverkaTable(values, skleyki);
+}
+
 bool MainWindow::proverkaSkleyki1()
 {
-    return proverkaTable(tableWidgetsSkleykiEditing[0], mdnf->getSkleyki1(typeMin), true);
+    return proverkaSkleyki(tablesWidgetOnes[0], tableWidgetsSkleykiEditing[0]);
+//    return proverkaTable(tableWidgetsSkleykiEditing[0], mdnf->getSkleyki1(typeMin), true);
 }
 
 bool MainWindow::proverkaSkleyki2()
 {
-    return proverkaTable(tableWidgetsSkleykiEditing[1], mdnf->getSkleyki2(typeMin), true);
+    return proverkaSkleyki(tablesWidgetOnes[1], tableWidgetsSkleykiEditing[1]);
+//    return proverkaTable(tableWidgetsSkleykiEditing[1], mdnf->getSkleyki2(typeMin), true);
 }
 
 bool MainWindow::proverkaSkleyki3()
 {
-    return proverkaTable(tableWidgetsSkleykiEditing[2], mdnf->getSkleyki3(typeMin), true);
+    return proverkaSkleyki(tablesWidgetOnes[2], tableWidgetsSkleykiEditing[2]);
+//    return proverkaTable(tableWidgetsSkleykiEditing[2], mdnf->getSkleyki3(typeMin), true);
 }
 
 bool MainWindow::proverkaKartaMinimizacii()

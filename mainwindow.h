@@ -140,6 +140,8 @@ private:
     QTableWidget *tableWidget_formulaEditor = nullptr; // таблица редактора формул
     QTableWidget *tableWidget_kartaMinimizacii = nullptr;
 
+    QTableWidget **tablesWidgetOnes = nullptr;
+
     // lineEdits
     QLineEdit *lineEditFunction = nullptr;
     QLineEdit *lineEditFunc_2 = nullptr;
@@ -164,6 +166,7 @@ private:
     bool isContainsSkleyki(QStringList skleykiList, int numSkleyka); // проверяет, все-ли склейки из списка содержатся в правильном варианте (true - все нормально, false - хотя бы одна не содержится)
     void moveSkleyka(QTableWidget *tableWidgetInput, QCheckBox **checkBoxesInput, QTableWidget *&tableWidgetOutput, int numSkleyka); // перемещение выделенных элементов без склейки
     bool proverkaTable(QTableWidget *tableWidgetInput, QStringList listOfSkeyki, bool ignoreRedColor = false); // проверка склеек, ignoreRedColor - игнорировать строки с красным цветом (для повторящихся склеек)
+    bool proverkaTable(QStringList listOfValues, QStringList listOfSkeyki); // проверка склеек, ignoreRedColor - игнорировать строки с красным цветом (для повторящихся склеек)
     void goToNextStep(QTableWidget *tableWidgetInput, QTableWidget *&tableWidgetOutput, int nextTabIndex);
     void sortSkleiki(QTableWidget *skleikiTableWidget); // сортировка склеек по количеству в них Х
     void sortOnesCount(QTableWidget *tableWidgetInput); // сортировка значений по количеству в них 1
@@ -210,7 +213,7 @@ private slots:
     // таблица, где функция принимает 0 или 1
     void pushButtonClearOneOnlyClicked(); // отчищает таблицу, где все 1
     void pushButtonProverkaClicked(); // кнопка проверки таблиц с 1
-    void pushButtonAddTSkeyki_1(); // кнопка делающая склейки из таблицы с 1
+//    void pushButtonAddTSkeyki_1(); // кнопка делающая склейки из таблицы с 1
     void pushButton_delete_last_onesClicked(); // кнопка, удаляющая посдлеюнюю строку
     void pushButton_nextStep_totClicked(); // кнопка для переноса данных с ледующую таблицу и перехода к седующему действию
 
@@ -285,9 +288,12 @@ private slots:
     void on_pushButton_proverka_result_function_clicked();
 
 
+    void on_pushButton_tot_add_to_skeyki_1_clicked();
+
 private: // функции проверки
     bool proverkaTableOfTrue(); // функция проверки таблицы истинности
     bool proverkaOnesOnly(); // фунция проверки таблицы, где F(abcd) = 1
+    bool proverkaSkleyki(QTableWidget *tableValues, QTableWidget *tableSkleyki); // функция проверки склеек
     bool proverkaSkleyki1(); // функция проверки 1й склейки
     bool proverkaSkleyki2(); // функция проверки 2й склейки
     bool proverkaSkleyki3(); // функция проверки 3й склейки
