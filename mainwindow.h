@@ -166,7 +166,8 @@ private:
     bool isContainsSkleyki(QStringList skleykiList, int numSkleyka); // проверяет, все-ли склейки из списка содержатся в правильном варианте (true - все нормально, false - хотя бы одна не содержится)
     void moveSkleyka(QTableWidget *tableWidgetInput, QCheckBox **checkBoxesInput, QTableWidget *&tableWidgetOutput, int numSkleyka); // перемещение выделенных элементов без склейки
     bool proverkaTable(QTableWidget *tableWidgetInput, QStringList listOfSkeyki, bool ignoreRedColor = false); // проверка склеек, ignoreRedColor - игнорировать строки с красным цветом (для повторящихся склеек)
-    bool proverkaTable(QStringList listOfValues, QStringList listOfSkeyki); // проверка склеек, ignoreRedColor - игнорировать строки с красным цветом (для повторящихся склеек)
+    bool proverkaTable(QStringList listOfValues, QStringList listOfSkeyki); // проверяет, что все значения покрыты склейками
+    bool isOptimalSkleyka(QString value1, QString value2, QStringList values, QStringList listOfSkleyki);   // провереят, что при данных значениях и уже имеющихся склейках, выбранные 2 значения являются оптимальными для склейки
     void goToNextStep(QTableWidget *tableWidgetInput, QTableWidget *&tableWidgetOutput, int nextTabIndex);
     void sortSkleiki(QTableWidget *skleikiTableWidget); // сортировка склеек по количеству в них Х
     void sortOnesCount(QTableWidget *tableWidgetInput); // сортировка значений по количеству в них 1
@@ -220,7 +221,7 @@ private slots:
     // таблица с 1й склейкой
     void pushButton_add_skleyki_2_clicked(); // кнопка добавления склейки из склеек 1
     void pushButton_clear_skleyki_1(); // кнопка отчистки таблицы со склейками 1
-    void pushButton_proverka_skleyki_1_clicked(); // кнопка проверки склейки 1
+//    void pushButton_proverka_skleyki_1_clicked(); // кнопка проверки склейки 1
     void pushButton_delete_last_skleiki_1_editingClicked(); // кнопка удаления последней добавленной склейки
     void pushButton_nextStep_tot_2Clicked(); // кнопка перехода к следующей склейке
 
@@ -289,6 +290,8 @@ private slots:
 
 
     void on_pushButton_tot_add_to_skeyki_1_clicked();
+
+    void on_pushButton_proverka_skleiki_1_editing_clicked();
 
 private: // функции проверки
     bool proverkaTableOfTrue(); // функция проверки таблицы истинности

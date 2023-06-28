@@ -4,9 +4,6 @@
 //#define OPTYMIZE_TYPE_ONLY
 #define CUSTON_INPUT_FUNCTION
 
-// надо сделать проверку, что при добавлении значений без склейки из этих значений нельзя сделать склейки
-// надо сделать проверку, что есть более оптимальный способ склейки
-
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -80,7 +77,7 @@ MainWindow::MainWindow(QWidget *parent) :
     qDebug() << "Conntects skleiki 1";
     connect(ui->pushButton_add_skleyki_1, SIGNAL(clicked()), this, SLOT(pushButton_add_skleyki_2_clicked()));
     //    connect(ui->pushButton_clear_skleiki_1_editing, SIGNAL(clicked()), this, SLOT(pushButton_clear_skleyki_1()));
-    connect(ui->pushButton_proverka_skleiki_1_editing, SIGNAL(clicked()), this, SLOT(pushButton_proverka_skleyki_1_clicked()));
+//    connect(ui->pushButton_proverka_skleiki_1_editing, SIGNAL(clicked()), this, SLOT(pushButton_proverka_skleyki_1_clicked()));
     //    connect(ui->pushButton_delete_last_skleiki_1_editing, SIGNAL(clicked()), this, SLOT(pushButton_delete_last_skleiki_1_editingClicked()));
     connect(ui->pushButton_nextStep_onesOnly, SIGNAL(clicked()), this, SLOT(pushButton_nextStep_tot_2Clicked()));
 
@@ -484,19 +481,11 @@ void MainWindow::pushButton_clear_skleyki_2()
     clearTW(tableWidgetsSkleykiEditing[1]); // отчищаем таблицу
 }
 
-void MainWindow::pushButton_proverka_skleyki_1_clicked() // кнопка проверки склеек 1
-{
+//void MainWindow::pushButton_proverka_skleyki_1_clicked()
+//{
 
-    if(proverkaSkleyki1()) // сравниваем таблицу со значениями склейки
-    {
-        message();
-        nextStep();
-    }
-    else
-    {
-        warningError();
-    }
-}
+
+//}
 
 void MainWindow::pushButton_delete_last_skleiki_1_editingClicked() // кнопка удаления последней добавленной склейки в таблице склеек 1
 {
@@ -1698,3 +1687,16 @@ void MainWindow::on_pushButton_tot_add_to_skeyki_1_clicked()
     createSkleyka(tableWidgetOnesOnly, checkBoxes_ones, tableWidgetsSkleykiEditing[0], 1); // создаем склейку и добавляем её в таблицу
 }
 
+
+void MainWindow::on_pushButton_proverka_skleiki_1_editing_clicked() // кнопка проверки склеек 1
+{
+    if(proverkaSkleyki1()) // сравниваем таблицу со значениями склейки
+    {
+        message();
+        nextStep();
+    }
+    else
+    {
+        warningError();
+    }
+}

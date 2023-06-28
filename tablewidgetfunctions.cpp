@@ -359,6 +359,12 @@ void MainWindow::createSkleyka(QTableWidget *tableWidgetInput, QCheckBox **check
 //            warningError("Ошибка! Из данных элементов можно произвести склейку, но существует более эффективная комбинация!");  // обрабатываем склейку, т.е. должна ли она вообще быть
 //            return;
 //        }
+        // дополнительная проверка, что данная склейка вообще должна быть
+        if(!isOptimalSkleyka(elements[0], elements[1], listOnes, skleykiInTable))
+        {
+            warningError("Ошибка! Из данных элементов можно произвести склейку, но существует более эффективная комбинация!");  // обрабатываем склейку, т.е. должна ли она вообще быть
+            return;
+        }
         // добавляем
         if(adding) // если склейка еще не соджержится
         {
@@ -478,6 +484,28 @@ void MainWindow::moveSkleyka(QTableWidget *tableWidgetInput, QCheckBox **checkBo
 //    }
     QStringList outputTableWidgetDataList;
     getTWTextList(tableWidgetOutput, outputTableWidgetDataList); // считываем данные из таблицы, нужно для проверки, нет ли уже этой склейки в таблице
+
+    for(int i=0; i<elements.size(); i++)    // для каждого элемента проверяем, что его склейку действительно нельзя произвести
+    {
+        for (int j=0; j<listOnes.size(); j++)     // перебираем все значения
+        {
+            if(elements[i] != listOnes[j])    // игнорируем искомое
+            {
+                mdnfMacKlassky mdnf;
+                bool maked = false;
+                QStringList skleykiResult;
+                mdnf.makeSkleyki(QStringList() << elements[i] << listOnes[j], skleykiResult, maked);
+
+                if(maked)  // если возможно сделать склейку
+                {
+                    qDebug() << "Один или более элементов не могут быть склеены";
+                    warningError("Ошибка! Один или более выбранных элементов могут быть склеены с другими!\nДобавление без склейки невозможно.");
+                    return;
+                }
+            }
+        }
+    }
+
     bool contained = false; // флаг проверки наличия данной склейки в рассчитанном списке
     for (int i=0; i<elements.size(); i++)  // сравниваем каждый элемент первого списка
     {
@@ -609,7 +637,7 @@ bool MainWindow::proverkaTable(QTableWidget *tableWidgetInput, QStringList listO
     return true;
 }
 
-bool MainWindow::proverkaTable(QStringList listOfValues, QStringList listOfSkeyki)
+bool MainWindow::proverkaTable(QStringList listOfValues, QStringList listOfSkeyki)  // проверяет, что все значения покрыты склейками
 {
     QMap<QString, bool> valuesContains;     // мап для проверки, что для каждого значения есть склейка, которая её реализует
     for (const QString &value : listOfValues)
@@ -675,6 +703,52 @@ bool MainWindow::proverkaTable(QStringList listOfValues, QStringList listOfSkeyk
     }
 
     return true;    // если все значения покрыты склейками
+}
+
+bool MainWindow::isOptimalSkleyka(QString value1, QString value2, QStringList values, QStringList listOfSkleyki)
+{
+    if(listOfSkleyki.isEmpty())     // если ещё нет никаких склеек
+    {
+        return true;
+    }
+
+    // проверяем, какие из 2х значений уже покрываются существующими склейками
+    bool isValue1Covered = proverkaTable(QStringList() << value1, listOfSkleyki);
+    bool isValue2Covered = proverkaTable(QStringList() << value2, listOfSkleyki);
+
+    if(isValue1Covered && isValue2Covered)  // если оба значения уже покрыты склейками, значит их добавление нецелесообразно
+    {
+        return false;
+    }
+    else if(!isValue1Covered && !isValue2Covered)  // если оба значения не покрыты склейками, значит их добавление целесообразно
+    {
+        return true;
+    }
+    else if((isValue1Covered && !isValue2Covered) || (!isValue1Covered && isValue2Covered))    // если одно значение уже покрыто склейками, а другое - нет
+    {
+        QString searchValue = value1;   // искомое значение, по умолчанию считаем, что для первого нужно выполнить проверку, а второе значение уже покрыто
+        if(isValue1Covered && !isValue2Covered)   // если первое значение уже покрыто склейками, то выполняем проверку для второго
+        {
+            searchValue = value2;
+        }
+
+        for (int i=0; i<values.size(); i++)     // перебираем все значения
+        {
+            if(values[i] != value1 || values[i] != value2)    // игнорируем искомое
+            {
+                mdnfMacKlassky mdnf;
+                bool maked = false;
+                QStringList skleykiResult;
+                mdnf.makeSkleyki(QStringList() << searchValue << values[i], skleykiResult, maked);
+
+                if(maked && !proverkaTable(QStringList() << values[i], listOfSkleyki))  // если возможно сделать склейку и этот элемент не участвовал в склейке раньше
+                {
+                    return false;
+                }
+            }
+        }
+    }
+    return true;
 }
 
 void MainWindow::goToNextStep(QTableWidget *tableWidgetInput, QTableWidget *&tableWidgetOutput, int nextTabIndex)
