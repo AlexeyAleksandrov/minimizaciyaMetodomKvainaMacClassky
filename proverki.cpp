@@ -180,19 +180,19 @@ bool MainWindow::proverkaItogMdnfByKartaPokritiya()
         qDebug() << "Не введена МДНФ";
         return false;
     }
-    int skobkaStartCount = 0; // переменная для подсчёта открывающихся скобок - (
-    int skobkaEndCount = 0; // переменная для подсчёта закрывающихся скобок - )
-    for (int i=0; i<userMdnf.count(); i++)
-    {
-        if(userMdnf.at(i) == "(")
-        {
-            skobkaStartCount++;
-        }
-        if(userMdnf.at(i) == ")")
-        {
-            skobkaEndCount++;
-        }
-    }
+    int skobkaStartCount = userMdnf.count("("); // переменная для подсчёта открывающихся скобок - (
+    int skobkaEndCount = userMdnf.count(")"); // переменная для подсчёта закрывающихся скобок - )
+//    for (int i=0; i<userMdnf.count(); i++)
+//    {
+//        if(userMdnf.at(i) == "(")
+//        {
+//            skobkaStartCount++;
+//        }
+//        if(userMdnf.at(i) == ")")
+//        {
+//            skobkaEndCount++;
+//        }
+//    }
     if(skobkaStartCount != skobkaEndCount) // если количество скобок разное
     {
         qDebug() << "Количество скобок разное " << skobkaStartCount << skobkaEndCount;
@@ -205,10 +205,85 @@ bool MainWindow::proverkaItogMdnfByKartaPokritiya()
     userMdnf.replace('+', 'v'); // переводим + в дизъюнкцию
     userMdnf.replace('*', '^'); // переводим * в коньюнкцию
 
-    QStringList formulaValues;  // список наборо цифр минтермов из формулы
     QString separator = typeMin == TYPE_MKNF ? "^" : "v";   // если МКНФ, то разделитель - коньюнкция, если МДНФ - дизъюнкция
 
+    if(typeMin == 0) // если тип МКНФ
+    {
+        int separatorsCount = skobkaStartCount + skobkaEndCount;
+        if(separatorsCount != (skobkaStartCount - 1)) // если количество разделителей не совпадает с количеством скобок (-1, т.к. между 2 скобками будет один разделитель), сравниваем равенство только с количество м одних скобок, т.к. количество разных скобок проверено до этого
+        {
+            qDebug() << "Не все макстермы выделены в скобки!" << separatorsCount  << skobkaStartCount << skobkaStartCount-1;
+                return false;
+        }
+    }
 
+    qDebug() << "Удаляем лишнее";
+    userMdnf.remove(" "); // удаляем пробелы
+    userMdnf.remove("("); // убираем скобки
+    userMdnf.remove(")");
+    userMdnf.remove("");
+    qDebug() << "Удалили. Переходим к обработке";
+
+    QStringList userMdnfList = userMdnf.split(separator, Qt::SplitBehavior(Qt::SkipEmptyParts)); // разбиваем строку по коньюнкциям, чтобы получить список с ДНФ
+    qDebug() << "разбили на минтермы" << userMdnfList;
+
+    QStringList formulaValues;  // список наборов цифр минтермов из формулы
+
+    for(int i=0; i<userMdnfList.size(); i++) // проходим по каждому минтерму
+    {
+        int var[4]; // массив для хранения даннх о переменных в минтерме. -1 - переменная отсутствует, 0 - переменная с инверсией, 1 - переменная без инверсии
+        for(int j=0; j<4; j++)
+        {
+            var[j] = -1;
+        }
+        for(int j=0; j<userMdnfList.at(i).size(); j++) // проходим по каждому значению в минтерме
+        {
+            QString symvol = userMdnfList.at(i).at(j).toLower(); // сохраняем символ
+            if(symvol >= "a" && symvol <= "d") // если символ a-d
+            {
+//                QString symvol = userMdnfList.at(i).at(j).toLower(); // сохраняем символ
+                bool inversion = false; // флаг наличия инверсии у элемента
+                if(j != 0) // если элемент не является первым
+                {
+                    QString lastSymvol = userMdnfList.at(i).at(j-1).toLower(); // предыдущий символ
+                    if(lastSymvol == "!") // если предыдущий символ - инверсия
+                    {
+                        inversion = true;
+                    }
+                }
+//                qDebug() << "i = " << i << " j = " << j << " символ = " << symvol;
+                int n = 0; // переменная для хранения номер элемента
+                if(symvol == "a")
+                    n = 0;
+                else if(symvol == "b")
+                    n = 1;
+                else if(symvol == "c")
+                    n = 2;
+                else if(symvol == "d")
+                    n = 3;
+                if(inversion) // если у элемента есть инверсия
+                {
+                    var[n] = 0; // ставим переменной значение с инверсией
+                }
+                else
+                {
+                    var[n] = 1; // ставим значение с инверсией
+                }
+            }
+        }
+
+        // собираем строку из цифр для данного минтерма
+        QString mintermValue;   // значение формата 1010
+        for(int j=0; j<4; j++)
+        {
+            mintermValue.append(var[j] >= 0 ? QString::number(var[j]) : "X");   // если значение 0 или 1, то добавляем его, иначе добавляем Х
+        }
+
+        // добавляем полученное значение в общий список
+        formulaValues.append(mintermValue);
+    }
+
+    qDebug() << "Значения, в которые преобразовалась формула: " << formulaValues;
 
     // считываем карту покрытия
     int rows = tableWidgetKartaMinimizacii->rowCount(); // получаем количество строк
@@ -232,4 +307,4 @@ bool MainWindow::proverkaItogMdnfByKartaPokritiya()
         qDebug() << "vertical header: " << verticalList[i];
     }
     qDebug() << "Начинаем проверку.";
-   }
+}

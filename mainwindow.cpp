@@ -1659,7 +1659,8 @@ void MainWindow::on_checkBox_spiltToTetrads_stateChanged(int arg1)
 
 void MainWindow::on_pushButton_proverka_result_function_clicked()
 {
-    if(proverkaItogMdnf())
+//    if(proverkaItogMdnf())
+    if(proverkaItogMdnfByKartaPokritiya())
     {
         //        message();
         if(formResult == nullptr)
