@@ -60,7 +60,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     qDebug() << "Conntects tot";
     // таблица истинности
-    connect(ui->pushButton_enterFunction, SIGNAL(clicked()), this, SLOT(pushButtonFunctionClicked())); // соединяем кнопку со слотом
+//    connect(ui->pushButton_enterFunction, SIGNAL(clicked()), this, SLOT(pushButtonFunctionClicked())); // соединяем кнопку со слотом
     qDebug() << "pushButton_enterFunction";
     connect(ui->pushButton_tot_add, SIGNAL(clicked()), this, SLOT(pushButtonTotAddClicked()));
     connect(ui->pushButton_checkTableOfTrue, SIGNAL(clicked()), this, SLOT(pushButtonCheckTableOfTrueClicked()));
@@ -1102,11 +1102,10 @@ void MainWindow::setVariablesToHeader(QTableWidget *tbw)
 }
 
 
-void MainWindow::pushButtonFunctionClicked()
-{
-    QString text = lineEditFunction->text(); // берем текст функции
-    setFunction(text); // задаём функцию
-}
+//void MainWindow::pushButtonFunctionClicked()
+//{
+
+//}
 
 void MainWindow::pushButtonTotAddClicked()
 {
@@ -1700,3 +1699,10 @@ void MainWindow::on_pushButton_proverka_skleiki_1_editing_clicked() // кноп�
         warningError();
     }
 }
+
+void MainWindow::on_pushButton_enterFunction_clicked()
+{
+    QString text = lineEditFunction->text(); // берем текст функции
+    setFunction(text); // задаём функцию
+}
+

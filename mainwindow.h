@@ -21,6 +21,9 @@
 
 #include "md5crypter.h"
 
+#define TYPE_MKNF 0
+#define TYPE_MDNF 1
+
 #define STR_SEPARATOR_1 "\r\n"
 #define STR_SEPARATOR_2 "\t"
 #define FILE_STUDENT_WORK (QString)"mmkwork.mirea"
@@ -205,7 +208,7 @@ private:
 
 private slots:
     // таблица истинности
-    void pushButtonFunctionClicked(); // кнопка выбора функции
+//    void pushButtonFunctionClicked(); // кнопка выбора функции
     void pushButtonTotAddClicked(); // кнопка добавляения строк из таблицы истинности в таблицу, где только 1
     void pushButtonCheckTableOfTrueClicked(); // кнопка проверяющая правильность таблицы истинности
     void pushButtonFunc2Clicked(); // кнопка ввода числа в 2 ССЧ
@@ -293,6 +296,8 @@ private slots:
 
     void on_pushButton_proverka_skleiki_1_editing_clicked();
 
+    void on_pushButton_enterFunction_clicked();
+
 private: // функции проверки
     bool proverkaTableOfTrue(); // функция проверки таблицы истинности
     bool proverkaOnesOnly(); // фунция проверки таблицы, где F(abcd) = 1
@@ -302,6 +307,7 @@ private: // функции проверки
     bool proverkaSkleyki3(); // функция проверки 3й склейки
     bool proverkaKartaMinimizacii(); //функция проверки карты минимизации
     bool proverkaItogMdnf(); // функция проверки итоговой функции МДНФ
+    bool proverkaItogMdnfByKartaPokritiya(); // функция проверки итоговой функции МДНФ по карте покрытия
 
 private:
     struct skleyka

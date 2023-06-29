@@ -167,3 +167,69 @@ bool MainWindow::proverkaItogMdnf()
         return false;
     }
 }
+
+// функция проверки итоговой функции МДНФ по карте покрытия
+bool MainWindow::proverkaItogMdnfByKartaPokritiya()
+{
+    // проверяем само выражение на корректность (только скобки)
+    QString userMdnf = editor->getFormulaText(); // получаем формулу из редатора
+    qDebug() << "МДНФ ввдённая пользователем:" << userMdnf;
+    if(userMdnf.isEmpty()) // если строка пустая
+    {
+        //        criticalError("Введите МДНФ в поле ввода!"); // выдаем ошибку
+        qDebug() << "Не введена МДНФ";
+        return false;
+    }
+    int skobkaStartCount = 0; // переменная для подсчёта открывающихся скобок - (
+    int skobkaEndCount = 0; // переменная для подсчёта закрывающихся скобок - )
+    for (int i=0; i<userMdnf.count(); i++)
+    {
+        if(userMdnf.at(i) == "(")
+        {
+            skobkaStartCount++;
+        }
+        if(userMdnf.at(i) == ")")
+        {
+            skobkaEndCount++;
+        }
+    }
+    if(skobkaStartCount != skobkaEndCount) // если количество скобок разное
+    {
+        qDebug() << "Количество скобок разное " << skobkaStartCount << skobkaEndCount;
+        //        warningError("Ошибка! Проверьте скобки!");
+        return false;
+    }
+    // ДОБАВИТЬ СЮДА ПРОВЕРКУ НА КОРРЕКТНОСТЬ САМОЙ ФОРМУЛЫ
+
+    // превращаем нашу формулу в список наборов цифр - т.е. a^b^!c^d -> 1101
+    userMdnf.replace('+', 'v'); // переводим + в дизъюнкцию
+    userMdnf.replace('*', '^'); // переводим * в коньюнкцию
+
+    QStringList formulaValues;  // список наборо цифр минтермов из формулы
+    QString separator = typeMin == TYPE_MKNF ? "^" : "v";   // если МКНФ, то разделитель - коньюнкция, если МДНФ - дизъюнкция
+
+
+
+    // считываем карту покрытия
+    int rows = tableWidgetKartaMinimizacii->rowCount(); // получаем количество строк
+    int cols = tableWidgetKartaMinimizacii->columnCount(); // получаем количество строк
+    if(!rows || !cols)
+    {
+        //        criticalError("Таблица пустая!");
+        qDebug() << "Нет ячеек!";
+        return false;
+    }
+    QStringList horizontalList; // создаем список заголовков столбцов
+    for (int i=0; i<cols; i++)
+    {
+        horizontalList.append(tableWidgetKartaMinimizacii->horizontalHeaderItem(i)->text());
+        qDebug() << "horisontal header: " << horizontalList[i];
+    }
+    QStringList verticalList; // создаем список заголовков строк
+    for (int i=0; i<rows; i++)
+    {
+        verticalList.append(tableWidgetKartaMinimizacii->verticalHeaderItem(i)->text());
+        qDebug() << "vertical header: " << verticalList[i];
+    }
+    qDebug() << "Начинаем проверку.";
+   }
