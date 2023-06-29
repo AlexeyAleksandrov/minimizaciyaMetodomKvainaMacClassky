@@ -209,7 +209,7 @@ bool MainWindow::proverkaItogMdnfByKartaPokritiya()
 
     if(typeMin == 0) // если тип МКНФ
     {
-        int separatorsCount = skobkaStartCount + skobkaEndCount;
+        int separatorsCount = userMdnf.count(separator);    // сколько раз встречается разделитель
         if(separatorsCount != (skobkaStartCount - 1)) // если количество разделителей не совпадает с количеством скобок (-1, т.к. между 2 скобками будет один разделитель), сравниваем равенство только с количество м одних скобок, т.к. количество разных скобок проверено до этого
         {
             qDebug() << "Не все макстермы выделены в скобки!" << separatorsCount  << skobkaStartCount << skobkaStartCount-1;
@@ -269,6 +269,18 @@ bool MainWindow::proverkaItogMdnfByKartaPokritiya()
                 {
                     var[n] = 1; // ставим значение с инверсией
                 }
+
+                if(typeMin == TYPE_MKNF)    // для МКНФ значения инвертируются
+                {
+                    if(var[n] == 0)
+                    {
+                        var[n] = 1;
+                    }
+                    else if(var[n] == 1)
+                    {
+                        var[n] = 0;
+                    }
+                }
             }
         }
 
@@ -306,5 +318,134 @@ bool MainWindow::proverkaItogMdnfByKartaPokritiya()
         verticalList.append(tableWidgetKartaMinimizacii->verticalHeaderItem(i)->text());
         qDebug() << "vertical header: " << verticalList[i];
     }
-    qDebug() << "Начинаем проверку.";
+
+    // проверяем, что введённые пользователем значения, вообще есть на карте покрытия
+    for (QString value : formulaValues)
+    {
+        if(!verticalList.contains(value))    // если значение не содержится в склейках
+        {
+            qDebug() << "Значение " << value << " не содержится в результатах склейки";
+            return false;
+        }
+    }
+
+    auto checkPokritie = [](QString value, QString skleyka)     // функция, проверяющая, покрывается ли данное значение данной склейкой
+    {
+        for (int k=0; k<skleyka; k++)      // проходим по каждому символу
+        {
+            if(skleyka[k] != value[k] && skleyka[k].toUpper() != "X")   // сравниваем каждый символ, если символ отличается и он не Х
+            {
+                return false;
+                break;
+            }
+        }
+        return true;
+    };
+
+    QVector<QVector<bool>> pokritie;    // карта покрытия (строим двумерный массив покрытия значений)
+    for (int i=0; i<rows; i++)
+    {
+        QVector<bool> line;   // строка карты покрытия
+        QString verticalValue = verticalList[i];    // значение склеек, с которым сравниваем
+        for (int j=0; j<cols; j++)
+        {
+            QString horizontalValue = horizontalList[j];    // значение, с которым сравниваем склейку
+
+            bool correctValue = checkPokritie(horizontalValue, verticalValue);  // проверяем, покрывается ли значение склейкой
+            line.append(correctValue);  // добавляем, покрывается значение или нет
+
+            qDebug() << "Значения " << verticalValue << " и " << horizontalValue << (correctValue ? "" : " НЕ ") << " покрываются";
+
+//            if(count <= 1 && verticalValue[position].toUpper() == "X")  // если отличий нет, или отличие в позиции с Х
+//            {
+//                line.append(true);
+//                qDebug() << "Значения " << verticalValue << " и " << horizontalValue << " покрываются";
+//            }
+//            else    // если не совпадают
+//            {
+//                line.append(false);
+//                qDebug() << "Значения " << verticalValue << " и " << horizontalValue << " НЕ покрываются";
+//            }
+        }
+        pokritie.append(line);  // добавляем строку карты
+    }
+
+    qDebug() << "Полученная карта покрытия: " << pokritie;
+
+    // ищем значения, которые составляют ядровую ДНФ
+    QStringList coreValues; // список значений, которые являются ядрами
+
+    for (int j=0; j<cols; j++)
+    {
+        int plusCount = 0;  // кол-во перекрытий в данной колонке
+        int position = -1;  // позиция строки, в которой найдено последнее перекрытие
+        for (int i=0; i<rows; i++)
+        {
+            if(pokritie[i][j])  // если значение покрыто
+            {
+                position = i;
+                plusCount++;
+            }
+        }
+
+        if(plusCount == 1)  // если в столбце только одно перекрытие
+        {
+            coreValues.append(verticalList[position]);  // добавляем это значение в список ядровых
+        }
+    }
+
+    coreValues.removeDuplicates();  // удаляем дубликаты
+
+    qDebug() << "Значения, которые формируют ядровую ДНФ: " << coreValues;
+
+    // проверяем, что все ядровые значения присутствуют во введённой, пользователем, формуле
+    for (QString core : coreValues)
+    {
+        if(!formulaValues.contains(core))    // если ядровое значение не содержится в формуле
+        {
+            qDebug() << "В формуле отсутсвует ядровое значение: " << core;
+            return false;
+        }
+    }
+
+    // ищем значения, которые не покрыты ядрами
+    QStringList variativeValues = horizontalList;    // список значений, которые не покрыты ядрами
+
+    // идём по всем ядровым значениям и удаляем покрытые ими
+    for (int i=0; i<rows; i++)
+    {
+        if(coreValues.contains(verticalList[i]))      // если это значение является ядром
+        {
+            for (int j=0; j<cols; j++)
+            {
+                if(pokritie[i][j])  // если значение покрывается ядром
+                {
+                    variativeValues.removeAll(horizontalList[j]);   // убираем значение из списка непокрытых
+                }
+            }
+        }
+    }
+
+    qDebug() << "Непокрытые ядрами значения: " << variativeValues;
+
+    // ТУТ КОСТЫЛЬ - по хорошему надо разбить непокрытые значения на группы и понять, какие значения оптимальнее всего выбрать,
+    // чтобы использовать минимум переменных, но мы просто проверим, что введённые пользователем значения покрывают непокрытые
+
+    for (QString skleyka : formulaValues)     // берём все значения введённые пользователем
+    {
+        for (QString value : variativeValues)   // берем все непокрытые значения
+        {
+            if(checkPokritie(value, skleyka))   // если значение покрывается склейкой
+            {
+                variativeValues.removeAll(value);   // убираем его из спсика непокрытых
+            }
+        }
+    }
+
+    if(variativeValues.size() > 0)  // если остались непокрытые значения, значит формула не минимальна
+    {
+        return false;
+    }
+
+    return true;    // если все хорошо
 }
