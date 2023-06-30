@@ -290,12 +290,14 @@ void MainWindow::createSkleyka(QTableWidget *tableWidgetInput, QCheckBox **check
             proshliSkleykuCount++; // увеличиваем счётчик элементов, прошедших склейку
         }
     }
+#ifdef CHECK_VALUES_MADE_SKLEYKA
     if(proshliSkleykuCount == 2) // если оба имеющихся элемента прошли склейку
     {
         qDebug() << "Оба выбранных элемента прошли склейку, создание склейки невозможно!";
         warningError("Ошибка! Оба выбранных элемента прошли склейку, создание склейки невозможно!");
         return;
     }
+#endif
 
     QStringList skleykaList; // получаем результат склейки
 
@@ -360,11 +362,13 @@ void MainWindow::createSkleyka(QTableWidget *tableWidgetInput, QCheckBox **check
 //            return;
 //        }
         // дополнительная проверка, что данная склейка вообще должна быть
+#ifdef CHECK_OPTIMAL_SKLEYKA
         if(!isOptimalSkleyka(elements[0], elements[1], listOnes, skleykiInTable))
         {
             warningError("Ошибка! Из данных элементов можно произвести склейку, но существует более эффективная комбинация!");  // обрабатываем склейку, т.е. должна ли она вообще быть
             return;
         }
+#endif
         // добавляем
         if(adding) // если склейка еще не соджержится
         {
@@ -380,16 +384,17 @@ void MainWindow::createSkleyka(QTableWidget *tableWidgetInput, QCheckBox **check
             }
             addRow(tableWidgetOutput, skleyka.split("", Qt::SplitBehavior(Qt::SkipEmptyParts)), redColor->red(), redColor->green(), redColor->blue());  // добавляем склейку, подсвечивая её красным цветом
         }
-        int rows = tableWidgetInput->rowCount(); // получаем количество строк в исходной таблице
-        for (int i=0; i<rows; i++) // проходим по всем строкам
+    }
+
+    int rows = tableWidgetInput->rowCount(); // получаем количество строк в исходной таблице
+    for (int i=0; i<rows; i++) // проходим по всем строкам
+    {
+        if(ones[i]) // если стоит галочка
         {
-            if(ones[i]) // если стоит галочка
+            int cols = tableWidgetInput->columnCount(); // получаем количество столбцов исходной таблицы
+            for (int j=0; j<cols; j++) // проходим по всем столбцам этой строки
             {
-                int cols = tableWidgetInput->columnCount(); // получаем количество столбцов исходной таблицы
-                for (int j=0; j<cols; j++) // проходим по всем столбцам этой строки
-                {
-                    tableWidgetInput->item(i, j)->setBackground(SKLEYKA_BACKGROUNF_COLOR); // закрашиваем фон в желтый цвет у тех, кто прошёл склейку
-                }
+                tableWidgetInput->item(i, j)->setBackground(SKLEYKA_BACKGROUNF_COLOR); // закрашиваем фон в желтый цвет у тех, кто прошёл склейку
             }
         }
     }
