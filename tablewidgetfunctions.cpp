@@ -244,7 +244,7 @@ void MainWindow::addRow(QTableWidget *&tableWidget, QStringList rowList, int col
     center_text_in_table(tableWidget); // выравниваем ячейки
 }
 
-void MainWindow::createSkleyka(QTableWidget *tableWidgetInput, QCheckBox **checkBoxesInput, QTableWidget *&tableWidgetOutput, int numSkleyka)
+void MainWindow::createSkleyka(QTableWidget *tableWidgetInput, QCheckBox **checkBoxesInput, QTableWidget *&tableWidgetOutput)
 {
 //    for (int i=0; i<16; i++) // функция для отладки
 //    {
@@ -710,6 +710,27 @@ bool MainWindow::proverkaTable(QStringList listOfValues, QStringList listOfSkeyk
     return true;    // если все значения покрыты склейками
 }
 
+bool MainWindow::proverkaAllSkleykiInTable(QStringList listOfValues, QStringList listOfSkeyki)
+{
+    for (int i=0; i<listOfValues.size(); i++)   // перебираем все значения
+    {
+        for (int j = i+1; j < listOfValues.size(); j++)   // для каждого перебираем все доступные значения
+        {
+            bool canCreateSkleyka = false;
+            QString skleyka = createSkleyka(listOfValues[i], listOfValues[j], &canCreateSkleyka);   // пробуем создать склейку
+            if(canCreateSkleyka)    // если возможно создать склейку из 2х значений
+            {
+                if(!listOfSkeyki.contains(skleyka))     // если склейка отсутствует в списке склеек
+                {
+                    qDebug() << "Значения " << listOfValues[i] << " и " << listOfValues[j] << " могут образовать склейку " << skleyka;
+                    return false;
+                }
+            }
+        }
+    }
+    return true;
+}
+
 bool MainWindow::isOptimalSkleyka(QString value1, QString value2, QStringList values, QStringList listOfSkleyki)
 {
     if(listOfSkleyki.isEmpty())     // если ещё нет никаких склеек
@@ -754,6 +775,19 @@ bool MainWindow::isOptimalSkleyka(QString value1, QString value2, QStringList va
         }
     }
     return true;
+}
+
+bool MainWindow::isCanCreateSkleyka(QString value1, QString value2)
+{
+    if(value1 == value2)
+    {
+        return false;
+    }
+    mdnfMacKlassky mdnf;
+    bool maked = false;
+    QStringList skleykiResult;
+    mdnf.makeSkleyki(QStringList() << value1 << value2, skleykiResult, maked);
+    return maked;
 }
 
 void MainWindow::goToNextStep(QTableWidget *tableWidgetInput, QTableWidget *&tableWidgetOutput, int nextTabIndex)
@@ -1066,6 +1100,28 @@ void MainWindow::sortOnesCount(QTableWidget *tableWidgetInput)
     addQStringListToTWOneSymwolInItem(tableWidgetInput, sortList); // выводим значения в tableWidget
     setVariablesToHeader(tableWidgetInput); // устанавливаем заголовки
     tableWidgetInput->setVerticalHeaderLabels(verticalHeaders); // задаём заголовки
+}
+
+QString MainWindow::createSkleyka(QString value1, QString value2, bool *ok)
+{
+
+    if(value1 == value2)
+    {
+        if(ok)
+        {
+            *ok = false;
+        }
+        return "";
+    }
+    mdnfMacKlassky mdnf;
+    bool maked = false;
+    QStringList skleykiResult;
+    mdnf.makeSkleyki(QStringList() << value1 << value2, skleykiResult, maked);
+    if(ok)
+    {
+        *ok = maked;
+    }
+    return skleykiResult[0];
 }
 
 

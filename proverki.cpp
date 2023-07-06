@@ -24,7 +24,7 @@ bool MainWindow::proverkaSkleyki(QTableWidget *tableValues, QTableWidget *tableS
     {
         return false;
     }
-    return proverkaTable(values, skleyki);
+    return proverkaTable(values, skleyki) && proverkaAllSkleykiInTable(values, skleyki);    // проверяем, что склейки в таблице покрывают все значения и все значения образуют все возможные склейки
 }
 
 bool MainWindow::proverkaSkleyki1()

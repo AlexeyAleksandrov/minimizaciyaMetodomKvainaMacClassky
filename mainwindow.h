@@ -168,15 +168,18 @@ private:
 
     // работа со склейками
 //    void makeSkleyki(QStringList numbersList, QStringList &skleykiList); // функция, которая производит склейки
-    void createSkleyka(QTableWidget *tableWidgetInput, QCheckBox **checkBoxesInput, QTableWidget *&tableWidgetOutput, int numSkleyka); // создать склейку на основе таблицыи и галочек и выводим в другую таблицу результат, numSkleika - это номер этапа склейки
+    void createSkleyka(QTableWidget *tableWidgetInput, QCheckBox **checkBoxesInput, QTableWidget *&tableWidgetOutput); // создать склейку на основе таблицыи и галочек и выводим в другую таблицу результат, numSkleika - это номер этапа склейки
     bool isContainsSkleyki(QStringList skleykiList, int numSkleyka); // проверяет, все-ли склейки из списка содержатся в правильном варианте (true - все нормально, false - хотя бы одна не содержится)
     void moveSkleyka(QTableWidget *tableWidgetInput, QCheckBox **checkBoxesInput, QTableWidget *&tableWidgetOutput, int numSkleyka); // перемещение выделенных элементов без склейки
     bool proverkaTable(QTableWidget *tableWidgetInput, QStringList listOfSkeyki, bool ignoreRedColor = false); // проверка склеек, ignoreRedColor - игнорировать строки с красным цветом (для повторящихся склеек)
     bool proverkaTable(QStringList listOfValues, QStringList listOfSkeyki); // проверяет, что все значения покрыты склейками
+    bool proverkaAllSkleykiInTable(QStringList listOfValues, QStringList listOfSkeyki); // проверяет, что все созданы все возможные склейки
     bool isOptimalSkleyka(QString value1, QString value2, QStringList values, QStringList listOfSkleyki);   // провереят, что при данных значениях и уже имеющихся склейках, выбранные 2 значения являются оптимальными для склейки
+    bool isCanCreateSkleyka(QString value1, QString value2);    // проверяет, возможно-ли из данных двух значений создать склейку
     void goToNextStep(QTableWidget *tableWidgetInput, QTableWidget *&tableWidgetOutput, int nextTabIndex);
     void sortSkleiki(QTableWidget *skleikiTableWidget); // сортировка склеек по количеству в них Х
     void sortOnesCount(QTableWidget *tableWidgetInput); // сортировка значений по количеству в них 1
+    QString createSkleyka(QString value1, QString value2, bool *ok = nullptr);  // функция создания склейки
 
 
     // перемещение по этапам работы

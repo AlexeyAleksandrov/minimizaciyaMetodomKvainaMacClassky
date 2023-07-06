@@ -463,12 +463,12 @@ void MainWindow::setNoMessage(bool value)
 
 void MainWindow::pushButton_add_skleyki_2_clicked() // кнопка добаления склеек на основе таблицы склеек 1
 {
-    createSkleyka(tableWidgetsSkleyki[0], checkBoxes_skleyki_1, tableWidgetsSkleykiEditing[1], 2); // создаем склейку
+    createSkleyka(tableWidgetsSkleyki[0], checkBoxes_skleyki_1, tableWidgetsSkleykiEditing[1]); // создаем склейку
 }
 
 void MainWindow::pushButton_add_skleyki_3_clicked() // кнопка создания 3й склейки
 {
-    createSkleyka(tableWidgetsSkleyki[1], checkBoxes_skleyki_2, tableWidgetsSkleykiEditing[2], 3); // создаем склейки 3
+    createSkleyka(tableWidgetsSkleyki[1], checkBoxes_skleyki_2, tableWidgetsSkleykiEditing[2]); // создаем склейки 3
 }
 
 void MainWindow::pushButton_clear_skleyki_1() // кнопка отчистки таблицы со склейками 1
@@ -1684,7 +1684,7 @@ void MainWindow::on_pushButton_proverka_result_function_clicked()
 
 void MainWindow::on_pushButton_tot_add_to_skeyki_1_clicked()
 {
-    createSkleyka(tableWidgetOnesOnly, checkBoxes_ones, tableWidgetsSkleykiEditing[0], 1); // создаем склейку и добавляем её в таблицу
+    createSkleyka(tableWidgetOnesOnly, checkBoxes_ones, tableWidgetsSkleykiEditing[0]); // создаем склейку и добавляем её в таблицу
 }
 
 
