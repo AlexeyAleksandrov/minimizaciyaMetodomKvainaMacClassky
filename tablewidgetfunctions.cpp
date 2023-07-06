@@ -67,7 +67,7 @@ void MainWindow::setQStringListToTW(QTableWidget *&tableWidget, QStringList list
             }
         }
         qDebug() << "Выставляемый цвет: " << color << color.red() << color.green() << color.blue();
-        QStringList element = list[i].split("", Qt::SplitBehavior(Qt::SkipEmptyParts)); // разбиваем элемент спика на элементы
+        QStringList element = list[i].split("", SPLITTER); // разбиваем элемент спика на элементы
         int elementSize = element.size(); // получаем длину строки этого элемента
         for (int j=0; j<elementSize; j++)
         {
@@ -83,7 +83,7 @@ void MainWindow::addQStringToTWOneSymwolInItem(QTableWidget *&tableWidget, QStri
         qDebug() << "Нельзя добавить строку в таблицу!" << str;
         return;
     }
-    addRow(tableWidget, str.split("", Qt::SplitBehavior(Qt::SkipEmptyParts))); // разбиваем строку списка по символам и передаём функции как список строки, где 1 символ равен одному item
+    addRow(tableWidget, str.split("", SPLITTER)); // разбиваем строку списка по символам и передаём функции как список строки, где 1 символ равен одному item
 }
 
 void MainWindow::addQStringListToTWOneSymwolInItem(QTableWidget *&tableWidget, QStringList list)
@@ -372,7 +372,7 @@ void MainWindow::createSkleyka(QTableWidget *tableWidgetInput, QCheckBox **check
         // добавляем
         if(adding) // если склейка еще не соджержится
         {
-           addRow(tableWidgetOutput, skleyka.split("", Qt::SplitBehavior(Qt::SkipEmptyParts)));  // добавляем склейку
+           addRow(tableWidgetOutput, skleyka.split("", SPLITTER));  // добавляем склейку
         }
         else // если элемент уже есть
         {
@@ -382,7 +382,7 @@ void MainWindow::createSkleyka(QTableWidget *tableWidgetInput, QCheckBox **check
                 warningError("Ошибка! Оба выбранных элемента прошли склейку, создание склейки невозможно!");
                 return;
             }
-            addRow(tableWidgetOutput, skleyka.split("", Qt::SplitBehavior(Qt::SkipEmptyParts)), redColor->red(), redColor->green(), redColor->blue());  // добавляем склейку, подсвечивая её красным цветом
+            addRow(tableWidgetOutput, skleyka.split("", SPLITTER), redColor->red(), redColor->green(), redColor->blue());  // добавляем склейку, подсвечивая её красным цветом
         }
     }
 
@@ -916,7 +916,7 @@ void MainWindow::sortSkleiki(QTableWidget *skleikiTableWidget)
     skleyka *skleikaSort = new skleyka [size]; // выделяем память под структуру склеек
     for (int i=0; i<size; i++)
     {
-        skleikaSort[i].text = skleikiList[i].split("", Qt::SplitBehavior(Qt::SkipEmptyParts));
+        skleikaSort[i].text = skleikiList[i].split("", SPLITTER);
         skleikaSort[i].size = skleikiList[i].size(); // сохраняем размер массива
         skleikaSort[i].type = -1;
         // для склеек, где нет Х

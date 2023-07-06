@@ -224,7 +224,7 @@ bool MainWindow::proverkaItogMdnfByKartaPokritiya()
     userMdnf.remove("");
     qDebug() << "Удалили. Переходим к обработке";
 
-    QStringList userMdnfList = userMdnf.split(separator, Qt::SplitBehavior(Qt::SkipEmptyParts)); // разбиваем строку по коньюнкциям, чтобы получить список с ДНФ
+    QStringList userMdnfList = userMdnf.split(separator, SPLITTER); // разбиваем строку по коньюнкциям, чтобы получить список с ДНФ
     qDebug() << "разбили на минтермы" << userMdnfList;
 
     QStringList formulaValues;  // список наборов цифр минтермов из формулы

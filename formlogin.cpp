@@ -189,7 +189,7 @@ void FormLogin::on_pushButton_load_clicked()
         QString textLine = list.at(i); // получаем текст строки
         if(textLine.contains("name"))
         {
-            QStringList dataList = textLine.split("=", Qt::SplitBehavior(Qt::SkipEmptyParts)); // разбиваем строку на до = и после
+            QStringList dataList = textLine.split("=", SPLITTER); // разбиваем строку на до = и после
             if(dataList.size() != 2)
             {
                 break;
@@ -198,7 +198,7 @@ void FormLogin::on_pushButton_load_clicked()
         }
         if(textLine.contains("group"))
         {
-            QStringList dataList = textLine.split("=", Qt::SplitBehavior(Qt::SkipEmptyParts)); // разбиваем строку на до = и после
+            QStringList dataList = textLine.split("=", SPLITTER); // разбиваем строку на до = и после
             if(dataList.size() != 2)
             {
                 break;

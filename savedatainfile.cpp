@@ -145,7 +145,7 @@ void MainWindow::readDataFromFile()
             qDebug() << "Строка " << list[i] << " не содержит =";
             continue;
         }
-        QStringList dataList = list[i].split("=", Qt::SplitBehavior(Qt::SkipEmptyParts));
+        QStringList dataList = list[i].split("=", SPLITTER);
         int dataListSize = dataList.size(); // получаем размер списка, сформированного из строки
         if(dataList[0] == "str_tableWidgetsSkleyki_0")
         {
@@ -435,7 +435,7 @@ void MainWindow::readDataFromFile()
                 for (int i=0; i<size; i++) // проходим по всем строкам, которые должны будут быт ьвыведены в таблицу
                 {
                     qDebug() << "rowList = " << tableList[i];
-                    QStringList rowList = tableList[i].split("", Qt::SplitBehavior(Qt::SkipEmptyParts)); // разбиваем строку на элементы
+                    QStringList rowList = tableList[i].split("", SPLITTER); // разбиваем строку на элементы
                     qDebug() << "rowList = " << tableList[i] << " после разделения";
 //                    int columns = rowList.size(); // количество элементов в строке равно количеству столбцов
                     int c = 0; // позиция символа в строке (т.к. ячейка состоит из 2х значений - тект и цвет

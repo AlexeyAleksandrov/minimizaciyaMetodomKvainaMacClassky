@@ -236,11 +236,11 @@ bool mdnfMacKlassky::calculate(int type, QStringList &listFunc, QStringList &skl
 //    qDebug() << "mdnf начинаем считать таблицу";
     for (int i=0; i<horizontalSize; i++)  // проходим по каждому столбцу
     {
-        QStringList horizontalString = horizontalList[i].split("", Qt::SplitBehavior(Qt::SkipEmptyParts)); // разбиваем горизонтальный элемент (заголовк столбца) на символы
+        QStringList horizontalString = horizontalList[i].split("", SPLITTER); // разбиваем горизонтальный элемент (заголовк столбца) на символы
         int horizontalStringSize = horizontalString.size(); // получаем размер списка
         for (int j=0; j<vertikalSize; j++) // проходим по каждой строке каждого столбца
         {
-            QStringList verticalString = vertikalList[j].split("", Qt::SplitBehavior(Qt::SkipEmptyParts)); // разбиваем вертикальный элемент (заголовок строки) на символы
+            QStringList verticalString = vertikalList[j].split("", SPLITTER); // разбиваем вертикальный элемент (заголовок строки) на символы
             int verticalStringSize = verticalString.size(); // получаем размер списка
             if(horizontalStringSize != verticalStringSize) // на всякий случай проверяем, чтобы размеры были одинаковы
             {
@@ -414,7 +414,7 @@ bool mdnfMacKlassky::calculate(int type, QStringList &listFunc, QStringList &skl
                     if(cores[i][j]) // если в этом столбце есть +
                     {
                         QString skleyka = vertikalList[j]; // получаем склейку
-                        QStringList skleykaList = skleyka.split("", Qt::SplitBehavior(Qt::SkipEmptyParts)); // разбиваем склейку на символы
+                        QStringList skleykaList = skleyka.split("", SPLITTER); // разбиваем склейку на символы
                         int size = skleykaList.size(); // получаем количество элементов в склейке
                         int count = 0; // сохраняет, сколько переменых (Х) в склейке
                         for (int h=0; h<size; h++)
@@ -447,7 +447,7 @@ bool mdnfMacKlassky::calculate(int type, QStringList &listFunc, QStringList &skl
                     if(cores[i][j]) // если в этом столбце есть +
                     {
                         QString skleyka = vertikalList[j]; // получаем склейку
-                        QStringList skleykaList = skleyka.split("", Qt::SplitBehavior(Qt::SkipEmptyParts)); // разбиваем склейку на символы
+                        QStringList skleykaList = skleyka.split("", SPLITTER); // разбиваем склейку на символы
                         int size = skleykaList.size(); // получаем количество элементов в склейке
                         int count = 0; // сохраняет, сколько переменых (Х) в склейке
                         for (int h=0; h<size; h++)
@@ -841,7 +841,7 @@ void mdnfMacKlassky::makeSkleyki(QStringList numbersList, QStringList &skleykiLi
     for (int i=0; i<sizeFunc; i++)
     {
         QString chislo = listFunc[i]; // получаем число
-        QStringList chisloList = chislo.split("", Qt::SplitBehavior(Qt::SkipEmptyParts));  // разбиваем число на символы
+        QStringList chisloList = chislo.split("", SPLITTER);  // разбиваем число на символы
         int size = chisloList.size(); // получаем размер числа (количество символов)
         if(razryad != size) // если количество разрядов не совпадает, проверяем на всякий случай
         {
@@ -1041,7 +1041,7 @@ bool mdnfMacKlassky::calculateTot(QString function_16)
     //СКРЫТО qDebug() << "=======";
     // заносим в таблицу нашу функцию
     // определяем, сколько переменных нужно, чтобы описать функцию
-    funcList = ch2.split("", Qt::SplitBehavior(Qt::SkipEmptyParts)); // разбиваем число в 2й ССЧ на символы
+    funcList = ch2.split("", SPLITTER); // разбиваем число в 2й ССЧ на символы
     rowsTot = static_cast<int>(4 * razryad); // умножаем 4 (т.к. у нас 16-я ССЧ и она содержит по 4 двоичных разряда в числе) на количество разрядов числа и получаем количество строк
     double stepen = log2(rowsTot); // получаем, в какую степень над овозвести числ о2, чтобы получить такую длину числа
     if(abs(stepen - static_cast<double>(static_cast<int>(stepen))) > 0.0) // если степень не целая
@@ -1243,7 +1243,7 @@ QString mdnfMacKlassky::createMintermBySkleyka(QString skleyka, int type)
     //        return "";
     //    }
     QString minterm = ""; // создаем минтерм
-    QStringList oneCoreList = skleyka.split("", Qt::SplitBehavior(Qt::SkipEmptyParts)); // разбиваем склейку на символы
+    QStringList oneCoreList = skleyka.split("", SPLITTER); // разбиваем склейку на символы
     int count = oneCoreList.size(); // получаем размер склейки
     const char start_variable = 'a'; // буква первой переменной
     for (int k=0; k<count; k++)
@@ -1516,7 +1516,7 @@ bool mdnfMacKlassky::mnf::isNf(QString virazhenie)
     userMdnf.remove(")");
     qDebug() << "Удалили. Переходим к обработке";
     userMdnf.remove("");
-    QStringList userMdnfList = userMdnf.split(razdelitel, Qt::SplitBehavior(Qt::SkipEmptyParts)); // разбиваем строку по коньюнкциям, чтобы получить список с ДНФ
+    QStringList userMdnfList = userMdnf.split(razdelitel, SPLITTER); // разбиваем строку по коньюнкциям, чтобы получить список с ДНФ
     qDebug() << "разбили на символы" << userMdnfList;
     int userMdnfListSize = userMdnfList.size(); // получаем количество элементов в пользовательском МДНФ
     // сортируем переменные по возрастанию внутри каждого минтерма
@@ -1626,9 +1626,9 @@ bool mdnfMacKlassky::mnf::isNf(QString virazhenie)
         qDebug() << "МДНФ, которая должна быть, после обработки:" << mdnfReal;
         // проверяем МДНФ
         // разбиваем МДНФ на коньюнкты
-        QStringList mdnfRealList = mdnfReal.split(razdelitel, Qt::SplitBehavior(Qt::SkipEmptyParts)); // разбиваем МНФ, которая рассчитана программой на элементы
+        QStringList mdnfRealList = mdnfReal.split(razdelitel, SPLITTER); // разбиваем МНФ, которая рассчитана программой на элементы
         qDebug() << "список реальной мднф: \t\t" << mdnfRealList;
-        qDebug() << "список пользовательской мднф: \t" << userMdnf.split(razdelitel, Qt::SplitBehavior(Qt::SkipEmptyParts));
+        qDebug() << "список пользовательской мднф: \t" << userMdnf.split(razdelitel, SPLITTER);
         qDebug() << "список пользовательской мднф 2: \t" << userMdnfList;
         int mdnfRealListSize = mdnfRealList.size(); // получаем количество элементов в МДНФ, которое должно получиться
         bool mdnfError = false; // переменная отвечающая за то, что все ДНФ совпадают
