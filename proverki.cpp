@@ -320,7 +320,7 @@ bool MainWindow::proverkaItogMdnfByKartaPokritiya()
     }
 
     // проверяем, что введённые пользователем значения, вообще есть на карте покрытия
-    for (QString value : formulaValues)
+    for (const QString &value : formulaValues)
     {
         if(!verticalList.contains(value))    // если значение не содержится в склейках
         {
@@ -399,7 +399,7 @@ bool MainWindow::proverkaItogMdnfByKartaPokritiya()
     qDebug() << "Значения, которые формируют ядровую ДНФ: " << coreValues;
 
     // проверяем, что все ядровые значения присутствуют во введённой, пользователем, формуле
-    for (QString core : coreValues)
+    for (const QString &core : coreValues)
     {
         if(!formulaValues.contains(core))    // если ядровое значение не содержится в формуле
         {
@@ -428,24 +428,193 @@ bool MainWindow::proverkaItogMdnfByKartaPokritiya()
 
     qDebug() << "Непокрытые ядрами значения: " << variativeValues;
 
+    // простой вариант
+//    // Проверяем, что введённые пользователем значения покрывают непокрытые
+//    for (const QString &skleyka : formulaValues)     // берём все значения введённые пользователем
+//    {
+//        for (const QString &value : variativeValues)   // берем все непокрытые значения
+//        {
+//            if(checkPokritie(value, skleyka))   // если значение покрывается склейкой
+//            {
+//                variativeValues.removeAll(value);   // убираем его из спсика непокрытых
+//            }
+//        }
+//    }
+
+//    if(variativeValues.size() > 0)  // если остались непокрытые значения, значит формула не минимальна
+//    {
+//        qDebug() << "Не все значения покрывают формулы покрывают значения функции!";
+//        return false;
+//    }
+
     // ТУТ КОСТЫЛЬ - по хорошему надо разбить непокрытые значения на группы и понять, какие значения оптимальнее всего выбрать,
     // чтобы использовать минимум переменных, но мы просто проверим, что введённые пользователем значения покрывают непокрытые
 
-    for (QString skleyka : formulaValues)     // берём все значения введённые пользователем
+    // составим список склеек, которые могут покрыть непокрытые значения
+    QStringList variativeSkleyki;
+    QStringList skleykiList = verticalList;     // список доступных для использования склеек
+    for (QString &core : coreValues)
     {
-        for (QString value : variativeValues)   // берем все непокрытые значения
+        skleykiList.removeAll(core);    // удаляем ядровые значения из списка - их нельзя применять
+    }
+
+    // ищём склейки, которые могут покрыть недостающие значения
+    for (const QString &value : variativeValues)   // берем все непокрытые значения
+    {
+        for(QString &skleyka : verticalList)    // берём каждую склейку
         {
-            if(checkPokritie(value, skleyka))   // если значение покрывается склейкой
+            if(checkPokritie(value, skleyka))   // если непокрытое знаячение покрывается данной склейкой
             {
-                variativeValues.removeAll(value);   // убираем его из спсика непокрытых
+                variativeSkleyki.append(skleyka);   // добавляем склейку в список
+            }
+        }
+    }
+    variativeSkleyki.removeDuplicates();    // удаляем дубликаты
+
+    // составляем список приоритетов (чем больше кол-во Х, тем выше приоритет) - чем выше приоритет, тем меньше переменных будет использоваться
+    int maxPriority = 0;    // значение максимального приоритета (по умолчанию - 0)
+    QMap<QString, int> priorities;
+
+    for(QString &skleyka : variativeSkleyki)    // берём каждую вариативную склейку
+    {
+        int priority = skleyka.toUpper().count("X");    // считаем кол-во Х
+        priorities.insert(skleyka, priority);       // добавляем склейку и приоритет в мап
+
+        if(maxPriority < priority)  // проверяем максимальный приоритет
+        {
+            maxPriority = priority;
+        }
+        qDebug() << "склейка: " << skleyka << " приоритет: " << priority;
+    }
+
+    // составляем списки возможных вариантов значений
+    QList<QStringList> variativeVariantsList;   // список состоящий из всех возможных вариантов вариативной части
+
+    // берем список значений, которые надо покрыть
+    // сначала пробуем покрыть значениями из максимального приоритета
+    // если ни одно значение с максимальным приоритетом не покрывает, снижаем приоритет
+    // составляем список склеек, которые покрывают это значение
+    // для каждого следующего значения проверяем, покрывается ли оно хотя бы одним из уже применённых
+    // если не покрывается, находим значение, которое сможет покрыть
+
+//    // добавляем все значения с максимальным приоритетом
+//    for(const QString &skleyka : priorities.keys())     // делаем перебор всех доступных склеек
+//    {
+//        if(priorities.value(skleyka) == maxPriority)  // если приоритет совпадает с текущим
+//        {
+//            variativeVariantsList.append(QStringList() << skleyka);     // добавляем значение как список с 1 элементом
+//        }
+//    }
+
+    for (int i=0; i<variativeValues.count(); i++)   // берем все непокрытые значения
+    {
+        bool valueClosed = false;   // флаг покрытия значения данным приоритетом
+        for(int p=maxPriority; p>=0; p--)   // берём сначала значения с самым высоким приоритетом
+        {
+            for(const QString &skleyka : priorities.keys())     // делаем перебор всех доступных склеек
+            {
+                if(priorities.value(skleyka) == p)  // если приоритет совпадает с текущим
+                {
+                    if(checkPokritie(variativeValues[i], skleyka))   // если данное значение покрывается склейкой текущего приоритета
+                    {
+                        valueClosed = true;     // ставим флаг, что значение покрыто
+                        if(i == 0)  // если это первое значение, то создаем списки вариантов
+                        {
+                            variativeVariantsList.append(QStringList() << skleyka);     // добавляем список с одним элементом
+                        }
+                        else    // если это не первое значение
+                        {
+                            for (int j=0; j<variativeVariantsList.size(); j++)  // берём все уже имеющиеся варианты
+                            {
+                                bool valueClosedInThisList = false;     // проверем, покрывается ли значение хоть одной склейкой из текущего набора
+                                for(const QString &variantSkleyka : variativeVariantsList[j])      // делаем перебор всех значений в этом наборе
+                                {
+                                    if(checkPokritie(variativeValues[i], variantSkleyka))   // если значение покрывается хотя бы одной склейкой в текущем наборе
+                                    {
+                                        valueClosedInThisList = true;
+                                        break;
+                                    }
+                                }
+
+                                if(!valueClosedInThisList)  // если значение не покрыто ни одной склейкой в наборе, то добавляем её в набор
+                                {
+                                    variativeVariantsList[j].append(skleyka);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            if(valueClosed)     // если значение покрыто хотя бы одним значением из данного приоритета, дальше не ищем
+            {
+                break;
             }
         }
     }
 
-    if(variativeValues.size() > 0)  // если остались непокрытые значения, значит формула не минимальна
+    // ищем только самые минимальные варианты
+    // сначала отсеиваем по кол-ву склеек, оставляем только с минимальным кол-вом
+
+    int minSkleykiCount = INT_MAX;
+    for (const QStringList &variativeList : qAsConst(variativeVariantsList))   // ищем минимальный размер
     {
+        int size = variativeList.size();
+        if(size < minSkleykiCount)
+        {
+            minSkleykiCount = size;
+        }
+    }
+
+    // отсеиваем по кол-ву склеек
+    for(int i=0; i<variativeVariantsList.size(); i++)
+    {
+        if(variativeVariantsList[i].size() > minSkleykiCount)   // если размер списка склеек больше минимального
+        {
+            variativeVariantsList.removeAt(i);  // удаляем из списка
+            i--;
+        }
+    }
+
+    qDebug() << "Вывод вариативной части:";
+    for (const QStringList &variativeList : qAsConst(variativeVariantsList))
+    {
+//        variativeList = coreValues + variativeList;     // доабвляем ядровую часть к вариативной
+        qDebug() << coreValues + variativeList;
+    }
+
+    // проверка на кол-во минтермов в формуле
+    if(formulaValues.size() != (coreValues.size() + minSkleykiCount))
+    {
+        qDebug() << "Кол-во минтермов/макстермов в формуле не соответсвует минимальному значени: " << formulaValues.size() << (coreValues.size() + minSkleykiCount);
         return false;
     }
 
-    return true;    // если все хорошо
+    // выделяем вариативную часть формулы
+    QStringList variativePartOfFormula = formulaValues;     // список вариативных значений формулы
+    for(const QString &core : qAsConst(coreValues))
+    {
+        variativePartOfFormula.removeAll(core);     // удаляем ядровые значения
+    }
+
+    // проверяем, что введённая пользователоем формула соответствует одной из вариативных
+    for (const QStringList &variativeList : qAsConst(variativeVariantsList))
+    {
+        bool compare = true;
+        for(const QString &variant : variativeList)    // перебираем все значения внутри варианта вариативной части
+        {
+            if(!variativePartOfFormula.contains(variant))   // проверяем, содержится ли вариативное значение в формуле
+            {
+                compare = false;
+                break;
+            }
+        }
+
+        if(compare) // если вариативная часть совпадает, значит решение правильное
+        {
+            return true;
+        }
+    }
+
+    return false;    // если все хорошо
 }

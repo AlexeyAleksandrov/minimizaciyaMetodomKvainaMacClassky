@@ -1043,7 +1043,7 @@ bool mdnfMacKlassky::calculateTot(QString function_16)
     // определяем, сколько переменных нужно, чтобы описать функцию
     funcList = ch2.split("", SPLITTER); // разбиваем число в 2й ССЧ на символы
     rowsTot = static_cast<int>(4 * razryad); // умножаем 4 (т.к. у нас 16-я ССЧ и она содержит по 4 двоичных разряда в числе) на количество разрядов числа и получаем количество строк
-    double stepen = log2(rowsTot); // получаем, в какую степень над овозвести числ о2, чтобы получить такую длину числа
+    double stepen = log2(rowsTot); // получаем, в какую степень над овозвести число 2, чтобы получить такую длину числа
     if(abs(stepen - static_cast<double>(static_cast<int>(stepen))) > 0.0) // если степень не целая
     {
         stepen = static_cast<double>(static_cast<int>(stepen)); // откидываем дробную часть

@@ -216,13 +216,13 @@ private slots:
     // таблица истинности
 //    void pushButtonFunctionClicked(); // кнопка выбора функции
     void pushButtonTotAddClicked(); // кнопка добавляения строк из таблицы истинности в таблицу, где только 1
-    void pushButtonCheckTableOfTrueClicked(); // кнопка проверяющая правильность таблицы истинности
+//    void pushButtonCheckTableOfTrueClicked(); // кнопка проверяющая правильность таблицы истинности
     void pushButtonFunc2Clicked(); // кнопка ввода числа в 2 ССЧ
     void updateCheckBoxTotState(int arg1); // функция, получающая сигнал об изменении состояния оджного из checkBox у tableWidget
 
     // таблица, где функция принимает 0 или 1
     void pushButtonClearOneOnlyClicked(); // отчищает таблицу, где все 1
-    void pushButtonProverkaClicked(); // кнопка проверки таблиц с 1
+//    void pushButtonProverkaClicked(); // кнопка проверки таблиц с 1
 //    void pushButtonAddTSkeyki_1(); // кнопка делающая склейки из таблицы с 1
     void pushButton_delete_last_onesClicked(); // кнопка, удаляющая посдлеюнюю строку
     void pushButton_nextStep_totClicked(); // кнопка для переноса данных с ледующую таблицу и перехода к седующему действию
@@ -232,7 +232,7 @@ private slots:
     void pushButton_clear_skleyki_1(); // кнопка отчистки таблицы со склейками 1
 //    void pushButton_proverka_skleyki_1_clicked(); // кнопка проверки склейки 1
     void pushButton_delete_last_skleiki_1_editingClicked(); // кнопка удаления последней добавленной склейки
-    void pushButton_nextStep_tot_2Clicked(); // кнопка перехода к следующей склейке
+//    void pushButton_nextStep_tot_2Clicked(); // кнопка перехода к следующей склейке
 
     // таблица с 2й склейкой
     void pushButton_add_skleyki_3_clicked(); // кнопка добавления склейки из склеек 1
@@ -303,6 +303,14 @@ private slots:
     void on_pushButton_proverka_skleiki_1_editing_clicked();
 
     void on_pushButton_enterFunction_clicked();
+
+//    void on_pushButton_proverka_oneOnly_clicked();
+
+    void on_pushButton_proverka_oneOnly_clicked();
+
+    void on_pushButton_checkTableOfTrue_clicked();
+
+    void on_pushButton_nextStep_onesOnly_clicked();
 
 private: // функции проверки
     bool proverkaTableOfTrue(); // функция проверки таблицы истинности

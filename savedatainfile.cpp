@@ -273,7 +273,7 @@ void MainWindow::readDataFromFile()
             QStringList tableList = str_tableWidget_one_only.split("|"); // разделяем
 //            nextStep(); // если таблица истинности верная и мы на этапе F(a,b,c,d) = 1, значи тпропускаем этап проверки таблицы истинности
             qDebug() << "Выводим значения таблицы one_only";
-            pushButtonProverkaClicked(); // вызываем функцию проверки, чтобы программа установила тип минимизации
+            on_pushButton_proverka_oneOnly_clicked(); // вызываем функцию проверки, чтобы программа установила тип минимизации
             setQStringListToTW(tableWidgetOnesOnly, tableList, true);
             center_text_in_table(tableWidgetOnesOnly); // выраниваем текст в таблице
 //            if(step >= file_step && file_step > 0)
@@ -359,14 +359,14 @@ void MainWindow::readDataFromFile()
                 if(step < file_step)
                 {
                     nextStep(); // делаем пропуск этапа, если последний сохраненный этап был больше
-                    pushButton_nextStep_tot_2Clicked(); // как бы нажимаем кнопку далее
+                    on_pushButton_nextStep_onesOnly_clicked(); // как бы нажимаем кнопку далее
                 }
                 continue;
             }
             QString str_tableWidgetsSkleykiEditing_1 = dataList[1]; // считываем данные из 2й части строки
             QStringList tableList = str_tableWidgetsSkleykiEditing_1.split("|"); // разделяем
             nextStep(); // если мы дошли до второй таблицы склеек, значит пропускаем этап проверки таблицы склеек 1
-            pushButton_nextStep_tot_2Clicked(); // как бы нажимаем кнопку далее
+            on_pushButton_nextStep_onesOnly_clicked(); // как бы нажимаем кнопку далее
             setQStringListToTW(tableWidgetsSkleykiEditing[1], tableList, LINE_COLOR_ON); // добавляем строки в таблицу
             center_text_in_table(tableWidgetsSkleykiEditing[1]); // выраниваем текст в таблице
         }

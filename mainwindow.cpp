@@ -63,7 +63,7 @@ MainWindow::MainWindow(QWidget *parent) :
 //    connect(ui->pushButton_enterFunction, SIGNAL(clicked()), this, SLOT(pushButtonFunctionClicked())); // соединяем кнопку со слотом
     qDebug() << "pushButton_enterFunction";
     connect(ui->pushButton_tot_add, SIGNAL(clicked()), this, SLOT(pushButtonTotAddClicked()));
-    connect(ui->pushButton_checkTableOfTrue, SIGNAL(clicked()), this, SLOT(pushButtonCheckTableOfTrueClicked()));
+//    connect(ui->pushButton_checkTableOfTrue, SIGNAL(clicked()), this, SLOT(pushButtonCheckTableOfTrueClicked()));
     connect(ui->pushButton_func_2, SIGNAL(clicked()), this, SLOT(pushButtonFunc2Clicked()));
     qDebug() << "pushButton_func_2";
     connect(pushButton_nextStep_tot, SIGNAL(clicked()), this, SLOT(pushButton_nextStep_totClicked()));
@@ -71,7 +71,7 @@ MainWindow::MainWindow(QWidget *parent) :
     qDebug() << "Conntects f = 1";
     // таблица со значениями, где функция принимает значение 1
     //    connect(ui->pushButton_clearTableOneOnly, SIGNAL(clicked()), this, SLOT(pushButtonClearOneOnlyClicked()));
-    connect(ui->pushButton_proverka_oneOnly, SIGNAL(clicked()), this, SLOT(pushButtonProverkaClicked()));
+//    connect(ui->pushButton_proverka_oneOnly, SIGNAL(clicked()), this, SLOT(pushButtonProverkaClicked()));
 //    connect(ui->pushButton_tot_add_to_skeyki_1, SIGNAL(clicked()), this, SLOT(pushButtonAddTSkeyki_1()));
     // таблица со склейками 1
     qDebug() << "Conntects skleiki 1";
@@ -79,7 +79,7 @@ MainWindow::MainWindow(QWidget *parent) :
     //    connect(ui->pushButton_clear_skleiki_1_editing, SIGNAL(clicked()), this, SLOT(pushButton_clear_skleyki_1()));
 //    connect(ui->pushButton_proverka_skleiki_1_editing, SIGNAL(clicked()), this, SLOT(pushButton_proverka_skleyki_1_clicked()));
     //    connect(ui->pushButton_delete_last_skleiki_1_editing, SIGNAL(clicked()), this, SLOT(pushButton_delete_last_skleiki_1_editingClicked()));
-    connect(ui->pushButton_nextStep_onesOnly, SIGNAL(clicked()), this, SLOT(pushButton_nextStep_tot_2Clicked()));
+//    connect(ui->pushButton_nextStep_onesOnly, SIGNAL(clicked()), this, SLOT(pushButton_nextStep_tot_2Clicked()));
 
     // таблица со склейками 2
     qDebug() << "Conntects skleiki 2";
@@ -492,92 +492,10 @@ void MainWindow::pushButton_delete_last_skleiki_1_editingClicked() // кнопк
     deletelastRow(tableWidgetsSkleykiEditing[0]); // удалаяем последнюю строку в таблице склеек 1
 }
 
-void MainWindow::pushButton_nextStep_tot_2Clicked() // переход от 1й склейки ко 2й
-{
-    goToNextStep(tableWidgetsSkleykiEditing[0], tableWidgetsSkleyki[0], 2);
-    //    sortSkleiki(tableWidgetsSkleyki[0]);
-    int rows = tableWidgetsSkleyki[0]->rowCount(); // получаем колитечтво строк
-    if(rows <= 0)
-        return;
-    int cols = tableWidgetsSkleyki[0]->columnCount(); // получаем количество столбцов
-    if(cols <= 0)
-        return;
-    // создаем массив
-    QString **tableText = nullptr; // массив для хранения элементов таблицы
-    tableText = new QString *[rows]; // выделяем память под строки
-    for (int i=0; i<rows; i++)
-    {
-        tableText[i] = new QString [cols]; // выделяем память под столбцы
-    }
-    // получаем данные из таблицы
-    for (int i=0; i<rows; i++)
-    {
-        for (int j=0; j<cols; j++)
-        {
-            tableText[i][j] = tableWidgetsSkleyki[0]->item(i, j)->text(); // сохраняем данные в массив
-        }
-    }
-    // сортируем склейки
-    QStringList sortSkleikyList; // создаем список для отсортированных склеек
-    //    int lastRow = 0; // номер строки, в которую последний раз были занесены данные (склейка)
-    for (int p=0; p<cols; p++) // p = номер позиции Х в строке
-    {
-        qDebug() << "Ищем Х в позиции " << p;
-        for (int i=0; i<rows; i++)
-        {
-            for (int j=0; j<cols; j++)
-            {
-                if((tableText[i][j] == "X") && (j == p))  // если позиция Х совпадает с текущим номером
-                {
-                    qDebug() << "В строке" << i << "в столбце" << j << "X находится на позиции" << p;
-                    QString skleyka;
-                    for (int h=0; h<cols; h++) // проходим по всем элементам строки
-                    {
-                        skleyka.append(tableText[i][h]);
-                        //                        tableWidgetsSkleyki[0]->setItem(lastRow, h, new QTableWidgetItem((tableText[i][h]))); // выводим в таблицу
-                        //                        lastRow++; // увеличиваем на 1 номер последней строки
-                    }
-                    qDebug() << "Создана склейка " << skleyka;
-                    sortSkleikyList.append(skleyka); // обавляем склейку в список
-                }
-            }
-        }
-    }
-    // ищём повторящиеся элементы (из-за несовсем корректной работы группировщика)
-    for (int i=0; i<sortSkleikyList.size(); i++)
-    {
-        for (int j=0; j<i; j++)
-        {
-            if(sortSkleikyList[j] == sortSkleikyList[i]) // если существует
-            {
-                sortSkleikyList.removeAt(i); // удаляем
-            }
-        }
-    }
-    QStringList ishodniyList;
-    if(!getTWTextList(tableWidgetsSkleyki[0], ishodniyList))
-    {
-        qDebug() << "Не получилось получить данные из " << tableWidgetsSkleyki[0];
-        return;
-    }
-    for (int i=0; i<ishodniyList.size(); i++)
-    {
-        if(!(ishodniyList[i].contains("X"))) // если элемент не содержит Х, то добавляем его в конец
-        {
-            sortSkleikyList.append(ishodniyList[i]);
-        }
-    }
-    int size = sortSkleikyList.size(); // получаем количество склеек в списке
-    for (int i=0; i<size; i++)
-    {
-        QString skleyka = sortSkleikyList[i]; // получаем склейку
-        for (int j=0; j<skleyka.count(); j++)
-        {
-            tableWidgetsSkleyki[0]->setItem(i, j, new QTableWidgetItem(skleyka.at(j))); // выподим каждый элемент
-        }
-    }
-    nextStep();
-}
+//void MainWindow::pushButton_nextStep_tot_2Clicked() // переход от 1й склейки ко 2й
+//{
+
+//}
 
 void MainWindow::pushButton_proverka_skleyki_2_clicked()
 {
@@ -1281,62 +1199,52 @@ int MainWindow::getOptimizeType(QString func_2)
     {
         if(mdnf != nullptr) // если объект мак класки создан
         {
-            if(mdnf->canCalculateMnf(0)) // проверяем, можно-ли рассчитать МКНФ
-            {
+//            if(mdnf->canCalculateMnf(0)) // проверяем, можно-ли рассчитать МКНФ
+//            {
                 return 0;
-            }
+//            }
         }
     }
     if(zeroCount > oneCount) // если нулей меньше, чем единиц
     {
         if(mdnf != nullptr) // если объект мак класки создан
         {
-            if(mdnf->canCalculateMnf(1)) // проверяем, можно-ли рассчитать МДНФ
-            {
+//            if(mdnf->canCalculateMnf(1)) // проверяем, можно-ли рассчитать МДНФ
+//            {
                 return 1;
-            }
+//            }
         }
     }
     if(zeroCount == oneCount) // если количество равно
     {
-        bool canCalculateMknf = false; // флаг возможности рассчёта МКНФ
-        bool canCalculateMdnf = false; // флаг возможности рассчёта МДНФ
-        if(mdnf != nullptr) // если объект мак класки создан
-        {
-            canCalculateMknf = mdnf->canCalculateMnf(0); // считаем возможность рассчёта МКНФ
-            canCalculateMdnf = mdnf->canCalculateMnf(1); // считаем возможность рассчёта МДНФ
-            if(canCalculateMknf && canCalculateMdnf) // если можно рассчитать оба варианта
-            {
-                return 2;
-            }
-            else if(canCalculateMknf) // если МДНФ рассчитать нельзя, но МКНФ можно
-            {
-                return 3;
-            }
-            else if(canCalculateMdnf) // если МКНФ рассчитать нельзя, но МДНФ можно
-            {
-                return 4;
-            }
-        }
+//        bool canCalculateMknf = false; // флаг возможности рассчёта МКНФ
+//        bool canCalculateMdnf = false; // флаг возможности рассчёта МДНФ
+//        if(mdnf != nullptr) // если объект мак класки создан
+//        {
+//            canCalculateMknf = mdnf->canCalculateMnf(0); // считаем возможность рассчёта МКНФ
+//            canCalculateMdnf = mdnf->canCalculateMnf(1); // считаем возможность рассчёта МДНФ
+//            if(canCalculateMknf && canCalculateMdnf) // если можно рассчитать оба варианта
+//            {
+//                return 2;
+//            }
+//            else if(canCalculateMknf) // если МДНФ рассчитать нельзя, но МКНФ можно
+//            {
+//                return 3;
+//            }
+//            else if(canCalculateMdnf) // если МКНФ рассчитать нельзя, но МДНФ можно
+//            {
+//                return 4;
+//            }
+//        }
         return 2;
     }
     return -1;
 }
 
-void MainWindow::pushButtonCheckTableOfTrueClicked() // проверка таблицы истинности
-{
-    //    proverkaTable(tableWidgetTot, mdnf->getSschTableList());
-    if(proverkaTableOfTrue()) // сравниваем таблицу со значениями МДНФ
-    {
-        message(); // если правильно
-        step++; // увеличиваем шаг на 1
-        setStep(step);// переходим к следующему шагу
-    }
-    else
-    {
-        warningError(); // если ошибка
-    }
-}
+//void MainWindow::pushButtonCheckTableOfTrueClicked() // проверка таблицы истинности
+//{
+
+//}
 
 void MainWindow::pushButton_delete_last_onesClicked()
 {
@@ -1360,84 +1268,10 @@ void MainWindow::pushButtonClearOneOnlyClicked()
 
 }
 
-void MainWindow::pushButtonProverkaClicked() // проверка правильности где функция равна 1
-{
-    QStringList listFunc;
-    bool ok = getTWTextList(tableWidgetOnesOnlyEditing, listFunc); // получаем списолк значений из таблицы
-    if(!ok)
-    {
-        warningError("Таблица пуста!");
-        return;
-    }
-    int type = getType(function_2, listFunc); // пытаемся определить тип
-    if(type == -1) // если не удалось определить тип
-    {
-        warningError("Ошибка! Не удалось определить тип минимизации!\nДобавьте в таблицу все значения при которых функция принимает 0 или 1!");
-        return;
-    }
-    int optimizeType = getOptimizeType(function_2); // получаем ,какой тип минимизации предпочтительнее
-    qDebug() << "Тип: " << type << " Оптимальный тип: " << optimizeType;
-    if((optimizeType == -1) || (optimizeType == 3) || (optimizeType == 4)) // проверяем, если вдруг в программе получится ошибка
-    {
-        if(optimizeType == -1)
-        {
-            criticalError("Произошла непредвиденная ошибка!");
-            return;
-        }
-        if(optimizeType == 3)
-        {
-            criticalError("Произошла непредвиденная ошибка!\nПопробуйте использовать МКНФ для минимизации.");
-            return;
-        }
-        if(optimizeType == 4)
-        {
-            criticalError("Произошла непредвиденная ошибка!\nПопробуйте использовать МДНФ для минимизации.");
-            return;
-        }
-    }
-#ifdef OPTYMIZE_TYPE_ONLY
-    if(optimizeType != 2) // если не 2й тип, т.е. тот, когда можно использовать, и МКНФ, и МДНФ, т.к. одинаковое количество 0 и 1
-    {
-        if(type != optimizeType)
-        {
-            warningError("Ошибка! Ещё раз посчитайте количество 0 и 1 в функции!");
-            return;
-        }
-    }
-#endif
-    if(type == 0)
-    {
-//        message("Определён тип: МКНФ");
-        qDebug() << "Определён тип: МКНФ";
-    }
-    else
-    {
-//        message("Определён тип: МДНФ");
-        qDebug() << "Определён тип: МДНФ";
-    }
-    typeMin = type; // сохраняем тип
-    QStringList mmkList = mdnf->getListOnes(typeMin);
-    for (int i=0; i<mmkList.size(); i++)
-    {
-        qDebug() << "MMK List [" << i << "] = " << mmkList.at(i);
-    }
-    if(proverkaOnesOnly())
-    {
-        editor->setAutoInputType(typeMin); // устанавливаем тип автоматического ввода
-        message();
-        step++; // увеличиваем шаг на 1
-        setStep(step);// переходим к следующему шагу
-        skleyki[0] = mdnf->getSkleyki1(typeMin);
-        skleyki[1] = mdnf->getSkleyki2(typeMin);
-        skleyki[2] = mdnf->getSkleyki3(typeMin);
-        qDebug() << "Склека 3: " << mdnf->getSkleyki3(typeMin);
-    }
-    else
-    {
-        warningError();
-    }
+//void MainWindow::pushButtonProverkaClicked() // проверка правильности где функция равна 1
+//{
 
-}
+//}
 
 void MainWindow::on_pushButton_tot_move_to_skeyki_1_clicked()
 {
@@ -1705,5 +1539,208 @@ void MainWindow::on_pushButton_enterFunction_clicked()
 {
     QString text = lineEditFunction->text(); // берем текст функции
     setFunction(text); // задаём функцию
+}
+
+void MainWindow::on_pushButton_proverka_oneOnly_clicked()
+{
+    QStringList listFunc;
+    bool ok = getTWTextList(tableWidgetOnesOnlyEditing, listFunc); // получаем списолк значений из таблицы
+    if(!ok)
+    {
+        warningError("Таблица пуста!");
+        return;
+    }
+    int type = getType(function_2, listFunc); // пытаемся определить тип
+    if(type == -1) // если не удалось определить тип
+    {
+        warningError("Ошибка! Не удалось определить тип минимизации!\nДобавьте в таблицу все значения при которых функция принимает 0 или 1!");
+        return;
+    }
+#ifdef OPTYMIZE_TYPE_ONLY
+    int optimizeType = getOptimizeType(function_2); // получаем ,какой тип минимизации предпочтительнее
+    qDebug() << "Тип: " << type << " Оптимальный тип: " << optimizeType;
+    if((optimizeType == -1) || (optimizeType == 3) || (optimizeType == 4)) // проверяем, если вдруг в программе получится ошибка
+    {
+        if(optimizeType == -1)
+        {
+            criticalError("Произошла непредвиденная ошибка!");
+            return;
+        }
+        if(optimizeType == 3)
+        {
+            criticalError("Произошла непредвиденная ошибка!\nПопробуйте использовать МКНФ для минимизации.");
+            return;
+        }
+        if(optimizeType == 4)
+        {
+            criticalError("Произошла непредвиденная ошибка!\nПопробуйте использовать МДНФ для минимизации.");
+            return;
+        }
+    }
+    if(optimizeType != 2) // если не 2й тип, т.е. тот, когда можно использовать, и МКНФ, и МДНФ, т.к. одинаковое количество 0 и 1
+    {
+        if(type != optimizeType)
+        {
+            warningError("Ошибка! Ещё раз посчитайте количество 0 и 1 в функции!");
+            return;
+        }
+    }
+#endif
+    if(type == 0)
+    {
+//        message("Определён тип: МКНФ");
+        qDebug() << "Определён тип: МКНФ";
+    }
+    else
+    {
+//        message("Определён тип: МДНФ");
+        qDebug() << "Определён тип: МДНФ";
+    }
+    typeMin = type; // сохраняем тип
+//    QStringList mmkList = mdnf->getListOnes(typeMin);
+
+    QStringList tableOfTrue;
+    getTWTextList(tableWidgetTot, tableOfTrue); // получаем значения таблицы истинности
+
+    QStringList mmkList;
+    for(QString value : qAsConst(tableOfTrue))    // перебирвем все значения таблицы истинности
+    {
+        if(value.endsWith(QString::number(typeMin)))    // если значение оканчивается на 0 или 1, в зависимости от типа
+        {
+            int lastIndex = value.size()-1;
+            QString v4 = value.remove(lastIndex, 1);
+            mmkList.append(v4);  // добавляем значение в список необходимых, удаляя последнее значение (значение функции)
+        }
+    }
+
+    for (int i=0; i<mmkList.size(); i++)
+    {
+        qDebug() << "MMK List [" << i << "] = " << mmkList.at(i);
+    }
+
+    for (int i=0; i<listFunc.size(); i++)
+    {
+        qDebug() << "Func List [" << i << "] = " << listFunc.at(i);
+    }
+//    if(proverkaOnesOnly())
+    if(proverkaTable(tableWidgetOnesOnlyEditing, mmkList))
+    {
+        editor->setAutoInputType(typeMin); // устанавливаем тип автоматического ввода
+        message();
+        step++; // увеличиваем шаг на 1
+        setStep(step);// переходим к следующему шагу
+//        skleyki[0] = mdnf->getSkleyki1(typeMin);
+//        skleyki[1] = mdnf->getSkleyki2(typeMin);
+//        skleyki[2] = mdnf->getSkleyki3(typeMin);
+//        qDebug() << "Склека 3: " << mdnf->getSkleyki3(typeMin);
+    }
+    else
+    {
+        warningError();
+    }
+}
+
+
+void MainWindow::on_pushButton_checkTableOfTrue_clicked()
+{
+    //    proverkaTable(tableWidgetTot, mdnf->getSschTableList());
+    if(proverkaTableOfTrue()) // сравниваем таблицу со значениями МДНФ
+    {
+        message(); // если правильно
+        step++; // увеличиваем шаг на 1
+        setStep(step);// переходим к следующему шагу
+    }
+    else
+    {
+        warningError(); // если ошибка
+    }
+}
+
+
+void MainWindow::on_pushButton_nextStep_onesOnly_clicked()
+{
+    goToNextStep(tableWidgetsSkleykiEditing[0], tableWidgetsSkleyki[0], 2);
+    //    sortSkleiki(tableWidgetsSkleyki[0]);
+    int rows = tableWidgetsSkleyki[0]->rowCount(); // получаем колитечтво строк
+    if(rows <= 0)
+        return;
+    int cols = tableWidgetsSkleyki[0]->columnCount(); // получаем количество столбцов
+    if(cols <= 0)
+        return;
+    // создаем массив
+    QString **tableText = nullptr; // массив для хранения элементов таблицы
+    tableText = new QString *[rows]; // выделяем память под строки
+    for (int i=0; i<rows; i++)
+    {
+        tableText[i] = new QString [cols]; // выделяем память под столбцы
+    }
+    // получаем данные из таблицы
+    for (int i=0; i<rows; i++)
+    {
+        for (int j=0; j<cols; j++)
+        {
+            tableText[i][j] = tableWidgetsSkleyki[0]->item(i, j)->text(); // сохраняем данные в массив
+        }
+    }
+    // сортируем склейки
+    QStringList sortSkleikyList; // создаем список для отсортированных склеек
+    //    int lastRow = 0; // номер строки, в которую последний раз были занесены данные (склейка)
+    for (int p=0; p<cols; p++) // p = номер позиции Х в строке
+    {
+        qDebug() << "Ищем Х в позиции " << p;
+        for (int i=0; i<rows; i++)
+        {
+            for (int j=0; j<cols; j++)
+            {
+                if((tableText[i][j] == "X") && (j == p))  // если позиция Х совпадает с текущим номером
+                {
+                    qDebug() << "В строке" << i << "в столбце" << j << "X находится на позиции" << p;
+                    QString skleyka;
+                    for (int h=0; h<cols; h++) // проходим по всем элементам строки
+                    {
+                        skleyka.append(tableText[i][h]);
+                        //                        tableWidgetsSkleyki[0]->setItem(lastRow, h, new QTableWidgetItem((tableText[i][h]))); // выводим в таблицу
+                        //                        lastRow++; // увеличиваем на 1 номер последней строки
+                    }
+                    qDebug() << "Создана склейка " << skleyka;
+                    sortSkleikyList.append(skleyka); // обавляем склейку в список
+                }
+            }
+        }
+    }
+    // ищём повторящиеся элементы (из-за несовсем корректной работы группировщика)
+    for (int i=0; i<sortSkleikyList.size(); i++)
+    {
+        for (int j=0; j<i; j++)
+        {
+            if(sortSkleikyList[j] == sortSkleikyList[i]) // если существует
+            {
+                sortSkleikyList.removeAt(i); // удаляем
+            }
+        }
+    }
+    QStringList ishodniyList;
+    if(!getTWTextList(tableWidgetsSkleyki[0], ishodniyList))
+    {
+        qDebug() << "Не получилось получить данные из " << tableWidgetsSkleyki[0];
+        return;
+    }
+    for (int i=0; i<ishodniyList.size(); i++)
+    {
+        if(!(ishodniyList[i].contains("X"))) // если элемент не содержит Х, то добавляем его в конец
+        {
+            sortSkleikyList.append(ishodniyList[i]);
+        }
+    }
+    int size = sortSkleikyList.size(); // получаем количество склеек в списке
+    for (int i=0; i<size; i++)
+    {
+        QString skleyka = sortSkleikyList[i]; // получаем склейку
+        for (int j=0; j<skleyka.count(); j++)
+        {
+            tableWidgetsSkleyki[0]->setItem(i, j, new QTableWidgetItem(skleyka.at(j))); // выподим каждый элемент
+        }
+    }
+    nextStep();
 }
 
