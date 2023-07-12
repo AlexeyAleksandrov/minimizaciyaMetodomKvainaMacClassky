@@ -15,24 +15,24 @@ int main(int argc, char *argv[])
 
 
     MainWindow w;
-//    w.setMinimumWidth(564);
-//    w.setMaximumWidth(564);
-//    w.setMinimumHeight(796);
-//    w.setMaximumHeight(796);
+    w.setMinimumWidth(564);
+    w.setMaximumWidth(564);
+    w.setMinimumHeight(796);
+    w.setMaximumHeight(796);
 
-//    w.setWindowTitle("Минимизация логических функций, заданных векторным способом, методом Куайна Мак-Класски");
-//    FormLogin f(w);
-//    f.show();
+    w.setWindowTitle("Минимизация логических функций, заданных векторным способом, методом Куайна Мак-Класски");
+    FormLogin f(w);
+    f.show();
 
 //    w.show();
 //    w.loadDataFromFile();
 
-    w.setNoMessage(true); // отключаем показ подсказок (после загрузки данных, они включатся из функции)
-    w.show(); // запускасем окно
-    w.setFunction("D277"); // устанавливаем функцию
-    w.setStudentName("Иванов Иван Иванович"); // передаём имя
-    w.setStudentGroup("КИБО-00-22"); // передаём группу
-    w.loadDataFromFile(); // загружаем данные
+//    w.setNoMessage(true); // отключаем показ подсказок (после загрузки данных, они включатся из функции)
+//    w.show(); // запускасем окно
+//    w.setFunction("D277"); // устанавливаем функцию
+//    w.setStudentName("Иванов Иван Иванович"); // передаём имя
+//    w.setStudentGroup("КИБО-00-22"); // передаём группу
+//    w.loadDataFromFile(); // загружаем данные
 
     return a.exec();
 }

@@ -428,6 +428,11 @@ bool MainWindow::proverkaItogMdnfByKartaPokritiya()
 
     qDebug() << "Непокрытые ядрами значения: " << variativeValues;
 
+    if(variativeValues.size() == 0)     // если нет вариативной части
+    {
+        return true;
+    }
+
     // простой вариант
 //    // Проверяем, что введённые пользователем значения покрывают непокрытые
 //    for (const QString &skleyka : formulaValues)     // берём все значения введённые пользователем

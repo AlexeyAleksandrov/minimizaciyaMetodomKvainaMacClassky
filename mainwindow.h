@@ -225,7 +225,7 @@ private slots:
 //    void pushButtonProverkaClicked(); // кнопка проверки таблиц с 1
 //    void pushButtonAddTSkeyki_1(); // кнопка делающая склейки из таблицы с 1
     void pushButton_delete_last_onesClicked(); // кнопка, удаляющая посдлеюнюю строку
-    void pushButton_nextStep_totClicked(); // кнопка для переноса данных с ледующую таблицу и перехода к седующему действию
+//    void pushButton_nextStep_totClicked(); // кнопка для переноса данных с ледующую таблицу и перехода к седующему действию
 
     // таблица с 1й склейкой
     void pushButton_add_skleyki_2_clicked(); // кнопка добавления склейки из склеек 1
@@ -311,6 +311,8 @@ private slots:
     void on_pushButton_checkTableOfTrue_clicked();
 
     void on_pushButton_nextStep_onesOnly_clicked();
+
+    void on_pushButton_nextStep_tot_clicked();
 
 private: // функции проверки
     bool proverkaTableOfTrue(); // функция проверки таблицы истинности

@@ -1,7 +1,7 @@
 #include "mainwindow.h"
 
 #define ENABLE_STEPS
-#define DISABLE_STEPS_INTERFACE_BLOCK true
+#define DISABLE_STEPS_INTERFACE_BLOCK false
 
 void MainWindow::setStep(int step)
 {

@@ -339,14 +339,14 @@ void MainWindow::readDataFromFile()
                 if(step < file_step)
                 {
                     nextStep(); // делаем пропуск этапа, если последний сохраненный этап был больше
-                    pushButton_nextStep_totClicked(); // как бы нажимаем кнопку далее
+                    on_pushButton_nextStep_tot_clicked(); // как бы нажимаем кнопку далее
                 }
                 continue;
             }
             QString str_tableWidgetsSkleykiEditing_0 = dataList[1]; // считываем данные из 2й части строки
             QStringList tableList = str_tableWidgetsSkleykiEditing_0.split("|"); // разделяем
 //            nextStep(); // если мы дошли до первой таблицы склеек, значит пропускаем этап проверки таблицы F = 1
-            pushButton_nextStep_totClicked(); // как бы нажимаем кнопку далее
+            on_pushButton_nextStep_tot_clicked(); // как бы нажимаем кнопку далее
             setQStringListToTW(tableWidgetsSkleykiEditing[0], tableList, LINE_COLOR_ON); // добавляем строки в таблицу
             center_text_in_table(tableWidgetsSkleykiEditing[0]); // выраниваем текст в таблице
         }

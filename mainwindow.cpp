@@ -66,7 +66,7 @@ MainWindow::MainWindow(QWidget *parent) :
 //    connect(ui->pushButton_checkTableOfTrue, SIGNAL(clicked()), this, SLOT(pushButtonCheckTableOfTrueClicked()));
     connect(ui->pushButton_func_2, SIGNAL(clicked()), this, SLOT(pushButtonFunc2Clicked()));
     qDebug() << "pushButton_func_2";
-    connect(pushButton_nextStep_tot, SIGNAL(clicked()), this, SLOT(pushButton_nextStep_totClicked()));
+//    connect(pushButton_nextStep_tot, SIGNAL(clicked()), this, SLOT(pushButton_nextStep_totClicked()));
     //    connect(pushButton_delete_last_ones, SIGNAL(clicked()), this, SLOT(pushButton_delete_last_onesClicked()));
     qDebug() << "Conntects f = 1";
     // таблица со значениями, где функция принимает значение 1
@@ -1252,12 +1252,10 @@ void MainWindow::pushButton_delete_last_onesClicked()
 }
 
 
-void MainWindow::pushButton_nextStep_totClicked()
-{
-    goToNextStep(tableWidgetOnesOnlyEditing, tableWidgetOnesOnly, 1); // переходим к следующему действию
-    nextStep();
-    sortOnesCount(tableWidgetOnesOnly); // сортируем значения по количеству единиц
-}
+//void MainWindow::pushButton_nextStep_totClicked()
+//{
+
+//}
 
 void MainWindow::pushButtonClearOneOnlyClicked()
 {
@@ -1742,5 +1740,13 @@ void MainWindow::on_pushButton_nextStep_onesOnly_clicked()
         }
     }
     nextStep();
+}
+
+
+void MainWindow::on_pushButton_nextStep_tot_clicked()
+{
+    goToNextStep(tableWidgetOnesOnlyEditing, tableWidgetOnesOnly, 1); // переходим к следующему действию
+    nextStep();
+    sortOnesCount(tableWidgetOnesOnly); // сортируем значения по количеству единиц
 }
 
