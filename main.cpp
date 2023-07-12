@@ -11,14 +11,26 @@ int main(int argc, char *argv[])
     QTextCodec::setCodecForLocale(codec);
 
     QApplication a(argc, argv);
+    a.setStyle("fusion");
 //    QString function = ""; // функция для минимизации
 
 
     MainWindow w;
-    w.setMinimumWidth(564);
-    w.setMaximumWidth(564);
-    w.setMinimumHeight(796);
-    w.setMaximumHeight(796);
+//    w.setMinimumWidth(564);
+//    w.setMaximumWidth(564);
+//    w.setMinimumHeight(796);
+//    w.setMaximumHeight(796);
+
+    // дизайн
+    QPalette m_pal;
+    m_pal.setColor(QPalette::Active, QPalette::Window, QColor(212,211,232));
+    m_pal.setColor(QPalette::Active, QPalette::WindowText, QColor(0,0,0));
+    m_pal.setColor(QPalette::Active, QPalette::Base, QColor(232,219,216,91));
+    m_pal.setColor(QPalette::Active, QPalette::Text, QColor(0,0,0));
+    m_pal.setColor(QPalette::Active, QPalette::Button, QColor(226,232,227,94));
+    m_pal.setColor(QPalette::Active, QPalette::ButtonText, QColor(0,0,0));
+    w.setPalette(m_pal);
+    w.setAutoFillBackground(true);
 
     w.setWindowTitle("Минимизация логических функций, заданных векторным способом, методом Куайна Мак-Класски");
     FormLogin f(w);

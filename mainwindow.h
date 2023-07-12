@@ -29,7 +29,7 @@
 #define FILE_STUDENT_WORK (QString)"mmkwork.mirea"
 
 #define SKLEYKA_BACKGROUNF_COLOR QColor(255, 253, 208)
-#define CHECK_BOXES_TEXT "Выбрать"
+#define CHECK_BOXES_TEXT "+"
 
 //#define CHECK_VALUES_MADE_SKLEYKA   // флаг необходимости проверять, что оба элемента, с которыми мы пытаемся выплнить склейку, уже участвовали в её создании
 //#define CHECK_OPTIMAL_SKLEYKA       // флаг, который включает проверку, что оба элемента, из которых пытаемся сделать склейку, не участвовали в склейке, или нет других вариантов, при которых возможно создание склейки из только непрошедших склейку, значений
@@ -313,6 +313,16 @@ private slots:
     void on_pushButton_nextStep_onesOnly_clicked();
 
     void on_pushButton_nextStep_tot_clicked();
+
+    void on_pushButton_help_1_clicked();
+
+    void on_pushButton_help_2_clicked();
+
+    void on_pushButton_help_3_clicked();
+
+    void on_pushButton_help_4_clicked();
+
+    void on_pushButton_help_5_clicked();
 
 private: // функции проверки
     bool proverkaTableOfTrue(); // функция проверки таблицы истинности

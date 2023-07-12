@@ -1,0 +1,10 @@
+<RCC>
+    <qresource prefix="/images">
+        <file>images/cyrcle.png</file>
+        <file>images/eye.png</file>
+        <file>images/MIREA_logo.png</file>
+        <file>images/pen.png</file>
+        <file>images/plus.png</file>
+        <file>images/vopros.png</file>
+    </qresource>
+</RCC>

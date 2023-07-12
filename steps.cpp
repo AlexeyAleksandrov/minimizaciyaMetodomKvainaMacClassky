@@ -33,7 +33,7 @@ void MainWindow::setStep(int step)
     for (int i=0; i<16; i++)
     {
         if(checkBoxes[i] != nullptr)
-            checkBoxes[i]->setVisible(step == 3 || DISABLE_STEPS_INTERFACE_BLOCK); // выключаем сначала все чекбоксы
+            checkBoxes[i]->setEnabled(step == 3 || DISABLE_STEPS_INTERFACE_BLOCK); // выключаем сначала все чекбоксы
         else
             qDebug() << "Элемент = NULL" << i;
     }
@@ -55,14 +55,14 @@ void MainWindow::setStep(int step)
         int rows = tableWidgetOnesOnly->rowCount(); // получаем количество втрок в новой таблице
         for (int i=0; i<rows; i++)
         {
-            checkBoxes_ones[i]->setVisible(true); // включаем отображение
+            checkBoxes_ones[i]->setEnabled(true); // включаем отображение
         }
     }
     else
     {
         for (int i=0; i<16; i++)
         {
-            checkBoxes_ones[i]->setVisible(false || DISABLE_STEPS_INTERFACE_BLOCK); // выключаем отображение
+            checkBoxes_ones[i]->setEnabled(false || DISABLE_STEPS_INTERFACE_BLOCK); // выключаем отображение
         }
     }
 
@@ -81,14 +81,14 @@ void MainWindow::setStep(int step)
         int rows = tableWidgetsSkleyki[0]->rowCount(); // получаем колитечтво строк
         for (int i=0; i<rows; i++)
         {
-            checkBoxes_skleyki_1[i]->setVisible(true); // включаем отображение
+            checkBoxes_skleyki_1[i]->setEnabled(true); // включаем отображение
         }
     }
     else
     {
         for (int i=0; i<16; i++)
         {
-            checkBoxes_skleyki_1[i]->setVisible(false); // выключаем отображение
+            checkBoxes_skleyki_1[i]->setEnabled(false); // выключаем отображение
         }
     }
 
@@ -107,14 +107,14 @@ void MainWindow::setStep(int step)
         int rows_2 = tableWidgetsSkleyki[1]->rowCount(); // получаем колитечтво строк
         for (int i = 0; i < rows_2; ++i)
         {
-            checkBoxes_skleyki_2[i]->setVisible(true); // делаем видимыми
+            checkBoxes_skleyki_2[i]->setEnabled(true); // делаем видимыми
         }
     }
     else
     {
         for (int i=0; i<16; i++)
         {
-            checkBoxes_skleyki_2[i]->setVisible(false);
+            checkBoxes_skleyki_2[i]->setEnabled(false);
         }
     }
 
