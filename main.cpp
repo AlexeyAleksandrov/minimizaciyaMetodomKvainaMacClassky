@@ -22,15 +22,15 @@ int main(int argc, char *argv[])
 //    w.setMaximumHeight(796);
 
     // дизайн
-    QPalette m_pal;
-    m_pal.setColor(QPalette::Active, QPalette::Window, QColor(212,211,232));
-    m_pal.setColor(QPalette::Active, QPalette::WindowText, QColor(0,0,0));
-    m_pal.setColor(QPalette::Active, QPalette::Base, QColor(232,219,216,91));
-    m_pal.setColor(QPalette::Active, QPalette::Text, QColor(0,0,0));
-    m_pal.setColor(QPalette::Active, QPalette::Button, QColor(226,232,227,94));
-    m_pal.setColor(QPalette::Active, QPalette::ButtonText, QColor(0,0,0));
-    w.setPalette(m_pal);
-    w.setAutoFillBackground(true);
+//    QPalette m_pal;
+//    m_pal.setColor(QPalette::Active, QPalette::Window, QColor(212,211,232));
+//    m_pal.setColor(QPalette::Active, QPalette::WindowText, QColor(0,0,0));
+//    m_pal.setColor(QPalette::Active, QPalette::Base, QColor(232,219,216,91));
+//    m_pal.setColor(QPalette::Active, QPalette::Text, QColor(0,0,0));
+//    m_pal.setColor(QPalette::Active, QPalette::Button, QColor(226,232,227,94));
+//    m_pal.setColor(QPalette::Active, QPalette::ButtonText, QColor(0,0,0));
+//    w.setPalette(m_pal);
+//    w.setAutoFillBackground(true);
 
     w.setWindowTitle("Минимизация логических функций, заданных векторным способом, методом Куайна Мак-Класски");
     FormLogin f(w);

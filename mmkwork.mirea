@@ -1,0 +1,15 @@
+name=Петров Пётр Петрович
+group=AAБО-10-19
+step=12
+lineEditFunc_2=1100 1101 0100 1010
+tableWidgetTot=00001|00011|00100|00110|01001|01011|01100|01111|10000|10011|10100|10110|11001|11010|11101|11110
+tableWidgetOnesOnlyEditing=0000|0001|0100|0101|0111|1001|1100|1110
+str_tableWidgetsSkleykiEditing_0=000X|0X00|0X01|X001|010X|X100|01X1|11X0
+tableWidget_one_only=0000y|0001y|0100y|0101y|1001y|1100y|0111y|1110y
+str_tableWidgetsSkleykiEditing_1=X001|X100|0X0X|01X1|11X0
+str_tableWidgetsSkleyki_0=X001y|X100y|0X00y|0X01y|01X1y|11X0y|000Xy|010Xy
+str_tableWidgetsSkleykiEditing_2=X001|X100|0X0X|01X1|11X0
+str_tableWidgetsSkleyki_1=X001y|X100y|0X0Xy|01X1y|11X0y
+tableWidgetKartaMinimizacii=-g+g-g-g+r-g-g-g|-g-g+g-g-g+g-g-g|+r+g+g+g-g-g-g-g|-g-g-g+g-g-g+r-g|-g-g-g-g-g+g-g+r
+lineEdit_itogMdnf=(!b*!c*d)+(!a*!c)+(!a*b*d)+(a*b*!d)
+HASH=03987e162c9ae15abe545d1f66853b72
