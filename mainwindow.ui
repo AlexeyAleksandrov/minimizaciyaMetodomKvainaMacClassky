@@ -85,7 +85,7 @@ QLabel {
 }</string>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="tab">
      <attribute name="title">
@@ -1365,7 +1365,7 @@ QLabel {
        <rect>
         <x>10</x>
         <y>20</y>
-        <width>181</width>
+        <width>201</width>
         <height>511</height>
        </rect>
       </property>
@@ -1481,11 +1481,16 @@ QLabel {
         <string>d</string>
        </property>
       </column>
+      <column>
+       <property name="text">
+        <string>N</string>
+       </property>
+      </column>
      </widget>
      <widget class="QCheckBox" name="checkBox_skleyka_1_15">
       <property name="geometry">
        <rect>
-        <x>200</x>
+        <x>220</x>
         <y>500</y>
         <width>70</width>
         <height>20</height>
@@ -1498,7 +1503,7 @@ QLabel {
      <widget class="QCheckBox" name="checkBox_skleyka_1_14">
       <property name="geometry">
        <rect>
-        <x>200</x>
+        <x>220</x>
         <y>470</y>
         <width>70</width>
         <height>20</height>
@@ -1511,7 +1516,7 @@ QLabel {
      <widget class="QCheckBox" name="checkBox_skleyka_1_2">
       <property name="geometry">
        <rect>
-        <x>200</x>
+        <x>220</x>
         <y>110</y>
         <width>70</width>
         <height>20</height>
@@ -1524,7 +1529,7 @@ QLabel {
      <widget class="QCheckBox" name="checkBox_skleyka_1_0">
       <property name="geometry">
        <rect>
-        <x>200</x>
+        <x>220</x>
         <y>50</y>
         <width>70</width>
         <height>20</height>
@@ -1537,7 +1542,7 @@ QLabel {
      <widget class="QCheckBox" name="checkBox_skleyka_1_1">
       <property name="geometry">
        <rect>
-        <x>200</x>
+        <x>220</x>
         <y>80</y>
         <width>70</width>
         <height>20</height>
@@ -1550,7 +1555,7 @@ QLabel {
      <widget class="QCheckBox" name="checkBox_skleyka_1_5">
       <property name="geometry">
        <rect>
-        <x>200</x>
+        <x>220</x>
         <y>200</y>
         <width>70</width>
         <height>20</height>
@@ -1563,7 +1568,7 @@ QLabel {
      <widget class="QCheckBox" name="checkBox_skleyka_1_6">
       <property name="geometry">
        <rect>
-        <x>200</x>
+        <x>220</x>
         <y>230</y>
         <width>70</width>
         <height>20</height>
@@ -1576,7 +1581,7 @@ QLabel {
      <widget class="QCheckBox" name="checkBox_skleyka_1_3">
       <property name="geometry">
        <rect>
-        <x>200</x>
+        <x>220</x>
         <y>140</y>
         <width>70</width>
         <height>20</height>
@@ -1589,7 +1594,7 @@ QLabel {
      <widget class="QCheckBox" name="checkBox_skleyka_1_4">
       <property name="geometry">
        <rect>
-        <x>200</x>
+        <x>220</x>
         <y>170</y>
         <width>70</width>
         <height>20</height>
@@ -1602,7 +1607,7 @@ QLabel {
      <widget class="QCheckBox" name="checkBox_skleyka_1_9">
       <property name="geometry">
        <rect>
-        <x>200</x>
+        <x>220</x>
         <y>320</y>
         <width>70</width>
         <height>20</height>
@@ -1615,7 +1620,7 @@ QLabel {
      <widget class="QCheckBox" name="checkBox_skleyka_1_7">
       <property name="geometry">
        <rect>
-        <x>200</x>
+        <x>220</x>
         <y>260</y>
         <width>70</width>
         <height>20</height>
@@ -1628,7 +1633,7 @@ QLabel {
      <widget class="QCheckBox" name="checkBox_skleyka_1_8">
       <property name="geometry">
        <rect>
-        <x>200</x>
+        <x>220</x>
         <y>290</y>
         <width>70</width>
         <height>20</height>
@@ -1641,7 +1646,7 @@ QLabel {
      <widget class="QCheckBox" name="checkBox_skleyka_1_12">
       <property name="geometry">
        <rect>
-        <x>200</x>
+        <x>220</x>
         <y>410</y>
         <width>70</width>
         <height>20</height>
@@ -1654,7 +1659,7 @@ QLabel {
      <widget class="QCheckBox" name="checkBox_skleyka_1_13">
       <property name="geometry">
        <rect>
-        <x>200</x>
+        <x>220</x>
         <y>440</y>
         <width>70</width>
         <height>20</height>
@@ -1667,7 +1672,7 @@ QLabel {
      <widget class="QCheckBox" name="checkBox_skleyka_1_10">
       <property name="geometry">
        <rect>
-        <x>200</x>
+        <x>220</x>
         <y>350</y>
         <width>70</width>
         <height>20</height>
@@ -1680,7 +1685,7 @@ QLabel {
      <widget class="QCheckBox" name="checkBox_skleyka_1_11">
       <property name="geometry">
        <rect>
-        <x>200</x>
+        <x>220</x>
         <y>380</y>
         <width>70</width>
         <height>20</height>

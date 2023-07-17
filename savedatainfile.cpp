@@ -166,6 +166,7 @@ void MainWindow::readDataFromFile()
             qDebug() << "Выводим значения таблицы one_only";
             setQStringListToTW(tableWidgetsSkleyki[0], tableList, LINE_COLOR_ON);
             center_text_in_table(tableWidgetsSkleyki[0]); // выраниваем текст в таблице
+            addCheckBoxesInLastColumn(tableWidgetsSkleyki[0], checkBoxes_skleyki_1);     // вставляем checkBox в последную колонку
 //            qDebug() << "функция прервана!!";
 //            return;
         }
@@ -368,9 +369,12 @@ void MainWindow::readDataFromFile()
             QString str_tableWidgetsSkleykiEditing_1 = dataList[1]; // считываем данные из 2й части строки
             QStringList tableList = str_tableWidgetsSkleykiEditing_1.split("|"); // разделяем
             nextStep(); // если мы дошли до второй таблицы склеек, значит пропускаем этап проверки таблицы склеек 1
+            qDebug() << "как бы нажимаем кнопку далее после cклейки 1";
             on_pushButton_nextStep_onesOnly_clicked(); // как бы нажимаем кнопку далее
+            qDebug() << "как нажата кнопка далее после cклейки 1";
             setQStringListToTW(tableWidgetsSkleykiEditing[1], tableList, LINE_COLOR_ON); // добавляем строки в таблицу
             center_text_in_table(tableWidgetsSkleykiEditing[1]); // выраниваем текст в таблице
+            setSklykiResultTableColor(tableWidgetsSkleykiEditing[1]);   // задаем цвет таблице склеек
         }
         if(dataList[0] == "str_tableWidgetsSkleykiEditing_2")
         {
@@ -391,6 +395,7 @@ void MainWindow::readDataFromFile()
             pushButton_nextStep_skleyki_2Clicked(); // как бы нажимаем кнопку далее
             setQStringListToTW(tableWidgetsSkleykiEditing[2], tableList, LINE_COLOR_ON); // добавляем строки в таблицу
             center_text_in_table(tableWidgetsSkleykiEditing[2]); // выраниваем текст в таблице
+            setSklykiResultTableColor(tableWidgetsSkleykiEditing[2]);   // задаем цвет таблице склеек
         }
         if(dataList[0] == "tableWidgetKartaMinimizacii")
         {

@@ -154,29 +154,29 @@ MainWindow::MainWindow(QWidget *parent) :
 
 
     // склейки 1
-    checkBoxes_skleyki_1 = new QCheckBox *[size]; // выделяем память под указатели на QCheckBox для склейки 1
-    for (int i=0; i<size; i++)
-    {
-        checkBoxes_skleyki_1[i] = nullptr;
-    }
-    qDebug() << "Заполняем массив";
-    checkBoxes_skleyki_1[0] = ui->checkBox_skleyka_1_0;
-    checkBoxes_skleyki_1[1] = ui->checkBox_skleyka_1_1;
-    checkBoxes_skleyki_1[2] = ui->checkBox_skleyka_1_2;
-    checkBoxes_skleyki_1[3] = ui->checkBox_skleyka_1_3;
-    checkBoxes_skleyki_1[4] = ui->checkBox_skleyka_1_4;
-    checkBoxes_skleyki_1[5] = ui->checkBox_skleyka_1_5;
-    checkBoxes_skleyki_1[6] = ui->checkBox_skleyka_1_6;
-    checkBoxes_skleyki_1[7] = ui->checkBox_skleyka_1_7;
-    checkBoxes_skleyki_1[8] = ui->checkBox_skleyka_1_8;
-    checkBoxes_skleyki_1[9] = ui->checkBox_skleyka_1_9;
-    checkBoxes_skleyki_1[10] = ui->checkBox_skleyka_1_10;
-    checkBoxes_skleyki_1[11] = ui->checkBox_skleyka_1_11;
-    checkBoxes_skleyki_1[12] = ui->checkBox_skleyka_1_12;
-    checkBoxes_skleyki_1[13] = ui->checkBox_skleyka_1_13;
-    checkBoxes_skleyki_1[14] = ui->checkBox_skleyka_1_14;
-    checkBoxes_skleyki_1[15] = ui->checkBox_skleyka_1_15;
-    qDebug() << "Заполнили массив";
+//    checkBoxes_skleyki_1 = new QCheckBox *[size]; // выделяем память под указатели на QCheckBox для склейки 1
+//    for (int i=0; i<size; i++)
+//    {
+//        checkBoxes_skleyki_1[i] = nullptr;
+//    }
+//    qDebug() << "Заполняем массив";
+//    checkBoxes_skleyki_1[0] = ui->checkBox_skleyka_1_0;
+//    checkBoxes_skleyki_1[1] = ui->checkBox_skleyka_1_1;
+//    checkBoxes_skleyki_1[2] = ui->checkBox_skleyka_1_2;
+//    checkBoxes_skleyki_1[3] = ui->checkBox_skleyka_1_3;
+//    checkBoxes_skleyki_1[4] = ui->checkBox_skleyka_1_4;
+//    checkBoxes_skleyki_1[5] = ui->checkBox_skleyka_1_5;
+//    checkBoxes_skleyki_1[6] = ui->checkBox_skleyka_1_6;
+//    checkBoxes_skleyki_1[7] = ui->checkBox_skleyka_1_7;
+//    checkBoxes_skleyki_1[8] = ui->checkBox_skleyka_1_8;
+//    checkBoxes_skleyki_1[9] = ui->checkBox_skleyka_1_9;
+//    checkBoxes_skleyki_1[10] = ui->checkBox_skleyka_1_10;
+//    checkBoxes_skleyki_1[11] = ui->checkBox_skleyka_1_11;
+//    checkBoxes_skleyki_1[12] = ui->checkBox_skleyka_1_12;
+//    checkBoxes_skleyki_1[13] = ui->checkBox_skleyka_1_13;
+//    checkBoxes_skleyki_1[14] = ui->checkBox_skleyka_1_14;
+//    checkBoxes_skleyki_1[15] = ui->checkBox_skleyka_1_15;
+//    qDebug() << "Заполнили массив";
 
     checkBoxes_skleyki_2 = new QCheckBox *[size];
     for (int i=0; i<size; i++)
@@ -203,13 +203,13 @@ MainWindow::MainWindow(QWidget *parent) :
 
     for (int i=0; i<size; i++)
     {
-        if(checkBoxes[i] != nullptr)
+        if(checkBoxes != nullptr && checkBoxes[i] != nullptr)
             checkBoxes[i]->setText(CHECK_BOXES_TEXT);
         if(checkBoxes_ones != nullptr && checkBoxes_ones[i] != nullptr)
             checkBoxes_ones[i]->setText(CHECK_BOXES_TEXT);
-        if(checkBoxes_skleyki_1[i] != nullptr)
+        if(checkBoxes_skleyki_1 != nullptr && checkBoxes_skleyki_1[i] != nullptr)
             checkBoxes_skleyki_1[i]->setText(CHECK_BOXES_TEXT);
-        if(checkBoxes_skleyki_2[i] != nullptr)
+        if(checkBoxes_skleyki_2 != nullptr && checkBoxes_skleyki_2[i] != nullptr)
             checkBoxes_skleyki_2[i]->setText(CHECK_BOXES_TEXT);
     }
 
@@ -1492,14 +1492,6 @@ void MainWindow::on_pushButton_proverka_result_function_clicked()
     }
 }
 
-
-
-void MainWindow::on_pushButton_tot_add_to_skeyki_1_clicked()
-{
-    createSkleyka(tableWidgetOnesOnly, checkBoxes_ones, tableWidgetsSkleykiEditing[0]); // создаем склейку и добавляем её в таблицу
-}
-
-
 void MainWindow::on_pushButton_proverka_skleiki_1_editing_clicked() // кнопка проверки склеек 1
 {
     if(proverkaSkleyki1()) // сравниваем таблицу со значениями склейки
@@ -1719,6 +1711,7 @@ void MainWindow::on_pushButton_nextStep_onesOnly_clicked()
             tableWidgetsSkleyki[0]->setItem(i, j, new QTableWidgetItem(skleyka.at(j))); // выподим каждый элемент
         }
     }
+    addCheckBoxesInLastColumn(tableWidgetsSkleyki[0], checkBoxes_skleyki_1);     // вставляем checkBox в последную колонку
     nextStep();
 }
 
@@ -1841,7 +1834,10 @@ void MainWindow::on_pushButton_tot_add_clicked()
     }
 }
 
-
+void MainWindow::on_pushButton_tot_add_to_skeyki_1_clicked()
+{
+    createSkleyka(tableWidgetOnesOnly, checkBoxes_ones, tableWidgetsSkleykiEditing[0]); // создаем склейку и добавляем её в таблицу
+}
 
 void MainWindow::on_pushButton_add_skleyki_1_clicked()  // кнопка добаления склеек на основе таблицы склеек 1
 {

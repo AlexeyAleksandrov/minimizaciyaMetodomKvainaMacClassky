@@ -88,14 +88,21 @@ void MainWindow::setStep(int step)
         int rows = tableWidgetsSkleyki[0]->rowCount(); // получаем колитечтво строк
         for (int i=0; i<rows; i++)
         {
-            checkBoxes_skleyki_1[i]->setEnabled(true); // включаем отображение
+            if(checkBoxes_skleyki_1 != nullptr && checkBoxes_skleyki_1[i] != nullptr)
+            {
+                checkBoxes_skleyki_1[i]->setEnabled(true); // включаем отображение
+            }
         }
     }
     else
     {
-        for (int i=0; i<16; i++)
+        int rows = tableWidgetsSkleyki[0]->rowCount(); // получаем колитечтво строк
+        for (int i=0; i<rows; i++)
         {
-            checkBoxes_skleyki_1[i]->setEnabled(false); // выключаем отображение
+            if(checkBoxes_skleyki_1 != nullptr && checkBoxes_skleyki_1[i] != nullptr)
+            {
+                checkBoxes_skleyki_1[i]->setEnabled(false); // выключаем отображение
+            }
         }
     }
 
