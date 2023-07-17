@@ -62,7 +62,7 @@ MainWindow::MainWindow(QWidget *parent) :
     // таблица истинности
 //    connect(ui->pushButton_enterFunction, SIGNAL(clicked()), this, SLOT(pushButtonFunctionClicked())); // соединяем кнопку со слотом
     qDebug() << "pushButton_enterFunction";
-    connect(ui->pushButton_tot_add, SIGNAL(clicked()), this, SLOT(pushButtonTotAddClicked()));
+//    connect(ui->pushButton_tot_add, SIGNAL(clicked()), this, SLOT(pushButtonTotAddClicked()));
 //    connect(ui->pushButton_checkTableOfTrue, SIGNAL(clicked()), this, SLOT(pushButtonCheckTableOfTrueClicked()));
     connect(ui->pushButton_func_2, SIGNAL(clicked()), this, SLOT(pushButtonFunc2Clicked()));
     qDebug() << "pushButton_func_2";
@@ -75,7 +75,7 @@ MainWindow::MainWindow(QWidget *parent) :
 //    connect(ui->pushButton_tot_add_to_skeyki_1, SIGNAL(clicked()), this, SLOT(pushButtonAddTSkeyki_1()));
     // таблица со склейками 1
     qDebug() << "Conntects skleiki 1";
-    connect(ui->pushButton_add_skleyki_1, SIGNAL(clicked()), this, SLOT(pushButton_add_skleyki_2_clicked()));
+//    connect(ui->pushButton_add_skleyki_1, SIGNAL(clicked()), this, SLOT(pushButton_add_skleyki_2_clicked()));
     //    connect(ui->pushButton_clear_skleiki_1_editing, SIGNAL(clicked()), this, SLOT(pushButton_clear_skleyki_1()));
 //    connect(ui->pushButton_proverka_skleiki_1_editing, SIGNAL(clicked()), this, SLOT(pushButton_proverka_skleyki_1_clicked()));
     //    connect(ui->pushButton_delete_last_skleiki_1_editing, SIGNAL(clicked()), this, SLOT(pushButton_delete_last_skleiki_1_editingClicked()));
@@ -86,7 +86,7 @@ MainWindow::MainWindow(QWidget *parent) :
     //    connect(ui->pushButton_clearSkleyki_2, SIGNAL(clicked()), this, SLOT(pushButton_clear_skleyki_2()));
     connect(ui->pushButton_proverka_skleyki_3, SIGNAL(clicked()), this, SLOT(pushButton_proverka_skleyki_2_clicked()));
     connect(ui->pushButton_nextStep_skleyki_2, SIGNAL(clicked()), this, SLOT(pushButton_nextStep_skleyki_2Clicked()));
-    connect(pushButton_add_skleyki_2, SIGNAL(clicked()), this, SLOT(pushButton_add_skleyki_3_clicked()));
+//    connect(pushButton_add_skleyki_2, SIGNAL(clicked()), this, SLOT(pushButton_add_skleyki_3_clicked()));
 
     // таблица для поиска ДНФ
     qDebug() << "Conntects poisk dnf";
@@ -130,27 +130,27 @@ MainWindow::MainWindow(QWidget *parent) :
 
     // таблица, где функция равна 1
     //    checkBoxes_ones = new QCheckBox *[16];
-    checkBoxes_ones = new QCheckBox *[size];
-    for (int i=0; i<size; i++)
-    {
-        checkBoxes_ones[i] = nullptr;
-    }
-    checkBoxes_ones[0] = ui->checkBox_ones_0;
-    checkBoxes_ones[1] = ui->checkBox_ones_1;
-    checkBoxes_ones[2] = ui->checkBox_ones_2;
-    checkBoxes_ones[3] = ui->checkBox_ones_3;
-    checkBoxes_ones[4] = ui->checkBox_ones_4;
-    checkBoxes_ones[5] = ui->checkBox_ones_5;
-    checkBoxes_ones[6] = ui->checkBox_ones_6;
-    checkBoxes_ones[7] = ui->checkBox_ones_7;
-    checkBoxes_ones[8] = ui->checkBox_ones_8;
-    checkBoxes_ones[9] = ui->checkBox_ones_9;
-    checkBoxes_ones[10] = ui->checkBox_ones_10;
-    checkBoxes_ones[11] = ui->checkBox_ones_11;
-    checkBoxes_ones[12] = ui->checkBox_ones_12;
-    checkBoxes_ones[13] = ui->checkBox_ones_13;
-    checkBoxes_ones[14] = ui->checkBox_ones_14;
-    checkBoxes_ones[15] = ui->checkBox_ones_15;
+//    checkBoxes_ones = new QCheckBox *[size];
+//    for (int i=0; i<size; i++)
+//    {
+//        checkBoxes_ones[i] = nullptr;
+//    }
+//    checkBoxes_ones[0] = ui->checkBox_ones_0;
+//    checkBoxes_ones[1] = ui->checkBox_ones_1;
+//    checkBoxes_ones[2] = ui->checkBox_ones_2;
+//    checkBoxes_ones[3] = ui->checkBox_ones_3;
+//    checkBoxes_ones[4] = ui->checkBox_ones_4;
+//    checkBoxes_ones[5] = ui->checkBox_ones_5;
+//    checkBoxes_ones[6] = ui->checkBox_ones_6;
+//    checkBoxes_ones[7] = ui->checkBox_ones_7;
+//    checkBoxes_ones[8] = ui->checkBox_ones_8;
+//    checkBoxes_ones[9] = ui->checkBox_ones_9;
+//    checkBoxes_ones[10] = ui->checkBox_ones_10;
+//    checkBoxes_ones[11] = ui->checkBox_ones_11;
+//    checkBoxes_ones[12] = ui->checkBox_ones_12;
+//    checkBoxes_ones[13] = ui->checkBox_ones_13;
+//    checkBoxes_ones[14] = ui->checkBox_ones_14;
+//    checkBoxes_ones[15] = ui->checkBox_ones_15;
 
 
     // склейки 1
@@ -205,7 +205,7 @@ MainWindow::MainWindow(QWidget *parent) :
     {
         if(checkBoxes[i] != nullptr)
             checkBoxes[i]->setText(CHECK_BOXES_TEXT);
-        if(checkBoxes_ones[i] != nullptr)
+        if(checkBoxes_ones != nullptr && checkBoxes_ones[i] != nullptr)
             checkBoxes_ones[i]->setText(CHECK_BOXES_TEXT);
         if(checkBoxes_skleyki_1[i] != nullptr)
             checkBoxes_skleyki_1[i]->setText(CHECK_BOXES_TEXT);
@@ -461,10 +461,10 @@ void MainWindow::setNoMessage(bool value)
 //    createSkleyka(tableWidgetOnesOnly, checkBoxes_ones, tableWidgetsSkleykiEditing[0], 1); // создаем склейку и добавляем её в таблицу
 //}
 
-void MainWindow::pushButton_add_skleyki_2_clicked() // кнопка добаления склеек на основе таблицы склеек 1
-{
-    createSkleyka(tableWidgetsSkleyki[0], checkBoxes_skleyki_1, tableWidgetsSkleykiEditing[1]); // создаем склейку
-}
+//void MainWindow::pushButton_add_skleyki_2_clicked()
+//{
+
+//}
 
 void MainWindow::pushButton_add_skleyki_3_clicked() // кнопка создания 3й склейки
 {
@@ -701,13 +701,15 @@ void MainWindow::pusbButton_move_skleyki_to_coresTable() // кнопка пер�
             {
                 delete tableWidgetKartaMinimizacii->item(i, j); // удаляем
             }
-            tableWidgetKartaMinimizacii->setItem(i, j, new QTableWidgetItem("")); // выделяем память под новую ячейку
+            QTableWidgetItem *ti = new QTableWidgetItem("");
+            ti->setFlags(ti->flags()&0xfffffffd);
+            ti->setTextAlignment(Qt::AlignCenter);
+            tableWidgetKartaMinimizacii->setItem(i, j, ti); // выделяем память под новую ячейку
         }
     }
     qDebug() << "END << END";
     //    int indexes = tabWidget->count(); // получаем количество элементов TabWidget
     tabWidget->setCurrentIndex(4);
-
 }
 
 void MainWindow::setTableStepenTwo(int stepen)
@@ -1019,49 +1021,27 @@ void MainWindow::setVariablesToHeader(QTableWidget *tbw)
     tbw->setHorizontalHeaderLabels(headerList); // устаналиваем заголовки
 }
 
+void MainWindow::setSklykiResultTableColor(QTableWidget *tableWidget)
+{
+    int rows = tableWidget->rowCount(); // получаем количество строк
+    int cols = tableWidget->columnCount(); // получаем количество столбцов
+
+    for (int i=0; i<rows; i++)
+    {
+        for(int j=0; j<cols; j++)
+        {
+            tableWidget->item(i, j)->setBackground(Qt::white); // устанавливаем цвет ячейки
+            tableWidget->item(i, j)->setForeground(QColor(100, 100, 100)); // устанавливаем цвет текста
+        }
+    }
+}
+
 
 //void MainWindow::pushButtonFunctionClicked()
 //{
 
 //}
 
-void MainWindow::pushButtonTotAddClicked()
-{
-
-    qDebug() << "call pushButtonTotAddClicked()";
-    bool add[16]; // проверяем, добавляет ли пользователь строку или нет для склейки
-    int countChecked = 0; // переменная для подсчёта, сколько элементов выбрано
-    for (int i=0; i<16; i++)
-    {
-        add[i] = checkBoxes[i]->isChecked(); // Заносим данные о состоянии чекбоксов
-        countChecked += static_cast<int>(checkBoxes[i]->isChecked()); // если галочка стоит, то будет +1
-        //        qDebug() << i << add[i] << ui->checkBox_tot_0->isChecked() << ui->checkBox_tot_0->isDown();
-    }
-    if(countChecked == 0) // если не выбрано ни одной галочки
-    {
-        tableWidgetOnesOnlyEditing->setRowCount(0);
-//        warningError("Ошибка! Выберите значения!");
-        return;
-    }
-    int rows = tableWidgetTot->rowCount();
-    int cols = tableWidgetTot->columnCount() - 1;
-    //    ui->tableWidget_one_only->setRowCount(rows);
-    tableWidgetOnesOnlyEditing->setColumnCount(cols);
-    int c = 0; // счетчкис заполненых строк
-    for (int i=0; i<rows; i++)
-    {
-        //        if(ui->tableWidget_tableOfTrue->item(i, cols)->text().toInt() == 1)  // если в строчке 1, то обрабатываем
-        if(add[i]) // если пользователь выбрал эту строку
-        {
-            tableWidgetOnesOnlyEditing->setRowCount(c + 1);
-            for (int j=0; j<cols; j++)
-            {
-                setTWText(tableWidgetOnesOnlyEditing, c, j, tableWidgetTot->item(i, j)->text()); // переносим значение ячейки в новую таблицу
-            }
-            c++; // увеличиваем значение счётчика
-        }
-    }
-}
 
 void MainWindow::pushButtonFunc2Clicked()
 {
@@ -1101,7 +1081,7 @@ void MainWindow::pushButtonFunc2Clicked()
 void MainWindow::updateCheckBoxTotState(int arg1)
 {
     Q_UNUSED(arg1);
-    pushButtonTotAddClicked(); // вызываем нажатие кнопки добавить
+    on_pushButton_tot_add_clicked(); // вызываем нажатие кнопки добавить
 }
 
 int MainWindow::getType(QString func_2, QStringList listFunc)
@@ -1748,6 +1728,7 @@ void MainWindow::on_pushButton_nextStep_tot_clicked()
     goToNextStep(tableWidgetOnesOnlyEditing, tableWidgetOnesOnly, 1); // переходим к следующему действию
     nextStep();
     sortOnesCount(tableWidgetOnesOnly); // сортируем значения по количеству единиц
+    addCheckBoxesInLastColumn(tableWidgetOnesOnly, checkBoxes_ones);     // вставляем checkBox в последную колонку
 }
 
 
@@ -1798,3 +1779,76 @@ void MainWindow::on_pushButton_help_5_clicked()
                                                    "'Выбелить зедёным' - выделяет выбранную ячейку таблицы зелёным, обозначает пересечение.");
 }
 
+
+void MainWindow::on_tableWidget_kartaMinimizacii_cellDoubleClicked(int row, int column)
+{
+    if (step >= 11)
+    {
+        QTableWidgetItem *item = ui->tableWidget_kartaMinimizacii->item(row, column);
+
+        if(item != nullptr)
+        {
+            if (item->text().isEmpty())
+            {
+                item->setText("+");
+            }
+            else
+            {
+                item->setText("");
+            }
+        }
+
+//        ui->tableWidget_kartaMinimizacii->clearSelection();
+        ui->tableWidget_kartaMinimizacii->setCurrentCell(-1, -1);
+    }
+}
+
+
+void MainWindow::on_pushButton_tot_add_clicked()
+{
+    qDebug() << "call pushButtonTotAddClicked()";
+    bool add[16]; // проверяем, добавляет ли пользователь строку или нет для склейки
+    int countChecked = 0; // переменная для подсчёта, сколько элементов выбрано
+    for (int i=0; i<16; i++)
+    {
+        add[i] = checkBoxes[i]->isChecked(); // Заносим данные о состоянии чекбоксов
+        countChecked += static_cast<int>(checkBoxes[i]->isChecked()); // если галочка стоит, то будет +1
+        //        qDebug() << i << add[i] << ui->checkBox_tot_0->isChecked() << ui->checkBox_tot_0->isDown();
+    }
+    if(countChecked == 0) // если не выбрано ни одной галочки
+    {
+        tableWidgetOnesOnlyEditing->setRowCount(0);
+//        warningError("Ошибка! Выберите значения!");
+        return;
+    }
+    int rows = tableWidgetTot->rowCount();
+    int cols = tableWidgetTot->columnCount() - 1;
+    //    ui->tableWidget_one_only->setRowCount(rows);
+    tableWidgetOnesOnlyEditing->setColumnCount(cols);
+    int c = 0; // счетчкис заполненых строк
+    for (int i=0; i<rows; i++)
+    {
+        //        if(ui->tableWidget_tableOfTrue->item(i, cols)->text().toInt() == 1)  // если в строчке 1, то обрабатываем
+        if(add[i]) // если пользователь выбрал эту строку
+        {
+            tableWidgetOnesOnlyEditing->setRowCount(c + 1);
+            for (int j=0; j<cols; j++)
+            {
+                setTWText(tableWidgetOnesOnlyEditing, c, j, tableWidgetTot->item(i, j)->text()); // переносим значение ячейки в новую таблицу
+            }
+            c++; // увеличиваем значение счётчика
+        }
+    }
+}
+
+
+
+void MainWindow::on_pushButton_add_skleyki_1_clicked()  // кнопка добаления склеек на основе таблицы склеек 1
+{
+    createSkleyka(tableWidgetsSkleyki[0], checkBoxes_skleyki_1, tableWidgetsSkleykiEditing[1]); // создаем склейку
+}
+
+void MainWindow::on_pushButton_add_skleyki_2_clicked()  // кнопка создания 3й склейки
+{
+    createSkleyka(tableWidgetsSkleyki[1], checkBoxes_skleyki_2, tableWidgetsSkleykiEditing[2]); // создаем склейки 3
+}

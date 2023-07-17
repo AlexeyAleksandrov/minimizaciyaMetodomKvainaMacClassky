@@ -180,6 +180,7 @@ private:
     void sortSkleiki(QTableWidget *skleikiTableWidget); // сортировка склеек по количеству в них Х
     void sortOnesCount(QTableWidget *tableWidgetInput); // сортировка значений по количеству в них 1
     QString createSkleyka(QString value1, QString value2, bool *ok = nullptr);  // функция создания склейки
+    void addCheckBoxesInLastColumn(QTableWidget *tableWidget, QCheckBox **&checkBoxes);  // функция добавления checkBox в последний столбец таблицы
 
 
     // перемещение по этапам работы
@@ -196,12 +197,14 @@ private:
     bool getTWItemText(QTableWidget *&tableWidget, int row, int col, QString &outputString); // получает текст из конкретной ячейки таблицы
     bool getTWTextList(QTableWidget *&tableWidget, QStringList &outputList); // значение строк таблицы как QStringList
     void addRow(QTableWidget *&tableWidget, QStringList rowList, int colorRed = -1, int colorGreen = -1, int colorBlue = -1); // создает в таблице строку и выводит в неё элементы списка. Дополнительно можно передать цвет для закраски строки
+    void addRow(QTableWidget *&tableWidget, QStringList rowList, QColor color); // создает в таблице строку и выводит в неё элементы списка. Дополнительно можно передать цвет для закраски строки
     void copyTableWidget(QTableWidget *tableWidgetInput, QTableWidget *&tableWidgetOutput, bool skipIdenticalLines); //  skipIdenticalLines - Пропуск одинаковых стролк
     void deletelastRow(QTableWidget *&tableWidget); // удаляет последнюю строчку в таблице
     QString getQStringByTableWidget(QTableWidget *tableWidget, bool saveLineColor = false); // получить данные из таблицы в виде строки
     void lockFormulaEditor(bool lock); // заблокировать / разблокировать редактор формул
     void center_text_in_table(QTableWidget *tbw); // центрировать текст в ячейках таблицы
     void setVariablesToHeader(QTableWidget *tbw); // функция, устаналивающая в качестве заголовков таблицы переменные (a, b, c, d)
+    void setSklykiResultTableColor(QTableWidget *tableWidget); // центрировать текст в ячейках таблицы
 
     // сохранение данных в файл
     void saveDataToFile(); // функция сохранения данных в файл
@@ -215,7 +218,7 @@ private:
 private slots:
     // таблица истинности
 //    void pushButtonFunctionClicked(); // кнопка выбора функции
-    void pushButtonTotAddClicked(); // кнопка добавляения строк из таблицы истинности в таблицу, где только 1
+//    void pushButtonTotAddClicked(); // кнопка добавляения строк из таблицы истинности в таблицу, где только 1
 //    void pushButtonCheckTableOfTrueClicked(); // кнопка проверяющая правильность таблицы истинности
     void pushButtonFunc2Clicked(); // кнопка ввода числа в 2 ССЧ
     void updateCheckBoxTotState(int arg1); // функция, получающая сигнал об изменении состояния оджного из checkBox у tableWidget
@@ -228,7 +231,7 @@ private slots:
 //    void pushButton_nextStep_totClicked(); // кнопка для переноса данных с ледующую таблицу и перехода к седующему действию
 
     // таблица с 1й склейкой
-    void pushButton_add_skleyki_2_clicked(); // кнопка добавления склейки из склеек 1
+//    void pushButton_add_skleyki_2_clicked(); // кнопка добавления склейки из склеек 1
     void pushButton_clear_skleyki_1(); // кнопка отчистки таблицы со склейками 1
 //    void pushButton_proverka_skleyki_1_clicked(); // кнопка проверки склейки 1
     void pushButton_delete_last_skleiki_1_editingClicked(); // кнопка удаления последней добавленной склейки
@@ -323,6 +326,14 @@ private slots:
     void on_pushButton_help_4_clicked();
 
     void on_pushButton_help_5_clicked();
+
+    void on_tableWidget_kartaMinimizacii_cellDoubleClicked(int row, int column);
+
+    void on_pushButton_tot_add_clicked();
+
+    void on_pushButton_add_skleyki_2_clicked();
+
+    void on_pushButton_add_skleyki_1_clicked();
 
 private: // функции проверки
     bool proverkaTableOfTrue(); // функция проверки таблицы истинности

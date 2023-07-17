@@ -239,9 +239,13 @@ void MainWindow::addRow(QTableWidget *&tableWidget, QStringList rowList, int col
     for (int i=0; i<cols; i++)
     {
         tableWidget->setItem(rows-1, i, new QTableWidgetItem(rowList[i])); // выделяем память и задаём текст
-        tableWidget->item(rows-1, i)->setBackground(QColor(colorRed, colorGreen, colorBlue)); // устанавливаем цвет ячейки
     }
     center_text_in_table(tableWidget); // выравниваем ячейки
+}
+
+void MainWindow::addRow(QTableWidget *&tableWidget, QStringList rowList, QColor color)
+{
+    addRow(tableWidget, rowList, color.red(), color.green(), color.blue());
 }
 
 void MainWindow::createSkleyka(QTableWidget *tableWidgetInput, QCheckBox **checkBoxesInput, QTableWidget *&tableWidgetOutput)
@@ -250,11 +254,11 @@ void MainWindow::createSkleyka(QTableWidget *tableWidgetInput, QCheckBox **check
 //    {
 //        qDebug() << "Функция" << checkBoxesInput[i]->isChecked();
 //    }
-    bool ones[16]; // создаем массив, который будет хранить информацию, нажата-ли галочка
     int countChecked = 0; // переменная для подсчёта количества "галочек"
     QStringList listOnes; // список, хранящий все лементы в таблице, где функция принимает 1
     getTWTextList(tableWidgetInput, listOnes); // получаем элементы из таблицы с 1
     int listOnesSize = listOnes.size(); // поулчаем количество элементов в списке с 1
+    bool *ones = new bool [listOnesSize]; // создаем массив, который будет хранить информацию, нажата-ли галочка
     QStringList elements; // список для хранения элементов, где стоит галочка
     int last_num = 0; // переменная для хранения индекса строки, которая была последней, нужно для проверки строки, если выбрана только одна, не проходилали она уже склейку
     for (int i=0; i<listOnesSize; i++)
@@ -275,11 +279,13 @@ void MainWindow::createSkleyka(QTableWidget *tableWidgetInput, QCheckBox **check
     if(countChecked != 2) // если выбрано больше чем 2 галочки (больше или меньше), то пишем ошибку
     {
         criticalError("Выберите 2 элемента для произведения склейки!");
+        delete [] ones;
         return;
     }
     if((countChecked == 1) && (tableWidgetInput->item(last_num, 0)->background() == SKLEYKA_BACKGROUNF_COLOR)) // если выбрана только одна строка и она отмечена желтым, т.е. уже прошла склейку
     {
         criticalError("Этот элемент уже прошёл склейку!");
+        delete [] ones;
         return;
     }
     int proshliSkleykuCount = 0; // переменная для подсчёта, сколько выбраннх элементов прошли склейку
@@ -295,6 +301,7 @@ void MainWindow::createSkleyka(QTableWidget *tableWidgetInput, QCheckBox **check
     {
         qDebug() << "Оба выбранных элемента прошли склейку, создание склейки невозможно!";
         warningError("Ошибка! Оба выбранных элемента прошли склейку, создание склейки невозможно!");
+        delete [] ones;
         return;
     }
 #endif
@@ -330,6 +337,7 @@ void MainWindow::createSkleyka(QTableWidget *tableWidgetInput, QCheckBox **check
     {
         qDebug() << "pushButtonAddTSkeyki_1 Не удалось произвести склейку";
         criticalError("Невозможно произвести склейку выбранных элементов!");
+        delete [] ones;
         return;
     }
 //    if(skleykaListSize > 1)
@@ -366,13 +374,14 @@ void MainWindow::createSkleyka(QTableWidget *tableWidgetInput, QCheckBox **check
         if(!isOptimalSkleyka(elements[0], elements[1], listOnes, skleykiInTable))
         {
             warningError("Ошибка! Из данных элементов можно произвести склейку, но существует более эффективная комбинация!");  // обрабатываем склейку, т.е. должна ли она вообще быть
+            delete [] ones;
             return;
         }
 #endif
         // добавляем
         if(adding) // если склейка еще не соджержится
         {
-           addRow(tableWidgetOutput, skleyka.split("", SPLITTER));  // добавляем склейку
+           addRow(tableWidgetOutput, skleyka.split("", SPLITTER), Qt::white);  // добавляем склейку
         }
         else // если элемент уже есть
         {
@@ -380,9 +389,10 @@ void MainWindow::createSkleyka(QTableWidget *tableWidgetInput, QCheckBox **check
             {
                 qDebug() << "Оба выбранных элемента прошли склейку, создание склейки невозможно!";
                 warningError("Ошибка! Оба выбранных элемента прошли склейку, создание склейки невозможно!");
+                delete [] ones;
                 return;
             }
-            addRow(tableWidgetOutput, skleyka.split("", SPLITTER), redColor->red(), redColor->green(), redColor->blue());  // добавляем склейку, подсвечивая её красным цветом
+//            addRow(tableWidgetOutput, skleyka.split("", SPLITTER), redColor->red(), redColor->green(), redColor->blue());  // добавляем склейку, подсвечивая её красным цветом
         }
     }
 
@@ -416,6 +426,8 @@ void MainWindow::createSkleyka(QTableWidget *tableWidgetInput, QCheckBox **check
 //    }
     setVariablesToHeader(tableWidgetOutput); // задаем заголовки
     center_text_in_table(tableWidgetOutput); // выраниваем текст в таблице
+    setSklykiResultTableColor(tableWidgetOutput);
+    delete [] ones;
 }
 
 bool MainWindow::isContainsSkleyki(QStringList skleykiList, int numSkleyka)
@@ -1122,6 +1134,50 @@ QString MainWindow::createSkleyka(QString value1, QString value2, bool *ok)
         *ok = maked;
     }
     return skleykiResult[0];
+}
+
+void MainWindow::addCheckBoxesInLastColumn(QTableWidget *tableWidget, QCheckBox **&checkBoxes)
+{
+    // добавляем галочки внутрь
+    int rows = tableWidget->rowCount();
+    int cols = tableWidget->columnCount();
+
+    // добавляем дополнительную колонку
+    cols += 1;
+    tableWidget->setColumnCount(cols);
+
+    checkBoxes = new QCheckBox* [rows];
+
+    // добавляем в таблицу checkBox
+    for (int i=0; i<rows; i++)
+    {
+        int col = cols-1;   // номер последней колонки
+        QTableWidgetItem *item = tableWidget->item(i, col);    // получаем ячейку последнейго столбца
+
+        if(item != nullptr)     // очищаем ячейку
+        {
+            delete item;
+            item = nullptr;
+        }
+
+        item = new QTableWidgetItem;    // выделяем память
+        item->setTextAlignment(Qt::AlignCenter);    // выравниваем ячейку по центру
+        tableWidget->setItem(i, col, item);
+
+        QCheckBox *checkBox = new QCheckBox;    // создаем checkBox
+        checkBox->setStyleSheet("QCheckBox { qproperty-alignment: AlignCenter; }");     // центрируем checkBox
+        tableWidget->setCellWidget(i, col, checkBox);     // вставляем его в таблицу
+
+        checkBoxes[i] = checkBox;
+
+        // дополнительно, копируем цвет ячейки слева
+        if(col > 0) // если ячейка не первая
+        {
+            QBrush color = tableWidget->item(i, col-1)->background();   // получаем фон
+            item->setBackground(color);     // задаем такой же цвет
+        }
+    }
+    qDebug() << "checkBox добавлены";
 }
 
 

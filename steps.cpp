@@ -55,14 +55,21 @@ void MainWindow::setStep(int step)
         int rows = tableWidgetOnesOnly->rowCount(); // получаем количество втрок в новой таблице
         for (int i=0; i<rows; i++)
         {
-            checkBoxes_ones[i]->setEnabled(true); // включаем отображение
+            if(checkBoxes_ones != nullptr && checkBoxes_ones[i] != nullptr)
+            {
+                checkBoxes_ones[i]->setEnabled(true); // включаем отображение
+            }
         }
     }
     else
     {
-        for (int i=0; i<16; i++)
+        int rows = tableWidgetOnesOnly->rowCount(); // получаем количество втрок в новой таблице
+        for (int i=0; i<rows; i++)
         {
-            checkBoxes_ones[i]->setEnabled(false || DISABLE_STEPS_INTERFACE_BLOCK); // выключаем отображение
+            if(checkBoxes_ones != nullptr && checkBoxes_ones[i] != nullptr)
+            {
+                checkBoxes_ones[i]->setEnabled(false || DISABLE_STEPS_INTERFACE_BLOCK); // выключаем отображение
+            }
         }
     }
 

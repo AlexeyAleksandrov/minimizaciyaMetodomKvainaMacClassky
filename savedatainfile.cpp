@@ -276,6 +276,7 @@ void MainWindow::readDataFromFile()
             on_pushButton_proverka_oneOnly_clicked(); // вызываем функцию проверки, чтобы программа установила тип минимизации
             setQStringListToTW(tableWidgetOnesOnly, tableList, true);
             center_text_in_table(tableWidgetOnesOnly); // выраниваем текст в таблице
+            addCheckBoxesInLastColumn(tableWidgetOnesOnly, checkBoxes_ones);     // вставляем checkBox в последную колонку
 //            if(step >= file_step && file_step > 0)
 //            {
 //                qDebug() << "Текущие этап: " << step << " Сохраненный этап: " << file_step;
@@ -349,6 +350,7 @@ void MainWindow::readDataFromFile()
             on_pushButton_nextStep_tot_clicked(); // как бы нажимаем кнопку далее
             setQStringListToTW(tableWidgetsSkleykiEditing[0], tableList, LINE_COLOR_ON); // добавляем строки в таблицу
             center_text_in_table(tableWidgetsSkleykiEditing[0]); // выраниваем текст в таблице
+            setSklykiResultTableColor(tableWidgetsSkleykiEditing[0]);   // задаем цвет таблице склеек
         }
         if(dataList[0] == "str_tableWidgetsSkleykiEditing_1")
         {

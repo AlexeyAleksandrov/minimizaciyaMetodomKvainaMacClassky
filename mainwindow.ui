@@ -85,7 +85,7 @@ QLabel {
 }</string>
     </property>
     <property name="currentIndex">
-     <number>4</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="tab">
      <attribute name="title">
@@ -818,7 +818,7 @@ QLabel {
        <rect>
         <x>10</x>
         <y>20</y>
-        <width>181</width>
+        <width>221</width>
         <height>511</height>
        </rect>
       </property>
@@ -931,24 +931,32 @@ QLabel {
         <string>d</string>
        </property>
       </column>
+      <column>
+       <property name="text">
+        <string>N</string>
+       </property>
+      </column>
      </widget>
      <widget class="QCheckBox" name="checkBox_ones_15">
       <property name="geometry">
        <rect>
-        <x>200</x>
+        <x>240</x>
         <y>500</y>
-        <width>70</width>
+        <width>71</width>
         <height>20</height>
        </rect>
       </property>
       <property name="text">
        <string>Add</string>
       </property>
+      <property name="tristate">
+       <bool>false</bool>
+      </property>
      </widget>
      <widget class="QCheckBox" name="checkBox_ones_12">
       <property name="geometry">
        <rect>
-        <x>200</x>
+        <x>240</x>
         <y>410</y>
         <width>70</width>
         <height>20</height>
@@ -961,7 +969,7 @@ QLabel {
      <widget class="QCheckBox" name="checkBox_ones_13">
       <property name="geometry">
        <rect>
-        <x>200</x>
+        <x>240</x>
         <y>440</y>
         <width>70</width>
         <height>20</height>
@@ -974,7 +982,7 @@ QLabel {
      <widget class="QCheckBox" name="checkBox_ones_3">
       <property name="geometry">
        <rect>
-        <x>200</x>
+        <x>240</x>
         <y>140</y>
         <width>70</width>
         <height>20</height>
@@ -987,7 +995,7 @@ QLabel {
      <widget class="QCheckBox" name="checkBox_ones_0">
       <property name="geometry">
        <rect>
-        <x>200</x>
+        <x>240</x>
         <y>50</y>
         <width>70</width>
         <height>20</height>
@@ -1000,7 +1008,7 @@ QLabel {
      <widget class="QCheckBox" name="checkBox_ones_4">
       <property name="geometry">
        <rect>
-        <x>200</x>
+        <x>240</x>
         <y>170</y>
         <width>70</width>
         <height>20</height>
@@ -1013,7 +1021,7 @@ QLabel {
      <widget class="QCheckBox" name="checkBox_ones_1">
       <property name="geometry">
        <rect>
-        <x>200</x>
+        <x>240</x>
         <y>80</y>
         <width>70</width>
         <height>20</height>
@@ -1026,7 +1034,7 @@ QLabel {
      <widget class="QCheckBox" name="checkBox_ones_7">
       <property name="geometry">
        <rect>
-        <x>200</x>
+        <x>240</x>
         <y>260</y>
         <width>70</width>
         <height>20</height>
@@ -1039,7 +1047,7 @@ QLabel {
      <widget class="QCheckBox" name="checkBox_ones_8">
       <property name="geometry">
        <rect>
-        <x>200</x>
+        <x>240</x>
         <y>290</y>
         <width>70</width>
         <height>20</height>
@@ -1052,7 +1060,7 @@ QLabel {
      <widget class="QCheckBox" name="checkBox_ones_5">
       <property name="geometry">
        <rect>
-        <x>200</x>
+        <x>240</x>
         <y>200</y>
         <width>70</width>
         <height>20</height>
@@ -1065,7 +1073,7 @@ QLabel {
      <widget class="QCheckBox" name="checkBox_ones_2">
       <property name="geometry">
        <rect>
-        <x>200</x>
+        <x>240</x>
         <y>110</y>
         <width>70</width>
         <height>20</height>
@@ -1078,7 +1086,7 @@ QLabel {
      <widget class="QCheckBox" name="checkBox_ones_6">
       <property name="geometry">
        <rect>
-        <x>200</x>
+        <x>240</x>
         <y>230</y>
         <width>70</width>
         <height>20</height>
@@ -1091,7 +1099,7 @@ QLabel {
      <widget class="QCheckBox" name="checkBox_ones_10">
       <property name="geometry">
        <rect>
-        <x>200</x>
+        <x>240</x>
         <y>350</y>
         <width>70</width>
         <height>20</height>
@@ -1104,7 +1112,7 @@ QLabel {
      <widget class="QCheckBox" name="checkBox_ones_11">
       <property name="geometry">
        <rect>
-        <x>200</x>
+        <x>240</x>
         <y>380</y>
         <width>70</width>
         <height>20</height>
@@ -1117,7 +1125,7 @@ QLabel {
      <widget class="QCheckBox" name="checkBox_ones_9">
       <property name="geometry">
        <rect>
-        <x>200</x>
+        <x>240</x>
         <y>320</y>
         <width>70</width>
         <height>20</height>
@@ -1130,7 +1138,7 @@ QLabel {
      <widget class="QCheckBox" name="checkBox_ones_14">
       <property name="geometry">
        <rect>
-        <x>200</x>
+        <x>240</x>
         <y>470</y>
         <width>70</width>
         <height>20</height>
@@ -1143,14 +1151,14 @@ QLabel {
      <widget class="QPushButton" name="pushButton_tot_add_to_skeyki_1">
       <property name="geometry">
        <rect>
-        <x>220</x>
+        <x>164</x>
         <y>540</y>
-        <width>75</width>
+        <width>131</width>
         <height>23</height>
        </rect>
       </property>
       <property name="text">
-       <string>Добавить</string>
+       <string>Создать склейку</string>
       </property>
      </widget>
      <widget class="QTableWidget" name="tableWidget_skleiki_1_editing">
@@ -1314,14 +1322,14 @@ QLabel {
      <widget class="QPushButton" name="pushButton_tot_move_to_skeyki_1">
       <property name="geometry">
        <rect>
-        <x>220</x>
+        <x>164</x>
         <y>570</y>
-        <width>75</width>
+        <width>131</width>
         <height>23</height>
        </rect>
       </property>
       <property name="text">
-       <string>Без склейки</string>
+       <string>Добавить без склейки</string>
       </property>
      </widget>
      <widget class="QPushButton" name="pushButton_help_2">
@@ -2444,6 +2452,15 @@ QLabel {
         <width>491</width>
         <height>301</height>
        </rect>
+      </property>
+      <property name="editTriggers">
+       <set>QAbstractItemView::DoubleClicked</set>
+      </property>
+      <property name="showDropIndicator" stdset="0">
+       <bool>false</bool>
+      </property>
+      <property name="selectionMode">
+       <enum>QAbstractItemView::ExtendedSelection</enum>
       </property>
       <attribute name="horizontalHeaderDefaultSectionSize">
        <number>40</number>
