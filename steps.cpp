@@ -22,13 +22,14 @@ void MainWindow::setStep(int step)
         message("Ваша функция: " + lineEditFunction->text() + ". \nПереведите её в 2 систему счисления и введите результат в поле F_2.\nЧисло в 2 системе счисления вы можете ввести через пробелы, например, 0011 0101 1101 1100, либо без пробелов, например, 0011010111011100.");
     }
     pushButton_func_2->setEnabled((step == 1 || step == 2) || DISABLE_STEPS_INTERFACE_BLOCK);
-//    lineEditFunc_2->setReadOnly(step >= 0 && step <= 2);
+    lineEditFunc_2->setDisabled((step < 0 || step > 2) || DISABLE_STEPS_INTERFACE_BLOCK);
     // этап 2 (создание таблицы истинности)
     stepName[1] = "создание таблицы истинности";
     pushButton_checkTableOfTrue->setEnabled(step == 2 || DISABLE_STEPS_INTERFACE_BLOCK);
     // этап 3 (выбор и првоерка значений функции, при которых она равна 1)
     stepName[2] = "выбор и проверка значений функции, при которых она равна 1";
     pushButton_tot_add->setEnabled(step == 3 || DISABLE_STEPS_INTERFACE_BLOCK);
+    (tableWidgetTot != nullptr && step == 3) ? setDefaultTableColor(tableWidgetTot) : setSklykiResultTableColor(tableWidgetTot);   // если этап выбора значений, то делаем таблицу белой, если другой - серой
     pushButton_proverka_oneOnly->setEnabled(step == 3 || DISABLE_STEPS_INTERFACE_BLOCK);
     for (int i=0; i<16; i++)
     {
@@ -45,7 +46,7 @@ void MainWindow::setStep(int step)
     // этап 5 (создание 1й склейки)
     stepName[4] = "создание 1й склейки";
     pushButton_tot_add_to_skeyki_1->setEnabled(step == 5 || DISABLE_STEPS_INTERFACE_BLOCK);
-    pushButton_clear_skleiki_1_editing->setEnabled(step == 5 || DISABLE_STEPS_INTERFACE_BLOCK);
+//    pushButton_clear_skleiki_1_editing->setEnabled(step == 5 || DISABLE_STEPS_INTERFACE_BLOCK);
     pushButton_proverka_skleiki_1_editing->setEnabled(step == 5 || DISABLE_STEPS_INTERFACE_BLOCK);
     pushButton_tot_move_to_skeyki_1->setEnabled(step == 5 || DISABLE_STEPS_INTERFACE_BLOCK);
     if(step == 5)
@@ -80,7 +81,7 @@ void MainWindow::setStep(int step)
     // этап 7 (создание 2й склейки)
     stepName[6] = "создание 2й склейки";
     pushButton_add_skleyki_1->setEnabled(step == 7 || DISABLE_STEPS_INTERFACE_BLOCK);
-    pushButton_clear_skleiki_2_editing->setEnabled(step == 7 || DISABLE_STEPS_INTERFACE_BLOCK);
+//    pushButton_clear_skleiki_2_editing->setEnabled(step == 7 || DISABLE_STEPS_INTERFACE_BLOCK);
     pushButton_proverka_skleyki_3->setEnabled(step == 7 || DISABLE_STEPS_INTERFACE_BLOCK);
     pushButton_tot_move_to_skeyki_2->setEnabled(step == 7 || DISABLE_STEPS_INTERFACE_BLOCK);
     if(step == 7 || DISABLE_STEPS_INTERFACE_BLOCK)
@@ -113,7 +114,7 @@ void MainWindow::setStep(int step)
     // этап 9 (создание 3й склейки)
     stepName[8] = "создание 3й склейки";
     pushButton_add_skleyki_2->setEnabled(step == 9 || DISABLE_STEPS_INTERFACE_BLOCK);
-    pushButton_clearSkleyki_2->setEnabled(step == 9 || DISABLE_STEPS_INTERFACE_BLOCK);
+//    pushButton_clearSkleyki_2->setEnabled(step == 9 || DISABLE_STEPS_INTERFACE_BLOCK);
     pushButton_proverka_skleyki_2->setEnabled(step == 9 || DISABLE_STEPS_INTERFACE_BLOCK);
     pushButton_tot_move_to_skeyki_3->setEnabled(step == 9 || DISABLE_STEPS_INTERFACE_BLOCK);
     if(step == 9 || DISABLE_STEPS_INTERFACE_BLOCK)
@@ -121,14 +122,21 @@ void MainWindow::setStep(int step)
         int rows_2 = tableWidgetsSkleyki[1]->rowCount(); // получаем колитечтво строк
         for (int i = 0; i < rows_2; ++i)
         {
-            checkBoxes_skleyki_2[i]->setEnabled(true); // делаем видимыми
+            if(checkBoxes_skleyki_2 != nullptr && checkBoxes_skleyki_2[i] != nullptr)
+            {
+                checkBoxes_skleyki_2[i]->setEnabled(true); // делаем видимыми
+            }
         }
     }
     else
     {
-        for (int i=0; i<16; i++)
+        int rows_2 = tableWidgetsSkleyki[1]->rowCount(); // получаем колитечтво строк
+        for (int i=0; i<rows_2; i++)
         {
-            checkBoxes_skleyki_2[i]->setEnabled(false);
+            if(checkBoxes_skleyki_2 != nullptr && checkBoxes_skleyki_2[i] != nullptr)
+            {
+                checkBoxes_skleyki_2[i]->setEnabled(false);
+            }
         }
     }
 

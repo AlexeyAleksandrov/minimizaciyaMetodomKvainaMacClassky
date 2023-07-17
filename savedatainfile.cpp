@@ -188,6 +188,7 @@ void MainWindow::readDataFromFile()
             qDebug() << "Выводим значения таблицы one_only";
             setQStringListToTW(tableWidgetsSkleyki[1], tableList, LINE_COLOR_ON);
             center_text_in_table(tableWidgetsSkleyki[1]); // выраниваем текст в таблице
+            addCheckBoxesInLastColumn(tableWidgetsSkleyki[1], checkBoxes_skleyki_2);     // вставляем checkBox в последную колонку
 //            qDebug() << "функция прервана!!";
 //            return;
         }
@@ -385,14 +386,14 @@ void MainWindow::readDataFromFile()
                 if(step < file_step)
                 {
                     nextStep(); // делаем пропуск этапа, если последний сохраненный этап был больше
-                    pushButton_nextStep_skleyki_2Clicked(); // как бы нажимаем кнопку далее
+                    on_pushButton_nextStep_skleyki_2_clicked(); // как бы нажимаем кнопку далее
                 }
                 continue;
             }
             QString str_tableWidgetsSkleykiEditing_2 = dataList[1]; // считываем данные из 2й части строки
             QStringList tableList = str_tableWidgetsSkleykiEditing_2.split("|"); // разделяем
             nextStep(); // если мы дошли до третьей таблицы склеек, значит пропускаем этап проверки таблицы склеек 2
-            pushButton_nextStep_skleyki_2Clicked(); // как бы нажимаем кнопку далее
+            on_pushButton_nextStep_skleyki_2_clicked(); // как бы нажимаем кнопку далее
             setQStringListToTW(tableWidgetsSkleykiEditing[2], tableList, LINE_COLOR_ON); // добавляем строки в таблицу
             center_text_in_table(tableWidgetsSkleykiEditing[2]); // выраниваем текст в таблице
             setSklykiResultTableColor(tableWidgetsSkleykiEditing[2]);   // задаем цвет таблице склеек

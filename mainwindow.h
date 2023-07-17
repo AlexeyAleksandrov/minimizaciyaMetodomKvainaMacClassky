@@ -102,14 +102,14 @@ private:
     QPushButton *pushButton_tot_add = nullptr; // кнопка переноса значений, при которых функция равна 1
     QPushButton *pushButton_proverka_oneOnly = nullptr; // кнопка проверки значенйи при которых функция равна 1
     QPushButton *pushButton_tot_add_to_skeyki_1 = nullptr; // кнопкка добавления элементов для склейки 1
-    QPushButton *pushButton_clear_skleiki_1_editing = nullptr; // кнопка удаления последней добавленной склейки
+//    QPushButton *pushButton_clear_skleiki_1_editing = nullptr; // кнопка удаления последней добавленной склейки
     QPushButton *pushButton_proverka_skleiki_1_editing = nullptr; // кнопка проверки 1й склейки
     QPushButton *pushButton_nextStep_onesOnly = nullptr; // кнопка перехода к склейке 2
     QPushButton *pushButton_add_skleyki_1 = nullptr; // кнопка добавления элементов для склейки 2
-    QPushButton *pushButton_clear_skleiki_2_editing = nullptr; // кнопка удаления последней строки в склейке 2
+//    QPushButton *pushButton_clear_skleiki_2_editing = nullptr; // кнопка удаления последней строки в склейке 2
     QPushButton *pushButton_proverka_skleyki_3 = nullptr; // кнопка проверки склеек 2 (тут ошибка в номере, но не буду переделывать)
     QPushButton *pushButton_nextStep_skleyki_2 = nullptr; // кнопка перехода к склейке 3
-    QPushButton *pushButton_clearSkleyki_2 = nullptr; // кнопка удаления последне строки в склейке 3
+//    QPushButton *pushButton_clearSkleyki_2 = nullptr; // кнопка удаления последне строки в склейке 3
     QPushButton *pushButton_proverka_skleyki_2 = nullptr; // кнопка проверки склеек 3
     QPushButton *pushButton_nextStep_onesOnly_3 = nullptr; // кнопка перехода к карте минимизации
     QPushButton *pushButton_INV = nullptr; // кнопка инверсии
@@ -204,7 +204,8 @@ private:
     void lockFormulaEditor(bool lock); // заблокировать / разблокировать редактор формул
     void center_text_in_table(QTableWidget *tbw); // центрировать текст в ячейках таблицы
     void setVariablesToHeader(QTableWidget *tbw); // функция, устаналивающая в качестве заголовков таблицы переменные (a, b, c, d)
-    void setSklykiResultTableColor(QTableWidget *tableWidget); // центрировать текст в ячейках таблицы
+    void setSklykiResultTableColor(QTableWidget *tableWidget); // делает текст в таблице более тусклым, фон - белый
+    void setDefaultTableColor(QTableWidget *tableWidget); // делает текст в таблице чёрным, фон - белый
 
     // сохранение данных в файл
     void saveDataToFile(); // функция сохранения данных в файл
@@ -242,7 +243,7 @@ private slots:
     void pushButton_clear_skleyki_2(); // кнопка отчистки таблицы со склейками 1
     void pushButton_proverka_skleyki_2_clicked(); // кнопка проверки склейки 1
     void pushButton_delete_last_skleiki_2_editingClicked(); // кнопка удаления последней добавленной склейки
-    void pushButton_nextStep_skleyki_2Clicked(); // кнопка перехода к склейке 3
+//    void pushButton_nextStep_skleyki_2Clicked(); // кнопка перехода к склейке 3
 
     // таблица с 3й склейкой
     void pushButton_clear_skleyki_3(); // кнопка отчистки таблицы со склейками 1
@@ -334,6 +335,8 @@ private slots:
     void on_pushButton_add_skleyki_2_clicked();
 
     void on_pushButton_add_skleyki_1_clicked();
+
+    void on_pushButton_nextStep_skleyki_2_clicked();
 
 private: // функции проверки
     bool proverkaTableOfTrue(); // функция проверки таблицы истинности

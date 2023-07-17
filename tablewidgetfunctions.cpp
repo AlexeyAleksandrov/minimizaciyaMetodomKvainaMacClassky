@@ -569,6 +569,7 @@ void MainWindow::moveSkleyka(QTableWidget *tableWidgetInput, QCheckBox **checkBo
         }
     }
     setVariablesToHeader(tableWidgetOutput); // задаем заголовки
+    setSklykiResultTableColor(tableWidgetOutput);   // применяем цвет к элементам склейки
 }
 
 bool MainWindow::proverkaTable(QTableWidget *tableWidgetInput, QStringList listOfSkeyki, bool ignoreRedColor)
@@ -819,6 +820,7 @@ void MainWindow::goToNextStep(QTableWidget *tableWidgetInput, QTableWidget *&tab
     tabWidget->setCurrentIndex(nextTabIndex); // переключаемся на следующий экран
     setVariablesToHeader(tableWidgetOutput); // устанавливаем заголовки как переменные
     center_text_in_table(tableWidgetOutput); // выраниваем текст в таблице
+    setDefaultTableColor(tableWidgetOutput);    // делаем цвет таблицы белый, текст - черный
 }
 
 void MainWindow::copyTableWidget(QTableWidget *tableWidgetInput, QTableWidget *&tableWidgetOutput, bool skipIdenticalLines)
@@ -1112,6 +1114,7 @@ void MainWindow::sortOnesCount(QTableWidget *tableWidgetInput)
     addQStringListToTWOneSymwolInItem(tableWidgetInput, sortList); // выводим значения в tableWidget
     setVariablesToHeader(tableWidgetInput); // устанавливаем заголовки
     tableWidgetInput->setVerticalHeaderLabels(verticalHeaders); // задаём заголовки
+    setDefaultTableColor(tableWidgetInput);    // делаем цвет таблицы белый, текст - черный
 }
 
 QString MainWindow::createSkleyka(QString value1, QString value2, bool *ok)
@@ -1146,12 +1149,15 @@ void MainWindow::addCheckBoxesInLastColumn(QTableWidget *tableWidget, QCheckBox 
     cols += 1;
     tableWidget->setColumnCount(cols);
 
-    checkBoxes = new QCheckBox* [rows];
+    int col = cols-1;   // номер последней колонки
+
+    tableWidget->setHorizontalHeaderItem(col, new QTableWidgetItem("*"));   // заголовок колонки галочек выбора значений для склеек
+
+    checkBoxes = new QCheckBox* [rows];     // создаем массив чекбоксов
 
     // добавляем в таблицу checkBox
     for (int i=0; i<rows; i++)
     {
-        int col = cols-1;   // номер последней колонки
         QTableWidgetItem *item = tableWidget->item(i, col);    // получаем ячейку последнейго столбца
 
         if(item != nullptr)     // очищаем ячейку
@@ -1178,6 +1184,7 @@ void MainWindow::addCheckBoxesInLastColumn(QTableWidget *tableWidget, QCheckBox 
         }
     }
     qDebug() << "checkBox добавлены";
+    setDefaultTableColor(tableWidget);
 }
 
 

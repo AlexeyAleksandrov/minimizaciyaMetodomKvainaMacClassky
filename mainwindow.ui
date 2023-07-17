@@ -36,6 +36,12 @@ font: 8pt &quot;MS Shell Dlg 2&quot;;
 
 QPushButton:disabled {
 	color: rgb(179, 179, 179);
+	background-color: rgb(227, 227, 227);
+}
+
+QPushButton:enabled {
+	color: rgb(0, 0, 0);
+	background-color: rgb(255, 255, 255);
 }
 
 QLineEdit {
@@ -85,9 +91,12 @@ QLabel {
 }</string>
     </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>4</number>
     </property>
     <widget class="QWidget" name="tab">
+     <property name="styleSheet">
+      <string notr="true"/>
+     </property>
      <attribute name="title">
       <string>Функция</string>
      </attribute>
@@ -140,7 +149,13 @@ QLabel {
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true"/>
+       <string notr="true">QLineEdit:enabled {
+	
+	background-color: rgb(255, 255, 255);
+	selection-background-color: darkgray;
+	border: 2px solid ;
+	border-color: rgb(85, 85, 255);
+}</string>
       </property>
       <property name="text">
        <string/>
@@ -937,223 +952,12 @@ QLabel {
        </property>
       </column>
      </widget>
-     <widget class="QCheckBox" name="checkBox_ones_15">
-      <property name="geometry">
-       <rect>
-        <x>240</x>
-        <y>500</y>
-        <width>71</width>
-        <height>20</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Add</string>
-      </property>
-      <property name="tristate">
-       <bool>false</bool>
-      </property>
-     </widget>
-     <widget class="QCheckBox" name="checkBox_ones_12">
-      <property name="geometry">
-       <rect>
-        <x>240</x>
-        <y>410</y>
-        <width>70</width>
-        <height>20</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Add</string>
-      </property>
-     </widget>
-     <widget class="QCheckBox" name="checkBox_ones_13">
-      <property name="geometry">
-       <rect>
-        <x>240</x>
-        <y>440</y>
-        <width>70</width>
-        <height>20</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Add</string>
-      </property>
-     </widget>
-     <widget class="QCheckBox" name="checkBox_ones_3">
-      <property name="geometry">
-       <rect>
-        <x>240</x>
-        <y>140</y>
-        <width>70</width>
-        <height>20</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Add</string>
-      </property>
-     </widget>
-     <widget class="QCheckBox" name="checkBox_ones_0">
-      <property name="geometry">
-       <rect>
-        <x>240</x>
-        <y>50</y>
-        <width>70</width>
-        <height>20</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Add</string>
-      </property>
-     </widget>
-     <widget class="QCheckBox" name="checkBox_ones_4">
-      <property name="geometry">
-       <rect>
-        <x>240</x>
-        <y>170</y>
-        <width>70</width>
-        <height>20</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Add</string>
-      </property>
-     </widget>
-     <widget class="QCheckBox" name="checkBox_ones_1">
-      <property name="geometry">
-       <rect>
-        <x>240</x>
-        <y>80</y>
-        <width>70</width>
-        <height>20</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Add</string>
-      </property>
-     </widget>
-     <widget class="QCheckBox" name="checkBox_ones_7">
-      <property name="geometry">
-       <rect>
-        <x>240</x>
-        <y>260</y>
-        <width>70</width>
-        <height>20</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Add</string>
-      </property>
-     </widget>
-     <widget class="QCheckBox" name="checkBox_ones_8">
-      <property name="geometry">
-       <rect>
-        <x>240</x>
-        <y>290</y>
-        <width>70</width>
-        <height>20</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Add</string>
-      </property>
-     </widget>
-     <widget class="QCheckBox" name="checkBox_ones_5">
-      <property name="geometry">
-       <rect>
-        <x>240</x>
-        <y>200</y>
-        <width>70</width>
-        <height>20</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Add</string>
-      </property>
-     </widget>
-     <widget class="QCheckBox" name="checkBox_ones_2">
-      <property name="geometry">
-       <rect>
-        <x>240</x>
-        <y>110</y>
-        <width>70</width>
-        <height>20</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Add</string>
-      </property>
-     </widget>
-     <widget class="QCheckBox" name="checkBox_ones_6">
-      <property name="geometry">
-       <rect>
-        <x>240</x>
-        <y>230</y>
-        <width>70</width>
-        <height>20</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Add</string>
-      </property>
-     </widget>
-     <widget class="QCheckBox" name="checkBox_ones_10">
-      <property name="geometry">
-       <rect>
-        <x>240</x>
-        <y>350</y>
-        <width>70</width>
-        <height>20</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Add</string>
-      </property>
-     </widget>
-     <widget class="QCheckBox" name="checkBox_ones_11">
-      <property name="geometry">
-       <rect>
-        <x>240</x>
-        <y>380</y>
-        <width>70</width>
-        <height>20</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Add</string>
-      </property>
-     </widget>
-     <widget class="QCheckBox" name="checkBox_ones_9">
-      <property name="geometry">
-       <rect>
-        <x>240</x>
-        <y>320</y>
-        <width>70</width>
-        <height>20</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Add</string>
-      </property>
-     </widget>
-     <widget class="QCheckBox" name="checkBox_ones_14">
-      <property name="geometry">
-       <rect>
-        <x>240</x>
-        <y>470</y>
-        <width>70</width>
-        <height>20</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Add</string>
-      </property>
-     </widget>
      <widget class="QPushButton" name="pushButton_tot_add_to_skeyki_1">
       <property name="geometry">
        <rect>
-        <x>164</x>
+        <x>30</x>
         <y>540</y>
-        <width>131</width>
+        <width>201</width>
         <height>23</height>
        </rect>
       </property>
@@ -1164,7 +968,7 @@ QLabel {
      <widget class="QTableWidget" name="tableWidget_skleiki_1_editing">
       <property name="geometry">
        <rect>
-        <x>310</x>
+        <x>250</x>
         <y>20</y>
         <width>181</width>
         <height>511</height>
@@ -1280,23 +1084,10 @@ QLabel {
        </property>
       </column>
      </widget>
-     <widget class="QPushButton" name="pushButton_clear_skleiki_1_editing">
-      <property name="geometry">
-       <rect>
-        <x>320</x>
-        <y>570</y>
-        <width>75</width>
-        <height>23</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Удалить</string>
-      </property>
-     </widget>
      <widget class="QPushButton" name="pushButton_nextStep_onesOnly">
       <property name="geometry">
        <rect>
-        <x>420</x>
+        <x>360</x>
         <y>540</y>
         <width>75</width>
         <height>23</height>
@@ -1309,7 +1100,7 @@ QLabel {
      <widget class="QPushButton" name="pushButton_proverka_skleiki_1_editing">
       <property name="geometry">
        <rect>
-        <x>320</x>
+        <x>250</x>
         <y>540</y>
         <width>75</width>
         <height>23</height>
@@ -1322,9 +1113,9 @@ QLabel {
      <widget class="QPushButton" name="pushButton_tot_move_to_skeyki_1">
       <property name="geometry">
        <rect>
-        <x>164</x>
+        <x>30</x>
         <y>570</y>
-        <width>131</width>
+        <width>201</width>
         <height>23</height>
        </rect>
       </property>
@@ -1363,7 +1154,7 @@ QLabel {
      <widget class="QTableWidget" name="tableWidget_skleiki_1">
       <property name="geometry">
        <rect>
-        <x>10</x>
+        <x>30</x>
         <y>20</y>
         <width>201</width>
         <height>511</height>
@@ -1487,244 +1278,23 @@ QLabel {
        </property>
       </column>
      </widget>
-     <widget class="QCheckBox" name="checkBox_skleyka_1_15">
-      <property name="geometry">
-       <rect>
-        <x>220</x>
-        <y>500</y>
-        <width>70</width>
-        <height>20</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Add</string>
-      </property>
-     </widget>
-     <widget class="QCheckBox" name="checkBox_skleyka_1_14">
-      <property name="geometry">
-       <rect>
-        <x>220</x>
-        <y>470</y>
-        <width>70</width>
-        <height>20</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Add</string>
-      </property>
-     </widget>
-     <widget class="QCheckBox" name="checkBox_skleyka_1_2">
-      <property name="geometry">
-       <rect>
-        <x>220</x>
-        <y>110</y>
-        <width>70</width>
-        <height>20</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Add</string>
-      </property>
-     </widget>
-     <widget class="QCheckBox" name="checkBox_skleyka_1_0">
-      <property name="geometry">
-       <rect>
-        <x>220</x>
-        <y>50</y>
-        <width>70</width>
-        <height>20</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Add</string>
-      </property>
-     </widget>
-     <widget class="QCheckBox" name="checkBox_skleyka_1_1">
-      <property name="geometry">
-       <rect>
-        <x>220</x>
-        <y>80</y>
-        <width>70</width>
-        <height>20</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Add</string>
-      </property>
-     </widget>
-     <widget class="QCheckBox" name="checkBox_skleyka_1_5">
-      <property name="geometry">
-       <rect>
-        <x>220</x>
-        <y>200</y>
-        <width>70</width>
-        <height>20</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Add</string>
-      </property>
-     </widget>
-     <widget class="QCheckBox" name="checkBox_skleyka_1_6">
-      <property name="geometry">
-       <rect>
-        <x>220</x>
-        <y>230</y>
-        <width>70</width>
-        <height>20</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Add</string>
-      </property>
-     </widget>
-     <widget class="QCheckBox" name="checkBox_skleyka_1_3">
-      <property name="geometry">
-       <rect>
-        <x>220</x>
-        <y>140</y>
-        <width>70</width>
-        <height>20</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Add</string>
-      </property>
-     </widget>
-     <widget class="QCheckBox" name="checkBox_skleyka_1_4">
-      <property name="geometry">
-       <rect>
-        <x>220</x>
-        <y>170</y>
-        <width>70</width>
-        <height>20</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Add</string>
-      </property>
-     </widget>
-     <widget class="QCheckBox" name="checkBox_skleyka_1_9">
-      <property name="geometry">
-       <rect>
-        <x>220</x>
-        <y>320</y>
-        <width>70</width>
-        <height>20</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Add</string>
-      </property>
-     </widget>
-     <widget class="QCheckBox" name="checkBox_skleyka_1_7">
-      <property name="geometry">
-       <rect>
-        <x>220</x>
-        <y>260</y>
-        <width>70</width>
-        <height>20</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Add</string>
-      </property>
-     </widget>
-     <widget class="QCheckBox" name="checkBox_skleyka_1_8">
-      <property name="geometry">
-       <rect>
-        <x>220</x>
-        <y>290</y>
-        <width>70</width>
-        <height>20</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Add</string>
-      </property>
-     </widget>
-     <widget class="QCheckBox" name="checkBox_skleyka_1_12">
-      <property name="geometry">
-       <rect>
-        <x>220</x>
-        <y>410</y>
-        <width>70</width>
-        <height>20</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Add</string>
-      </property>
-     </widget>
-     <widget class="QCheckBox" name="checkBox_skleyka_1_13">
-      <property name="geometry">
-       <rect>
-        <x>220</x>
-        <y>440</y>
-        <width>70</width>
-        <height>20</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Add</string>
-      </property>
-     </widget>
-     <widget class="QCheckBox" name="checkBox_skleyka_1_10">
-      <property name="geometry">
-       <rect>
-        <x>220</x>
-        <y>350</y>
-        <width>70</width>
-        <height>20</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Add</string>
-      </property>
-     </widget>
-     <widget class="QCheckBox" name="checkBox_skleyka_1_11">
-      <property name="geometry">
-       <rect>
-        <x>220</x>
-        <y>380</y>
-        <width>70</width>
-        <height>20</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Add</string>
-      </property>
-     </widget>
      <widget class="QPushButton" name="pushButton_add_skleyki_1">
       <property name="geometry">
        <rect>
-        <x>220</x>
+        <x>30</x>
         <y>540</y>
-        <width>75</width>
+        <width>201</width>
         <height>23</height>
        </rect>
       </property>
       <property name="text">
-       <string>Добавить</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_clear_skleiki_2_editing">
-      <property name="geometry">
-       <rect>
-        <x>320</x>
-        <y>570</y>
-        <width>75</width>
-        <height>23</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Удалить</string>
+       <string>Создать склейку</string>
       </property>
      </widget>
      <widget class="QPushButton" name="pushButton_proverka_skleyki_3">
       <property name="geometry">
        <rect>
-        <x>320</x>
+        <x>250</x>
         <y>540</y>
         <width>75</width>
         <height>23</height>
@@ -1737,7 +1307,7 @@ QLabel {
      <widget class="QTableWidget" name="tableWidget_skleiki_2_editing">
       <property name="geometry">
        <rect>
-        <x>310</x>
+        <x>250</x>
         <y>20</y>
         <width>181</width>
         <height>511</height>
@@ -1856,7 +1426,7 @@ QLabel {
      <widget class="QPushButton" name="pushButton_nextStep_skleyki_2">
       <property name="geometry">
        <rect>
-        <x>420</x>
+        <x>360</x>
         <y>540</y>
         <width>75</width>
         <height>23</height>
@@ -1869,14 +1439,14 @@ QLabel {
      <widget class="QPushButton" name="pushButton_tot_move_to_skeyki_2">
       <property name="geometry">
        <rect>
-        <x>220</x>
+        <x>30</x>
         <y>570</y>
-        <width>75</width>
+        <width>201</width>
         <height>23</height>
        </rect>
       </property>
       <property name="text">
-       <string>Без склейки</string>
+       <string>Добавить без склейки</string>
       </property>
      </widget>
      <widget class="QPushButton" name="pushButton_help_3">
@@ -1910,9 +1480,9 @@ QLabel {
      <widget class="QTableWidget" name="tableWidget_skleiki_2">
       <property name="geometry">
        <rect>
-        <x>10</x>
+        <x>30</x>
         <y>20</y>
-        <width>181</width>
+        <width>201</width>
         <height>511</height>
        </rect>
       </property>
@@ -2028,11 +1598,16 @@ QLabel {
         <string>d</string>
        </property>
       </column>
+      <column>
+       <property name="text">
+        <string>N</string>
+       </property>
+      </column>
      </widget>
      <widget class="QTableWidget" name="tableWidget_skleiki_3_editing">
       <property name="geometry">
        <rect>
-        <x>310</x>
+        <x>250</x>
         <y>20</y>
         <width>181</width>
         <height>511</height>
@@ -2151,7 +1726,7 @@ QLabel {
      <widget class="QPushButton" name="pushButton_nextStep_onesOnly_3">
       <property name="geometry">
        <rect>
-        <x>420</x>
+        <x>360</x>
         <y>540</y>
         <width>75</width>
         <height>23</height>
@@ -2164,33 +1739,20 @@ QLabel {
      <widget class="QPushButton" name="pushButton_add_skleyki_2">
       <property name="geometry">
        <rect>
-        <x>220</x>
+        <x>30</x>
         <y>540</y>
-        <width>75</width>
+        <width>201</width>
         <height>23</height>
        </rect>
       </property>
       <property name="text">
-       <string>Добавить</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_clearSkleyki_2">
-      <property name="geometry">
-       <rect>
-        <x>320</x>
-        <y>570</y>
-        <width>75</width>
-        <height>23</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Удалить</string>
+       <string>Создать склейку</string>
       </property>
      </widget>
      <widget class="QPushButton" name="pushButton_proverka_skleyki_3_0">
       <property name="geometry">
        <rect>
-        <x>320</x>
+        <x>250</x>
         <y>540</y>
         <width>75</width>
         <height>23</height>
@@ -2200,225 +1762,17 @@ QLabel {
        <string>Проверить</string>
       </property>
      </widget>
-     <widget class="QCheckBox" name="checkBox_skleyka_2_0">
-      <property name="geometry">
-       <rect>
-        <x>200</x>
-        <y>50</y>
-        <width>70</width>
-        <height>20</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Add</string>
-      </property>
-     </widget>
-     <widget class="QCheckBox" name="checkBox_skleyka_2_1">
-      <property name="geometry">
-       <rect>
-        <x>200</x>
-        <y>80</y>
-        <width>70</width>
-        <height>20</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Add</string>
-      </property>
-     </widget>
-     <widget class="QCheckBox" name="checkBox_skleyka_2_2">
-      <property name="geometry">
-       <rect>
-        <x>200</x>
-        <y>110</y>
-        <width>70</width>
-        <height>20</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Add</string>
-      </property>
-     </widget>
-     <widget class="QCheckBox" name="checkBox_skleyka_2_3">
-      <property name="geometry">
-       <rect>
-        <x>200</x>
-        <y>140</y>
-        <width>70</width>
-        <height>20</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Add</string>
-      </property>
-     </widget>
-     <widget class="QCheckBox" name="checkBox_skleyka_2_4">
-      <property name="geometry">
-       <rect>
-        <x>200</x>
-        <y>170</y>
-        <width>70</width>
-        <height>20</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Add</string>
-      </property>
-     </widget>
-     <widget class="QCheckBox" name="checkBox_skleyka_2_5">
-      <property name="geometry">
-       <rect>
-        <x>200</x>
-        <y>200</y>
-        <width>70</width>
-        <height>20</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Add</string>
-      </property>
-     </widget>
-     <widget class="QCheckBox" name="checkBox_skleyka_2_6">
-      <property name="geometry">
-       <rect>
-        <x>200</x>
-        <y>230</y>
-        <width>70</width>
-        <height>20</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Add</string>
-      </property>
-     </widget>
-     <widget class="QCheckBox" name="checkBox_skleyka_2_7">
-      <property name="geometry">
-       <rect>
-        <x>200</x>
-        <y>260</y>
-        <width>70</width>
-        <height>20</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Add</string>
-      </property>
-     </widget>
-     <widget class="QCheckBox" name="checkBox_skleyka_2_8">
-      <property name="geometry">
-       <rect>
-        <x>200</x>
-        <y>290</y>
-        <width>70</width>
-        <height>20</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Add</string>
-      </property>
-     </widget>
-     <widget class="QCheckBox" name="checkBox_skleyka_2_9">
-      <property name="geometry">
-       <rect>
-        <x>200</x>
-        <y>320</y>
-        <width>70</width>
-        <height>20</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Add</string>
-      </property>
-     </widget>
-     <widget class="QCheckBox" name="checkBox_skleyka_2_10">
-      <property name="geometry">
-       <rect>
-        <x>200</x>
-        <y>350</y>
-        <width>70</width>
-        <height>20</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Add</string>
-      </property>
-     </widget>
-     <widget class="QCheckBox" name="checkBox_skleyka_2_11">
-      <property name="geometry">
-       <rect>
-        <x>200</x>
-        <y>380</y>
-        <width>70</width>
-        <height>20</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Add</string>
-      </property>
-     </widget>
-     <widget class="QCheckBox" name="checkBox_skleyka_2_12">
-      <property name="geometry">
-       <rect>
-        <x>200</x>
-        <y>410</y>
-        <width>70</width>
-        <height>20</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Add</string>
-      </property>
-     </widget>
-     <widget class="QCheckBox" name="checkBox_skleyka_2_13">
-      <property name="geometry">
-       <rect>
-        <x>200</x>
-        <y>440</y>
-        <width>70</width>
-        <height>20</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Add</string>
-      </property>
-     </widget>
-     <widget class="QCheckBox" name="checkBox_skleyka_2_14">
-      <property name="geometry">
-       <rect>
-        <x>200</x>
-        <y>470</y>
-        <width>70</width>
-        <height>20</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Add</string>
-      </property>
-     </widget>
-     <widget class="QCheckBox" name="checkBox_skleyka_2_15">
-      <property name="geometry">
-       <rect>
-        <x>200</x>
-        <y>500</y>
-        <width>70</width>
-        <height>20</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Add</string>
-      </property>
-     </widget>
      <widget class="QPushButton" name="pushButton_tot_move_to_skeyki_3">
       <property name="geometry">
        <rect>
-        <x>220</x>
+        <x>30</x>
         <y>570</y>
-        <width>75</width>
+        <width>201</width>
         <height>23</height>
        </rect>
       </property>
       <property name="text">
-       <string>Без склейки</string>
+       <string>Добавить без склейки</string>
       </property>
      </widget>
      <widget class="QPushButton" name="pushButton_help_4">
@@ -3379,47 +2733,13 @@ QLabel {
   <tabstop>tableWidget_tableOfTrue</tabstop>
   <tabstop>checkBox_spiltToTetrads</tabstop>
   <tabstop>tableWidget_one_only</tabstop>
-  <tabstop>checkBox_ones_15</tabstop>
-  <tabstop>checkBox_ones_12</tabstop>
-  <tabstop>checkBox_ones_13</tabstop>
-  <tabstop>checkBox_ones_3</tabstop>
-  <tabstop>checkBox_ones_0</tabstop>
-  <tabstop>checkBox_ones_4</tabstop>
-  <tabstop>checkBox_ones_1</tabstop>
-  <tabstop>checkBox_ones_7</tabstop>
-  <tabstop>checkBox_ones_8</tabstop>
-  <tabstop>checkBox_ones_5</tabstop>
-  <tabstop>checkBox_ones_2</tabstop>
-  <tabstop>checkBox_ones_6</tabstop>
-  <tabstop>checkBox_ones_10</tabstop>
-  <tabstop>checkBox_ones_11</tabstop>
-  <tabstop>checkBox_ones_9</tabstop>
-  <tabstop>checkBox_ones_14</tabstop>
   <tabstop>pushButton_tot_add_to_skeyki_1</tabstop>
   <tabstop>tableWidget_skleiki_1_editing</tabstop>
-  <tabstop>pushButton_clear_skleiki_1_editing</tabstop>
   <tabstop>pushButton_nextStep_onesOnly</tabstop>
   <tabstop>pushButton_proverka_skleiki_1_editing</tabstop>
   <tabstop>pushButton_tot_move_to_skeyki_1</tabstop>
   <tabstop>tableWidget_skleiki_1</tabstop>
-  <tabstop>checkBox_skleyka_1_15</tabstop>
-  <tabstop>checkBox_skleyka_1_14</tabstop>
-  <tabstop>checkBox_skleyka_1_2</tabstop>
-  <tabstop>checkBox_skleyka_1_0</tabstop>
-  <tabstop>checkBox_skleyka_1_1</tabstop>
-  <tabstop>checkBox_skleyka_1_5</tabstop>
-  <tabstop>checkBox_skleyka_1_6</tabstop>
-  <tabstop>checkBox_skleyka_1_3</tabstop>
-  <tabstop>checkBox_skleyka_1_4</tabstop>
-  <tabstop>checkBox_skleyka_1_9</tabstop>
-  <tabstop>checkBox_skleyka_1_7</tabstop>
-  <tabstop>checkBox_skleyka_1_8</tabstop>
-  <tabstop>checkBox_skleyka_1_12</tabstop>
-  <tabstop>checkBox_skleyka_1_13</tabstop>
-  <tabstop>checkBox_skleyka_1_10</tabstop>
-  <tabstop>checkBox_skleyka_1_11</tabstop>
   <tabstop>pushButton_add_skleyki_1</tabstop>
-  <tabstop>pushButton_clear_skleiki_2_editing</tabstop>
   <tabstop>pushButton_proverka_skleyki_3</tabstop>
   <tabstop>tableWidget_skleiki_2_editing</tabstop>
   <tabstop>pushButton_nextStep_skleyki_2</tabstop>
@@ -3428,24 +2748,7 @@ QLabel {
   <tabstop>tableWidget_skleiki_3_editing</tabstop>
   <tabstop>pushButton_nextStep_onesOnly_3</tabstop>
   <tabstop>pushButton_add_skleyki_2</tabstop>
-  <tabstop>pushButton_clearSkleyki_2</tabstop>
   <tabstop>pushButton_proverka_skleyki_3_0</tabstop>
-  <tabstop>checkBox_skleyka_2_0</tabstop>
-  <tabstop>checkBox_skleyka_2_1</tabstop>
-  <tabstop>checkBox_skleyka_2_2</tabstop>
-  <tabstop>checkBox_skleyka_2_3</tabstop>
-  <tabstop>checkBox_skleyka_2_4</tabstop>
-  <tabstop>checkBox_skleyka_2_5</tabstop>
-  <tabstop>checkBox_skleyka_2_6</tabstop>
-  <tabstop>checkBox_skleyka_2_7</tabstop>
-  <tabstop>checkBox_skleyka_2_8</tabstop>
-  <tabstop>checkBox_skleyka_2_9</tabstop>
-  <tabstop>checkBox_skleyka_2_10</tabstop>
-  <tabstop>checkBox_skleyka_2_11</tabstop>
-  <tabstop>checkBox_skleyka_2_12</tabstop>
-  <tabstop>checkBox_skleyka_2_13</tabstop>
-  <tabstop>checkBox_skleyka_2_14</tabstop>
-  <tabstop>checkBox_skleyka_2_15</tabstop>
   <tabstop>pushButton_tot_move_to_skeyki_3</tabstop>
   <tabstop>tableWidget_kartaMinimizacii</tabstop>
   <tabstop>pushButton_proverka_result_function</tabstop>

@@ -85,7 +85,7 @@ MainWindow::MainWindow(QWidget *parent) :
     qDebug() << "Conntects skleiki 2";
     //    connect(ui->pushButton_clearSkleyki_2, SIGNAL(clicked()), this, SLOT(pushButton_clear_skleyki_2()));
     connect(ui->pushButton_proverka_skleyki_3, SIGNAL(clicked()), this, SLOT(pushButton_proverka_skleyki_2_clicked()));
-    connect(ui->pushButton_nextStep_skleyki_2, SIGNAL(clicked()), this, SLOT(pushButton_nextStep_skleyki_2Clicked()));
+//    connect(ui->pushButton_nextStep_skleyki_2, SIGNAL(clicked()), this, SLOT(pushButton_nextStep_skleyki_2Clicked()));
 //    connect(pushButton_add_skleyki_2, SIGNAL(clicked()), this, SLOT(pushButton_add_skleyki_3_clicked()));
 
     // таблица для поиска ДНФ
@@ -178,27 +178,27 @@ MainWindow::MainWindow(QWidget *parent) :
 //    checkBoxes_skleyki_1[15] = ui->checkBox_skleyka_1_15;
 //    qDebug() << "Заполнили массив";
 
-    checkBoxes_skleyki_2 = new QCheckBox *[size];
-    for (int i=0; i<size; i++)
-    {
-        checkBoxes_skleyki_2[i] = nullptr;
-    }
-    checkBoxes_skleyki_2[0] = ui->checkBox_skleyka_2_0;
-    checkBoxes_skleyki_2[1] = ui->checkBox_skleyka_2_1;
-    checkBoxes_skleyki_2[2] = ui->checkBox_skleyka_2_2;
-    checkBoxes_skleyki_2[3] = ui->checkBox_skleyka_2_3;
-    checkBoxes_skleyki_2[4] = ui->checkBox_skleyka_2_4;
-    checkBoxes_skleyki_2[5] = ui->checkBox_skleyka_2_5;
-    checkBoxes_skleyki_2[6] = ui->checkBox_skleyka_2_6;
-    checkBoxes_skleyki_2[7] = ui->checkBox_skleyka_2_7;
-    checkBoxes_skleyki_2[8] = ui->checkBox_skleyka_2_8;
-    checkBoxes_skleyki_2[9] = ui->checkBox_skleyka_2_9;
-    checkBoxes_skleyki_2[10] = ui->checkBox_skleyka_2_10;
-    checkBoxes_skleyki_2[11] = ui->checkBox_skleyka_2_11;
-    checkBoxes_skleyki_2[12] = ui->checkBox_skleyka_2_12;
-    checkBoxes_skleyki_2[13] = ui->checkBox_skleyka_2_13;
-    checkBoxes_skleyki_2[14] = ui->checkBox_skleyka_2_14;
-    checkBoxes_skleyki_2[15] = ui->checkBox_skleyka_2_15;
+//    checkBoxes_skleyki_2 = new QCheckBox *[size];
+//    for (int i=0; i<size; i++)
+//    {
+//        checkBoxes_skleyki_2[i] = nullptr;
+//    }
+//    checkBoxes_skleyki_2[0] = ui->checkBox_skleyka_2_0;
+//    checkBoxes_skleyki_2[1] = ui->checkBox_skleyka_2_1;
+//    checkBoxes_skleyki_2[2] = ui->checkBox_skleyka_2_2;
+//    checkBoxes_skleyki_2[3] = ui->checkBox_skleyka_2_3;
+//    checkBoxes_skleyki_2[4] = ui->checkBox_skleyka_2_4;
+//    checkBoxes_skleyki_2[5] = ui->checkBox_skleyka_2_5;
+//    checkBoxes_skleyki_2[6] = ui->checkBox_skleyka_2_6;
+//    checkBoxes_skleyki_2[7] = ui->checkBox_skleyka_2_7;
+//    checkBoxes_skleyki_2[8] = ui->checkBox_skleyka_2_8;
+//    checkBoxes_skleyki_2[9] = ui->checkBox_skleyka_2_9;
+//    checkBoxes_skleyki_2[10] = ui->checkBox_skleyka_2_10;
+//    checkBoxes_skleyki_2[11] = ui->checkBox_skleyka_2_11;
+//    checkBoxes_skleyki_2[12] = ui->checkBox_skleyka_2_12;
+//    checkBoxes_skleyki_2[13] = ui->checkBox_skleyka_2_13;
+//    checkBoxes_skleyki_2[14] = ui->checkBox_skleyka_2_14;
+//    checkBoxes_skleyki_2[15] = ui->checkBox_skleyka_2_15;
     //    checkBoxes_skleyki_2 = new QCheckBox *[size];
 
     for (int i=0; i<size; i++)
@@ -246,15 +246,15 @@ MainWindow::MainWindow(QWidget *parent) :
     pushButton_tot_add = ui->pushButton_tot_add;
     pushButton_proverka_oneOnly = ui->pushButton_proverka_oneOnly;
     pushButton_tot_add_to_skeyki_1 = ui->pushButton_tot_add_to_skeyki_1;
-    pushButton_clear_skleiki_1_editing = ui->pushButton_clear_skleiki_1_editing;
+//    pushButton_clear_skleiki_1_editing = ui->pushButton_clear_skleiki_1_editing;
     pushButton_proverka_skleiki_1_editing = ui->pushButton_proverka_skleiki_1_editing;
     pushButton_nextStep_onesOnly = ui->pushButton_nextStep_onesOnly;
     pushButton_add_skleyki_1 = ui->pushButton_add_skleyki_1;
-    pushButton_clear_skleiki_2_editing = ui->pushButton_clear_skleiki_2_editing;
+//    pushButton_clear_skleiki_2_editing = ui->pushButton_clear_skleiki_2_editing;
     pushButton_proverka_skleyki_3 = ui->pushButton_proverka_skleyki_3;
     pushButton_nextStep_skleyki_2 = ui->pushButton_nextStep_skleyki_2;
     pushButton_add_skleyki_2 = ui->pushButton_add_skleyki_2;
-    pushButton_clearSkleyki_2 = ui->pushButton_clearSkleyki_2;
+//    pushButton_clearSkleyki_2 = ui->pushButton_clearSkleyki_2;
     pushButton_proverka_skleyki_2 = ui->pushButton_proverka_skleyki_3_0;
     pushButton_nextStep_onesOnly_3 = ui->pushButton_nextStep_onesOnly_3;
     pushButton_tot_move_to_skeyki_1 = ui->pushButton_tot_move_to_skeyki_1;
@@ -301,9 +301,9 @@ MainWindow::MainWindow(QWidget *parent) :
     redColor = new QColor(255,101,96); // красный цвет
     greenColor = new QColor(185,255,141); // зеленый цвет
 
-    pushButton_clear_skleiki_1_editing->setVisible(false); // выключаем видимость кнопки удаления склеек 1
-    pushButton_clear_skleiki_2_editing->setVisible(false); // выключаем видимость кнопки удаления склеек 2
-    pushButton_clearSkleyki_2->setVisible(false); // выключаем видимость кнопки удаления склеек 3
+//    pushButton_clear_skleiki_1_editing->setVisible(false); // выключаем видимость кнопки удаления склеек 1
+//    pushButton_clear_skleiki_2_editing->setVisible(false); // выключаем видимость кнопки удаления склеек 2
+//    pushButton_clearSkleyki_2->setVisible(false); // выключаем видимость кнопки удаления склеек 3
 
     //    pushButton_loadDataFromFile->setVisible(false); // выключаем видимость кнопки загрузки решения из уже начатой работы
 
@@ -379,6 +379,8 @@ void MainWindow::setFunction(QString function)
     setStep(step);// переходим к следующему шагу
     nextStep();
     nextStep(); // увеличваем шаг на 2, из-за ошибки
+
+    setSklykiResultTableColor(tableWidgetTot);  // делаем таблицу более тусклой
 }
 
 void MainWindow::criticalError(QString error)
@@ -515,79 +517,10 @@ void MainWindow::pushButton_delete_last_skleiki_2_editingClicked()
     deletelastRow(tableWidgetsSkleykiEditing[1]); // удалаяем последнюю строку в таблице склеек 2
 }
 
-void MainWindow::pushButton_nextStep_skleyki_2Clicked()
-{
-    goToNextStep(tableWidgetsSkleykiEditing[1], tableWidgetsSkleyki[1], 3);
-    int rows = tableWidgetsSkleyki[1]->rowCount(); // получаем колитечтво строк
-    if(rows <= 0)
-        return;
-    int cols = tableWidgetsSkleyki[1]->columnCount(); // получаем количество столбцов
-    if(cols <= 0)
-        return;
-    // создаем массив
-    QString **tableText = nullptr; // массив для хранения элементов таблицы
-    tableText = new QString *[rows]; // выделяем память под строки
-    for (int i=0; i<rows; i++)
-    {
-        tableText[i] = new QString [cols]; // выделяем память под столбцы
-    }
-    // получаем данные из таблицы
-    for (int i=0; i<rows; i++)
-    {
-        for (int j=0; j<cols; j++)
-        {
-            tableText[i][j] = tableWidgetsSkleyki[1]->item(i, j)->text(); // сохраняем данные в массив
-        }
-    }
-    // сортируем склейки
-    QStringList sortSkleikyList; // создаем список для отсортированных склеек
-    //    int lastRow = 0; // номер строки, в которую последний раз были занесены данные (склейка)
-    for (int p=0; p<cols; p++) // p = номер позиции Х в строке
-    {
-        for (int r = 0; r < cols; ++r) // r = номер второй позиции Х в строке
-        {
-            qDebug() << "Ищем Х в позиции " << p << "и" << r;
-            for (int i=0; i<rows; i++)
-            {
-                for (int j=0; j<cols; j++) // ищем первое совпадение Х
-                {
-                    if((tableText[i][j] == "X") && (j == p))  // если позиция Х совпадает с текущим номером
-                    {
-                        qDebug() << "В строке" << i << "в столбце" << j << "X находится на позиции" << p;
-                        for (int k=0; k<cols; k++)
-                        {
-                            if((tableText[i][k] == "X") && (k == p) && (j != k))  // если позиция Х совпадает с текущим вторым номером Х
-                            {
-                                QString skleyka;
-                                for (int h=0; h<cols; h++) // проходим по всем элементам строки
-                                {
-                                    skleyka.append(tableText[i][h]);
-                                    //tableWidgetsSkleyki[0]->setItem(lastRow, h, new QTableWidgetItem((tableText[i][h]))); // выводим в таблицу
-                                    //lastRow++; // увеличиваем на 1 номер последней строки
-                                }
-                                qDebug() << "Создана склейка " << skleyka;
-                                sortSkleikyList.append(skleyka); // обавляем склейку в список
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-    int size = sortSkleikyList.size(); // получаем количество склеек в списке
-    for (int i=0; i<size; i++)
-    {
-        QString skleyka = sortSkleikyList[i]; // получаем склейку
-        for (int j=0; j<skleyka.count(); j++)
-        {
-            tableWidgetsSkleyki[1]->setItem(i, j, new QTableWidgetItem(skleyka.at(j))); // выподим каждый элемент
-        }
-    }
-    nextStep();
-    //    int rows = tableWidgetsSkleyki[1]->rowCount(); // получаем количество строк
+//void MainWindow::pushButton_nextStep_skleyki_2Clicked()
+//{
 
-
-}
+//}
 
 void MainWindow::pushButton_clear_skleyki_3()
 {
@@ -710,6 +643,7 @@ void MainWindow::pusbButton_move_skleyki_to_coresTable() // кнопка пер�
     qDebug() << "END << END";
     //    int indexes = tabWidget->count(); // получаем количество элементов TabWidget
     tabWidget->setCurrentIndex(4);
+    setDefaultTableColor(tableWidgetKartaMinimizacii);
 }
 
 void MainWindow::setTableStepenTwo(int stepen)
@@ -1030,8 +964,32 @@ void MainWindow::setSklykiResultTableColor(QTableWidget *tableWidget)
     {
         for(int j=0; j<cols; j++)
         {
-            tableWidget->item(i, j)->setBackground(Qt::white); // устанавливаем цвет ячейки
-            tableWidget->item(i, j)->setForeground(QColor(100, 100, 100)); // устанавливаем цвет текста
+            QTableWidgetItem *item = tableWidget->item(i, j);
+            if(item != nullptr)
+            {
+                item->setBackground(Qt::white); // устанавливаем цвет ячейки
+                item->setForeground(QColor(100, 100, 100)); // устанавливаем цвет текста
+            }
+        }
+    }
+}
+
+void MainWindow::setDefaultTableColor(QTableWidget *tableWidget)
+{
+    int rows = tableWidget->rowCount(); // получаем количество строк
+    int cols = tableWidget->columnCount(); // получаем количество столбцов
+
+    for (int i=0; i<rows; i++)
+    {
+        for(int j=0; j<cols; j++)
+        {
+            QTableWidgetItem *item = tableWidget->item(i, j);
+            if(item != nullptr)
+            {
+                item->setBackground(Qt::white); // устанавливаем цвет ячейки
+                item->setForeground(Qt::black); // устанавливаем цвет текста
+            }
+
         }
     }
 }
@@ -1461,6 +1419,8 @@ void MainWindow::on_lineEdit_func_2_textChanged(const QString &arg1)
     function_2 = inputString; // сохраняем 2ю запись функции
     //    }
 
+    setSklykiResultTableColor(tableWidgetTot);  // делаем таблицу более тусклой
+
 }
 
 void MainWindow::on_checkBox_spiltToTetrads_stateChanged(int arg1)
@@ -1832,6 +1792,8 @@ void MainWindow::on_pushButton_tot_add_clicked()
             c++; // увеличиваем значение счётчика
         }
     }
+
+    setSklykiResultTableColor(tableWidgetOnesOnlyEditing);  // делаем приглёшенный цвет
 }
 
 void MainWindow::on_pushButton_tot_add_to_skeyki_1_clicked()
@@ -1848,3 +1810,77 @@ void MainWindow::on_pushButton_add_skleyki_2_clicked()  // кнопка созд
 {
     createSkleyka(tableWidgetsSkleyki[1], checkBoxes_skleyki_2, tableWidgetsSkleykiEditing[2]); // создаем склейки 3
 }
+
+void MainWindow::on_pushButton_nextStep_skleyki_2_clicked()
+{
+    goToNextStep(tableWidgetsSkleykiEditing[1], tableWidgetsSkleyki[1], 3);
+    int rows = tableWidgetsSkleyki[1]->rowCount(); // получаем колитечтво строк
+    if(rows <= 0)
+        return;
+    int cols = tableWidgetsSkleyki[1]->columnCount(); // получаем количество столбцов
+    if(cols <= 0)
+        return;
+    // создаем массив
+    QString **tableText = nullptr; // массив для хранения элементов таблицы
+    tableText = new QString *[rows]; // выделяем память под строки
+    for (int i=0; i<rows; i++)
+    {
+        tableText[i] = new QString [cols]; // выделяем память под столбцы
+    }
+    // получаем данные из таблицы
+    for (int i=0; i<rows; i++)
+    {
+        for (int j=0; j<cols; j++)
+        {
+            tableText[i][j] = tableWidgetsSkleyki[1]->item(i, j)->text(); // сохраняем данные в массив
+        }
+    }
+    // сортируем склейки
+    QStringList sortSkleikyList; // создаем список для отсортированных склеек
+    //    int lastRow = 0; // номер строки, в которую последний раз были занесены данные (склейка)
+    for (int p=0; p<cols; p++) // p = номер позиции Х в строке
+    {
+        for (int r = 0; r < cols; ++r) // r = номер второй позиции Х в строке
+        {
+            qDebug() << "Ищем Х в позиции " << p << "и" << r;
+            for (int i=0; i<rows; i++)
+            {
+                for (int j=0; j<cols; j++) // ищем первое совпадение Х
+                {
+                    if((tableText[i][j] == "X") && (j == p))  // если позиция Х совпадает с текущим номером
+                    {
+                        qDebug() << "В строке" << i << "в столбце" << j << "X находится на позиции" << p;
+                        for (int k=0; k<cols; k++)
+                        {
+                            if((tableText[i][k] == "X") && (k == p) && (j != k))  // если позиция Х совпадает с текущим вторым номером Х
+                            {
+                                QString skleyka;
+                                for (int h=0; h<cols; h++) // проходим по всем элементам строки
+                                {
+                                    skleyka.append(tableText[i][h]);
+                                    //tableWidgetsSkleyki[0]->setItem(lastRow, h, new QTableWidgetItem((tableText[i][h]))); // выводим в таблицу
+                                    //lastRow++; // увеличиваем на 1 номер последней строки
+                                }
+                                qDebug() << "Создана склейка " << skleyka;
+                                sortSkleikyList.append(skleyka); // обавляем склейку в список
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    int size = sortSkleikyList.size(); // получаем количество склеек в списке
+    for (int i=0; i<size; i++)
+    {
+        QString skleyka = sortSkleikyList[i]; // получаем склейку
+        for (int j=0; j<skleyka.count(); j++)
+        {
+            tableWidgetsSkleyki[1]->setItem(i, j, new QTableWidgetItem(skleyka.at(j))); // выподим каждый элемент
+        }
+    }
+    addCheckBoxesInLastColumn(tableWidgetsSkleyki[1], checkBoxes_skleyki_2);     // вставляем checkBox в последную колонку
+    nextStep();
+    //    int rows = tableWidgetsSkleyki[1]->rowCount(); // получаем количество строк
+}
+
