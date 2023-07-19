@@ -1187,6 +1187,11 @@ void MainWindow::addCheckBoxesInLastColumn(QTableWidget *tableWidget, QCheckBox 
     setDefaultTableColor(tableWidget);
 }
 
+//void MainWindow::addCheckBoxesInLastColumn(QTableWidget *tableWidget, QCheckBox **&checkBoxes, Qt::ConnectionType &connectFunction)
+//{
+//    addCheckBoxesInLastColumn(tableWidget, checkBoxes);
+//}
+
 
 QString MainWindow::getQStringByTableWidget(QTableWidget *tableWidget, bool saveLineColor)
 {

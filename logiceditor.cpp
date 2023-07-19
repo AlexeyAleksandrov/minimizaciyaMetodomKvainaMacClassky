@@ -289,7 +289,11 @@ void LogicEditor::addSymvol(QString symvol, bool inversiya)
     {
         formulaTableWidget->setColumnCount(cols+1);
     }
-    formulaTableWidget->setItem(rows-1, colNumber, new QTableWidgetItem(symvol)); // добавляем символ
+    QTableWidgetItem *symvolItem = new QTableWidgetItem();
+    symvolItem->setText(symvol);    // задаем текст ячейки
+    symvolItem->setBackground(Qt::white); // устанавливаем цвет ячейки
+    symvolItem->setForeground(Qt::black); // устанавливаем цвет текста
+    formulaTableWidget->setItem(rows-1, colNumber, symvolItem); // добавляем символ
     if(inversiya) // если нужна инверсия над символом
     {
         formulaTableWidget->setItem(rows-2, colNumber, new QTableWidgetItem("")); // выделяем память под ячейку

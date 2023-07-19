@@ -31,13 +31,18 @@ void MainWindow::setStep(int step)
     pushButton_tot_add->setEnabled(step == 3 || DISABLE_STEPS_INTERFACE_BLOCK);
     (tableWidgetTot != nullptr && step == 3) ? setDefaultTableColor(tableWidgetTot) : setSklykiResultTableColor(tableWidgetTot);   // если этап выбора значений, то делаем таблицу белой, если другой - серой
     pushButton_proverka_oneOnly->setEnabled(step == 3 || DISABLE_STEPS_INTERFACE_BLOCK);
-    for (int i=0; i<16; i++)
+    if(checkBoxes != nullptr)
     {
-        if(checkBoxes[i] != nullptr)
-            checkBoxes[i]->setEnabled(step == 3 || DISABLE_STEPS_INTERFACE_BLOCK); // выключаем сначала все чекбоксы
-        else
-            qDebug() << "Элемент = NULL" << i;
+        int size = tableWidgetTot->rowCount();   // получаем кол-во строк таблицы
+        for (int i=0; i<size; i++)
+        {
+            if(checkBoxes[i] != nullptr)
+                checkBoxes[i]->setEnabled(step == 3 || DISABLE_STEPS_INTERFACE_BLOCK); // выключаем сначала все чекбоксы
+            else
+                qDebug() << "Элемент = NULL" << i;
+        }
     }
+
 
 
     // этап 4 (переход к созданию 1й склейки)
@@ -160,6 +165,13 @@ void MainWindow::setStep(int step)
     if(!DISABLE_STEPS_INTERFACE_BLOCK)
     {
        lockFormulaEditor(step != 12);
+    }
+
+    if(step == 12)
+    {
+        // включаем упрощённый ввод
+        checkBox_autoInputFormula->setChecked(true);
+        setAutoInput(true);
     }
 
     if(step == 12)

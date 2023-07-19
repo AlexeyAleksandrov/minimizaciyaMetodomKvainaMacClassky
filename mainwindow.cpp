@@ -98,33 +98,33 @@ MainWindow::MainWindow(QWidget *parent) :
     //    checkBoxes;
     // таблица истинности
     qDebug() << "checkboxes";
-    const int size = 16; // константа размера массива
-    checkBoxes = new QCheckBox *[size];
-    for (int i=0; i<size; i++)
-    {
-        checkBoxes[i] = nullptr;
-    }
-    checkBoxes[0] = ui->checkBox_tot_0;
-    checkBoxes[0] = ui->checkBox_tot_0; // заносим в массив все чекбоксы
-    checkBoxes[1] = ui->checkBox_tot_1;
-    checkBoxes[2] = ui->checkBox_tot_2;
-    checkBoxes[3] = ui->checkBox_tot_3;
-    checkBoxes[4] = ui->checkBox_tot_4;
-    checkBoxes[5] = ui->checkBox_tot_5;
-    checkBoxes[6] = ui->checkBox_tot_6;
-    checkBoxes[7] = ui->checkBox_tot_7;
-    checkBoxes[8] = ui->checkBox_tot_8;
-    checkBoxes[9] = ui->checkBox_tot_9;
-    checkBoxes[10] = ui->checkBox_tot_10;
-    checkBoxes[11] = ui->checkBox_tot_11;
-    checkBoxes[12] = ui->checkBox_tot_12;
-    checkBoxes[13] = ui->checkBox_tot_13;
-    checkBoxes[14] = ui->checkBox_tot_14;
-    checkBoxes[15] = ui->checkBox_tot_15;
-    for (int i=0; i<size; i++)
-    {
-        connect(checkBoxes[i], &QCheckBox::stateChanged, this, &MainWindow::updateCheckBoxTotState); // соединяем сигнал изменения состояния с нажатием на кнопку добавить
-    }
+//    const int size = 16; // константа размера массива
+//    checkBoxes = new QCheckBox *[size];
+//    for (int i=0; i<size; i++)
+//    {
+//        checkBoxes[i] = nullptr;
+//    }
+//    checkBoxes[0] = ui->checkBox_tot_0;
+//    checkBoxes[0] = ui->checkBox_tot_0; // заносим в массив все чекбоксы
+//    checkBoxes[1] = ui->checkBox_tot_1;
+//    checkBoxes[2] = ui->checkBox_tot_2;
+//    checkBoxes[3] = ui->checkBox_tot_3;
+//    checkBoxes[4] = ui->checkBox_tot_4;
+//    checkBoxes[5] = ui->checkBox_tot_5;
+//    checkBoxes[6] = ui->checkBox_tot_6;
+//    checkBoxes[7] = ui->checkBox_tot_7;
+//    checkBoxes[8] = ui->checkBox_tot_8;
+//    checkBoxes[9] = ui->checkBox_tot_9;
+//    checkBoxes[10] = ui->checkBox_tot_10;
+//    checkBoxes[11] = ui->checkBox_tot_11;
+//    checkBoxes[12] = ui->checkBox_tot_12;
+//    checkBoxes[13] = ui->checkBox_tot_13;
+//    checkBoxes[14] = ui->checkBox_tot_14;
+//    checkBoxes[15] = ui->checkBox_tot_15;
+//    for (int i=0; i<size; i++)
+//    {
+//        connect(checkBoxes[i], &QCheckBox::stateChanged, this, &MainWindow::updateCheckBoxTotState); // соединяем сигнал изменения состояния с нажатием на кнопку добавить
+//    }
 
     //    checkBoxes = new QCheckBox *[size];
 
@@ -201,17 +201,17 @@ MainWindow::MainWindow(QWidget *parent) :
 //    checkBoxes_skleyki_2[15] = ui->checkBox_skleyka_2_15;
     //    checkBoxes_skleyki_2 = new QCheckBox *[size];
 
-    for (int i=0; i<size; i++)
-    {
-        if(checkBoxes != nullptr && checkBoxes[i] != nullptr)
-            checkBoxes[i]->setText(CHECK_BOXES_TEXT);
-        if(checkBoxes_ones != nullptr && checkBoxes_ones[i] != nullptr)
-            checkBoxes_ones[i]->setText(CHECK_BOXES_TEXT);
-        if(checkBoxes_skleyki_1 != nullptr && checkBoxes_skleyki_1[i] != nullptr)
-            checkBoxes_skleyki_1[i]->setText(CHECK_BOXES_TEXT);
-        if(checkBoxes_skleyki_2 != nullptr && checkBoxes_skleyki_2[i] != nullptr)
-            checkBoxes_skleyki_2[i]->setText(CHECK_BOXES_TEXT);
-    }
+//    for (int i=0; i<size; i++)
+//    {
+//        if(checkBoxes != nullptr && checkBoxes[i] != nullptr)
+//            checkBoxes[i]->setText(CHECK_BOXES_TEXT);
+//        if(checkBoxes_ones != nullptr && checkBoxes_ones[i] != nullptr)
+//            checkBoxes_ones[i]->setText(CHECK_BOXES_TEXT);
+//        if(checkBoxes_skleyki_1 != nullptr && checkBoxes_skleyki_1[i] != nullptr)
+//            checkBoxes_skleyki_1[i]->setText(CHECK_BOXES_TEXT);
+//        if(checkBoxes_skleyki_2 != nullptr && checkBoxes_skleyki_2[i] != nullptr)
+//            checkBoxes_skleyki_2[i]->setText(CHECK_BOXES_TEXT);
+//    }
 
     checkBox_autoInputFormula = ui->checkBox_autoInputFormula;
     checkBox_editChoseItemFormula = ui->checkBox_editChoseItemFormula;
@@ -377,10 +377,20 @@ void MainWindow::setFunction(QString function)
     qDebug() << "Талицы отчищены";
     step = 0;
     setStep(step);// переходим к следующему шагу
+
+    addCheckBoxesInLastColumn(tableWidgetTot, checkBoxes);  // добавляем checkBox для таблицы истинности
+    // соединяем слот stateChenged
+    int rows = tableWidgetTot->rowCount();
+    for (int i=0; i<rows; i++)
+    {
+        connect(checkBoxes[i], &QCheckBox::stateChanged, this, &MainWindow::updateCheckBoxTotState); // соединяем сигнал изменения состояния с нажатием на кнопку добавить
+    }
+
     nextStep();
     nextStep(); // увеличваем шаг на 2, из-за ошибки
 
     setSklykiResultTableColor(tableWidgetTot);  // делаем таблицу более тусклой
+
 }
 
 void MainWindow::criticalError(QString error)
@@ -691,10 +701,10 @@ void MainWindow::setTableStepenTwo(int stepen)
         //        qDebug() << i << QString::number(i, 16);
     }
     tableWidgetTot->setVerticalHeaderLabels(verticalList); // заполняем вертикальные заголовки
-    for (int i=0; i<rows; i++)
-    {
-        checkBoxes[i]->setVisible(true); // делаем видимыми нужное количество чекбоксов
-    }
+//    for (int i=0; i<rows; i++)
+//    {
+//        checkBoxes[i]->setVisible(true); // делаем видимыми нужное количество чекбоксов
+//    }
 }
 
 void MainWindow::setTableOfTrueNumbers()
@@ -994,6 +1004,32 @@ void MainWindow::setDefaultTableColor(QTableWidget *tableWidget)
     }
 }
 
+void MainWindow::setCheckBoxesTotFunctionValue()
+{
+    const int rows = tableWidgetTot->rowCount();
+    const int cols = tableWidgetTot->columnCount();
+    const int valueCol = cols-2;    // столбец со значением в 2 ССЧ
+    const int checkBoxCol = cols-1; // столбец с checkBox
+
+    if(checkBoxes != nullptr)
+    {
+        for (int i=0; i<rows; i++)
+        {
+            if(checkBoxes[i] != nullptr)
+            {
+                QTableWidgetItem *valueItem = tableWidgetTot->item(i, valueCol);        // элемент со значением функции
+                QTableWidgetItem *checkBoxItem = tableWidgetTot->item(i, checkBoxCol);  // элемент с checkBox
+
+                if(valueItem != nullptr && checkBoxItem != nullptr)
+                {
+                    checkBoxes[i]->setText(valueItem->text());      // заносим значение функции в checkBox
+                    checkBoxItem->setText("");      // очищаем текст в ячейке checkBox
+                }
+            }
+        }
+    }
+}
+
 
 //void MainWindow::pushButtonFunctionClicked()
 //{
@@ -1029,7 +1065,7 @@ void MainWindow::pushButtonFunc2Clicked()
     QStringList list = chislo.split(""); // разбиваем число на символы
     for (int i=0; i<rows; i++)
     {
-        setTWText(tableWidgetTot, i, cols-1, chislo.at(i));   // выводим значения в таблицу истинности
+        setTWText(tableWidgetTot, i, cols-2, chislo.at(i));   // выводим значения в таблицу истинности
     }
     message("Число, полученное в 2 системе счисления добавлено в таблицу истинности. Для проверки правильности воспользуйтесь кнопкой проверка табилцы истинности.");
     //    nextStep(); // переходим к следующему шагу
@@ -1412,7 +1448,7 @@ void MainWindow::on_lineEdit_func_2_textChanged(const QString &arg1)
         {
             itemText = inputString.at(i);
         }
-        setTWText(tableWidgetTot, i, cols-1, itemText);   // выводим значения в таблицу истинности
+        setTWText(tableWidgetTot, i, cols-2, itemText);   // выводим значения в таблицу истинности
     }
     //    message("Число, полученное в 2 системе счисления добавлено в таблицу истинности. Для проверки правильности воспользуйтесь кнопкой проверка табилцы истинности.");
     //    nextStep(); // переходим к следующему шагу
@@ -1579,11 +1615,17 @@ void MainWindow::on_pushButton_checkTableOfTrue_clicked()
         message(); // если правильно
         step++; // увеличиваем шаг на 1
         setStep(step);// переходим к следующему шагу
+
+        setCheckBoxesTotFunctionValue();    // задаем значения для checkBox как у функции
     }
     else
     {
         warningError(); // если ошибка
     }
+
+    // выравниваем ширину и высоту ячеек по контенту
+//    tableWidgetTot->resizeColumnsToContents();
+//    tableWidgetTot->resizeRowsToContents();
 }
 
 
@@ -1760,9 +1802,12 @@ void MainWindow::on_tableWidget_kartaMinimizacii_cellDoubleClicked(int row, int 
 void MainWindow::on_pushButton_tot_add_clicked()
 {
     qDebug() << "call pushButtonTotAddClicked()";
-    bool add[16]; // проверяем, добавляет ли пользователь строку или нет для склейки
+    int rows = tableWidgetTot->rowCount();
+    int cols = tableWidgetTot->columnCount() - 2;   // последние 2 колонки - это значение функции
+
+    bool *add = new bool [rows]; // проверяем, добавляет ли пользователь строку или нет для склейки
     int countChecked = 0; // переменная для подсчёта, сколько элементов выбрано
-    for (int i=0; i<16; i++)
+    for (int i=0; i<rows; i++)
     {
         add[i] = checkBoxes[i]->isChecked(); // Заносим данные о состоянии чекбоксов
         countChecked += static_cast<int>(checkBoxes[i]->isChecked()); // если галочка стоит, то будет +1
@@ -1772,10 +1817,9 @@ void MainWindow::on_pushButton_tot_add_clicked()
     {
         tableWidgetOnesOnlyEditing->setRowCount(0);
 //        warningError("Ошибка! Выберите значения!");
+        delete [] add;
         return;
     }
-    int rows = tableWidgetTot->rowCount();
-    int cols = tableWidgetTot->columnCount() - 1;
     //    ui->tableWidget_one_only->setRowCount(rows);
     tableWidgetOnesOnlyEditing->setColumnCount(cols);
     int c = 0; // счетчкис заполненых строк
@@ -1792,6 +1836,8 @@ void MainWindow::on_pushButton_tot_add_clicked()
             c++; // увеличиваем значение счётчика
         }
     }
+
+    delete [] add;
 
     setSklykiResultTableColor(tableWidgetOnesOnlyEditing);  // делаем приглёшенный цвет
 }
@@ -1870,6 +1916,15 @@ void MainWindow::on_pushButton_nextStep_skleyki_2_clicked()
             }
         }
     }
+
+    for (int i=0; i<rows; i++)
+    {
+        delete [] tableText[i];
+        tableText[i] = nullptr;
+    }
+    delete [] tableText;
+    tableText = nullptr;
+
     int size = sortSkleikyList.size(); // получаем количество склеек в списке
     for (int i=0; i<size; i++)
     {
@@ -1883,4 +1938,5 @@ void MainWindow::on_pushButton_nextStep_skleyki_2_clicked()
     nextStep();
     //    int rows = tableWidgetsSkleyki[1]->rowCount(); // получаем количество строк
 }
+
 

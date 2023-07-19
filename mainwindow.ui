@@ -198,7 +198,7 @@ QLabel {
        <rect>
         <x>10</x>
         <y>90</y>
-        <width>221</width>
+        <width>261</width>
         <height>511</height>
        </rect>
       </property>
@@ -208,11 +208,23 @@ QLabel {
       <property name="editTriggers">
        <set>QAbstractItemView::NoEditTriggers</set>
       </property>
+      <property name="showGrid">
+       <bool>true</bool>
+      </property>
+      <property name="wordWrap">
+       <bool>true</bool>
+      </property>
       <attribute name="horizontalHeaderDefaultSectionSize">
        <number>39</number>
       </attribute>
+      <attribute name="horizontalHeaderStretchLastSection">
+       <bool>true</bool>
+      </attribute>
       <attribute name="verticalHeaderDefaultSectionSize">
        <number>30</number>
+      </attribute>
+      <attribute name="verticalHeaderStretchLastSection">
+       <bool>false</bool>
       </attribute>
       <row>
        <property name="text">
@@ -414,6 +426,9 @@ QLabel {
       <attribute name="horizontalHeaderDefaultSectionSize">
        <number>39</number>
       </attribute>
+      <attribute name="horizontalHeaderStretchLastSection">
+       <bool>true</bool>
+      </attribute>
       <attribute name="verticalHeaderDefaultSectionSize">
        <number>30</number>
       </attribute>
@@ -579,9 +594,9 @@ QLabel {
      <widget class="QGroupBox" name="groupBox">
       <property name="geometry">
        <rect>
-        <x>240</x>
+        <x>280</x>
         <y>110</y>
-        <width>91</width>
+        <width>51</width>
         <height>491</height>
        </rect>
       </property>
@@ -1876,6 +1891,7 @@ QLabel {
       <property name="font">
        <font>
         <pointsize>14</pointsize>
+        <weight>75</weight>
         <bold>true</bold>
        </font>
       </property>
@@ -1903,7 +1919,9 @@ QLabel {
       </property>
       <property name="font">
        <font>
+        <family>MS Shell Dlg 2</family>
         <pointsize>8</pointsize>
+        <weight>50</weight>
         <italic>false</italic>
         <bold>false</bold>
        </font>
@@ -1923,7 +1941,9 @@ QLabel {
       </property>
       <property name="font">
        <font>
+        <family>MS Shell Dlg 2</family>
         <pointsize>8</pointsize>
+        <weight>50</weight>
         <italic>false</italic>
         <bold>false</bold>
        </font>
@@ -1943,7 +1963,9 @@ QLabel {
       </property>
       <property name="font">
        <font>
+        <family>MS Shell Dlg 2</family>
         <pointsize>8</pointsize>
+        <weight>50</weight>
         <italic>false</italic>
         <bold>false</bold>
        </font>
@@ -1963,7 +1985,9 @@ QLabel {
       </property>
       <property name="font">
        <font>
+        <family>MS Shell Dlg 2</family>
         <pointsize>8</pointsize>
+        <weight>50</weight>
         <italic>false</italic>
         <bold>false</bold>
        </font>
@@ -1983,7 +2007,9 @@ QLabel {
       </property>
       <property name="font">
        <font>
+        <family>MS Shell Dlg 2</family>
         <pointsize>8</pointsize>
+        <weight>50</weight>
         <italic>false</italic>
         <bold>false</bold>
        </font>
@@ -2003,7 +2029,9 @@ QLabel {
       </property>
       <property name="font">
        <font>
+        <family>MS Shell Dlg 2</family>
         <pointsize>8</pointsize>
+        <weight>50</weight>
         <italic>false</italic>
         <bold>false</bold>
        </font>
@@ -2023,7 +2051,9 @@ QLabel {
       </property>
       <property name="font">
        <font>
+        <family>MS Shell Dlg 2</family>
         <pointsize>8</pointsize>
+        <weight>50</weight>
         <italic>false</italic>
         <bold>false</bold>
        </font>
@@ -2043,7 +2073,9 @@ QLabel {
       </property>
       <property name="font">
        <font>
+        <family>MS Shell Dlg 2</family>
         <pointsize>8</pointsize>
+        <weight>50</weight>
         <italic>false</italic>
         <bold>false</bold>
        </font>
@@ -2063,7 +2095,9 @@ QLabel {
       </property>
       <property name="font">
        <font>
+        <family>MS Shell Dlg 2</family>
         <pointsize>8</pointsize>
+        <weight>50</weight>
         <italic>false</italic>
         <bold>false</bold>
        </font>
@@ -2083,7 +2117,9 @@ QLabel {
       </property>
       <property name="font">
        <font>
+        <family>MS Shell Dlg 2</family>
         <pointsize>8</pointsize>
+        <weight>50</weight>
         <italic>false</italic>
         <bold>false</bold>
        </font>
@@ -2103,7 +2139,9 @@ QLabel {
       </property>
       <property name="font">
        <font>
+        <family>MS Shell Dlg 2</family>
         <pointsize>8</pointsize>
+        <weight>50</weight>
         <italic>false</italic>
         <bold>false</bold>
        </font>
@@ -2324,7 +2362,7 @@ QLabel {
        <string notr="true">background-color: rgba(240, 201, 201, 91);</string>
       </property>
       <property name="text">
-       <string>Выделить красным</string>
+       <string>Выделить ядро</string>
       </property>
      </widget>
      <widget class="QPushButton" name="pushButton_setGreenColor">
@@ -2540,7 +2578,7 @@ QLabel {
 </string>
       </property>
       <property name="text">
-       <string>Выделить зелёным</string>
+       <string>Выделить покрываемые</string>
       </property>
      </widget>
      <widget class="QPushButton" name="pushButton_setWhiteColor">
@@ -2553,7 +2591,7 @@ QLabel {
        </rect>
       </property>
       <property name="text">
-       <string>Выделить белым</string>
+       <string>Сбросить цвет выбранных</string>
       </property>
      </widget>
      <widget class="QPushButton" name="pushButton_notD">
@@ -2567,7 +2605,9 @@ QLabel {
       </property>
       <property name="font">
        <font>
+        <family>MS Shell Dlg 2</family>
         <pointsize>8</pointsize>
+        <weight>50</weight>
         <italic>false</italic>
         <bold>false</bold>
        </font>
@@ -2587,7 +2627,9 @@ QLabel {
       </property>
       <property name="font">
        <font>
+        <family>MS Shell Dlg 2</family>
         <pointsize>8</pointsize>
+        <weight>50</weight>
         <italic>false</italic>
         <bold>false</bold>
        </font>
@@ -2607,7 +2649,9 @@ QLabel {
       </property>
       <property name="font">
        <font>
+        <family>MS Shell Dlg 2</family>
         <pointsize>8</pointsize>
+        <weight>50</weight>
         <italic>false</italic>
         <bold>false</bold>
        </font>
@@ -2627,7 +2671,9 @@ QLabel {
       </property>
       <property name="font">
        <font>
+        <family>MS Shell Dlg 2</family>
         <pointsize>8</pointsize>
+        <weight>50</weight>
         <italic>false</italic>
         <bold>false</bold>
        </font>

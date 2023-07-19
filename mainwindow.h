@@ -181,7 +181,7 @@ private:
     void sortOnesCount(QTableWidget *tableWidgetInput); // сортировка значений по количеству в них 1
     QString createSkleyka(QString value1, QString value2, bool *ok = nullptr);  // функция создания склейки
     void addCheckBoxesInLastColumn(QTableWidget *tableWidget, QCheckBox **&checkBoxes);  // функция добавления checkBox в последний столбец таблицы
-
+//    void addCheckBoxesInLastColumn(QTableWidget *tableWidget, QCheckBox **&checkBoxes, Qt::ConnectionType &connectFunction);  // функция добавления checkBox в последний столбец таблицы, связывает сигнал изменения состояния
 
     // перемещение по этапам работы
     void setStep(int step); // устанавливает текущий этап, соответственно блокируя или разблокируя определенные поля
@@ -206,6 +206,7 @@ private:
     void setVariablesToHeader(QTableWidget *tbw); // функция, устаналивающая в качестве заголовков таблицы переменные (a, b, c, d)
     void setSklykiResultTableColor(QTableWidget *tableWidget); // делает текст в таблице более тусклым, фон - белый
     void setDefaultTableColor(QTableWidget *tableWidget); // делает текст в таблице чёрным, фон - белый
+    void setCheckBoxesTotFunctionValue();   // задает для chekBox в таблице истинности значения функции
 
     // сохранение данных в файл
     void saveDataToFile(); // функция сохранения данных в файл
