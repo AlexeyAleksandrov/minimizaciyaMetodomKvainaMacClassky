@@ -430,41 +430,41 @@ void MainWindow::createSkleyka(QTableWidget *tableWidgetInput, QCheckBox **check
     delete [] ones;
 }
 
-bool MainWindow::isContainsSkleyki(QStringList skleykiList, int numSkleyka)
-{
-    QStringList skleykaListByMNF; // список для хранения тех склеек, которые должны быть
-    if(numSkleyka == 1) // если мы на этапе 1й склейки
-    {
-        skleykaListByMNF = mdnf->getSkleyki1(typeMin); // записываем список всех склеек 1го этапа
-    }
-    if(numSkleyka == 2) // если мы на этапе 2й склейки
-    {
-        skleykaListByMNF = mdnf->getSkleyki2(typeMin); // записываем список всех склеек 2го этапа
-    }
-    if(numSkleyka == 3) // если мы на этапе 3й склейки
-    {
-        skleykaListByMNF = mdnf->getSkleyki3(typeMin); // записываем список всех склеек 3го этапа
-    }
-    return isAllElementsFirstQStrlingListContainsInSecondQStringList(skleykiList, skleykaListByMNF); // возвращаем результат поиска склейкит в списке, который должен быть
-//    bool ok = true; // флаг проверки наличия данной склейки в рассчитанном списке
-//    for (int i=0; i<skleykiList.size(); i++)  // сравниваем каждый элемент склейки
+//bool MainWindow::isContainsSkleyki(QStringList skleykiList, int numSkleyka)
+//{
+//    QStringList skleykaListByMNF; // список для хранения тех склеек, которые должны быть
+//    if(numSkleyka == 1) // если мы на этапе 1й склейки
 //    {
-//        bool contained = false;
-//        for (int j=0; j<skleykaListByMNF.size(); j++)  // с каждым, который должкен быть
-//        {
-//           if(skleykiList.at(i) == skleykaListByMNF.at(j)) // если элементы равны
-//           {
-//               contained = true; // сохраняем, что этот элемент найден
-//           }
-//        }
-//        if(!contained) // если элемент не содержится
-//        {
-//            ok = false; // то сохрняем, что есть ошибка
-//            break; // дальше нет смысла проверять
-//        }
+//        skleykaListByMNF = mdnf->getSkleyki1(typeMin); // записываем список всех склеек 1го этапа
 //    }
-//    return ok;
-}
+//    if(numSkleyka == 2) // если мы на этапе 2й склейки
+//    {
+//        skleykaListByMNF = mdnf->getSkleyki2(typeMin); // записываем список всех склеек 2го этапа
+//    }
+//    if(numSkleyka == 3) // если мы на этапе 3й склейки
+//    {
+//        skleykaListByMNF = mdnf->getSkleyki3(typeMin); // записываем список всех склеек 3го этапа
+//    }
+//    return isAllElementsFirstQStrlingListContainsInSecondQStringList(skleykiList, skleykaListByMNF); // возвращаем результат поиска склейкит в списке, который должен быть
+////    bool ok = true; // флаг проверки наличия данной склейки в рассчитанном списке
+////    for (int i=0; i<skleykiList.size(); i++)  // сравниваем каждый элемент склейки
+////    {
+////        bool contained = false;
+////        for (int j=0; j<skleykaListByMNF.size(); j++)  // с каждым, который должкен быть
+////        {
+////           if(skleykiList.at(i) == skleykaListByMNF.at(j)) // если элементы равны
+////           {
+////               contained = true; // сохраняем, что этот элемент найден
+////           }
+////        }
+////        if(!contained) // если элемент не содержится
+////        {
+////            ok = false; // то сохрняем, что есть ошибка
+////            break; // дальше нет смысла проверять
+////        }
+////    }
+////    return ok;
+//}
 
 void MainWindow::moveSkleyka(QTableWidget *tableWidgetInput, QCheckBox **checkBoxesInput, QTableWidget *&tableWidgetOutput, int numSkleyka)
 {
@@ -554,7 +554,7 @@ void MainWindow::moveSkleyka(QTableWidget *tableWidgetInput, QCheckBox **checkBo
         }
 
     }
-    qDebug() << "Результат проверки склеек " << numSkleyka << " - " << isContainsSkleyki(elements, numSkleyka);
+//    qDebug() << "Результат проверки склеек " << numSkleyka << " - " << isContainsSkleyki(elements, numSkleyka);
     for (int i=0; i<listOnesSize; i++)
     {
 //        qDebug() << i << checkBoxesInput[i]->isChecked();

@@ -35,7 +35,7 @@ MainWindow::MainWindow(QWidget *parent) :
     tabWidget = nullptr;
 
     // ставим отключение некотиорых кнопок, действие которых было заменено
-    ui->pushButton_tot_add->setVisible(false);
+//    ui->pushButton_tot_add->setVisible(false);
     ui->pushButton_func_2->setVisible(false);
     ui->checkBox_spiltToTetrads->setChecked(true);
 
@@ -237,13 +237,13 @@ MainWindow::MainWindow(QWidget *parent) :
     qDebug() << "Задаем видимость";
 
     qDebug() << "МДНФ";
-    mdnf = nullptr;
+//    mdnf = nullptr;
     qDebug() << "Обнуляем MDNF";
     tabWidget->setCurrentIndex(0);
 
     pushButton_func_2 = ui->pushButton_func_2;
     pushButton_checkTableOfTrue = ui->pushButton_checkTableOfTrue;
-    pushButton_tot_add = ui->pushButton_tot_add;
+//    pushButton_tot_add = ui->pushButton_tot_add;
     pushButton_proverka_oneOnly = ui->pushButton_proverka_oneOnly;
     pushButton_tot_add_to_skeyki_1 = ui->pushButton_tot_add_to_skeyki_1;
 //    pushButton_clear_skleiki_1_editing = ui->pushButton_clear_skleiki_1_editing;
@@ -345,19 +345,19 @@ void MainWindow::setFunction(QString function)
     setTableOfTrueNumbers(); // создаем таблицу истиности (заполняем числами от 0 до N в 2й ССЧ)
     // заносим в таблицу нашу функцию
     QStringList funcList = ch2.split(""); // разбиваем число в 2й ССЧ на символы
-    if(mdnf != nullptr)
-    {
-        delete mdnf;
-        mdnf = nullptr;
-    }
-    qDebug() << "Проверили mdnf";
-    mdnf = new mdnfMacKlassky; // создаем МДНФ
-    if(!mdnf->setFunction(function)) // если не удаётся рассчитать
-    {
-        QMessageBox::critical(this, "Program ERROR", "Неожиданная ошибка при вычислении МНФ!");
-        qDebug() << "Ошибка";
-        return;
-    }
+//    if(mdnf != nullptr)
+//    {
+//        delete mdnf;
+//        mdnf = nullptr;
+//    }
+//    qDebug() << "Проверили mdnf";
+//    mdnf = new mdnfMacKlassky; // создаем МДНФ
+//    if(!mdnf->setFunction(function)) // если не удаётся рассчитать
+//    {
+//        QMessageBox::critical(this, "Program ERROR", "Неожиданная ошибка при вычислении МНФ!");
+//        qDebug() << "Ошибка";
+//        return;
+//    }
     // =================================================================
     qDebug() << "Отчищаем талицы";
     clearTW(tableWidgetOnesOnly);
@@ -390,7 +390,7 @@ void MainWindow::setFunction(QString function)
     nextStep(); // увеличваем шаг на 2, из-за ошибки
 
     setSklykiResultTableColor(tableWidgetTot);  // делаем таблицу более тусклой
-
+    clearSelectionAdDisableClickTableWidget(tableWidgetTot);    // убираем выделение и блокируем таблицу
 }
 
 void MainWindow::criticalError(QString error)
@@ -537,10 +537,10 @@ void MainWindow::pushButton_clear_skleyki_3()
     clearTW(tableWidgetsSkleykiEditing[2]);
 }
 
-void MainWindow::pushButton_proverka_skleyki_3_clicked()
-{
-    proverkaTable(tableWidgetsSkleykiEditing[2], mdnf->getSkleyki3(typeMin));
-}
+//void MainWindow::pushButton_proverka_skleyki_3_clicked()
+//{
+//    proverkaTable(tableWidgetsSkleykiEditing[2], mdnf->getSkleyki3(typeMin));
+//}
 
 void MainWindow::pushButton_delete_last_skleiki_3_editingClicked()
 {
@@ -641,22 +641,7 @@ void MainWindow::setKartaColor(QColor color)
     }
 
     // убирам выделение
-    for (int i = 0; i < rows; ++i)
-    {
-        for (int j = 0; j < cols; ++j)
-        {
-            if(tableWidget_kartaMinimizacii->item(i, j) != nullptr) // если ячейка существует
-            {
-                if(tableWidget_kartaMinimizacii->item(i, j)->isSelected()) // если выделен
-                {
-                    QTableWidgetItem *item = ui->tableWidget_kartaMinimizacii->item(i, j);
-                    item->setFlags(item->flags()&0xfffffffd);
-                    ui->tableWidget_kartaMinimizacii->clearSelection();
-                    ui->tableWidget_kartaMinimizacii->setCurrentCell(-1, -1);
-                }
-            }
-        }
-    }
+    clearSelectionAdDisableClickTableWidget(ui->tableWidget_kartaMinimizacii);
 
     // показываем сообщение об ошибки выделения ядер
     if(showCoreErrorMessage)
@@ -833,17 +818,17 @@ void MainWindow::setTableOfTrueNumbers()
 
 }
 
-void MainWindow::on_pushButton_proverka_karta_minimizacii_clicked()
-{
-    if(proverkaItogMdnf())
-    {
-        message();
-    }
-    else
-    {
-        warningError();
-    }
-}
+//void MainWindow::on_pushButton_proverka_karta_minimizacii_clicked()
+//{
+//    if(proverkaItogMdnf())
+//    {
+//        message();
+//    }
+//    else
+//    {
+//        warningError();
+//    }
+//}
 
 void MainWindow::on_pushButton_proverka_karti_minimizacii_clicked()
 {
@@ -1118,6 +1103,30 @@ void MainWindow::setCheckBoxesTotFunctionValue()
     }
 }
 
+void MainWindow::clearSelectionAdDisableClickTableWidget(QTableWidget *tableWidget)
+{
+    int rows = tableWidget->rowCount();
+    int cols = tableWidget->columnCount();
+
+    // убирам выделение
+    for (int i = 0; i < rows; ++i)
+    {
+        for (int j = 0; j < cols; ++j)
+        {
+            QTableWidgetItem *item = tableWidget->item(i, j);
+            if(item != nullptr) // если ячейка существует
+            {
+//                if(item->isSelected()) // если выделен
+//                {
+                    item->setFlags(item->flags()&0xfffffffd);
+                    tableWidget->clearSelection();
+                    tableWidget->setCurrentCell(-1, -1);
+//                }
+            }
+        }
+    }
+}
+
 
 //void MainWindow::pushButtonFunctionClicked()
 //{
@@ -1259,23 +1268,23 @@ int MainWindow::getOptimizeType(QString func_2)
     qDebug() << "Исходная функция:" << func_2 << "Количество нулей: " << zeroCount << " Количество единиц: " << oneCount;
     if(zeroCount < oneCount) // если нулей больше, чем единиц
     {
-        if(mdnf != nullptr) // если объект мак класки создан
-        {
+//        if(mdnf != nullptr) // если объект мак класки создан
+//        {
 //            if(mdnf->canCalculateMnf(0)) // проверяем, можно-ли рассчитать МКНФ
 //            {
                 return 0;
 //            }
-        }
+//        }
     }
     if(zeroCount > oneCount) // если нулей меньше, чем единиц
     {
-        if(mdnf != nullptr) // если объект мак класки создан
-        {
+//        if(mdnf != nullptr) // если объект мак класки создан
+//        {
 //            if(mdnf->canCalculateMnf(1)) // проверяем, можно-ли рассчитать МДНФ
 //            {
                 return 1;
 //            }
-        }
+//        }
     }
     if(zeroCount == oneCount) // если количество равно
     {

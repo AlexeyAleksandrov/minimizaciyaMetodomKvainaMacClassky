@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>583</width>
+    <width>520</width>
     <height>697</height>
    </rect>
   </property>
@@ -56,7 +56,7 @@ QLineEdit {
      <rect>
       <x>20</x>
       <y>10</y>
-      <width>541</width>
+      <width>481</width>
       <height>671</height>
      </rect>
     </property>
@@ -142,7 +142,7 @@ QLabel {
      <widget class="QLineEdit" name="lineEdit_func_2">
       <property name="geometry">
        <rect>
-        <x>280</x>
+        <x>220</x>
         <y>30</y>
         <width>141</width>
         <height>22</height>
@@ -167,7 +167,7 @@ QLabel {
      <widget class="QLabel" name="label_5">
       <property name="geometry">
        <rect>
-        <x>240</x>
+        <x>180</x>
         <y>30</y>
         <width>31</width>
         <height>21</height>
@@ -377,7 +377,7 @@ QLabel {
        <rect>
         <x>10</x>
         <y>610</y>
-        <width>221</width>
+        <width>261</width>
         <height>23</height>
        </rect>
       </property>
@@ -385,25 +385,12 @@ QLabel {
        <string>Проверить таблицу</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButton_tot_add">
-      <property name="geometry">
-       <rect>
-        <x>240</x>
-        <y>610</y>
-        <width>75</width>
-        <height>23</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Добавить</string>
-      </property>
-     </widget>
      <widget class="QPushButton" name="pushButton_nextStep_tot">
       <property name="geometry">
        <rect>
-        <x>440</x>
+        <x>384</x>
         <y>610</y>
-        <width>75</width>
+        <width>81</width>
         <height>23</height>
        </rect>
       </property>
@@ -414,7 +401,7 @@ QLabel {
      <widget class="QTableWidget" name="tableWidget_one_only_editing">
       <property name="geometry">
        <rect>
-        <x>340</x>
+        <x>280</x>
         <y>90</y>
         <width>181</width>
         <height>511</height>
@@ -536,9 +523,9 @@ QLabel {
      <widget class="QPushButton" name="pushButton_proverka_oneOnly">
       <property name="geometry">
        <rect>
-        <x>350</x>
+        <x>280</x>
         <y>610</y>
-        <width>75</width>
+        <width>81</width>
         <height>23</height>
        </rect>
       </property>
@@ -549,7 +536,7 @@ QLabel {
      <widget class="QCheckBox" name="checkBox_spiltToTetrads">
       <property name="geometry">
        <rect>
-        <x>240</x>
+        <x>180</x>
         <y>60</y>
         <width>141</width>
         <height>17</height>
@@ -568,7 +555,7 @@ QLabel {
      <widget class="QLabel" name="label_3">
       <property name="geometry">
        <rect>
-        <x>240</x>
+        <x>180</x>
         <y>10</y>
         <width>131</width>
         <height>16</height>
@@ -591,234 +578,10 @@ QLabel {
        <string>16-е значение функции:</string>
       </property>
      </widget>
-     <widget class="QGroupBox" name="groupBox">
-      <property name="geometry">
-       <rect>
-        <x>280</x>
-        <y>110</y>
-        <width>51</width>
-        <height>491</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true"/>
-      </property>
-      <property name="title">
-       <string/>
-      </property>
-      <widget class="QCheckBox" name="checkBox_tot_15">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>460</y>
-         <width>31</width>
-         <height>20</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>+</string>
-       </property>
-      </widget>
-      <widget class="QCheckBox" name="checkBox_tot_9">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>280</y>
-         <width>31</width>
-         <height>20</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>+</string>
-       </property>
-      </widget>
-      <widget class="QCheckBox" name="checkBox_tot_13">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>400</y>
-         <width>31</width>
-         <height>20</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>+</string>
-       </property>
-      </widget>
-      <widget class="QCheckBox" name="checkBox_tot_4">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>130</y>
-         <width>31</width>
-         <height>20</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>+</string>
-       </property>
-      </widget>
-      <widget class="QCheckBox" name="checkBox_tot_0">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>10</y>
-         <width>31</width>
-         <height>20</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>+</string>
-       </property>
-      </widget>
-      <widget class="QCheckBox" name="checkBox_tot_10">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>310</y>
-         <width>31</width>
-         <height>20</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>+</string>
-       </property>
-      </widget>
-      <widget class="QCheckBox" name="checkBox_tot_6">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>190</y>
-         <width>31</width>
-         <height>20</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>+</string>
-       </property>
-      </widget>
-      <widget class="QCheckBox" name="checkBox_tot_12">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>370</y>
-         <width>31</width>
-         <height>20</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>+</string>
-       </property>
-      </widget>
-      <widget class="QCheckBox" name="checkBox_tot_14">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>430</y>
-         <width>31</width>
-         <height>20</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>+</string>
-       </property>
-      </widget>
-      <widget class="QCheckBox" name="checkBox_tot_2">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>70</y>
-         <width>31</width>
-         <height>20</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>+</string>
-       </property>
-      </widget>
-      <widget class="QCheckBox" name="checkBox_tot_1">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>40</y>
-         <width>31</width>
-         <height>20</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>+</string>
-       </property>
-      </widget>
-      <widget class="QCheckBox" name="checkBox_tot_7">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>220</y>
-         <width>31</width>
-         <height>20</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>+</string>
-       </property>
-      </widget>
-      <widget class="QCheckBox" name="checkBox_tot_5">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>160</y>
-         <width>31</width>
-         <height>20</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>+</string>
-       </property>
-      </widget>
-      <widget class="QCheckBox" name="checkBox_tot_8">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>250</y>
-         <width>31</width>
-         <height>20</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>+</string>
-       </property>
-      </widget>
-      <widget class="QCheckBox" name="checkBox_tot_3">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>100</y>
-         <width>31</width>
-         <height>20</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>+</string>
-       </property>
-      </widget>
-      <widget class="QCheckBox" name="checkBox_tot_11">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>340</y>
-         <width>31</width>
-         <height>20</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>+</string>
-       </property>
-      </widget>
-     </widget>
      <widget class="QPushButton" name="pushButton_help_1">
       <property name="geometry">
        <rect>
-        <x>480</x>
+        <x>420</x>
         <y>20</y>
         <width>41</width>
         <height>41</height>
@@ -1141,7 +904,7 @@ QLabel {
      <widget class="QPushButton" name="pushButton_help_2">
       <property name="geometry">
        <rect>
-        <x>480</x>
+        <x>390</x>
         <y>590</y>
         <width>41</width>
         <height>41</height>
@@ -1467,7 +1230,7 @@ QLabel {
      <widget class="QPushButton" name="pushButton_help_3">
       <property name="geometry">
        <rect>
-        <x>480</x>
+        <x>390</x>
         <y>590</y>
         <width>41</width>
         <height>41</height>
@@ -1793,7 +1556,7 @@ QLabel {
      <widget class="QPushButton" name="pushButton_help_4">
       <property name="geometry">
        <rect>
-        <x>480</x>
+        <x>390</x>
         <y>590</y>
         <width>41</width>
         <height>41</height>
@@ -1823,7 +1586,7 @@ QLabel {
        <rect>
         <x>40</x>
         <y>30</y>
-        <width>491</width>
+        <width>431</width>
         <height>301</height>
        </rect>
       </property>
@@ -1858,7 +1621,7 @@ QLabel {
        <rect>
         <x>40</x>
         <y>400</y>
-        <width>171</width>
+        <width>191</width>
         <height>23</height>
        </rect>
       </property>
@@ -1884,7 +1647,7 @@ QLabel {
        <rect>
         <x>40</x>
         <y>430</y>
-        <width>491</width>
+        <width>431</width>
         <height>71</height>
        </rect>
       </property>
@@ -2000,7 +1763,7 @@ QLabel {
       <property name="geometry">
        <rect>
         <x>200</x>
-        <y>510</y>
+        <y>540</y>
         <width>31</width>
         <height>23</height>
        </rect>
@@ -2022,7 +1785,7 @@ QLabel {
       <property name="geometry">
        <rect>
         <x>240</x>
-        <y>510</y>
+        <y>540</y>
         <width>31</width>
         <height>23</height>
        </rect>
@@ -2043,7 +1806,7 @@ QLabel {
      <widget class="QPushButton" name="pushButton_SKOBKA_BEFORE">
       <property name="geometry">
        <rect>
-        <x>280</x>
+        <x>200</x>
         <y>510</y>
         <width>31</width>
         <height>23</height>
@@ -2065,7 +1828,7 @@ QLabel {
      <widget class="QPushButton" name="pushButton_SKOBKA_AFTER">
       <property name="geometry">
        <rect>
-        <x>320</x>
+        <x>240</x>
         <y>510</y>
         <width>31</width>
         <height>23</height>
@@ -2087,7 +1850,7 @@ QLabel {
      <widget class="QPushButton" name="pushButton_INV">
       <property name="geometry">
        <rect>
-        <x>0</x>
+        <x>280</x>
         <y>510</y>
         <width>31</width>
         <height>23</height>
@@ -2109,7 +1872,7 @@ QLabel {
      <widget class="QPushButton" name="pushButton_DEL">
       <property name="geometry">
        <rect>
-        <x>360</x>
+        <x>350</x>
         <y>510</y>
         <width>81</width>
         <height>23</height>
@@ -2131,8 +1894,8 @@ QLabel {
      <widget class="QPushButton" name="pushButton_CLEAR">
       <property name="geometry">
        <rect>
-        <x>450</x>
-        <y>510</y>
+        <x>350</x>
+        <y>540</y>
         <width>81</width>
         <height>23</height>
        </rect>
@@ -2155,7 +1918,7 @@ QLabel {
        <rect>
         <x>40</x>
         <y>370</y>
-        <width>154</width>
+        <width>191</width>
         <height>23</height>
        </rect>
       </property>
@@ -2368,9 +2131,9 @@ QLabel {
      <widget class="QPushButton" name="pushButton_setGreenColor">
       <property name="geometry">
        <rect>
-        <x>200</x>
+        <x>260</x>
         <y>370</y>
-        <width>161</width>
+        <width>201</width>
         <height>23</height>
        </rect>
       </property>
@@ -2584,9 +2347,9 @@ QLabel {
      <widget class="QPushButton" name="pushButton_setWhiteColor">
       <property name="geometry">
        <rect>
-        <x>370</x>
-        <y>370</y>
-        <width>161</width>
+        <x>260</x>
+        <y>400</y>
+        <width>201</width>
         <height>23</height>
        </rect>
       </property>
@@ -2712,20 +2475,23 @@ QLabel {
       <property name="geometry">
        <rect>
         <x>40</x>
-        <y>340</y>
-        <width>501</width>
-        <height>16</height>
+        <y>330</y>
+        <width>401</width>
+        <height>41</height>
        </rect>
       </property>
       <property name="text">
        <string>Для выделения интервалов ставьте &quot;+&quot; с клавиатуры в соответствующие ячейки таблицы</string>
       </property>
+      <property name="wordWrap">
+       <bool>true</bool>
+      </property>
      </widget>
      <widget class="QPushButton" name="pushButton_help_5">
       <property name="geometry">
        <rect>
-        <x>480</x>
-        <y>590</y>
+        <x>430</x>
+        <y>600</y>
         <width>41</width>
         <height>41</height>
        </rect>
@@ -2752,26 +2518,9 @@ QLabel {
  <tabstops>
   <tabstop>lineEdit_func_2</tabstop>
   <tabstop>pushButton_checkTableOfTrue</tabstop>
-  <tabstop>checkBox_tot_0</tabstop>
-  <tabstop>checkBox_tot_1</tabstop>
-  <tabstop>checkBox_tot_2</tabstop>
-  <tabstop>checkBox_tot_3</tabstop>
-  <tabstop>checkBox_tot_4</tabstop>
-  <tabstop>checkBox_tot_5</tabstop>
-  <tabstop>checkBox_tot_6</tabstop>
-  <tabstop>checkBox_tot_7</tabstop>
-  <tabstop>checkBox_tot_8</tabstop>
-  <tabstop>checkBox_tot_9</tabstop>
-  <tabstop>checkBox_tot_10</tabstop>
-  <tabstop>checkBox_tot_11</tabstop>
-  <tabstop>checkBox_tot_12</tabstop>
-  <tabstop>checkBox_tot_13</tabstop>
-  <tabstop>checkBox_tot_14</tabstop>
-  <tabstop>checkBox_tot_15</tabstop>
   <tabstop>pushButton_proverka_oneOnly</tabstop>
   <tabstop>pushButton_nextStep_tot</tabstop>
   <tabstop>pushButton_enterFunction</tabstop>
-  <tabstop>pushButton_tot_add</tabstop>
   <tabstop>tabWidget</tabstop>
   <tabstop>lineEdit_function</tabstop>
   <tabstop>tableWidget_one_only_editing</tabstop>

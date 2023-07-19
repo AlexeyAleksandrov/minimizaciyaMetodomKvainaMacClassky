@@ -45,3 +45,105 @@ bool MainWindow::to16ssch(QString number2, QString &number16)
     number16 = QString::number(num10, 16);
     return true;
 }
+
+QStringList MainWindow::getSschTableList()
+{
+    // переводим число в 2 ССЧ
+    QString ch2;
+    if(!to2ssch(function_16, ch2)) // проверяем перевод в 2ю ССЧ
+    {
+        //СКРЫТО qDebug() << "Введена не 16-я функция!\nПроверьте правильность ввода!";
+//        error = "Введена не 16-я функция!\nПроверьте правильность ввода!";
+        return QStringList();
+    }
+    int razryad = function_16.count(); // поличество разрядов в исходном числе
+    //СКРЫТО qDebug() << ch2; // выводим результат перевода
+    //СКРЫТО qDebug() << "=======";
+    // заносим в таблицу нашу функцию
+    // определяем, сколько переменных нужно, чтобы описать функцию
+    QStringList funcList = ch2.split("", SPLITTER); // разбиваем число в 2й ССЧ на символы
+    int rowsTot = static_cast<int>(4 * razryad); // умножаем 4 (т.к. у нас 16-я ССЧ и она содержит по 4 двоичных разряда в числе) на количество разрядов числа и получаем количество строк
+    double stepen = log2(rowsTot); // получаем, в какую степень над овозвести число 2, чтобы получить такую длину числа
+    if(abs(stepen - static_cast<double>(static_cast<int>(stepen))) > 0.0) // если степень не целая
+    {
+        stepen = static_cast<double>(static_cast<int>(stepen)); // откидываем дробную часть
+        stepen += 1.0; // прибавляем 1
+    }
+    int colsTot = static_cast<int>(stepen) + 1;// количство столбцов равно степени в которую надо возвезти 2, чтобы получить количество строк + 1 для функции
+    if(!rowsTot || !colsTot)
+    {
+        return QStringList();
+    }
+    QStringList sschTableList;
+    for (int i=0; i<rowsTot; i++)
+    {
+        QString num = QString::number(i, 2); // перевод из 10 в 16
+        while (num.count() < colsTot-1) // пока количество разрядов меньше, чем количество колонок -1, т.к. последняя колонка это значение функции
+        {
+            num = "0" + num;
+        }
+        //СКРЫТО qDebug() << num;
+        sschTableList.append(num);
+    }
+    int sschTableListSize = sschTableList.size();
+    for (int i=0; i<sschTableListSize; i++)
+    {
+        sschTableList[i] = sschTableList[i] +  funcList[i]; // добавляем значение функции к элементу таблицы истинности
+    }
+    //СКРЫТО qDebug() << "закончено";
+//    allowTot = true; // сохраняем, что таблица истинности рассчитана
+    return sschTableList;
+}
+
+QStringList MainWindow::getListOnes(int type)
+{
+    // переводим число в 2 ССЧ
+    QString ch2;
+    if(!to2ssch(function_16, ch2)) // проверяем перевод в 2ю ССЧ
+    {
+        //СКРЫТО qDebug() << "Введена не 16-я функция!\nПроверьте правильность ввода!";
+//        error = "Введена не 16-я функция!\nПроверьте правильность ввода!";
+        return QStringList();
+    }
+    int razryad = function_16.count(); // поличество разрядов в исходном числе
+    //СКРЫТО qDebug() << ch2; // выводим результат перевода
+    //СКРЫТО qDebug() << "=======";
+    // заносим в таблицу нашу функцию
+    // определяем, сколько переменных нужно, чтобы описать функцию
+    QStringList funcList = ch2.split("", SPLITTER); // разбиваем число в 2й ССЧ на символы
+    int rowsTot = static_cast<int>(4 * razryad); // умножаем 4 (т.к. у нас 16-я ССЧ и она содержит по 4 двоичных разряда в числе) на количество разрядов числа и получаем количество строк
+    double stepen = log2(rowsTot); // получаем, в какую степень над овозвести число 2, чтобы получить такую длину числа
+    if(abs(stepen - static_cast<double>(static_cast<int>(stepen))) > 0.0) // если степень не целая
+    {
+        stepen = static_cast<double>(static_cast<int>(stepen)); // откидываем дробную часть
+        stepen += 1.0; // прибавляем 1
+    }
+    int colsTot = static_cast<int>(stepen) + 1;// количство столбцов равно степени в которую надо возвезти 2, чтобы получить количество строк + 1 для функции
+    if(!rowsTot || !colsTot)
+    {
+        return QStringList();
+    }
+    QStringList sschTableList;
+    for (int i=0; i<rowsTot; i++)
+    {
+        QString num = QString::number(i, 2); // перевод из 10 в 16
+        while (num.count() < colsTot-1) // пока количество разрядов меньше, чем количество колонок -1, т.к. последняя колонка это значение функции
+        {
+            num = "0" + num;
+        }
+        //СКРЫТО qDebug() << num;
+        sschTableList.append(num);
+    }
+    int sschTableListSize = sschTableList.size();
+    QStringList ones;
+    for (int i=0; i<sschTableListSize; i++)
+    {
+        if(funcList[i].toInt() == type)
+        {
+            ones.append(sschTableList[i]);  // добавляем значение функции к списку подходящих
+        }
+    }
+    //СКРЫТО qDebug() << "закончено";
+//    allowTot = true; // сохраняем, что таблица истинности рассчитана
+    return ones;
+}

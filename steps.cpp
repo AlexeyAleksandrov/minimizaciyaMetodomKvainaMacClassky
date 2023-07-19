@@ -28,7 +28,7 @@ void MainWindow::setStep(int step)
     pushButton_checkTableOfTrue->setEnabled(step == 2 || DISABLE_STEPS_INTERFACE_BLOCK);
     // этап 3 (выбор и првоерка значений функции, при которых она равна 1)
     stepName[2] = "выбор и проверка значений функции, при которых она равна 1";
-    pushButton_tot_add->setEnabled(step == 3 || DISABLE_STEPS_INTERFACE_BLOCK);
+//    pushButton_tot_add->setEnabled(step == 3 || DISABLE_STEPS_INTERFACE_BLOCK);
     (tableWidgetTot != nullptr && step == 3) ? setDefaultTableColor(tableWidgetTot) : setSklykiResultTableColor(tableWidgetTot);   // если этап выбора значений, то делаем таблицу белой, если другой - серой
     pushButton_proverka_oneOnly->setEnabled(step == 3 || DISABLE_STEPS_INTERFACE_BLOCK);
     if(checkBoxes != nullptr)

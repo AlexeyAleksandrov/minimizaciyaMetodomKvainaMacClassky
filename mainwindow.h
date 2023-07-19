@@ -57,6 +57,8 @@ public:
     void warningError(QString error = "Ошибка"); // выводим некритическую ошибку
     void message(QString message = "Правильно!", QString title = "Правильно");
     bool isAllElementsFirstQStrlingListContainsInSecondQStringList(QStringList firstList, QStringList secondList); // функция проверяет, содержатся ли все элементы первого спика во втором (может быть так. что первый список имеет 3 элемента, а второй 5, но если все 3 содержатся, то вернёт True)
+    QStringList getSschTableList();  // получить таблицу истинности для значения
+    QStringList getListOnes(int type);  // получить список значений для данного типа минимизации (все равны 0 или все равны 1)
 
     void setStudentName(const QString &value);
     void setStudentGroup(const QString &value);
@@ -99,7 +101,7 @@ private:
     QPushButton *pushButton_proverka_karti_minimizacii = nullptr; // кнопка проверки карты минимизации
     QPushButton *pushButton_func_2 = nullptr; // кнопка добавления функции записанной в 2м коде в таблицу истинности
     QPushButton *pushButton_checkTableOfTrue = nullptr; // кнопка првоерки таблицы истинности
-    QPushButton *pushButton_tot_add = nullptr; // кнопка переноса значений, при которых функция равна 1
+//    QPushButton *pushButton_tot_add = nullptr; // кнопка переноса значений, при которых функция равна 1
     QPushButton *pushButton_proverka_oneOnly = nullptr; // кнопка проверки значенйи при которых функция равна 1
     QPushButton *pushButton_tot_add_to_skeyki_1 = nullptr; // кнопкка добавления элементов для склейки 1
 //    QPushButton *pushButton_clear_skleiki_1_editing = nullptr; // кнопка удаления последней добавленной склейки
@@ -156,7 +158,7 @@ private:
     // tabWidget
     QTabWidget *tabWidget = nullptr;
 
-    mdnfMacKlassky *mdnf = nullptr; // создаем экзампляр МДНФ
+//    mdnfMacKlassky *mdnf = nullptr; // создаем экзампляр МДНФ
     LogicEditor *editor = nullptr;
 
     QColor *redColor = nullptr;
@@ -169,7 +171,7 @@ private:
     // работа со склейками
 //    void makeSkleyki(QStringList numbersList, QStringList &skleykiList); // функция, которая производит склейки
     void createSkleyka(QTableWidget *tableWidgetInput, QCheckBox **checkBoxesInput, QTableWidget *&tableWidgetOutput); // создать склейку на основе таблицыи и галочек и выводим в другую таблицу результат, numSkleika - это номер этапа склейки
-    bool isContainsSkleyki(QStringList skleykiList, int numSkleyka); // проверяет, все-ли склейки из списка содержатся в правильном варианте (true - все нормально, false - хотя бы одна не содержится)
+//    bool isContainsSkleyki(QStringList skleykiList, int numSkleyka); // проверяет, все-ли склейки из списка содержатся в правильном варианте (true - все нормально, false - хотя бы одна не содержится)
     void moveSkleyka(QTableWidget *tableWidgetInput, QCheckBox **checkBoxesInput, QTableWidget *&tableWidgetOutput, int numSkleyka); // перемещение выделенных элементов без склейки
     bool proverkaTable(QTableWidget *tableWidgetInput, QStringList listOfSkeyki, bool ignoreRedColor = false); // проверка склеек, ignoreRedColor - игнорировать строки с красным цветом (для повторящихся склеек)
     bool proverkaTable(QStringList listOfValues, QStringList listOfSkeyki); // проверяет, что все значения покрыты склейками
@@ -207,6 +209,7 @@ private:
     void setSklykiResultTableColor(QTableWidget *tableWidget); // делает текст в таблице более тусклым, фон - белый
     void setDefaultTableColor(QTableWidget *tableWidget); // делает текст в таблице чёрным, фон - белый
     void setCheckBoxesTotFunctionValue();   // задает для chekBox в таблице истинности значения функции
+    void clearSelectionAdDisableClickTableWidget(QTableWidget *tableWidget);    // блокирует ввод в ячейки и снимает выделение
 
     // сохранение данных в файл
     void saveDataToFile(); // функция сохранения данных в файл
@@ -248,7 +251,7 @@ private slots:
 
     // таблица с 3й склейкой
     void pushButton_clear_skleyki_3(); // кнопка отчистки таблицы со склейками 1
-    void pushButton_proverka_skleyki_3_clicked(); // кнопка проверки склейки 1
+//    void pushButton_proverka_skleyki_3_clicked(); // кнопка проверки склейки 1
     void pushButton_delete_last_skleiki_3_editingClicked(); // кнопка удаления последней добавленной склейки
     // карта покрытия
     void setKartaColor(QColor color); // задаёт цвет выделенным ячейкам карты покрытия
@@ -257,7 +260,7 @@ private slots:
     void on_pushButton_setGreenColor_clicked(); // то же самое, толлько зеленым не выделяются крысные ячейки
     void on_pushButton_setWhiteColor_clicked(); // белый нужен для сброса, если значение выделено по ошибке
 //    void pushButton_proverka_karta_minimizaciiClicked(); // кнопка проверки итоговой функции
-    void on_pushButton_proverka_karta_minimizacii_clicked();
+//    void on_pushButton_proverka_karta_minimizacii_clicked();
     void on_pushButton_proverka_karti_minimizacii_clicked();
 
     void on_pushButton_clear_skleiki_1_editing_clicked();
@@ -347,7 +350,7 @@ private: // функции проверки
     bool proverkaSkleyki2(); // функция проверки 2й склейки
     bool proverkaSkleyki3(); // функция проверки 3й склейки
     bool proverkaKartaMinimizacii(); //функция проверки карты минимизации
-    bool proverkaItogMdnf(); // функция проверки итоговой функции МДНФ
+//    bool proverkaItogMdnf(); // функция проверки итоговой функции МДНФ
     bool proverkaItogMdnfByKartaPokritiya(); // функция проверки итоговой функции МДНФ по карте покрытия
 
 private:
@@ -362,7 +365,7 @@ private:
     int file_step = -1; // переменная для хранения последнего шага, нужна при сорных ситуациях, например, склеек 3 нет, или их не должно быть
 
     FormResultCorrect *formResult = nullptr; // форма результата
-//    formProverkaAll *fpl = nullptr;
+    //    formProverkaAll *fpl = nullptr;
 };
 
 #endif // MAINWINDOW_H

@@ -3,12 +3,14 @@
 bool MainWindow::proverkaTableOfTrue()
 {
     allowSave = true; // разрешаем сохранение
-    return proverkaTable(tableWidgetTot, mdnf->getSschTableList());
+//    return proverkaTable(tableWidgetTot, mdnf->getSschTableList());
+    return proverkaTable(tableWidgetTot, getSschTableList());
 }
 
 bool MainWindow::proverkaOnesOnly()
 {
-    return proverkaTable(tableWidgetOnesOnlyEditing, mdnf->getListOnes(typeMin));
+//    return proverkaTable(tableWidgetOnesOnlyEditing, mdnf->getListOnes(typeMin));
+    return proverkaTable(tableWidgetOnesOnlyEditing, getListOnes(typeMin));
 }
 
 bool MainWindow::proverkaSkleyki(QTableWidget *tableValues, QTableWidget *tableSkleyki)
@@ -121,52 +123,52 @@ bool MainWindow::proverkaKartaMinimizacii()
     return true;
 }
 
-bool MainWindow::proverkaItogMdnf()
-{
-//    if(lineEdit_itogMdnf == nullptr)
+//bool MainWindow::proverkaItogMdnf()
+//{
+////    if(lineEdit_itogMdnf == nullptr)
+////    {
+////        qDebug() << "lineEdit_itogMdnf == nullptr";
+////        return false;
+////    }
+////    QString userMdnf = lineEdit_itogMdnf->text(); // получаем текст из строки, куда вводится МДНФ
+//    QString userMdnf = editor->getFormulaText(); // получаем формулу из редатора
+//    qDebug() << "МДНФ ввдённая пользователем:" << userMdnf;
+//    if(userMdnf.isEmpty()) // если строка пустая
 //    {
-//        qDebug() << "lineEdit_itogMdnf == nullptr";
+////        criticalError("Введите МДНФ в поле ввода!"); // выдаем ошибку
+//        qDebug() << "Не введена МДНФ";
 //        return false;
 //    }
-//    QString userMdnf = lineEdit_itogMdnf->text(); // получаем текст из строки, куда вводится МДНФ
-    QString userMdnf = editor->getFormulaText(); // получаем формулу из редатора
-    qDebug() << "МДНФ ввдённая пользователем:" << userMdnf;
-    if(userMdnf.isEmpty()) // если строка пустая
-    {
-//        criticalError("Введите МДНФ в поле ввода!"); // выдаем ошибку
-        qDebug() << "Не введена МДНФ";
-        return false;
-    }
-    int skobkaStartCount = 0; // переменная для подсчёта открывающихся скобок - (
-    int skobkaEndCount = 0; // переменная для подсчёта закрывающихся скобок - )
-    for (int i=0; i<userMdnf.count(); i++)
-    {
-        if(userMdnf.at(i) == "(")
-        {
-            skobkaStartCount++;
-        }
-        if(userMdnf.at(i) == ")")
-        {
-            skobkaEndCount++;
-        }
-    }
-    if(skobkaStartCount != skobkaEndCount) // если количество скобок разное
-    {
-        qDebug() << "Количество скобок разное " << skobkaStartCount << skobkaEndCount;
-//        warningError("Ошибка! Проверьте скобки!");
-        return false;
-    }
-    if(mdnf->isMnf(userMdnf, typeMin))
-    {
-//        message();
-        return true;
-    }
-    else
-    {
-//        warningError();
-        return false;
-    }
-}
+//    int skobkaStartCount = 0; // переменная для подсчёта открывающихся скобок - (
+//    int skobkaEndCount = 0; // переменная для подсчёта закрывающихся скобок - )
+//    for (int i=0; i<userMdnf.count(); i++)
+//    {
+//        if(userMdnf.at(i) == "(")
+//        {
+//            skobkaStartCount++;
+//        }
+//        if(userMdnf.at(i) == ")")
+//        {
+//            skobkaEndCount++;
+//        }
+//    }
+//    if(skobkaStartCount != skobkaEndCount) // если количество скобок разное
+//    {
+//        qDebug() << "Количество скобок разное " << skobkaStartCount << skobkaEndCount;
+////        warningError("Ошибка! Проверьте скобки!");
+//        return false;
+//    }
+//    if(mdnf->isMnf(userMdnf, typeMin))
+//    {
+////        message();
+//        return true;
+//    }
+//    else
+//    {
+////        warningError();
+//        return false;
+//    }
+//}
 
 // функция проверки итоговой функции МДНФ по карте покрытия
 bool MainWindow::proverkaItogMdnfByKartaPokritiya()
@@ -205,7 +207,7 @@ bool MainWindow::proverkaItogMdnfByKartaPokritiya()
     userMdnf.replace('+', 'v'); // переводим + в дизъюнкцию
     userMdnf.replace('*', '^'); // переводим * в коньюнкцию
 
-    QString separator = typeMin == TYPE_MKNF ? "^" : "v";   // если МКНФ, то разделитель - коньюнкция, если МДНФ - дизъюнкция
+    QString separator = (typeMin == TYPE_MKNF ? "^" : "v");   // если МКНФ, то разделитель - коньюнкция, если МДНФ - дизъюнкция
 
     if(typeMin == 0) // если тип МКНФ
     {
@@ -451,9 +453,6 @@ bool MainWindow::proverkaItogMdnfByKartaPokritiya()
 //        qDebug() << "Не все значения покрывают формулы покрывают значения функции!";
 //        return false;
 //    }
-
-    // ТУТ КОСТЫЛЬ - по хорошему надо разбить непокрытые значения на группы и понять, какие значения оптимальнее всего выбрать,
-    // чтобы использовать минимум переменных, но мы просто проверим, что введённые пользователем значения покрывают непокрытые
 
     // составим список склеек, которые могут покрыть непокрытые значения
     QStringList variativeSkleyki;
