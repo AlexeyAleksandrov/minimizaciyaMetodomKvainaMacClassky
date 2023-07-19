@@ -23,6 +23,7 @@ void MainWindow::setStep(int step)
     }
     pushButton_func_2->setEnabled((step == 1 || step == 2) || DISABLE_STEPS_INTERFACE_BLOCK);
     lineEditFunc_2->setDisabled((step < 0 || step > 2) || DISABLE_STEPS_INTERFACE_BLOCK);
+    checkBox_spiltToTetrads->setDisabled((step < 0 || step > 2) || DISABLE_STEPS_INTERFACE_BLOCK);
     // этап 2 (создание таблицы истинности)
     stepName[1] = "создание таблицы истинности";
     pushButton_checkTableOfTrue->setEnabled(step == 2 || DISABLE_STEPS_INTERFACE_BLOCK);

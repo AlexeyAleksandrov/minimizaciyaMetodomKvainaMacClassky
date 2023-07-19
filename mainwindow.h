@@ -153,6 +153,7 @@ private:
     // lineEdits
     QLineEdit *lineEditFunction = nullptr;
     QLineEdit *lineEditFunc_2 = nullptr;
+    QCheckBox *checkBox_spiltToTetrads = nullptr;
 //    QLineEdit *lineEdit_itogMdnf = nullptr;
 
     // tabWidget
@@ -210,6 +211,7 @@ private:
     void setDefaultTableColor(QTableWidget *tableWidget); // делает текст в таблице чёрным, фон - белый
     void setCheckBoxesTotFunctionValue();   // задает для chekBox в таблице истинности значения функции
     void clearSelectionAdDisableClickTableWidget(QTableWidget *tableWidget);    // блокирует ввод в ячейки и снимает выделение
+    bool checkKartaPokritiyaItem(int i, int j, QStringList &horizontalList, QStringList &verticalList);     // проверяет правильность расположения элемента в карте покрытия
 
     // сохранение данных в файл
     void saveDataToFile(); // функция сохранения данных в файл

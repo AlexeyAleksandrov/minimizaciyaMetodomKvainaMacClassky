@@ -54,6 +54,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     lineEditFunction = ui->lineEdit_function;
     lineEditFunc_2 = ui->lineEdit_func_2;
+    checkBox_spiltToTetrads = ui->checkBox_spiltToTetrads;
     //    lineEdit_itogMdnf = ui->lineEdit_itogMdnf;
 
     tabWidget = ui->tabWidget;
@@ -1127,6 +1128,54 @@ void MainWindow::clearSelectionAdDisableClickTableWidget(QTableWidget *tableWidg
     }
 }
 
+bool MainWindow::checkKartaPokritiyaItem(int i, int j, QStringList &horizontalList, QStringList &verticalList)
+{
+    qDebug() << "Цикл " << i << j;
+    int count_v = verticalList[i].count(); // количество символов в элементе столбца
+    int count_h = horizontalList[j].count(); // количество символов в элементе строки
+    if(count_v != count_h) // если количество символов почему-то не совпадает
+    {
+        qDebug() << "Не совпадает количество элементов строки/столбца" << i << j;
+        return false;
+    }
+    qDebug() << "Проверили на совпадение количества символов";
+//            bool *ok = new bool [count_v]; // есть ли совпадение в этом столбце с этой строкой
+    int sovpadenie = 0;
+    for (int k=0; k<count_v; k++) // проходим по каждому символу
+    {
+//                qDebug() << "k =" << k << verticalList[i] << horizontalList[j];
+        bool ok = ((verticalList[i].at(k) == "X") || (verticalList[i].at(k) == horizontalList[j].at(k))); // сохраняем результат сравнения (true/false)
+        sovpadenie += static_cast<int>(ok); // прибавляем результат (+1 если true, +0 если false)
+    }
+    qDebug() << "Посчитали совпадение";
+    QTableWidgetItem *item = tableWidgetKartaMinimizacii->item(i, j); // создаем указатель на ячейку
+    if(item == nullptr)
+    {
+        qDebug() << "Ячейка не существует! Столбец" << j << ", строка" << i;
+        return false;
+    }
+    if(sovpadenie == count_h) // если все символы совпадают
+    {
+        if(item->text() != "+") // но в карте минимизации этого + нет
+        {
+            qDebug() << "Ошибка! " <<  verticalList[i] << horizontalList[j] << "символы совпадают, но нет +";
+//                    warningError();
+            return false;
+        }
+    }
+    else // если символы не совпадают, т.е. + быть не должно
+    {
+        if(item->text() == "+") // но в карте минимизации + есть
+        {
+            qDebug() << "Ошибка! " <<  verticalList[i] << horizontalList[j] << "не должно быть +";
+//                    warningError();
+            return false;
+        }
+    }
+    qDebug() << "Значение подходит";
+    return true;
+}
+
 
 //void MainWindow::pushButtonFunctionClicked()
 //{
@@ -1880,14 +1929,47 @@ void MainWindow::on_tableWidget_kartaMinimizacii_cellDoubleClicked(int row, int 
 
         if(item != nullptr)
         {
-            if (item->text().isEmpty())
+            if(item->text() != "+")
             {
-                item->setText("+");
+                QString nextItemText;
+                if (item->text().isEmpty())
+                {
+                    nextItemText = "+";
+                }
+                else
+                {
+                    nextItemText = "";
+                }
+
+                item->setText(nextItemText);
+
+                // проверяем, должен ли в этой ячейке быть + или нет
+                int rows = tableWidgetKartaMinimizacii->rowCount(); // получаем количество строк
+                int cols = tableWidgetKartaMinimizacii->columnCount(); // получаем количество строк
+
+                QStringList horizontalList; // создаем список заголовков столбцов
+                for (int i=0; i<cols; i++)
+                {
+                    horizontalList.append(tableWidgetKartaMinimizacii->horizontalHeaderItem(i)->text());
+                }
+                QStringList verticalList; // создаем список заголовков строк
+                for (int i=0; i<rows; i++)
+                {
+                    verticalList.append(tableWidgetKartaMinimizacii->verticalHeaderItem(i)->text());
+                }
+
+                bool result = checkKartaPokritiyaItem(row, column, horizontalList, verticalList);
+                if(!result)  // если расположение + неправильное
+                {
+                    item->setText("");
+                    ui->tableWidget_kartaMinimizacii->setCurrentCell(-1, -1);
+//                    warningError("Данное значение не покрывавется выбранной склейкой!");
+                }
             }
-            else
-            {
-                item->setText("");
-            }
+
+            item->setFlags(item->flags()&0xfffffffd);
+            ui->tableWidget_kartaMinimizacii->clearSelection();
+            ui->tableWidget_kartaMinimizacii->setCurrentCell(-1, -1);
         }
 
 //        ui->tableWidget_kartaMinimizacii->clearSelection();

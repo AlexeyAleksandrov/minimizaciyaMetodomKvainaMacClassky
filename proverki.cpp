@@ -76,47 +76,10 @@ bool MainWindow::proverkaKartaMinimizacii()
     {
         for (int j=0; j<cols; j++)
         {
-            qDebug() << "Цикл " << i << j;
-            int count_v = verticalList[i].count(); // количество символов в элементе столбца
-            int count_h = horizontalList[j].count(); // количество символов в элементе строки
-            if(count_v != count_h) // если количество символов почему-то не совпадает
+            bool result = checkKartaPokritiyaItem(i, j, horizontalList, verticalList);
+            if(!result)
             {
-                qDebug() << "Не совпадает количество элементов строки/столбца" << i << j;
                 return false;
-            }
-            qDebug() << "Проверили на совпадение количества символов";
-//            bool *ok = new bool [count_v]; // есть ли совпадение в этом столбце с этой строкой
-            int sovpadenie = 0;
-            for (int k=0; k<count_v; k++) // проходим по каждому символу
-            {
-//                qDebug() << "k =" << k << verticalList[i] << horizontalList[j];
-                bool ok = ((verticalList[i].at(k) == "X") || (verticalList[i].at(k) == horizontalList[j].at(k))); // сохраняем результат сравнения (true/false)
-                sovpadenie += static_cast<int>(ok); // прибавляем результат (+1 если true, +0 если false)
-            }
-            qDebug() << "Посчитали совпадение";
-            QTableWidgetItem *item = tableWidgetKartaMinimizacii->item(i, j); // создаем указатель на ячейку
-            if(item == nullptr)
-            {
-                qDebug() << "Ячейка не существует! Столбец" << j << ", строка" << i;
-                return false;
-            }
-            if(sovpadenie == count_h) // если все символы совпадают
-            {
-                if(item->text() != "+") // но в карте минимизации этого + нет
-                {
-                    qDebug() << "Ошибка! " <<  verticalList[i] << horizontalList[j] << "символы совпадают, но нет +";
-//                    warningError();
-                    return false;
-                }
-            }
-            else // если символы не совпадают, т.е. + быть не должно
-            {
-                if(item->text() == "+") // но в карте минимизации + есть
-                {
-                    qDebug() << "Ошибка! " <<  verticalList[i] << horizontalList[j] << "не должно быть +";
-//                    warningError();
-                    return false;
-                }
             }
         }
     }
