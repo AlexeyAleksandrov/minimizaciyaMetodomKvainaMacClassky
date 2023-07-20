@@ -3,13 +3,11 @@
 bool MainWindow::proverkaTableOfTrue()
 {
     allowSave = true; // разрешаем сохранение
-//    return proverkaTable(tableWidgetTot, mdnf->getSschTableList());
     return proverkaTable(tableWidgetTot, getSschTableList());
 }
 
 bool MainWindow::proverkaOnesOnly()
 {
-//    return proverkaTable(tableWidgetOnesOnlyEditing, mdnf->getListOnes(typeMin));
     return proverkaTable(tableWidgetOnesOnlyEditing, getListOnes(typeMin));
 }
 
@@ -32,19 +30,16 @@ bool MainWindow::proverkaSkleyki(QTableWidget *tableValues, QTableWidget *tableS
 bool MainWindow::proverkaSkleyki1()
 {
     return proverkaSkleyki(tablesWidgetOnes[0], tableWidgetsSkleykiEditing[0]);
-//    return proverkaTable(tableWidgetsSkleykiEditing[0], mdnf->getSkleyki1(typeMin), true);
 }
 
 bool MainWindow::proverkaSkleyki2()
 {
     return proverkaSkleyki(tablesWidgetOnes[1], tableWidgetsSkleykiEditing[1]);
-//    return proverkaTable(tableWidgetsSkleykiEditing[1], mdnf->getSkleyki2(typeMin), true);
 }
 
 bool MainWindow::proverkaSkleyki3()
 {
     return proverkaSkleyki(tablesWidgetOnes[2], tableWidgetsSkleykiEditing[2]);
-//    return proverkaTable(tableWidgetsSkleykiEditing[2], mdnf->getSkleyki3(typeMin), true);
 }
 
 bool MainWindow::proverkaKartaMinimizacii()
@@ -86,53 +81,6 @@ bool MainWindow::proverkaKartaMinimizacii()
     return true;
 }
 
-//bool MainWindow::proverkaItogMdnf()
-//{
-////    if(lineEdit_itogMdnf == nullptr)
-////    {
-////        qDebug() << "lineEdit_itogMdnf == nullptr";
-////        return false;
-////    }
-////    QString userMdnf = lineEdit_itogMdnf->text(); // получаем текст из строки, куда вводится МДНФ
-//    QString userMdnf = editor->getFormulaText(); // получаем формулу из редатора
-//    qDebug() << "МДНФ ввдённая пользователем:" << userMdnf;
-//    if(userMdnf.isEmpty()) // если строка пустая
-//    {
-////        criticalError("Введите МДНФ в поле ввода!"); // выдаем ошибку
-//        qDebug() << "Не введена МДНФ";
-//        return false;
-//    }
-//    int skobkaStartCount = 0; // переменная для подсчёта открывающихся скобок - (
-//    int skobkaEndCount = 0; // переменная для подсчёта закрывающихся скобок - )
-//    for (int i=0; i<userMdnf.count(); i++)
-//    {
-//        if(userMdnf.at(i) == "(")
-//        {
-//            skobkaStartCount++;
-//        }
-//        if(userMdnf.at(i) == ")")
-//        {
-//            skobkaEndCount++;
-//        }
-//    }
-//    if(skobkaStartCount != skobkaEndCount) // если количество скобок разное
-//    {
-//        qDebug() << "Количество скобок разное " << skobkaStartCount << skobkaEndCount;
-////        warningError("Ошибка! Проверьте скобки!");
-//        return false;
-//    }
-//    if(mdnf->isMnf(userMdnf, typeMin))
-//    {
-////        message();
-//        return true;
-//    }
-//    else
-//    {
-////        warningError();
-//        return false;
-//    }
-//}
-
 // функция проверки итоговой функции МДНФ по карте покрытия
 bool MainWindow::proverkaItogMdnfByKartaPokritiya()
 {
@@ -147,24 +95,13 @@ bool MainWindow::proverkaItogMdnfByKartaPokritiya()
     }
     int skobkaStartCount = userMdnf.count("("); // переменная для подсчёта открывающихся скобок - (
     int skobkaEndCount = userMdnf.count(")"); // переменная для подсчёта закрывающихся скобок - )
-//    for (int i=0; i<userMdnf.count(); i++)
-//    {
-//        if(userMdnf.at(i) == "(")
-//        {
-//            skobkaStartCount++;
-//        }
-//        if(userMdnf.at(i) == ")")
-//        {
-//            skobkaEndCount++;
-//        }
-//    }
+
     if(skobkaStartCount != skobkaEndCount) // если количество скобок разное
     {
         qDebug() << "Количество скобок разное " << skobkaStartCount << skobkaEndCount;
         //        warningError("Ошибка! Проверьте скобки!");
         return false;
     }
-    // ДОБАВИТЬ СЮДА ПРОВЕРКУ НА КОРРЕКТНОСТЬ САМОЙ ФОРМУЛЫ
 
     // превращаем нашу формулу в список наборов цифр - т.е. a^b^!c^d -> 1101
     userMdnf.replace('+', 'v'); // переводим + в дизъюнкцию

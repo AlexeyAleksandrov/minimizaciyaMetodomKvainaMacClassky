@@ -10,7 +10,7 @@
 #include <QLineEdit>
 #include <QTabWidget>
 #include <math.h>
-#include "mdnfmacklassky.h"
+//#include "mdnfmacklassky.h"
 #include <QFile>
 #include <QTextStream>
 #include "logiceditor.h"
@@ -33,6 +33,14 @@
 
 //#define CHECK_VALUES_MADE_SKLEYKA   // флаг необходимости проверять, что оба элемента, с которыми мы пытаемся выплнить склейку, уже участвовали в её создании
 //#define CHECK_OPTIMAL_SKLEYKA       // флаг, который включает проверку, что оба элемента, из которых пытаемся сделать склейку, не участвовали в склейке, или нет других вариантов, при которых возможно создание склейки из только непрошедших склейку, значений
+
+// автоматический define сплиттера, в зависимости от версии компилятора
+// если не произошла проблема, исправь версию. Чтобы узнать версию используй QString::number(QT_VERSION, 16)
+#if QT_VERSION >= 0x050f00 // версия Qt 5.15.0
+#define SPLITTER Qt::SplitBehavior(Qt::SkipEmptyParts)
+#else
+#define SPLITTER QString::SkipEmptyParts
+#endif
 
 namespace Ui {
 class MainWindow;
@@ -172,8 +180,9 @@ private:
     // работа со склейками
 //    void makeSkleyki(QStringList numbersList, QStringList &skleykiList); // функция, которая производит склейки
     void createSkleyka(QTableWidget *tableWidgetInput, QCheckBox **checkBoxesInput, QTableWidget *&tableWidgetOutput); // создать склейку на основе таблицыи и галочек и выводим в другую таблицу результат, numSkleika - это номер этапа склейки
+    void makeSkleyki(QStringList numbersList, QStringList &skleykiList, bool &wasSkleyka);  // функция создания склейки
 //    bool isContainsSkleyki(QStringList skleykiList, int numSkleyka); // проверяет, все-ли склейки из списка содержатся в правильном варианте (true - все нормально, false - хотя бы одна не содержится)
-    void moveSkleyka(QTableWidget *tableWidgetInput, QCheckBox **checkBoxesInput, QTableWidget *&tableWidgetOutput, int numSkleyka); // перемещение выделенных элементов без склейки
+    void moveSkleyka(QTableWidget *tableWidgetInput, QCheckBox **checkBoxesInput, QTableWidget *&tableWidgetOutput); // перемещение выделенных элементов без склейки
     bool proverkaTable(QTableWidget *tableWidgetInput, QStringList listOfSkeyki, bool ignoreRedColor = false); // проверка склеек, ignoreRedColor - игнорировать строки с красным цветом (для повторящихся склеек)
     bool proverkaTable(QStringList listOfValues, QStringList listOfSkeyki); // проверяет, что все значения покрыты склейками
     bool proverkaAllSkleykiInTable(QStringList listOfValues, QStringList listOfSkeyki); // проверяет, что все созданы все возможные склейки
@@ -199,8 +208,8 @@ private:
     void clearTW(QTableWidget *&tableWidget); // очищает tableWidget
     bool getTWItemText(QTableWidget *&tableWidget, int row, int col, QString &outputString); // получает текст из конкретной ячейки таблицы
     bool getTWTextList(QTableWidget *&tableWidget, QStringList &outputList); // значение строк таблицы как QStringList
-    void addRow(QTableWidget *&tableWidget, QStringList rowList, int colorRed = -1, int colorGreen = -1, int colorBlue = -1); // создает в таблице строку и выводит в неё элементы списка. Дополнительно можно передать цвет для закраски строки
-    void addRow(QTableWidget *&tableWidget, QStringList rowList, QColor color); // создает в таблице строку и выводит в неё элементы списка. Дополнительно можно передать цвет для закраски строки
+    void addRow(QTableWidget *&tableWidget, QStringList rowList); // создает в таблице строку и выводит в неё элементы списка. Дополнительно можно передать цвет для закраски строки
+//    void addRow(QTableWidget *&tableWidget, QStringList rowList, QColor color); // создает в таблице строку и выводит в неё элементы списка. Дополнительно можно передать цвет для закраски строки
     void copyTableWidget(QTableWidget *tableWidgetInput, QTableWidget *&tableWidgetOutput, bool skipIdenticalLines); //  skipIdenticalLines - Пропуск одинаковых стролк
     void deletelastRow(QTableWidget *&tableWidget); // удаляет последнюю строчку в таблице
     QString getQStringByTableWidget(QTableWidget *tableWidget, bool saveLineColor = false); // получить данные из таблицы в виде строки

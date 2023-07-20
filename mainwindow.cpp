@@ -1394,17 +1394,17 @@ void MainWindow::pushButtonClearOneOnlyClicked()
 void MainWindow::on_pushButton_tot_move_to_skeyki_1_clicked()
 {
     qDebug() << "Нажато!";
-    moveSkleyka(tableWidgetOnesOnly, checkBoxes_ones, tableWidgetsSkleykiEditing[0], 1); // переносим выделенные элементы без склейки
+    moveSkleyka(tableWidgetOnesOnly, checkBoxes_ones, tableWidgetsSkleykiEditing[0]); // переносим выделенные элементы без склейки
 }
 
 void MainWindow::on_pushButton_tot_move_to_skeyki_2_clicked()
 {
-    moveSkleyka(tableWidgetsSkleyki[0], checkBoxes_skleyki_1, tableWidgetsSkleykiEditing[1], 2); // переносим выделенные элементы без склейки
+    moveSkleyka(tableWidgetsSkleyki[0], checkBoxes_skleyki_1, tableWidgetsSkleykiEditing[1]); // переносим выделенные элементы без склейки
 }
 
 void MainWindow::on_pushButton_tot_move_to_skeyki_3_clicked()
 {
-    moveSkleyka(tableWidgetsSkleyki[1], checkBoxes_skleyki_2, tableWidgetsSkleykiEditing[2], 3); // переносим выделенные элементы без склейки
+    moveSkleyka(tableWidgetsSkleyki[1], checkBoxes_skleyki_2, tableWidgetsSkleykiEditing[2]); // переносим выделенные элементы без склейки
 }
 
 void MainWindow::on_pushButton_setRedColor_clicked()
@@ -1826,6 +1826,14 @@ void MainWindow::on_pushButton_nextStep_onesOnly_clicked()
             }
         }
     }
+
+    for (int i=0; i<rows; i++)
+    {
+        delete [] tableText[i];
+    }
+    delete [] tableText;
+    tableText = nullptr;
+
     // ищём повторящиеся элементы (из-за несовсем корректной работы группировщика)
     for (int i=0; i<sortSkleikyList.size(); i++)
     {

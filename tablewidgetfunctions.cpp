@@ -219,7 +219,7 @@ bool MainWindow::getTWTextList(QTableWidget *&tableWidget, QStringList &outputLi
     return true;
 }
 
-void MainWindow::addRow(QTableWidget *&tableWidget, QStringList rowList, int colorRed, int colorGreen, int colorBlue)
+void MainWindow::addRow(QTableWidget *&tableWidget, QStringList rowList)
 {
     if(tableWidget == nullptr)
     {
@@ -243,10 +243,10 @@ void MainWindow::addRow(QTableWidget *&tableWidget, QStringList rowList, int col
     center_text_in_table(tableWidget); // выравниваем ячейки
 }
 
-void MainWindow::addRow(QTableWidget *&tableWidget, QStringList rowList, QColor color)
-{
-    addRow(tableWidget, rowList, color.red(), color.green(), color.blue());
-}
+//void MainWindow::addRow(QTableWidget *&tableWidget, QStringList rowList, QColor color)
+//{
+//    addRow(tableWidget, rowList);
+//}
 
 void MainWindow::createSkleyka(QTableWidget *tableWidgetInput, QCheckBox **checkBoxesInput, QTableWidget *&tableWidgetOutput)
 {
@@ -309,10 +309,7 @@ void MainWindow::createSkleyka(QTableWidget *tableWidgetInput, QCheckBox **check
     QStringList skleykaList; // получаем результат склейки
 
     bool maked = false;
-    mdnfMacKlassky *mmk = new mdnfMacKlassky;
-    mmk->makeSkleyki(elements, skleykaList, maked); // производим склейку 2х элементов
-    delete mmk;
-    mmk = nullptr;
+    makeSkleyki(elements, skleykaList, maked); // производим склейку 2х элементов
 
 //    if(countChecked == 1) // если элемент всего 1
 //    {
@@ -381,7 +378,7 @@ void MainWindow::createSkleyka(QTableWidget *tableWidgetInput, QCheckBox **check
         // добавляем
         if(adding) // если склейка еще не соджержится
         {
-           addRow(tableWidgetOutput, skleyka.split("", SPLITTER), Qt::white);  // добавляем склейку
+           addRow(tableWidgetOutput, skleyka.split("", SPLITTER));  // добавляем склейку
         }
         else // если элемент уже есть
         {
@@ -430,6 +427,194 @@ void MainWindow::createSkleyka(QTableWidget *tableWidgetInput, QCheckBox **check
     delete [] ones;
 }
 
+void MainWindow::makeSkleyki(QStringList numbersList, QStringList &skleykiList, bool &wasSkleyka)
+{
+    QStringList listFunc = numbersList; // объявляем для удобства
+    int sizeFunc = listFunc.size(); // поулчаем размер списка чисел
+    // первичные проверки
+    if(sizeFunc <= 0)
+    {
+        return;
+    }
+    int razryad = listFunc[0].count(); // получаем количество символов в одном числе
+    if(razryad <= 0)
+    {
+        return;
+    }
+    for (int i=0; i<sizeFunc; i++)
+    {
+        if(numbersList[i].count() != razryad) // если где-то есть пустоты, значит данные ошибочны
+        {
+            //СКРЫТО qDebug() << "Разряды числа " << numbersList[i] << " не равны количеству разрядов " << razryad << i;
+            //СКРЫТО qDebug() << "Разрядность: " << listFunc[0];
+            return;
+        }
+    }
+    // разбиваем на разряды для поиска тех, которые можно склеить
+    QString **elementsOnes = nullptr;
+//    QString **elementsOnes = new QString *[sizeFunc]; // создаём двумерный массив для хранения разрядов
+    try
+    {
+        elementsOnes = new QString *[sizeFunc]; // создаём двумерный массив для хранения разрядов
+    }
+    catch (std::exception &e)
+    {
+        qDebug() << e.what();
+        return;
+    }
+    for (int i=0; i<sizeFunc; i++)
+    {
+        try
+        {
+            elementsOnes[i] = new QString [razryad];
+        }
+        catch (std::exception &e)
+        {
+            qDebug() << e.what();
+            return;
+        }
+//        elementsOnes[i] = new QString [razryad];
+    }
+    for (int i=0; i<sizeFunc; i++)
+    {
+        QString chislo = listFunc[i]; // получаем число
+        QStringList chisloList = chislo.split("", SPLITTER);  // разбиваем число на символы
+        int size = chisloList.size(); // получаем размер числа (количество символов)
+        if(razryad != size) // если количество разрядов не совпадает, проверяем на всякий случай
+        {
+            //СКРЫТО qDebug() << "Разряд числа не совпадает с количеством символов в сисле таблицы!";
+            for(int row=0; row<sizeFunc; row++)
+            {
+                delete [] elementsOnes[row];
+            }
+            delete [] elementsOnes;
+            return;
+        }
+        for (int j=0; j<razryad; j++)
+        {
+            elementsOnes[i][j] = chisloList[j];   // сохраняем каждое число по символам
+        }
+    }
+    // проверяем строки и создаем склейки
+    QStringList skleyki1; // будем сохранять склейки
+    bool *proshliSkleiku = nullptr;
+//    bool *proshliSkleiku = new bool [sizeFunc]; // создаем массив, который будет хрнатиь информацию о том, прошли ли склейку элементы, размер равен количеству элементов
+    try
+    {
+        proshliSkleiku = new bool [sizeFunc]; // создаем массив, который будет хрнатиь информацию о том, прошли ли склейку элементы, размер равен количеству элементов
+    }
+    catch (std::exception &e)
+    {
+        qDebug() << e.what();
+        return;
+    }
+    for (int i=0; i<sizeFunc; i++)
+    {
+        proshliSkleiku[i] = false; // задаём, что никто не прошел склейку
+    }
+    for (int i=0; i<sizeFunc; i++) // проходим по каждому значению
+    {
+        for (int j=0; j<i; j++) // проходим по каждому разряду каждого значения
+        {
+            bool *ok = nullptr;
+            try
+            {
+                ok = new bool [razryad];
+            }
+            catch (std::exception &e)
+            {
+                qDebug() << e.what();
+                return;
+            }
+//            bool *ok = new bool [razryad]; // создаем логический массив для хранения даннх об одинаковости разрядов чисел
+            int count = 0; // сохраняет количество элементов, которые отличаются
+            bool correctCompare = true; // флаг корректности сравнения. Некореектное, когда различающиеся символы, это X и число
+            for (int k=0; k<razryad; k++)
+            {
+                ok[k] = (elementsOnes[i][k] == elementsOnes[j][k]); // сохраняет, равны-ли два элемента
+                count += static_cast<int>(!ok[k]); // прибавляем 0 или 1 в зависимости от того, равны элеменнты, или нет
+                if((elementsOnes[i][k] != elementsOnes[j][k]) && (elementsOnes[i][k] == "X" || elementsOnes[j][k] == "X")) // если различающиеся разряды это Х
+                {
+                    correctCompare = false;
+                    break;
+                }
+            }
+            //СКРЫТО qDebug() << "число 1: " << listFunc[i] << "число 2: " << listFunc[j] << "count = " << count;
+            if(count == 1 && (!proshliSkleiku[i] || !proshliSkleiku[j]) && correctCompare) // если разница только в одном разряде и если хотя бы один не проходил склейку до этого
+            {
+                proshliSkleiku[i] = true; // задаем, что 2 элемента прошли склейку
+                proshliSkleiku[j] = true;
+                QString skleyka; // для формирования склейки по символам
+                for (int g=0; g<razryad; g++) // проверяем каждый разряд
+                {
+                    if(ok[g]) // если разряды совпадают
+                    {
+                        skleyka.append(elementsOnes[i][g]); // добавляем константу в склейку
+                    }
+                    else
+                    {
+                        skleyka.append("X"); // добавляем Х где разряд меняется
+                    }
+                }
+                skleyki1.append(skleyka); // добавляем склейку в список
+                //СКРЫТО qDebug() << "СКЛЕЙКА: " << skleyka << skleyki1[skleyki1.size() - 1];
+            }
+            delete [] ok;
+            ok = nullptr;
+//            count = 0;
+        }
+    }
+
+    for(int row=0; row<sizeFunc; row++)
+    {
+        delete [] elementsOnes[row];
+    }
+    delete [] elementsOnes;
+
+    if(!skleyki1.size()) // если не было склеек
+    {
+        //СКРЫТО qDebug() << "нет склеек";
+        skleykiList = numbersList; // новая склейка = старая склейка
+        wasSkleyka = false; // ставим, что не было склейки
+        int s1 = numbersList.size();
+        for(int i=0; i<s1; i++)
+        {
+            //СКРЫТО qDebug() << "numberList[" << i << "] = " << numbersList[i];
+        }
+        delete [] proshliSkleiku;
+        return; // выходим из функции, т.к. дальше обрабатывать нет смысла
+    }
+    wasSkleyka = true; // ставим, склейка произошла
+    for (int i=0; i<sizeFunc; i++)
+    {
+        if(!proshliSkleiku[i]) // если какой-то элемент не прошёл склейку
+        {
+            skleyki1.append(listFunc[i]); // добавляем число как константу
+        }
+    }
+
+    delete [] proshliSkleiku;
+
+    // удаляем повторяющиеся
+    int skleyki1Size = skleyki1.size();
+    for (int i=0; i < skleyki1Size; i++)
+    {
+        bool povtor = false; // определяет, повторяется ли элемент
+        for (int j=0; j<i; j++)
+        {
+            if(skleyki1[i] == skleyki1[j])
+            {
+                povtor = true; // повторяется
+            }
+        }
+        if(!povtor)
+        {
+            skleykiList.append(skleyki1[i]); // если элемент списка не повторяется, то добавляем его
+        }
+    }
+    //    skleykiCount++;
+}
+
 //bool MainWindow::isContainsSkleyki(QStringList skleykiList, int numSkleyka)
 //{
 //    QStringList skleykaListByMNF; // список для хранения тех склеек, которые должны быть
@@ -466,7 +651,7 @@ void MainWindow::createSkleyka(QTableWidget *tableWidgetInput, QCheckBox **check
 ////    return ok;
 //}
 
-void MainWindow::moveSkleyka(QTableWidget *tableWidgetInput, QCheckBox **checkBoxesInput, QTableWidget *&tableWidgetOutput, int numSkleyka)
+void MainWindow::moveSkleyka(QTableWidget *tableWidgetInput, QCheckBox **checkBoxesInput, QTableWidget *&tableWidgetOutput)
 {
     QStringList listOnes; // список, хранящий все лементы в таблице, где есть галочка
     getTWTextList(tableWidgetInput, listOnes); // получаем элементы, где есть галочка
@@ -508,10 +693,9 @@ void MainWindow::moveSkleyka(QTableWidget *tableWidgetInput, QCheckBox **checkBo
         {
             if(elements[i] != listOnes[j])    // игнорируем искомое
             {
-                mdnfMacKlassky mdnf;
                 bool maked = false;
                 QStringList skleykiResult;
-                mdnf.makeSkleyki(QStringList() << elements[i] << listOnes[j], skleykiResult, maked);
+                makeSkleyki(QStringList() << elements[i] << listOnes[j], skleykiResult, maked);
 
                 if(maked)  // если возможно сделать склейку
                 {
@@ -775,10 +959,9 @@ bool MainWindow::isOptimalSkleyka(QString value1, QString value2, QStringList va
         {
             if(values[i] != value1 || values[i] != value2)    // игнорируем искомое
             {
-                mdnfMacKlassky mdnf;
                 bool maked = false;
                 QStringList skleykiResult;
-                mdnf.makeSkleyki(QStringList() << searchValue << values[i], skleykiResult, maked);
+                makeSkleyki(QStringList() << searchValue << values[i], skleykiResult, maked);
 
                 if(maked && !proverkaTable(QStringList() << values[i], listOfSkleyki))  // если возможно сделать склейку и этот элемент не участвовал в склейке раньше
                 {
@@ -796,10 +979,9 @@ bool MainWindow::isCanCreateSkleyka(QString value1, QString value2)
     {
         return false;
     }
-    mdnfMacKlassky mdnf;
     bool maked = false;
     QStringList skleykiResult;
-    mdnf.makeSkleyki(QStringList() << value1 << value2, skleykiResult, maked);
+    makeSkleyki(QStringList() << value1 << value2, skleykiResult, maked);
     return maked;
 }
 
@@ -1128,10 +1310,9 @@ QString MainWindow::createSkleyka(QString value1, QString value2, bool *ok)
         }
         return "";
     }
-    mdnfMacKlassky mdnf;
     bool maked = false;
     QStringList skleykiResult;
-    mdnf.makeSkleyki(QStringList() << value1 << value2, skleykiResult, maked);
+    makeSkleyki(QStringList() << value1 << value2, skleykiResult, maked);
     if(ok)
     {
         *ok = maked;
@@ -1186,12 +1367,6 @@ void MainWindow::addCheckBoxesInLastColumn(QTableWidget *tableWidget, QCheckBox 
     qDebug() << "checkBox добавлены";
     setDefaultTableColor(tableWidget);
 }
-
-//void MainWindow::addCheckBoxesInLastColumn(QTableWidget *tableWidget, QCheckBox **&checkBoxes, Qt::ConnectionType &connectFunction)
-//{
-//    addCheckBoxesInLastColumn(tableWidget, checkBoxes);
-//}
-
 
 QString MainWindow::getQStringByTableWidget(QTableWidget *tableWidget, bool saveLineColor)
 {

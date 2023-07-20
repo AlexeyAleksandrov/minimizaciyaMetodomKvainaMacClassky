@@ -25,6 +25,37 @@
   <property name="windowTitle">
    <string>Выбор варианта</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">QWidget{
+background-color: rgb(212, 211, 232);
+}
+
+QPushButton {
+background-color: rgb(226, 232, 227,);
+color: rgb(0, 0, 0);
+font: 10pt &quot;MS Shell Dlg 2&quot;;
+}
+
+QPushButton:disabled {
+	color: rgb(179, 179, 179);
+	background-color: rgb(227, 227, 227);
+}
+
+QPushButton:enabled {
+	color: rgb(0, 0, 0);
+	background-color: rgb(227, 227, 227);
+}
+
+QLineEdit {
+	background-color: rgba(232, 219, 216, 91);
+}
+
+QComboBox{
+	color: rgb(0, 0, 0);
+}
+
+</string>
+  </property>
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
@@ -96,8 +127,10 @@
    </property>
    <property name="font">
     <font>
-     <pointsize>11</pointsize>
+     <family>MS Shell Dlg 2</family>
+     <pointsize>10</pointsize>
      <weight>50</weight>
+     <italic>false</italic>
      <bold>false</bold>
     </font>
    </property>
@@ -116,8 +149,10 @@
    </property>
    <property name="font">
     <font>
-     <pointsize>11</pointsize>
+     <family>MS Shell Dlg 2</family>
+     <pointsize>10</pointsize>
      <weight>50</weight>
+     <italic>false</italic>
      <bold>false</bold>
     </font>
    </property>

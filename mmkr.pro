@@ -30,7 +30,6 @@ SOURCES += \
         mainwindow.cpp \
     sschfunctions.cpp \
     tablewidgetfunctions.cpp \
-    mdnfmacklassky.cpp \
     savedatainfile.cpp \
     steps.cpp \
     proverki.cpp \
@@ -42,7 +41,6 @@ HEADERS += \
     formresultcorrect.h \
         mainwindow.h \
     md5crypter.h \
-    mdnfmacklassky.h \
     logiceditor.h \
     formlogin.h \
     tooltip.h
