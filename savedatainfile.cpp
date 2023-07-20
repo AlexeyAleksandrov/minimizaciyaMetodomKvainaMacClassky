@@ -106,7 +106,7 @@ void MainWindow::saveDataToFile()
         outputtext.append(str_tableWidgetKartaMinimizacii);  outputtext.append("\r\n");
         outputtext.append(str_lineEdit_itogMdnf);  outputtext.append("\r\n");
 
-        md5crypter::cryptStr(outputtext); // добавляем хеш
+        md5crypter::cryptStr(outputtext, true); // добавляем хеш
         fileOutput.write(outputtext.toUtf8()); // записываем
 
         fileOutput.close();
@@ -123,7 +123,7 @@ void MainWindow::readDataFromFile()
     }
     QString text = file.readAll(); // считываем весь файл
     bool ok = false;
-    md5crypter::decryptStr(text, ok);
+    md5crypter::decryptStr(text, ok, true);
     if(!ok)
     {
         QMessageBox::critical(this, "Ошибка", "Файл решения повреждён!");

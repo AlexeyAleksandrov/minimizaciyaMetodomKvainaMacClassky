@@ -167,7 +167,7 @@ void FormLogin::on_pushButton_load_clicked()
     }
     QString text = file.readAll(); // считываем весь файл
     bool ok = false;
-    md5crypter::decryptStr(text, ok);
+    md5crypter::decryptStr(text, ok, true);
     if(!ok)
     {
         qDebug() << "Ошибка хеша в файле решения!";
