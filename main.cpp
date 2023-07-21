@@ -1,8 +1,10 @@
 #include "mainwindow.h"
 #include "formlogin.h"
 #include <QTextCodec>
+#include "xorcrypter.h"
 
 #include <QApplication>
+#define XOR_CRYPT_KEY "0123456789"
 
 int main(int argc, char *argv[])
 {
@@ -14,8 +16,11 @@ int main(int argc, char *argv[])
     a.setStyle("fusion");
 //    QString function = ""; // функция для минимизации
 
+    XORCrypter xorCrypter;      // шифровальщик
+    xorCrypter.setKey(XOR_CRYPT_KEY);
 
     MainWindow w;
+    w.setXorCrypter(&xorCrypter);
 //    w.setMinimumWidth(564);
 //    w.setMaximumWidth(564);
 //    w.setMinimumHeight(796);
@@ -34,6 +39,7 @@ int main(int argc, char *argv[])
 
     w.setWindowTitle("Минимизация логических функций, заданных векторным способом, методом Куайна Мак-Класски");
     FormLogin f(w);
+    f.setXorCrypter(&xorCrypter);
     f.show();
 
 //    w.show();

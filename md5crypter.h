@@ -23,12 +23,12 @@ public:
         outputtext.append(HASH_TAG); // добавляем тэг хеш
         outputtext.append(hash); // добавляем сам хеш
 
-        // шифрование
-        if(useXor)
-        {
-            outputtext = xorStr(outputtext);
-            qDebug() << "Зашифрован через XOR";
-        }
+//        // шифрование
+//        if(useXor)
+//        {
+//            outputtext = xorStr(outputtext);
+//            qDebug() << "Зашифрован через XOR";
+//        }
 
         return outputtext;
     };
@@ -41,13 +41,13 @@ public:
     // извлечение хеша
     static QString decrypt(QString cryptedtext, bool &ok, bool useXor = false) // возвращает текст без хеша, проверяя корректность
     {
-        // расшифрование
-        if(useXor)
-        {
-           cryptedtext = xorStr(cryptedtext);
-           qDebug() << "Расшифрован через XOR";
-           qDebug() << "Результат расшифровки: " + cryptedtext;
-        }
+//        // расшифрование
+//        if(useXor)
+//        {
+//           cryptedtext = xorStr(cryptedtext);
+//           qDebug() << "Расшифрован через XOR";
+//           qDebug() << "Результат расшифровки: " + cryptedtext;
+//        }
 
         if(!cryptedtext.contains(HASH_TAG)) // если строка не содержит тега хеша
         {

@@ -27,6 +27,9 @@ public:
     explicit FormLogin(MainWindow &w, QWidget *parent = nullptr);
     ~FormLogin();
 
+    XORCrypter *getXorCrypter() const;
+    void setXorCrypter(XORCrypter *newXorCrypter);
+
 private slots:
     void on_pushButton_accept_clicked();
 
@@ -56,6 +59,7 @@ private:
 
     QTimer *closetimer = NULL; // таймер закрытия окна
 
+    XORCrypter *xorCrypter = nullptr;
 };
 
 #endif // FORMLOGIN_H

@@ -1320,7 +1320,7 @@ QString MainWindow::createSkleyka(QString value1, QString value2, bool *ok)
     return skleykiResult[0];
 }
 
-void MainWindow::addCheckBoxesInLastColumn(QTableWidget *tableWidget, QCheckBox **&checkBoxes)
+void MainWindow::addCheckBoxesInLastColumn(QTableWidget *tableWidget, QCheckBox **&checkBoxes, bool applyDefaultColor)
 {
     // добавляем галочки внутрь
     int rows = tableWidget->rowCount();
@@ -1365,7 +1365,10 @@ void MainWindow::addCheckBoxesInLastColumn(QTableWidget *tableWidget, QCheckBox 
         }
     }
     qDebug() << "checkBox добавлены";
-    setDefaultTableColor(tableWidget);
+    if(applyDefaultColor)
+    {
+        setDefaultTableColor(tableWidget);
+    }
 }
 
 QString MainWindow::getQStringByTableWidget(QTableWidget *tableWidget, bool saveLineColor)

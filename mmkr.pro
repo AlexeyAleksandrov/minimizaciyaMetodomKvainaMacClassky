@@ -35,7 +35,8 @@ SOURCES += \
     proverki.cpp \
     logiceditor.cpp \
     formlogin.cpp \
-    tooltip.cpp
+    tooltip.cpp \
+    xorcrypter.cpp
 
 HEADERS += \
     formresultcorrect.h \
@@ -43,7 +44,8 @@ HEADERS += \
     md5crypter.h \
     logiceditor.h \
     formlogin.h \
-    tooltip.h
+    tooltip.h \
+    xorcrypter.h
 
 FORMS += \
     formresultcorrect.ui \

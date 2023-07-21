@@ -132,6 +132,16 @@ void FormLogin::message(QString text, int type, QString title)
     }
 }
 
+XORCrypter *FormLogin::getXorCrypter() const
+{
+    return xorCrypter;
+}
+
+void FormLogin::setXorCrypter(XORCrypter *newXorCrypter)
+{
+    xorCrypter = newXorCrypter;
+}
+
 void FormLogin::on_comboBox_group_currentIndexChanged(const QString &arg1)
 {
     ui->comboBox_student->clear(); // очищаем comboBox
@@ -159,6 +169,7 @@ void FormLogin::on_comboBox_student_currentIndexChanged(const QString &arg1)
 void FormLogin::on_pushButton_load_clicked()
 {
     QFile file(FILE_STUDENT_WORK); // открываем файл с сохраненной работой
+#ifndef ENABLE_XOR_CRYPT
     if(!file.open(QIODevice::ReadOnly)) // если не удалось открыть
     {
         qDebug() << "Не удалось открыть файл для чтения!";
@@ -166,7 +177,23 @@ void FormLogin::on_pushButton_load_clicked()
         return;
     }
     QString text = file.readAll(); // считываем весь файл
+#endif
+
     bool ok = false;
+
+#ifdef ENABLE_XOR_CRYPT
+    QByteArray decryptedText = xorCrypter->readEncryptenFile(file, xorCrypter->getKey(), &ok);
+
+    if(!ok) // если не удалось открыть
+    {
+        qDebug() << "Не удалось открыть файл для чтения!";
+        message("Нет сохранённого решения!");
+        return;
+    }
+
+    QString text = QString::fromUtf8(decryptedText);
+#endif
+
     md5crypter::decryptStr(text, ok, true);
     if(!ok)
     {

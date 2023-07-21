@@ -2132,3 +2132,13 @@ void MainWindow::on_pushButton_nextStep_skleyki_2_clicked()
     nextStep();
     //    int rows = tableWidgetsSkleyki[1]->rowCount(); // получаем количество строк
 }
+
+XORCrypter *MainWindow::getXorCrypter() const
+{
+    return xorCrypter;
+}
+
+void MainWindow::setXorCrypter(XORCrypter *newXorCrypter)
+{
+    xorCrypter = newXorCrypter;
+}

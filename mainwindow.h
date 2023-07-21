@@ -20,6 +20,7 @@
 #include "formresultcorrect.h"
 
 #include "md5crypter.h"
+#include "xorcrypter.h"
 
 #define TYPE_MKNF 0
 #define TYPE_MDNF 1
@@ -41,6 +42,8 @@
 #else
 #define SPLITTER QString::SkipEmptyParts
 #endif
+
+#define ENABLE_XOR_CRYPT
 
 namespace Ui {
 class MainWindow;
@@ -76,6 +79,9 @@ public:
     void setNoMessage(bool value); // устанавливает флаг блокировки вывода всплывающих сообщений
 
     void setAutoInput(bool value);
+
+    XORCrypter *getXorCrypter() const;
+    void setXorCrypter(XORCrypter *newXorCrypter);
 
 private:
     Ui::MainWindow *ui;
@@ -192,7 +198,7 @@ private:
     void sortSkleiki(QTableWidget *skleikiTableWidget); // сортировка склеек по количеству в них Х
     void sortOnesCount(QTableWidget *tableWidgetInput); // сортировка значений по количеству в них 1
     QString createSkleyka(QString value1, QString value2, bool *ok = nullptr);  // функция создания склейки
-    void addCheckBoxesInLastColumn(QTableWidget *tableWidget, QCheckBox **&checkBoxes);  // функция добавления checkBox в последний столбец таблицы
+    void addCheckBoxesInLastColumn(QTableWidget *tableWidget, QCheckBox **&checkBoxes, bool applyDefaultColor = true);  // функция добавления checkBox в последний столбец таблицы
 //    void addCheckBoxesInLastColumn(QTableWidget *tableWidget, QCheckBox **&checkBoxes, Qt::ConnectionType &connectFunction);  // функция добавления checkBox в последний столбец таблицы, связывает сигнал изменения состояния
 
     // перемещение по этапам работы
@@ -376,6 +382,7 @@ private:
     int file_step = -1; // переменная для хранения последнего шага, нужна при сорных ситуациях, например, склеек 3 нет, или их не должно быть
 
     FormResultCorrect *formResult = nullptr; // форма результата
+    XORCrypter *xorCrypter = nullptr;
     //    formProverkaAll *fpl = nullptr;
 };
 

@@ -6,6 +6,7 @@
 void MainWindow::saveDataToFile()
 {
     QFile fileOutput(FILE_STUDENT_WORK);
+#ifndef ENABLE_XOR_CRYPT
     if(!fileOutput.open(QIODevice::WriteOnly))
     {
         qDebug() << "Не удалось открыть файл для записи!";
@@ -14,65 +15,66 @@ void MainWindow::saveDataToFile()
     }
     else
     {
-        QString str_name = "name=" + studentName; // сохраняем ФИО студента
-        QString str_group = "group=" + StudentGroup; // сохраняем группу студента
-        QString str_step = "step=" + QString::number(step); // сохраняем номер текущего шага
-        qDebug() << "Последний сохраненный этап: " << step;
-        QString str_func2 = "lineEditFunc_2=" + lineEditFunc_2->text(); // сохраняем то, что введено в строку функции, записанной в 2 ССЧ
-        QString str_tot = "tableWidgetTot=" + getQStringByTableWidget(tableWidgetTot); // получаем строку из таблицы истинности
-        QString str_ones_only_editing = "tableWidgetOnesOnlyEditing=" + getQStringByTableWidget(tableWidgetOnesOnlyEditing, LINE_COLOR_ON);
-        QString str_tableWidget_one_only = "tableWidget_one_only=" + getQStringByTableWidget(tableWidgetOnesOnly, LINE_COLOR_ON);
-        QString str_tableWidgetsSkleykiEditing_0 = "str_tableWidgetsSkleykiEditing_0=" + getQStringByTableWidget(tableWidgetsSkleykiEditing[0], LINE_COLOR_ON);
-        QString str_tableWidgetsSkleykiEditing_1 = "str_tableWidgetsSkleykiEditing_1=" + getQStringByTableWidget(tableWidgetsSkleykiEditing[1], LINE_COLOR_ON);
-        QString str_tableWidgetsSkleykiEditing_2 = "str_tableWidgetsSkleykiEditing_2=" + getQStringByTableWidget(tableWidgetsSkleykiEditing[2], LINE_COLOR_ON);
-        QString str_tableWidgetsSkleyki_0 = "str_tableWidgetsSkleyki_0=" + getQStringByTableWidget(tableWidgetsSkleyki[0], LINE_COLOR_ON);
-        QString str_tableWidgetsSkleyki_1 = "str_tableWidgetsSkleyki_1=" + getQStringByTableWidget(tableWidgetsSkleyki[1], LINE_COLOR_ON);
+#endif
+    QString str_name = "name=" + studentName; // сохраняем ФИО студента
+    QString str_group = "group=" + StudentGroup; // сохраняем группу студента
+    QString str_step = "step=" + QString::number(step); // сохраняем номер текущего шага
+    qDebug() << "Последний сохраненный этап: " << step;
+    QString str_func2 = "lineEditFunc_2=" + lineEditFunc_2->text(); // сохраняем то, что введено в строку функции, записанной в 2 ССЧ
+    QString str_tot = "tableWidgetTot=" + getQStringByTableWidget(tableWidgetTot); // получаем строку из таблицы истинности
+    QString str_ones_only_editing = "tableWidgetOnesOnlyEditing=" + getQStringByTableWidget(tableWidgetOnesOnlyEditing, LINE_COLOR_ON);
+    QString str_tableWidget_one_only = "tableWidget_one_only=" + getQStringByTableWidget(tableWidgetOnesOnly, LINE_COLOR_ON);
+    QString str_tableWidgetsSkleykiEditing_0 = "str_tableWidgetsSkleykiEditing_0=" + getQStringByTableWidget(tableWidgetsSkleykiEditing[0], LINE_COLOR_ON);
+    QString str_tableWidgetsSkleykiEditing_1 = "str_tableWidgetsSkleykiEditing_1=" + getQStringByTableWidget(tableWidgetsSkleykiEditing[1], LINE_COLOR_ON);
+    QString str_tableWidgetsSkleykiEditing_2 = "str_tableWidgetsSkleykiEditing_2=" + getQStringByTableWidget(tableWidgetsSkleykiEditing[2], LINE_COLOR_ON);
+    QString str_tableWidgetsSkleyki_0 = "str_tableWidgetsSkleyki_0=" + getQStringByTableWidget(tableWidgetsSkleyki[0], LINE_COLOR_ON);
+    QString str_tableWidgetsSkleyki_1 = "str_tableWidgetsSkleyki_1=" + getQStringByTableWidget(tableWidgetsSkleyki[1], LINE_COLOR_ON);
 //        QString str_tableWidgetKartaMinimizacii = "tableWidgetKartaMinimizacii=" + getQStringByTableWidget(tableWidgetKartaMinimizacii);
-        QString str_tableWidgetKartaMinimizacii = "tableWidgetKartaMinimizacii=";
-        int rows = tableWidgetKartaMinimizacii->rowCount(); // получаем количество строк в карте минимизации
-        int cols = tableWidgetKartaMinimizacii->columnCount(); // получаем количество столбцов в карте минимизации
-        for (int i=0; i<rows; i++) // проходим по каждой строке
+    QString str_tableWidgetKartaMinimizacii = "tableWidgetKartaMinimizacii=";
+    int rows = tableWidgetKartaMinimizacii->rowCount(); // получаем количество строк в карте минимизации
+    int cols = tableWidgetKartaMinimizacii->columnCount(); // получаем количество столбцов в карте минимизации
+    for (int i=0; i<rows; i++) // проходим по каждой строке
+    {
+        for (int j=0; j<cols; j++) // проходим по каждому столбцу
         {
-            for (int j=0; j<cols; j++) // проходим по каждому столбцу
+            if(tableWidgetKartaMinimizacii->item(i, j) != nullptr) // если выделена память, значит в ячейке что-то есть
             {
-                if(tableWidgetKartaMinimizacii->item(i, j) != nullptr) // если выделена память, значит в ячейке что-то есть
+                if(tableWidgetKartaMinimizacii->item(i, j)->text().contains("+")) // если содержится +
                 {
-                    if(tableWidgetKartaMinimizacii->item(i, j)->text().contains("+")) // если содержится +
-                    {
-                        str_tableWidgetKartaMinimizacii.append("+"); // добавляем + в строку
+                    str_tableWidgetKartaMinimizacii.append("+"); // добавляем + в строку
 //                        qDebug() << "+ в строке" << i << "столбеце" << j;
-                    }
-                    else
-                    {
-                        str_tableWidgetKartaMinimizacii.append("-"); // добавляем - в строку
-                    }
-                    QColor itemColor = tableWidgetKartaMinimizacii->item(i, j)->background().color(); // получаем фоновый цвет
-                    if(itemColor == *redColor)
-                    {
-                        str_tableWidgetKartaMinimizacii.append("r");
-                    }
-                    else if(itemColor == *greenColor)
-                    {
-                        str_tableWidgetKartaMinimizacii.append("g");
-                    }
-                    else
-                    {
-                        str_tableWidgetKartaMinimizacii.append("w");
-                    }
                 }
                 else
                 {
                     str_tableWidgetKartaMinimizacii.append("-"); // добавляем - в строку
                 }
-//                qDebug() << "Сохранение карты покрытия. Строка" << i << "столбец" << j << ". Значение: " << str_tableWidgetKartaMinimizacii;
+                QColor itemColor = tableWidgetKartaMinimizacii->item(i, j)->background().color(); // получаем фоновый цвет
+                if(itemColor == *redColor)
+                {
+                    str_tableWidgetKartaMinimizacii.append("r");
+                }
+                else if(itemColor == *greenColor)
+                {
+                    str_tableWidgetKartaMinimizacii.append("g");
+                }
+                else
+                {
+                    str_tableWidgetKartaMinimizacii.append("w");
+                }
             }
-            if(i != rows-1)
+            else
             {
-                str_tableWidgetKartaMinimizacii.append("|"); // добавляем знак переноса строки
+                str_tableWidgetKartaMinimizacii.append("-"); // добавляем - в строку
             }
+//                qDebug() << "Сохранение карты покрытия. Строка" << i << "столбец" << j << ". Значение: " << str_tableWidgetKartaMinimizacii;
         }
+        if(i != rows-1)
+        {
+            str_tableWidgetKartaMinimizacii.append("|"); // добавляем знак переноса строки
+        }
+    }
 //        QString str_lineEdit_itogMdnf = "lineEdit_itogMdnf=" + lineEdit_itogMdnf->text();
-        QString str_lineEdit_itogMdnf = "lineEdit_itogMdnf=" + editor->getFormulaText();
+    QString str_lineEdit_itogMdnf = "lineEdit_itogMdnf=" + editor->getFormulaText();
 
 //        QTextStream ts(&fileOutput); // создаём поток вывода
 //        ts << str_name << "\r\n";
@@ -90,39 +92,69 @@ void MainWindow::saveDataToFile()
 //        ts << str_tableWidgetKartaMinimizacii << "\r\n";
 //        ts << str_lineEdit_itogMdnf << "\r\n";
 
-        QString outputtext;
-        outputtext.append(str_name);  outputtext.append("\r\n");
-        outputtext.append(str_group);  outputtext.append("\r\n");
-        outputtext.append(str_step);  outputtext.append("\r\n");
-        outputtext.append(str_func2);  outputtext.append("\r\n");
-        outputtext.append(str_tot);  outputtext.append("\r\n");
-        outputtext.append(str_ones_only_editing);  outputtext.append("\r\n");
-        outputtext.append(str_tableWidgetsSkleykiEditing_0);  outputtext.append("\r\n");
-        outputtext.append(str_tableWidget_one_only);  outputtext.append("\r\n");
-        outputtext.append(str_tableWidgetsSkleykiEditing_1);  outputtext.append("\r\n");
-        outputtext.append(str_tableWidgetsSkleyki_0);  outputtext.append("\r\n");
-        outputtext.append(str_tableWidgetsSkleykiEditing_2);  outputtext.append("\r\n");
-        outputtext.append(str_tableWidgetsSkleyki_1);  outputtext.append("\r\n");
-        outputtext.append(str_tableWidgetKartaMinimizacii);  outputtext.append("\r\n");
-        outputtext.append(str_lineEdit_itogMdnf);  outputtext.append("\r\n");
+    QString outputtext;
+    outputtext.append(str_name);  outputtext.append("\r\n");
+    outputtext.append(str_group);  outputtext.append("\r\n");
+    outputtext.append(str_step);  outputtext.append("\r\n");
+    outputtext.append(str_func2);  outputtext.append("\r\n");
+    outputtext.append(str_tot);  outputtext.append("\r\n");
+    outputtext.append(str_ones_only_editing);  outputtext.append("\r\n");
+    outputtext.append(str_tableWidgetsSkleykiEditing_0);  outputtext.append("\r\n");
+    outputtext.append(str_tableWidget_one_only);  outputtext.append("\r\n");
+    outputtext.append(str_tableWidgetsSkleykiEditing_1);  outputtext.append("\r\n");
+    outputtext.append(str_tableWidgetsSkleyki_0);  outputtext.append("\r\n");
+    outputtext.append(str_tableWidgetsSkleykiEditing_2);  outputtext.append("\r\n");
+    outputtext.append(str_tableWidgetsSkleyki_1);  outputtext.append("\r\n");
+    outputtext.append(str_tableWidgetKartaMinimizacii);  outputtext.append("\r\n");
+    outputtext.append(str_lineEdit_itogMdnf);  outputtext.append("\r\n");
 
-        md5crypter::cryptStr(outputtext, true); // добавляем хеш
+    md5crypter::cryptStr(outputtext, true); // добавляем хеш
+
+#ifdef ENABLE_XOR_CRYPT
+    bool ok = false;
+    xorCrypter->writeEncryptenFile(fileOutput, outputtext.toUtf8(), xorCrypter->getKey(), &ok);
+
+    if(!ok)
+    {
+        qDebug() << "Не удалось открыть файл для записи!";
+        warningError("Не удалось выполнить автоматическое сохранение данных. Проверьте доступность файла " + FILE_STUDENT_WORK);
+        return;
+    }
+#endif
+
+#ifndef ENABLE_XOR_CRYPT
         fileOutput.write(outputtext.toUtf8()); // записываем
 
         fileOutput.close();
     }
+#endif
 }
 
 void MainWindow::readDataFromFile()
 {
     QFile file(FILE_STUDENT_WORK); // открываем файл с сохраненной работой
+#ifndef ENABLE_XOR_CRYPT
     if(!file.open(QIODevice::ReadOnly)) // если не удалось открыть
     {
         qDebug() << "Не удалось открыть файл для чтения!";
         return;
     }
     QString text = file.readAll(); // считываем весь файл
+#endif
+
     bool ok = false;
+#ifdef ENABLE_XOR_CRYPT
+    QByteArray decryptedText = xorCrypter->readEncryptenFile(file, xorCrypter->getKey(), &ok);
+
+    if(!ok) // если не удалось открыть
+    {
+        qDebug() << "Не удалось открыть файл для чтения!";
+        return;
+    }
+
+    QString text = QString::fromUtf8(decryptedText);
+#endif
+
     md5crypter::decryptStr(text, ok, true);
     if(!ok)
     {
@@ -166,7 +198,7 @@ void MainWindow::readDataFromFile()
             qDebug() << "Выводим значения таблицы one_only";
             setQStringListToTW(tableWidgetsSkleyki[0], tableList, LINE_COLOR_ON);
             center_text_in_table(tableWidgetsSkleyki[0]); // выраниваем текст в таблице
-            addCheckBoxesInLastColumn(tableWidgetsSkleyki[0], checkBoxes_skleyki_1);     // вставляем checkBox в последную колонку
+            addCheckBoxesInLastColumn(tableWidgetsSkleyki[0], checkBoxes_skleyki_1, false);     // вставляем checkBox в последную колонку
 //            qDebug() << "функция прервана!!";
 //            return;
         }
@@ -188,7 +220,7 @@ void MainWindow::readDataFromFile()
             qDebug() << "Выводим значения таблицы one_only";
             setQStringListToTW(tableWidgetsSkleyki[1], tableList, LINE_COLOR_ON);
             center_text_in_table(tableWidgetsSkleyki[1]); // выраниваем текст в таблице
-            addCheckBoxesInLastColumn(tableWidgetsSkleyki[1], checkBoxes_skleyki_2);     // вставляем checkBox в последную колонку
+            addCheckBoxesInLastColumn(tableWidgetsSkleyki[1], checkBoxes_skleyki_2, false);     // вставляем checkBox в последную колонку
 //            qDebug() << "функция прервана!!";
 //            return;
         }
@@ -279,7 +311,7 @@ void MainWindow::readDataFromFile()
             on_pushButton_proverka_oneOnly_clicked(); // вызываем функцию проверки, чтобы программа установила тип минимизации
             setQStringListToTW(tableWidgetOnesOnly, tableList, true);
             center_text_in_table(tableWidgetOnesOnly); // выраниваем текст в таблице
-            addCheckBoxesInLastColumn(tableWidgetOnesOnly, checkBoxes_ones);     // вставляем checkBox в последную колонку
+            addCheckBoxesInLastColumn(tableWidgetOnesOnly, checkBoxes_ones, false);     // вставляем checkBox в последную колонку
 //            if(step >= file_step && file_step > 0)
 //            {
 //                qDebug() << "Текущие этап: " << step << " Сохраненный этап: " << file_step;
