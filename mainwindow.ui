@@ -23,28 +23,24 @@
    <string>MainWindow</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: rgb(212, 211, 232);
-</string>
+   <string notr="true">QMainWindow
+{
+	background-color:rgb(230, 240, 240);
+	background-color: rgb(212, 211, 232);
+
+}
+QTabWidget
+{
+	background-color:rgb(230, 240, 240);
+}
+QPushButton
+{
+	background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(229, 235, 232, 255), stop:1 rgba(225, 249, 250, 255));
+}</string>
   </property>
   <widget class="QWidget" name="centralWidget">
    <property name="styleSheet">
-    <string notr="true">QPushButton {
-background-color: rgb(226, 232, 227,);
-color: rgb(0, 0, 0);
-font: 8pt &quot;MS Shell Dlg 2&quot;;
-}
-
-QPushButton:disabled {
-	color: rgb(179, 179, 179);
-	background-color: rgb(227, 227, 227);
-}
-
-QPushButton:enabled {
-	color: rgb(0, 0, 0);
-	background-color: rgb(255, 255, 255);
-}
-
-QLineEdit {
+    <string notr="true">QLineEdit {
 	background-color: rgba(232, 219, 216, 91);
 }
 
@@ -57,7 +53,7 @@ QLineEdit {
       <x>20</x>
       <y>10</y>
       <width>481</width>
-      <height>671</height>
+      <height>681</height>
      </rect>
     </property>
     <property name="sizePolicy">
@@ -72,10 +68,14 @@ QLineEdit {
     <property name="styleSheet">
      <string notr="true">QWidget{
 background-color: rgb(226, 232, 227);
+background-color:rgb(230, 240, 240);
+background-color: rgb(239, 245, 242);
 }
 
 QTableWidget {
+background-color: rgb(239, 245, 242);
 background-color: rgb(212, 211, 232);
+	selection-background-color:rgb(211, 235, 216);
 }
 
 QCheckBox {
@@ -88,10 +88,73 @@ QGroupBox {
 
 QLabel {
 	background-color: none;
+}
+
+QPushButton {
+background-color: rgb(226, 232, 227,);
+border: 1px solid rgb(135, 149, 150);
+color: rgb(0, 0, 0);
+font: 10pt &quot;MS Shell Dlg 2&quot;;
+border-radius: 3px;
+background-color: #fff;
+border: 1px solid rgb(188, 193, 190);
+}
+
+QPushButton:disabled {
+	color: rgb(179, 179, 179);
+	background-color: rgb(227, 227, 227);
+}
+
+QPushButton:enabled {
+	color: rgb(0, 0, 0);
+	background-color: rgb(227, 227, 227);
+	background-color: #fff;
+}
+
+QPushButton::hover
+{
+background-color: rgb(225, 248, 250);
+border: 1px solid rgb(135, 149, 150);
+}
+
+QTabWidget::pane
+{
+	background-color:rgb(230, 240, 240);
+	border: 1px solid rgb(135, 149, 150);
+}
+QTabBar::tab:selected, QTabBar::tab:hover{
+	background-color:rgb(230, 240, 240);
+border: 1px solid rgb(135, 149, 150);
+}
+QTabBar::tab:!selected
+{
+	background-color: rgb(239, 245, 242);
+	background-color:rgb(230, 240, 240);
+}
+
+QTabBar::tab
+{
+	background-color: rgb(239, 245, 242);
+	background-color:rgb(230, 240, 240);
+	width: 95px;
+	height: 20px;
+}
+
+QGroupBox
+{
+	background-color: rgb(239, 245, 242);
+	background-color:rgb(230, 240, 240);
+	border: 1px solid rgb(135, 149, 150);
 }</string>
     </property>
+    <property name="tabPosition">
+     <enum>QTabWidget::North</enum>
+    </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>0</number>
+    </property>
+    <property name="documentMode">
+     <bool>false</bool>
     </property>
     <widget class="QWidget" name="tab">
      <property name="styleSheet">
@@ -113,19 +176,6 @@ QLabel {
        <string>Добавить</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_function">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>30</y>
-        <width>41</width>
-        <height>16</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>F_16 =</string>
-      </property>
-     </widget>
      <widget class="QLineEdit" name="lineEdit_function">
       <property name="geometry">
        <rect>
@@ -142,7 +192,7 @@ QLabel {
      <widget class="QLineEdit" name="lineEdit_func_2">
       <property name="geometry">
        <rect>
-        <x>220</x>
+        <x>260</x>
         <y>30</y>
         <width>141</width>
         <height>22</height>
@@ -162,19 +212,6 @@ QLabel {
       </property>
       <property name="placeholderText">
        <string>ввод с клавиатуры</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_5">
-      <property name="geometry">
-       <rect>
-        <x>180</x>
-        <y>30</y>
-        <width>31</width>
-        <height>21</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>F_2 =</string>
       </property>
      </widget>
      <widget class="QPushButton" name="pushButton_enterFunction">
@@ -210,6 +247,9 @@ QLabel {
       </property>
       <property name="showGrid">
        <bool>true</bool>
+      </property>
+      <property name="gridStyle">
+       <enum>Qt::SolidLine</enum>
       </property>
       <property name="wordWrap">
        <bool>true</bool>
@@ -381,6 +421,9 @@ QLabel {
         <height>23</height>
        </rect>
       </property>
+      <property name="styleSheet">
+       <string notr="true"/>
+      </property>
       <property name="text">
        <string>Проверить таблицу</string>
       </property>
@@ -525,7 +568,7 @@ QLabel {
        <rect>
         <x>280</x>
         <y>610</y>
-        <width>81</width>
+        <width>91</width>
         <height>23</height>
        </rect>
       </property>
@@ -536,7 +579,7 @@ QLabel {
      <widget class="QCheckBox" name="checkBox_spiltToTetrads">
       <property name="geometry">
        <rect>
-        <x>180</x>
+        <x>220</x>
         <y>60</y>
         <width>141</width>
         <height>17</height>
@@ -555,7 +598,7 @@ QLabel {
      <widget class="QLabel" name="label_3">
       <property name="geometry">
        <rect>
-        <x>180</x>
+        <x>230</x>
         <y>10</y>
         <width>131</width>
         <height>16</height>
@@ -563,19 +606,6 @@ QLabel {
       </property>
       <property name="text">
        <string>Переведите 16СС в 2СС</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_4">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>10</y>
-        <width>131</width>
-        <height>16</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>16-е значение функции:</string>
       </property>
      </widget>
      <widget class="QPushButton" name="pushButton_help_1">
@@ -599,6 +629,76 @@ QLabel {
         <width>32</width>
         <height>32</height>
        </size>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label">
+      <property name="geometry">
+       <rect>
+        <x>160</x>
+        <y>30</y>
+        <width>55</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;----&amp;gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_function_2">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>30</y>
+        <width>31</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>9</pointsize>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;F&lt;span style=&quot; vertical-align:sub; font-size:10;&quot;&gt;16&lt;/span&gt; =&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_5">
+      <property name="geometry">
+       <rect>
+        <x>230</x>
+        <y>30</y>
+        <width>31</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>9</pointsize>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;F&lt;span style=&quot; vertical-align:sub;&quot;&gt;2&lt;/span&gt; = &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_4">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>10</y>
+        <width>131</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>16-е значение функции:</string>
       </property>
      </widget>
     </widget>
@@ -880,7 +980,7 @@ QLabel {
        <rect>
         <x>250</x>
         <y>540</y>
-        <width>75</width>
+        <width>91</width>
         <height>23</height>
        </rect>
       </property>
@@ -1074,7 +1174,7 @@ QLabel {
        <rect>
         <x>250</x>
         <y>540</y>
-        <width>75</width>
+        <width>91</width>
         <height>23</height>
        </rect>
       </property>
@@ -1532,7 +1632,7 @@ QLabel {
        <rect>
         <x>250</x>
         <y>540</y>
-        <width>75</width>
+        <width>91</width>
         <height>23</height>
        </rect>
       </property>
@@ -1603,25 +1703,12 @@ QLabel {
        <number>40</number>
       </attribute>
      </widget>
-     <widget class="QPushButton" name="pushButton_proverka_result_function">
-      <property name="geometry">
-       <rect>
-        <x>40</x>
-        <y>610</y>
-        <width>191</width>
-        <height>23</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Проверка минимальной функции</string>
-      </property>
-     </widget>
      <widget class="QPushButton" name="pushButton_proverka_karti_minimizacii">
       <property name="geometry">
        <rect>
         <x>40</x>
         <y>400</y>
-        <width>191</width>
+        <width>201</width>
         <height>23</height>
        </rect>
       </property>
@@ -1642,283 +1729,12 @@ QLabel {
        <string>Карта покрытия</string>
       </property>
      </widget>
-     <widget class="QTableWidget" name="tableWidget_formulaEditor">
-      <property name="geometry">
-       <rect>
-        <x>40</x>
-        <y>430</y>
-        <width>431</width>
-        <height>71</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>14</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
-       </font>
-      </property>
-      <attribute name="horizontalHeaderVisible">
-       <bool>false</bool>
-      </attribute>
-      <attribute name="horizontalHeaderMinimumSectionSize">
-       <number>1</number>
-      </attribute>
-      <attribute name="verticalHeaderVisible">
-       <bool>false</bool>
-      </attribute>
-      <attribute name="verticalHeaderMinimumSectionSize">
-       <number>1</number>
-      </attribute>
-     </widget>
-     <widget class="QPushButton" name="pushButton_A">
-      <property name="geometry">
-       <rect>
-        <x>40</x>
-        <y>510</y>
-        <width>31</width>
-        <height>23</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <family>MS Shell Dlg 2</family>
-        <pointsize>8</pointsize>
-        <weight>50</weight>
-        <italic>false</italic>
-        <bold>false</bold>
-       </font>
-      </property>
-      <property name="text">
-       <string>A</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_B">
-      <property name="geometry">
-       <rect>
-        <x>80</x>
-        <y>510</y>
-        <width>31</width>
-        <height>23</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <family>MS Shell Dlg 2</family>
-        <pointsize>8</pointsize>
-        <weight>50</weight>
-        <italic>false</italic>
-        <bold>false</bold>
-       </font>
-      </property>
-      <property name="text">
-       <string>B</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_C">
-      <property name="geometry">
-       <rect>
-        <x>120</x>
-        <y>510</y>
-        <width>31</width>
-        <height>23</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <family>MS Shell Dlg 2</family>
-        <pointsize>8</pointsize>
-        <weight>50</weight>
-        <italic>false</italic>
-        <bold>false</bold>
-       </font>
-      </property>
-      <property name="text">
-       <string>C</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_D">
-      <property name="geometry">
-       <rect>
-        <x>160</x>
-        <y>510</y>
-        <width>31</width>
-        <height>23</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <family>MS Shell Dlg 2</family>
-        <pointsize>8</pointsize>
-        <weight>50</weight>
-        <italic>false</italic>
-        <bold>false</bold>
-       </font>
-      </property>
-      <property name="text">
-       <string>D</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_AND">
-      <property name="geometry">
-       <rect>
-        <x>200</x>
-        <y>540</y>
-        <width>31</width>
-        <height>23</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <family>MS Shell Dlg 2</family>
-        <pointsize>8</pointsize>
-        <weight>50</weight>
-        <italic>false</italic>
-        <bold>false</bold>
-       </font>
-      </property>
-      <property name="text">
-       <string>*</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton__OR">
-      <property name="geometry">
-       <rect>
-        <x>240</x>
-        <y>540</y>
-        <width>31</width>
-        <height>23</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <family>MS Shell Dlg 2</family>
-        <pointsize>8</pointsize>
-        <weight>50</weight>
-        <italic>false</italic>
-        <bold>false</bold>
-       </font>
-      </property>
-      <property name="text">
-       <string>+</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_SKOBKA_BEFORE">
-      <property name="geometry">
-       <rect>
-        <x>200</x>
-        <y>510</y>
-        <width>31</width>
-        <height>23</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <family>MS Shell Dlg 2</family>
-        <pointsize>8</pointsize>
-        <weight>50</weight>
-        <italic>false</italic>
-        <bold>false</bold>
-       </font>
-      </property>
-      <property name="text">
-       <string>(</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_SKOBKA_AFTER">
-      <property name="geometry">
-       <rect>
-        <x>240</x>
-        <y>510</y>
-        <width>31</width>
-        <height>23</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <family>MS Shell Dlg 2</family>
-        <pointsize>8</pointsize>
-        <weight>50</weight>
-        <italic>false</italic>
-        <bold>false</bold>
-       </font>
-      </property>
-      <property name="text">
-       <string>)</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_INV">
-      <property name="geometry">
-       <rect>
-        <x>280</x>
-        <y>510</y>
-        <width>31</width>
-        <height>23</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <family>MS Shell Dlg 2</family>
-        <pointsize>8</pointsize>
-        <weight>50</weight>
-        <italic>false</italic>
-        <bold>false</bold>
-       </font>
-      </property>
-      <property name="text">
-       <string>!</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_DEL">
-      <property name="geometry">
-       <rect>
-        <x>350</x>
-        <y>510</y>
-        <width>81</width>
-        <height>23</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <family>MS Shell Dlg 2</family>
-        <pointsize>8</pointsize>
-        <weight>50</weight>
-        <italic>false</italic>
-        <bold>false</bold>
-       </font>
-      </property>
-      <property name="text">
-       <string>Удалить</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_CLEAR">
-      <property name="geometry">
-       <rect>
-        <x>350</x>
-        <y>540</y>
-        <width>81</width>
-        <height>23</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <family>MS Shell Dlg 2</family>
-        <pointsize>8</pointsize>
-        <weight>50</weight>
-        <italic>false</italic>
-        <bold>false</bold>
-       </font>
-      </property>
-      <property name="text">
-       <string>Очистить</string>
-      </property>
-     </widget>
      <widget class="QPushButton" name="pushButton_setRedColor">
       <property name="geometry">
        <rect>
         <x>40</x>
         <y>370</y>
-        <width>191</width>
+        <width>201</width>
         <height>23</height>
        </rect>
       </property>
@@ -2357,92 +2173,43 @@ QLabel {
        <string>Сбросить цвет выбранных</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButton_notD">
-      <property name="geometry">
-       <rect>
-        <x>160</x>
-        <y>540</y>
-        <width>31</width>
-        <height>23</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <family>MS Shell Dlg 2</family>
-        <pointsize>8</pointsize>
-        <weight>50</weight>
-        <italic>false</italic>
-        <bold>false</bold>
-       </font>
-      </property>
-      <property name="text">
-       <string>!D</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_notB">
-      <property name="geometry">
-       <rect>
-        <x>80</x>
-        <y>540</y>
-        <width>31</width>
-        <height>23</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <family>MS Shell Dlg 2</family>
-        <pointsize>8</pointsize>
-        <weight>50</weight>
-        <italic>false</italic>
-        <bold>false</bold>
-       </font>
-      </property>
-      <property name="text">
-       <string>!B</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_notA">
+     <widget class="QLabel" name="label_2">
       <property name="geometry">
        <rect>
         <x>40</x>
-        <y>540</y>
-        <width>31</width>
-        <height>23</height>
+        <y>330</y>
+        <width>431</width>
+        <height>41</height>
        </rect>
       </property>
-      <property name="font">
-       <font>
-        <family>MS Shell Dlg 2</family>
-        <pointsize>8</pointsize>
-        <weight>50</weight>
-        <italic>false</italic>
-        <bold>false</bold>
-       </font>
-      </property>
       <property name="text">
-       <string>!A</string>
+       <string>Для выделения интервалов сделайте двойной клий мышкой в соответствующие ячейки таблицы</string>
+      </property>
+      <property name="wordWrap">
+       <bool>true</bool>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButton_notC">
+     <widget class="QPushButton" name="pushButton_help_5">
       <property name="geometry">
        <rect>
-        <x>120</x>
-        <y>540</y>
-        <width>31</width>
-        <height>23</height>
+        <x>430</x>
+        <y>600</y>
+        <width>41</width>
+        <height>41</height>
        </rect>
       </property>
-      <property name="font">
-       <font>
-        <family>MS Shell Dlg 2</family>
-        <pointsize>8</pointsize>
-        <weight>50</weight>
-        <italic>false</italic>
-        <bold>false</bold>
-       </font>
-      </property>
       <property name="text">
-       <string>!C</string>
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset resource="source.qrc">
+        <normaloff>:/images/images/vopros.png</normaloff>:/images/images/vopros.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>32</width>
+        <height>32</height>
+       </size>
       </property>
      </widget>
      <widget class="QCheckBox" name="checkBox_autoInputFormula">
@@ -2471,43 +2238,345 @@ QLabel {
        <string>Редактирование выбранного элемента</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_2">
+     <widget class="QPushButton" name="pushButton_AND">
+      <property name="geometry">
+       <rect>
+        <x>200</x>
+        <y>540</y>
+        <width>31</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+        <italic>false</italic>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>*</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_INV">
+      <property name="geometry">
+       <rect>
+        <x>280</x>
+        <y>510</y>
+        <width>31</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+        <italic>false</italic>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>!</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_D">
+      <property name="geometry">
+       <rect>
+        <x>160</x>
+        <y>510</y>
+        <width>31</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+        <italic>false</italic>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>D</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton__OR">
+      <property name="geometry">
+       <rect>
+        <x>240</x>
+        <y>540</y>
+        <width>31</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+        <italic>false</italic>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>+</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_notB">
+      <property name="geometry">
+       <rect>
+        <x>80</x>
+        <y>540</y>
+        <width>31</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+        <italic>false</italic>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>!B</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_notC">
+      <property name="geometry">
+       <rect>
+        <x>120</x>
+        <y>540</y>
+        <width>31</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+        <italic>false</italic>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>!C</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_DEL">
+      <property name="geometry">
+       <rect>
+        <x>360</x>
+        <y>510</y>
+        <width>81</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+        <italic>false</italic>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Удалить</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_B">
+      <property name="geometry">
+       <rect>
+        <x>80</x>
+        <y>510</y>
+        <width>31</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+        <italic>false</italic>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>B</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_notA">
       <property name="geometry">
        <rect>
         <x>40</x>
-        <y>330</y>
-        <width>401</width>
-        <height>41</height>
+        <y>540</y>
+        <width>31</width>
+        <height>23</height>
        </rect>
       </property>
-      <property name="text">
-       <string>Для выделения интервалов ставьте &quot;+&quot; с клавиатуры в соответствующие ячейки таблицы</string>
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+        <italic>false</italic>
+        <bold>false</bold>
+       </font>
       </property>
-      <property name="wordWrap">
-       <bool>true</bool>
+      <property name="text">
+       <string>!A</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButton_help_5">
+     <widget class="QPushButton" name="pushButton_SKOBKA_BEFORE">
       <property name="geometry">
        <rect>
-        <x>430</x>
-        <y>600</y>
-        <width>41</width>
-        <height>41</height>
+        <x>200</x>
+        <y>510</y>
+        <width>31</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+        <italic>false</italic>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>(</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_C">
+      <property name="geometry">
+       <rect>
+        <x>120</x>
+        <y>510</y>
+        <width>31</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+        <italic>false</italic>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>C</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_notD">
+      <property name="geometry">
+       <rect>
+        <x>160</x>
+        <y>540</y>
+        <width>31</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+        <italic>false</italic>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>!D</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_CLEAR">
+      <property name="geometry">
+       <rect>
+        <x>360</x>
+        <y>540</y>
+        <width>81</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+        <italic>false</italic>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Очистить</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_SKOBKA_AFTER">
+      <property name="geometry">
+       <rect>
+        <x>240</x>
+        <y>510</y>
+        <width>31</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+        <italic>false</italic>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>)</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_A">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>510</y>
+        <width>31</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+        <italic>false</italic>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>A</string>
+      </property>
+     </widget>
+     <widget class="QTableWidget" name="tableWidget_formulaEditor">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>430</y>
+        <width>431</width>
+        <height>71</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>14</pointsize>
+        <bold>true</bold>
+       </font>
+      </property>
+      <attribute name="horizontalHeaderVisible">
+       <bool>false</bool>
+      </attribute>
+      <attribute name="horizontalHeaderMinimumSectionSize">
+       <number>1</number>
+      </attribute>
+      <attribute name="verticalHeaderVisible">
+       <bool>false</bool>
+      </attribute>
+      <attribute name="verticalHeaderMinimumSectionSize">
+       <number>1</number>
+      </attribute>
+     </widget>
+     <widget class="QPushButton" name="pushButton_proverka_result_function">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>610</y>
+        <width>381</width>
+        <height>23</height>
        </rect>
       </property>
       <property name="text">
-       <string/>
-      </property>
-      <property name="icon">
-       <iconset resource="source.qrc">
-        <normaloff>:/images/images/vopros.png</normaloff>:/images/images/vopros.png</iconset>
-      </property>
-      <property name="iconSize">
-       <size>
-        <width>32</width>
-        <height>32</height>
-       </size>
+       <string>Проверка минимальной функции</string>
       </property>
      </widget>
     </widget>

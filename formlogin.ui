@@ -34,6 +34,9 @@ QPushButton {
 background-color: rgb(226, 232, 227,);
 color: rgb(0, 0, 0);
 font: 10pt &quot;MS Shell Dlg 2&quot;;
+border-radius: 3px;
+background-color: #fff;
+border: 1px solid rgb(188, 193, 190);
 }
 
 QPushButton:disabled {
@@ -44,16 +47,25 @@ QPushButton:disabled {
 QPushButton:enabled {
 	color: rgb(0, 0, 0);
 	background-color: rgb(227, 227, 227);
+	background-color: #fff;
 }
 
-QLineEdit {
-	background-color: rgba(232, 219, 216, 91);
+QPushButton::hover
+{
+background-color: rgb(225, 248, 250);
+border: 1px solid rgb(135, 149, 150);
 }
 
 QComboBox{
 	color: rgb(0, 0, 0);
+	background-color: #fff;
+	selection-background-color:rgb(225, 248, 250);
 }
 
+QComboBox QAbstractItemView {
+    color: rgb(0, 0, 0);
+	background-color: #fff;
+}
 </string>
   </property>
   <widget class="QLabel" name="label">
@@ -68,7 +80,6 @@ QComboBox{
    <property name="font">
     <font>
      <pointsize>12</pointsize>
-     <weight>50</weight>
      <bold>false</bold>
     </font>
    </property>
@@ -88,7 +99,6 @@ QComboBox{
    <property name="font">
     <font>
      <pointsize>12</pointsize>
-     <weight>50</weight>
      <bold>false</bold>
     </font>
    </property>
@@ -127,9 +137,7 @@ QComboBox{
    </property>
    <property name="font">
     <font>
-     <family>MS Shell Dlg 2</family>
      <pointsize>10</pointsize>
-     <weight>50</weight>
      <italic>false</italic>
      <bold>false</bold>
     </font>
@@ -149,9 +157,7 @@ QComboBox{
    </property>
    <property name="font">
     <font>
-     <family>MS Shell Dlg 2</family>
      <pointsize>10</pointsize>
-     <weight>50</weight>
      <italic>false</italic>
      <bold>false</bold>
     </font>
