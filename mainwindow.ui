@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>520</width>
-    <height>697</height>
+    <height>704</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -75,6 +75,7 @@ background-color: rgb(239, 245, 242);
 QTableWidget {
 background-color: rgb(239, 245, 242);
 background-color: rgb(212, 211, 232);
+background-color: rgb(239, 245, 242);
 	selection-background-color:rgb(211, 235, 216);
 }
 
@@ -643,6 +644,7 @@ QGroupBox
       <property name="font">
        <font>
         <pointsize>10</pointsize>
+        <weight>50</weight>
         <bold>false</bold>
        </font>
       </property>
@@ -662,6 +664,7 @@ QGroupBox
       <property name="font">
        <font>
         <pointsize>9</pointsize>
+        <weight>50</weight>
         <bold>false</bold>
        </font>
       </property>
@@ -681,6 +684,7 @@ QGroupBox
       <property name="font">
        <font>
         <pointsize>9</pointsize>
+        <weight>50</weight>
         <bold>false</bold>
        </font>
       </property>
@@ -2249,7 +2253,9 @@ QGroupBox
       </property>
       <property name="font">
        <font>
+        <family>MS Shell Dlg 2</family>
         <pointsize>10</pointsize>
+        <weight>50</weight>
         <italic>false</italic>
         <bold>false</bold>
        </font>
@@ -2269,7 +2275,9 @@ QGroupBox
       </property>
       <property name="font">
        <font>
+        <family>MS Shell Dlg 2</family>
         <pointsize>10</pointsize>
+        <weight>50</weight>
         <italic>false</italic>
         <bold>false</bold>
        </font>
@@ -2289,7 +2297,9 @@ QGroupBox
       </property>
       <property name="font">
        <font>
+        <family>MS Shell Dlg 2</family>
         <pointsize>10</pointsize>
+        <weight>50</weight>
         <italic>false</italic>
         <bold>false</bold>
        </font>
@@ -2309,7 +2319,9 @@ QGroupBox
       </property>
       <property name="font">
        <font>
+        <family>MS Shell Dlg 2</family>
         <pointsize>10</pointsize>
+        <weight>50</weight>
         <italic>false</italic>
         <bold>false</bold>
        </font>
@@ -2329,7 +2341,9 @@ QGroupBox
       </property>
       <property name="font">
        <font>
+        <family>MS Shell Dlg 2</family>
         <pointsize>10</pointsize>
+        <weight>50</weight>
         <italic>false</italic>
         <bold>false</bold>
        </font>
@@ -2349,7 +2363,9 @@ QGroupBox
       </property>
       <property name="font">
        <font>
+        <family>MS Shell Dlg 2</family>
         <pointsize>10</pointsize>
+        <weight>50</weight>
         <italic>false</italic>
         <bold>false</bold>
        </font>
@@ -2369,7 +2385,9 @@ QGroupBox
       </property>
       <property name="font">
        <font>
+        <family>MS Shell Dlg 2</family>
         <pointsize>10</pointsize>
+        <weight>50</weight>
         <italic>false</italic>
         <bold>false</bold>
        </font>
@@ -2389,7 +2407,9 @@ QGroupBox
       </property>
       <property name="font">
        <font>
+        <family>MS Shell Dlg 2</family>
         <pointsize>10</pointsize>
+        <weight>50</weight>
         <italic>false</italic>
         <bold>false</bold>
        </font>
@@ -2409,7 +2429,9 @@ QGroupBox
       </property>
       <property name="font">
        <font>
+        <family>MS Shell Dlg 2</family>
         <pointsize>10</pointsize>
+        <weight>50</weight>
         <italic>false</italic>
         <bold>false</bold>
        </font>
@@ -2429,7 +2451,9 @@ QGroupBox
       </property>
       <property name="font">
        <font>
+        <family>MS Shell Dlg 2</family>
         <pointsize>10</pointsize>
+        <weight>50</weight>
         <italic>false</italic>
         <bold>false</bold>
        </font>
@@ -2449,7 +2473,9 @@ QGroupBox
       </property>
       <property name="font">
        <font>
+        <family>MS Shell Dlg 2</family>
         <pointsize>10</pointsize>
+        <weight>50</weight>
         <italic>false</italic>
         <bold>false</bold>
        </font>
@@ -2469,7 +2495,9 @@ QGroupBox
       </property>
       <property name="font">
        <font>
+        <family>MS Shell Dlg 2</family>
         <pointsize>10</pointsize>
+        <weight>50</weight>
         <italic>false</italic>
         <bold>false</bold>
        </font>
@@ -2489,7 +2517,9 @@ QGroupBox
       </property>
       <property name="font">
        <font>
+        <family>MS Shell Dlg 2</family>
         <pointsize>10</pointsize>
+        <weight>50</weight>
         <italic>false</italic>
         <bold>false</bold>
        </font>
@@ -2509,7 +2539,9 @@ QGroupBox
       </property>
       <property name="font">
        <font>
+        <family>MS Shell Dlg 2</family>
         <pointsize>10</pointsize>
+        <weight>50</weight>
         <italic>false</italic>
         <bold>false</bold>
        </font>
@@ -2529,7 +2561,9 @@ QGroupBox
       </property>
       <property name="font">
        <font>
+        <family>MS Shell Dlg 2</family>
         <pointsize>10</pointsize>
+        <weight>50</weight>
         <italic>false</italic>
         <bold>false</bold>
        </font>
@@ -2550,6 +2584,7 @@ QGroupBox
       <property name="font">
        <font>
         <pointsize>14</pointsize>
+        <weight>75</weight>
         <bold>true</bold>
        </font>
       </property>
