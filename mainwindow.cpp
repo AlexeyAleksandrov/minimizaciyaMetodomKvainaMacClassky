@@ -602,11 +602,17 @@ void MainWindow::setKartaColor(QColor color)
         // закрашиваем все значения, покрываемые ядром
         for (int col=0; col<cols; col++)
         {
-            if(tableWidget_kartaMinimizacii->item(i, col) != nullptr && tableWidget_kartaMinimizacii->item(i, col)->text() == "+") // если ячейка существует и в ней стоит +
+            if(tableWidget_kartaMinimizacii->item(i, col) != nullptr) // если ячейка существует и в ней стоит +
             {
-                for (int row=0; row<rows; row++)  // идем по всем строчкам в этом столбце
+                setItemColor(i, col, *greenColor);    // закрашиваем ячейку в зелёный цвет
+
+                // смотрим, есть ли значения
+                if(tableWidget_kartaMinimizacii->item(i, col)->text() == "+")   // если ячейка существует и в ней стоит +
                 {
-                    setItemColor(row, col, *greenColor);    // закрашиваем в зелёный цвет
+                    for (int row=0; row<rows; row++)  // идем по всем строчкам в этом столбце
+                    {
+                        setItemColor(row, col, *greenColor);    // закрашиваем в зелёный цвет
+                    }
                 }
             }
         }
