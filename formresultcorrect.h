@@ -19,6 +19,7 @@ public:
     void setGroup(const QString &value);
     void setType(const QString &type);
     void setFunction(const QString &value);
+    void setValidFunction(bool newValidFunction);
 
     void applyData();
 
@@ -28,6 +29,7 @@ private:
     QString group;
     QString m_type;
     QString function;
+    bool validFunction;
 };
 
 #endif // FORMRESULTCORRECT_H

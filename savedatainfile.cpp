@@ -268,6 +268,7 @@ void MainWindow::readDataFromFile()
             else
             {
                 QString str_func2 = dataList[1]; // считываем данные из 2й части строки
+
                 lineEditFunc_2->setText(str_func2); // выводим текст в lineEdit, где он должен быть
                 pushButtonFunc2Clicked();  // эмитируем нажатие кнопки
                 setCheckBoxesTotFunctionValue();    // задаем значения для checkBox как у функции

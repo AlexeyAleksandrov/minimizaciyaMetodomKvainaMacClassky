@@ -39,4 +39,10 @@ void FormResultCorrect::applyData()
     ui->label_group->setText("Группа: " + group);
     ui->label_func->setText("Функция: " + function);
     ui->label_type->setText("Тип минимизации: " + m_type);
+    ui->label_result->setText(QString("ПРАВИЛЬНО") + (validFunction ? "" : "!"));
+}
+
+void FormResultCorrect::setValidFunction(bool newValidFunction)
+{
+    validFunction = newValidFunction;
 }
