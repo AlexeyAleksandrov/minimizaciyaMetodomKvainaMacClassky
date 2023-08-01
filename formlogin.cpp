@@ -8,90 +8,6 @@ FormLogin::FormLogin(MainWindow &w, QWidget *parent) :
     ui->setupUi(this);
 //    currentFunction = &function;
     mw = &w; // сохраянем указатель
-
-    auto closeLambda = [&]() // функция закрытия окна
-    {
-        closetimer = new QTimer(this);
-        connect(closetimer, &QTimer::timeout, this, &FormLogin::closeWindow);
-        closetimer->start(1);
-    };
-
-    QFile *fileStudents = new QFile(FILE_STUDENTS_NAME);
-    if(!fileStudents->exists())
-    {
-        message("Не найден файл с вариантами!");
-        closeLambda();
-        return;
-    }
-    if(!fileStudents->open(QIODevice::ReadOnly)) // если не открывается
-    {
-        message("Не удаётся открыть файл со студентами!");
-        closeLambda();
-        return;
-    }
-    qDebug() << "Проверили файл";
-    QString text = fileStudents->readAll(); // считываем весь файл
-    fileStudents->close(); // закрываем файл
-    delete fileStudents;
-    fileStudents = nullptr;
-    bool ok = false; // флаг хеша
-    md5crypter::decryptStr(text, ok); // убираем и проверяем хеш
-    if(!ok)
-    {
-        QMessageBox::critical(this, "Критическая ошибка", "Критическая ошибка!\nФайл вариантов повреждён!");
-        closeLambda();
-        return;
-    }
-    QStringList studentsQStringList = text.split(STR_SEPARATOR_1); // разбиваем по строкам
-    if(studentsQStringList.size() <= 1) // если в файле ничего нет
-    {
-        message("Файл пустой или повреждён!");
-        closeLambda();
-        return;
-    }
-    qDebug() << "Прочли файл";
-    students = new QList<studentStruct>; // выделяем память
-    qDebug() << "Создали список студентов";
-    for (int i=0; i<studentsQStringList.size(); i++)
-    {
-        QStringList listLine = studentsQStringList[i].split(STR_SEPARATOR_2); // ищем данные
-        qDebug() << listLine;
-        if(listLine.size() < 3)
-        {
-            continue;
-        }
-        qDebug() << "i = " << i;
-        studentStruct *student = new studentStruct;
-        student->group = listLine[0];
-        student->name = listLine[1];
-        if(listLine.size() > 2)
-        {
-            student->function = listLine[2];
-        }
-        student->function = listLine[2];
-        qDebug() << "Добавли данные в структуру";
-        students->append(*student);
-        qDebug() << "удалили указатель";
-        bool existGroup = false; // хранит, существует ли уже эта группа
-        for (int j=0; j<groups.size(); j++)
-        {
-            if(groups[j] == student->group)  // если группа есть
-            {
-                existGroup = true;
-                break;
-            }
-        }
-        qDebug() << "Проверили наличие группы " << existGroup;
-        if(!existGroup) // если группа не найдена
-        {
-            groups.append(student->group); // добавляем группу
-            qDebug() << "Добавили группу";
-        }
-        qDebug() << "Идём дальше";
-        delete student;
-        student = nullptr;
-    }
-    ui->comboBox_group->addItems(groups);
 }
 
 FormLogin::~FormLogin()
@@ -140,6 +56,113 @@ XORCrypter *FormLogin::getXorCrypter() const
 void FormLogin::setXorCrypter(XORCrypter *newXorCrypter)
 {
     xorCrypter = newXorCrypter;
+}
+
+void FormLogin::loadVariants()
+{
+//    auto closeLambda = [&]() // функция закрытия окна
+//    {
+//        closetimer = new QTimer(this);
+//        connect(closetimer, &QTimer::timeout, this, &FormLogin::closeWindow);
+//        closetimer->start(1);
+//    };
+
+    QFile *fileStudents = new QFile(FILE_STUDENTS_NAME);
+    if(!fileStudents->exists())
+    {
+        message("Не найден файл с вариантами!");
+//        closeLambda();
+        this->close();
+        return;
+    }
+#ifdef ENABLE_XOR_CRYPT
+    bool ok = false; // флаг хеша
+    QByteArray decryptedText = xorCrypter->readEncryptenFile(*fileStudents, xorCrypter->getKey(), &ok);
+
+    if(!ok) // если не открывается
+    {
+        message("Не удаётся открыть файл со студентами!");
+//        closeLambda();
+        this->close();
+        return;
+    }
+
+    QString text = QString::fromUtf8(decryptedText);
+#else
+    if(!fileStudents->open(QIODevice::ReadOnly)) // если не открывается
+    {
+        message("Не удаётся открыть файл со студентами!");
+//        closeLambda();
+        this->close();
+        return;
+    }
+    qDebug() << "Проверили файл";
+    QString text = fileStudents->readAll(); // считываем весь файл
+    fileStudents->close(); // закрываем файл
+    delete fileStudents;
+    fileStudents = nullptr;
+#endif
+
+    ok = false; // сбрасываем значение
+    md5crypter::decryptStr(text, ok); // убираем и проверяем хеш
+    if(!ok)
+    {
+        QMessageBox::critical(this, "Критическая ошибка", "Критическая ошибка!\nФайл вариантов повреждён!");
+//        closeLambda();
+        this->close();
+        return;
+    }
+    QStringList studentsQStringList = text.split(STR_SEPARATOR_1); // разбиваем по строкам
+    if(studentsQStringList.size() <= 1) // если в файле ничего нет
+    {
+        message("Файл пустой или повреждён!");
+//        closeLambda();
+        this->close();
+        return;
+    }
+    qDebug() << "Прочли файл";
+    students = new QList<studentStruct>; // выделяем память
+    qDebug() << "Создали список студентов";
+    for (int i=0; i<studentsQStringList.size(); i++)
+    {
+        QStringList listLine = studentsQStringList[i].split(STR_SEPARATOR_2); // ищем данные
+        qDebug() << listLine;
+        if(listLine.size() < 3)
+        {
+            continue;
+        }
+        qDebug() << "i = " << i;
+        studentStruct *student = new studentStruct;
+        student->group = listLine[0];
+        student->name = listLine[1];
+        if(listLine.size() > 2)
+        {
+            student->function = listLine[2];
+        }
+        student->function = listLine[2];
+        qDebug() << "Добавли данные в структуру";
+        students->append(*student);
+        qDebug() << "удалили указатель";
+        bool existGroup = false; // хранит, существует ли уже эта группа
+        for (int j=0; j<groups.size(); j++)
+        {
+            if(groups[j] == student->group)  // если группа есть
+            {
+                existGroup = true;
+                break;
+            }
+        }
+        qDebug() << "Проверили наличие группы " << existGroup;
+        if(!existGroup) // если группа не найдена
+        {
+            groups.append(student->group); // добавляем группу
+            qDebug() << "Добавили группу";
+        }
+        qDebug() << "Идём дальше";
+        delete student;
+        student = nullptr;
+    }
+    ui->comboBox_group->addItems(groups);
 }
 
 void FormLogin::on_comboBox_group_currentIndexChanged(const QString &arg1)

@@ -30,6 +30,8 @@ public:
     XORCrypter *getXorCrypter() const;
     void setXorCrypter(XORCrypter *newXorCrypter);
 
+    void loadVariants();    // функция загрузки списка вариантов
+
 private slots:
     void on_pushButton_accept_clicked();
 

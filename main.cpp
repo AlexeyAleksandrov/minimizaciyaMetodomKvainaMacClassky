@@ -41,6 +41,7 @@ int main(int argc, char *argv[])
     FormLogin f(w);
     f.setXorCrypter(&xorCrypter);
     f.show();
+    f.loadVariants();
 
 //    w.show();
 //    w.loadDataFromFile();
