@@ -1,6 +1,11 @@
 #include "formlogin.h"
 #include "ui_formlogin.h"
 
+/**
+ * @brief Конструктор класса FormLogin.
+ * @param w Ссылка на главное окно.
+ * @param parent Родительский виджет.
+ */
 FormLogin::FormLogin(MainWindow &w, QWidget *parent) :
     QWidget(parent),
     ui(new Ui::FormLogin)
@@ -10,11 +15,17 @@ FormLogin::FormLogin(MainWindow &w, QWidget *parent) :
     mw = &w; // сохраянем указатель
 }
 
+/**
+ * @brief Деструктор класса FormLogin.
+ */
 FormLogin::~FormLogin()
 {
     delete ui;
 }
 
+/**
+ * @brief Обработчик события нажатия кнопки "Принять".
+ */
 void FormLogin::on_pushButton_accept_clicked()
 {
     QFile file(FILE_STUDENT_WORK);
@@ -32,6 +43,12 @@ void FormLogin::on_pushButton_accept_clicked()
     mw->setStudentGroup(ui->comboBox_group->currentText()); // передаём группу
 }
 
+/**
+ * @brief Вспомогательная функция для вывода сообщения.
+ * @param text Текст сообщения.
+ * @param type Тип сообщения (0 - информация, 1 - предупреждение, 2 - критическая ошибка).
+ * @param title Заголовок сообщения.
+ */
 void FormLogin::message(QString text, int type, QString title)
 {
     if(type == 0)
@@ -48,16 +65,27 @@ void FormLogin::message(QString text, int type, QString title)
     }
 }
 
+/**
+ * @brief Метод для получения указателя на XORCrypter.
+ * @return Указатель на XORCrypter.
+ */
 XORCrypter *FormLogin::getXorCrypter() const
 {
     return xorCrypter;
 }
 
+/**
+ * @brief Метод для установки указателя на XORCrypter.
+ * @param newXorCrypter Указатель на XORCrypter для установки.
+ */
 void FormLogin::setXorCrypter(XORCrypter *newXorCrypter)
 {
     xorCrypter = newXorCrypter;
 }
 
+/**
+ * @brief Метод загрузки вариантов.
+ */
 void FormLogin::loadVariants()
 {
 //    auto closeLambda = [&]() // функция закрытия окна
@@ -165,6 +193,10 @@ void FormLogin::loadVariants()
     ui->comboBox_group->addItems(groups);
 }
 
+/**
+ * @brief Обработчик события изменения текущей группы в выпадающем списке.
+ * @param arg1 Имя выбранной группы.
+ */
 void FormLogin::on_comboBox_group_currentIndexChanged(const QString &arg1)
 {
     ui->comboBox_student->clear(); // очищаем comboBox
@@ -177,6 +209,10 @@ void FormLogin::on_comboBox_group_currentIndexChanged(const QString &arg1)
     }
 }
 
+/**
+ * @brief Обработчик события изменения текущего студента в выпадающем списке.
+ * @param arg1 Имя выбранного студента.
+ */
 void FormLogin::on_comboBox_student_currentIndexChanged(const QString &arg1)
 {
     for (int i=0; i<students->size(); i++)
@@ -189,6 +225,9 @@ void FormLogin::on_comboBox_student_currentIndexChanged(const QString &arg1)
     }
 }
 
+/**
+ * @brief Обработчик события нажатия кнопки "Загрузить".
+ */
 void FormLogin::on_pushButton_load_clicked()
 {
     QFile file(FILE_STUDENT_WORK); // открываем файл с сохраненной работой

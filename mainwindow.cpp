@@ -4,6 +4,9 @@
 //#define OPTYMIZE_TYPE_ONLY
 //#define CUSTON_INPUT_FUNCTION
 
+/**
+Конструктор главного окна. @param parent Указатель на родительское окно
+*/
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -35,14 +38,11 @@ MainWindow::MainWindow(QWidget *parent) :
     tabWidget = nullptr;
 
     // ставим отключение некотиорых кнопок, действие которых было заменено
-//    ui->pushButton_tot_add->setVisible(false);
     ui->pushButton_func_2->setVisible(false);
     ui->checkBox_spiltToTetrads->setChecked(true);
 
     qDebug() << "Прираниваем значения";
     pushButton_nextStep_tot = ui->pushButton_nextStep_tot;
-    //    pushButton_delete_last_ones = ui->pushButton_delete_last_ones;
-    //    pushButton_proverka_karta_minimizacii = ui->pushButton_proverka_karta_minimizacii;
     pushButton_proverka_karta_minimizacii = ui->pushButton_proverka_result_function;
     pushButton_add_skleyki_2 = ui->pushButton_add_skleyki_2;
     pushButton_proverka_karti_minimizacii = ui->pushButton_proverka_karti_minimizacii;
@@ -61,158 +61,9 @@ MainWindow::MainWindow(QWidget *parent) :
 
     qDebug() << "Conntects tot";
     // таблица истинности
-//    connect(ui->pushButton_enterFunction, SIGNAL(clicked()), this, SLOT(pushButtonFunctionClicked())); // соединяем кнопку со слотом
-    qDebug() << "pushButton_enterFunction";
-//    connect(ui->pushButton_tot_add, SIGNAL(clicked()), this, SLOT(pushButtonTotAddClicked()));
-//    connect(ui->pushButton_checkTableOfTrue, SIGNAL(clicked()), this, SLOT(pushButtonCheckTableOfTrueClicked()));
     connect(ui->pushButton_func_2, SIGNAL(clicked()), this, SLOT(pushButtonFunc2Clicked()));
     qDebug() << "pushButton_func_2";
-//    connect(pushButton_nextStep_tot, SIGNAL(clicked()), this, SLOT(pushButton_nextStep_totClicked()));
-    //    connect(pushButton_delete_last_ones, SIGNAL(clicked()), this, SLOT(pushButton_delete_last_onesClicked()));
-    qDebug() << "Conntects f = 1";
-    // таблица со значениями, где функция принимает значение 1
-    //    connect(ui->pushButton_clearTableOneOnly, SIGNAL(clicked()), this, SLOT(pushButtonClearOneOnlyClicked()));
-//    connect(ui->pushButton_proverka_oneOnly, SIGNAL(clicked()), this, SLOT(pushButtonProverkaClicked()));
-//    connect(ui->pushButton_tot_add_to_skeyki_1, SIGNAL(clicked()), this, SLOT(pushButtonAddTSkeyki_1()));
-    // таблица со склейками 1
-    qDebug() << "Conntects skleiki 1";
-//    connect(ui->pushButton_add_skleyki_1, SIGNAL(clicked()), this, SLOT(pushButton_add_skleyki_2_clicked()));
-    //    connect(ui->pushButton_clear_skleiki_1_editing, SIGNAL(clicked()), this, SLOT(pushButton_clear_skleyki_1()));
-//    connect(ui->pushButton_proverka_skleiki_1_editing, SIGNAL(clicked()), this, SLOT(pushButton_proverka_skleyki_1_clicked()));
-    //    connect(ui->pushButton_delete_last_skleiki_1_editing, SIGNAL(clicked()), this, SLOT(pushButton_delete_last_skleiki_1_editingClicked()));
-//    connect(ui->pushButton_nextStep_onesOnly, SIGNAL(clicked()), this, SLOT(pushButton_nextStep_tot_2Clicked()));
-
-    // таблица со склейками 2
-    qDebug() << "Conntects skleiki 2";
-    //    connect(ui->pushButton_clearSkleyki_2, SIGNAL(clicked()), this, SLOT(pushButton_clear_skleyki_2()));
     connect(ui->pushButton_proverka_skleyki_3, SIGNAL(clicked()), this, SLOT(pushButton_proverka_skleyki_2_clicked()));
-//    connect(ui->pushButton_nextStep_skleyki_2, SIGNAL(clicked()), this, SLOT(pushButton_nextStep_skleyki_2Clicked()));
-//    connect(pushButton_add_skleyki_2, SIGNAL(clicked()), this, SLOT(pushButton_add_skleyki_3_clicked()));
-
-    // таблица для поиска ДНФ
-    qDebug() << "Conntects poisk dnf";
-    //    connect(ui->pushButton_move_skleyki_to_coresTable, SIGNAL(clicked()), this, SLOT(pusbButton_move_skleyki_to_coresTable()));
-    //    connect(ui->pushButton_move_skleyki_to_coresTable_2, SIGNAL(clicked()), this, SLOT(pusbButton_move_skleyki_to_coresTable()));
-    //    connect(ui->pushButton_move_skleyki_to_coresTable_3, SIGNAL(clicked()), this, SLOT(pusbButton_move_skleyki_to_coresTable()));
-    //    connect(pushButton_proverka_karti_minimizacii, SIGNAL(clicked()), this, SLOT(pushButton_proverka_karta_minimizaciiClicked));
-
-    //    checkBoxes;
-    // таблица истинности
-    qDebug() << "checkboxes";
-//    const int size = 16; // константа размера массива
-//    checkBoxes = new QCheckBox *[size];
-//    for (int i=0; i<size; i++)
-//    {
-//        checkBoxes[i] = nullptr;
-//    }
-//    checkBoxes[0] = ui->checkBox_tot_0;
-//    checkBoxes[0] = ui->checkBox_tot_0; // заносим в массив все чекбоксы
-//    checkBoxes[1] = ui->checkBox_tot_1;
-//    checkBoxes[2] = ui->checkBox_tot_2;
-//    checkBoxes[3] = ui->checkBox_tot_3;
-//    checkBoxes[4] = ui->checkBox_tot_4;
-//    checkBoxes[5] = ui->checkBox_tot_5;
-//    checkBoxes[6] = ui->checkBox_tot_6;
-//    checkBoxes[7] = ui->checkBox_tot_7;
-//    checkBoxes[8] = ui->checkBox_tot_8;
-//    checkBoxes[9] = ui->checkBox_tot_9;
-//    checkBoxes[10] = ui->checkBox_tot_10;
-//    checkBoxes[11] = ui->checkBox_tot_11;
-//    checkBoxes[12] = ui->checkBox_tot_12;
-//    checkBoxes[13] = ui->checkBox_tot_13;
-//    checkBoxes[14] = ui->checkBox_tot_14;
-//    checkBoxes[15] = ui->checkBox_tot_15;
-//    for (int i=0; i<size; i++)
-//    {
-//        connect(checkBoxes[i], &QCheckBox::stateChanged, this, &MainWindow::updateCheckBoxTotState); // соединяем сигнал изменения состояния с нажатием на кнопку добавить
-//    }
-
-    //    checkBoxes = new QCheckBox *[size];
-
-    // таблица, где функция равна 1
-    //    checkBoxes_ones = new QCheckBox *[16];
-//    checkBoxes_ones = new QCheckBox *[size];
-//    for (int i=0; i<size; i++)
-//    {
-//        checkBoxes_ones[i] = nullptr;
-//    }
-//    checkBoxes_ones[0] = ui->checkBox_ones_0;
-//    checkBoxes_ones[1] = ui->checkBox_ones_1;
-//    checkBoxes_ones[2] = ui->checkBox_ones_2;
-//    checkBoxes_ones[3] = ui->checkBox_ones_3;
-//    checkBoxes_ones[4] = ui->checkBox_ones_4;
-//    checkBoxes_ones[5] = ui->checkBox_ones_5;
-//    checkBoxes_ones[6] = ui->checkBox_ones_6;
-//    checkBoxes_ones[7] = ui->checkBox_ones_7;
-//    checkBoxes_ones[8] = ui->checkBox_ones_8;
-//    checkBoxes_ones[9] = ui->checkBox_ones_9;
-//    checkBoxes_ones[10] = ui->checkBox_ones_10;
-//    checkBoxes_ones[11] = ui->checkBox_ones_11;
-//    checkBoxes_ones[12] = ui->checkBox_ones_12;
-//    checkBoxes_ones[13] = ui->checkBox_ones_13;
-//    checkBoxes_ones[14] = ui->checkBox_ones_14;
-//    checkBoxes_ones[15] = ui->checkBox_ones_15;
-
-
-    // склейки 1
-//    checkBoxes_skleyki_1 = new QCheckBox *[size]; // выделяем память под указатели на QCheckBox для склейки 1
-//    for (int i=0; i<size; i++)
-//    {
-//        checkBoxes_skleyki_1[i] = nullptr;
-//    }
-//    qDebug() << "Заполняем массив";
-//    checkBoxes_skleyki_1[0] = ui->checkBox_skleyka_1_0;
-//    checkBoxes_skleyki_1[1] = ui->checkBox_skleyka_1_1;
-//    checkBoxes_skleyki_1[2] = ui->checkBox_skleyka_1_2;
-//    checkBoxes_skleyki_1[3] = ui->checkBox_skleyka_1_3;
-//    checkBoxes_skleyki_1[4] = ui->checkBox_skleyka_1_4;
-//    checkBoxes_skleyki_1[5] = ui->checkBox_skleyka_1_5;
-//    checkBoxes_skleyki_1[6] = ui->checkBox_skleyka_1_6;
-//    checkBoxes_skleyki_1[7] = ui->checkBox_skleyka_1_7;
-//    checkBoxes_skleyki_1[8] = ui->checkBox_skleyka_1_8;
-//    checkBoxes_skleyki_1[9] = ui->checkBox_skleyka_1_9;
-//    checkBoxes_skleyki_1[10] = ui->checkBox_skleyka_1_10;
-//    checkBoxes_skleyki_1[11] = ui->checkBox_skleyka_1_11;
-//    checkBoxes_skleyki_1[12] = ui->checkBox_skleyka_1_12;
-//    checkBoxes_skleyki_1[13] = ui->checkBox_skleyka_1_13;
-//    checkBoxes_skleyki_1[14] = ui->checkBox_skleyka_1_14;
-//    checkBoxes_skleyki_1[15] = ui->checkBox_skleyka_1_15;
-//    qDebug() << "Заполнили массив";
-
-//    checkBoxes_skleyki_2 = new QCheckBox *[size];
-//    for (int i=0; i<size; i++)
-//    {
-//        checkBoxes_skleyki_2[i] = nullptr;
-//    }
-//    checkBoxes_skleyki_2[0] = ui->checkBox_skleyka_2_0;
-//    checkBoxes_skleyki_2[1] = ui->checkBox_skleyka_2_1;
-//    checkBoxes_skleyki_2[2] = ui->checkBox_skleyka_2_2;
-//    checkBoxes_skleyki_2[3] = ui->checkBox_skleyka_2_3;
-//    checkBoxes_skleyki_2[4] = ui->checkBox_skleyka_2_4;
-//    checkBoxes_skleyki_2[5] = ui->checkBox_skleyka_2_5;
-//    checkBoxes_skleyki_2[6] = ui->checkBox_skleyka_2_6;
-//    checkBoxes_skleyki_2[7] = ui->checkBox_skleyka_2_7;
-//    checkBoxes_skleyki_2[8] = ui->checkBox_skleyka_2_8;
-//    checkBoxes_skleyki_2[9] = ui->checkBox_skleyka_2_9;
-//    checkBoxes_skleyki_2[10] = ui->checkBox_skleyka_2_10;
-//    checkBoxes_skleyki_2[11] = ui->checkBox_skleyka_2_11;
-//    checkBoxes_skleyki_2[12] = ui->checkBox_skleyka_2_12;
-//    checkBoxes_skleyki_2[13] = ui->checkBox_skleyka_2_13;
-//    checkBoxes_skleyki_2[14] = ui->checkBox_skleyka_2_14;
-//    checkBoxes_skleyki_2[15] = ui->checkBox_skleyka_2_15;
-    //    checkBoxes_skleyki_2 = new QCheckBox *[size];
-
-//    for (int i=0; i<size; i++)
-//    {
-//        if(checkBoxes != nullptr && checkBoxes[i] != nullptr)
-//            checkBoxes[i]->setText(CHECK_BOXES_TEXT);
-//        if(checkBoxes_ones != nullptr && checkBoxes_ones[i] != nullptr)
-//            checkBoxes_ones[i]->setText(CHECK_BOXES_TEXT);
-//        if(checkBoxes_skleyki_1 != nullptr && checkBoxes_skleyki_1[i] != nullptr)
-//            checkBoxes_skleyki_1[i]->setText(CHECK_BOXES_TEXT);
-//        if(checkBoxes_skleyki_2 != nullptr && checkBoxes_skleyki_2[i] != nullptr)
-//            checkBoxes_skleyki_2[i]->setText(CHECK_BOXES_TEXT);
-//    }
 
     checkBox_autoInputFormula = ui->checkBox_autoInputFormula;
     checkBox_editChoseItemFormula = ui->checkBox_editChoseItemFormula;
@@ -284,9 +135,6 @@ MainWindow::MainWindow(QWidget *parent) :
     pushButton_notC = ui->pushButton_notC;
     pushButton_notD = ui->pushButton_notD;
 
-
-
-
     // блокируем все кнопки до выбора варианта
     // этап 0 (ввод функции в векторном формате)
 
@@ -302,14 +150,12 @@ MainWindow::MainWindow(QWidget *parent) :
     redColor = new QColor(255,101,96); // красный цвет
     greenColor = new QColor(185,255,141); // зеленый цвет
 
-//    pushButton_clear_skleiki_1_editing->setVisible(false); // выключаем видимость кнопки удаления склеек 1
-//    pushButton_clear_skleiki_2_editing->setVisible(false); // выключаем видимость кнопки удаления склеек 2
-//    pushButton_clearSkleyki_2->setVisible(false); // выключаем видимость кнопки удаления склеек 3
-
     //    pushButton_loadDataFromFile->setVisible(false); // выключаем видимость кнопки загрузки решения из уже начатой работы
-
 }
 
+/**
+Конструктор главного окна. @param parent Указатель на родительское окно
+*/
 MainWindow::~MainWindow()
 {
     if(allowSave) // если разрешено сохранение
@@ -319,6 +165,10 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+/**
+ * @brief Устанавливает значение функции.
+ * @param function Функция в формате QString.
+ */
 void MainWindow::setFunction(QString function)
 {
     //    QString text = lineEditFunction->text(); // берем текст функции
@@ -421,6 +271,13 @@ void MainWindow::message(QString message, QString title)
     QMessageBox::information(this, title, message);
 }
 
+/**
+
+@brief Проверяет, содержит ли каждый элемент в первом QStringList второй QStringList.
+@param firstList Первый QStringList для сравнения.
+@param secondList Второй QStringList для сравнения.
+@return true, если каждый элемент первого списка содержится во втором списке, иначе false.
+*/
 bool MainWindow::isAllElementsFirstQStrlingListContainsInSecondQStringList(QStringList firstList, QStringList secondList)
 {
     bool ok = true; // флаг проверки наличия данной склейки в рассчитанном списке
@@ -548,6 +405,31 @@ void MainWindow::pushButton_delete_last_skleiki_3_editingClicked()
     deletelastRow(tableWidgetsSkleykiEditing[2]); // удалаяем последнюю строку в таблице склеек 3
 }
 
+/**
+
+@brief Устанавливает цвет карты.
+@param color Цвет, который нужно установить.
+
+Функция устанавливает цвет ячеек таблицы tableWidget_kartaMinimizacii в соответствии с определенными правилами.
+Если таблица tableWidget_kartaMinimizacii не существует или не содержит строк или колонок, функция завершается.
+
+Функция определяет, является ли данное значение ядром, используя лямбда-функцию checkCore.
+Внутри нее определяется количество плюсов в столбце и позиция (строка) последнего плюса.
+
+Функция покраски ячеек setItemColor устанавливает цвет ячейки в соответствии с переданным цветом.
+Устанавливается белый или красный цвет, или зеленый, но только если ячейка не выделена красным цветом.
+
+Функция fillCorePokritie выделяет все значения, покрываемые ядром. Если значение не является ядром, она просто завершается.
+Внутри функции идет проход по всем столбцам и строкам, при котором ячейки, соответствующие ядру, закрашиваются в зеленый цвет.
+
+Функция проходит по всем ячейкам таблицы и, если ячейка существует и выделена, выполняет определенные действия.
+Если выделенное значение не является ядром (красного цвета), функция проверяет, является ли значение ядром.
+Если значение является ядром, все значения, покрытые ядром, закрашиваются в зеленый цвет.
+Если значение не является ядром, устанавливается флаг showCoreErrorMessage и пропускается значение.
+Если showCoreErrorMessage установлен в true, выводится предупреждающее сообщение.
+
+В конце функции выделение снимается и, при наличии флага showCoreErrorMessage, выводится сообщение об ошибке выделения ядер.
+*/
 void MainWindow::setKartaColor(QColor color)
 {
     if(tableWidget_kartaMinimizacii == nullptr)
@@ -998,6 +880,13 @@ void MainWindow::on_pushButton_CLEAR_clicked()
 //    Q_UNUSED(item);
 //}
 
+/**
+@brief Выравнивает текст в таблице по центру.
+@param tbw Указатель на таблицу, в которой нужно выравнивать текст.
+Функция выравнивает содержимое ячеек таблицы tbw по центру.
+Если таблица tbw не существует или не содержит строк или столбцов, функция завершается.
+В цикле проходим по всем строкам и столбцам таблицы и, если ячейка существует, устанавливаем выравнивание текста по центру.
+*/
 void MainWindow::center_text_in_table(QTableWidget *tbw)
 {
     if(tbw == nullptr)
@@ -1023,6 +912,16 @@ void MainWindow::center_text_in_table(QTableWidget *tbw)
     }
 }
 
+/**
+@brief Устанавливает переменные в заголовке таблицы.
+@param tbw Указатель на таблицу, в которой нужно установить переменные в заголовок.
+Функция устанавливает переменные в заголовке таблицы tbw.
+Если таблица tbw не существует или не содержит столбцов, функция завершается.
+Создается QStringList headerList для хранения заголовков.
+В цикле добавляются переменные в виде букв, начиная с 'a' и увеличивая на 1 с помощью оператора ++.
+Каждая переменная преобразуется в QString и добавляется в headerList.
+В результате получается список букв, который устанавливается в качестве горизонтальных заголовков таблицы.
+*/
 void MainWindow::setVariablesToHeader(QTableWidget *tbw)
 {
     if(tbw == nullptr)
@@ -1134,6 +1033,22 @@ void MainWindow::clearSelectionAdDisableClickTableWidget(QTableWidget *tableWidg
     }
 }
 
+/**
+@brief Проверяет соответствие значения ячейки с заданными строкой и столбцом.
+@param i Индекс строки.
+@param j Индекс столбца.
+@param horizontalList Список строк заголовка таблицы.
+@param verticalList Список столбцов заголовка таблицы.
+@return true, если значение ячейки соответствует заданным строке и столбцу, иначе false.
+Функция проверяет, соответствует ли значение ячейки в таблице с индексами i и j заданным строке и столбцу
+из списков horizontalList и verticalList соответственно.
+Если количество символов в строке и столбце не совпадает, функция возвращает false.
+Затем сравниваются символы посимвольно и вычисляется количество совпадений.
+Если все символы совпадают и значение ячейки таблицы равно "+", функция возвращает true.
+Если символы не совпадают, но значение ячейки равно "+", функция возвращает false.
+Если символы совпадают, но значение ячейки не равно "+", функция возвращает false.
+В противном случае функция возвращает true.
+*/
 bool MainWindow::checkKartaPokritiyaItem(int i, int j, QStringList &horizontalList, QStringList &verticalList)
 {
     qDebug() << "Цикл " << i << j;
@@ -1230,6 +1145,19 @@ void MainWindow::updateCheckBoxTotState(int arg1)
     on_pushButton_tot_add_clicked(); // вызываем нажатие кнопки добавить
 }
 
+/**
+
+@brief Определяет тип функции.
+Данная функция выполняет анализ и определение типа функции на основе переданных параметров.
+Функция принимает строку func_2 - функция в виде последовательности символов '0' и '1',
+и список listFunc - список значений для определения типа функции.
+@param func_2 Функция в виде строки, состоящей из символов '0' и '1'.
+@param listFunc Список значений для определения типа функции.
+@return Возвращает целочисленный результат, обозначающий тип функции:
+- 0, если функция является МКНФ (минимальной конъюнктивной нормальной формой);
+- 1, если функция является МДНФ (минимальной дизъюнктивной нормальной формой);
+- -1, если не удалось определить тип функции.
+*/
 int MainWindow::getType(QString func_2, QStringList listFunc)
 {
     if(func_2.count() < listFunc.size())
@@ -1296,6 +1224,25 @@ int MainWindow::getType(QString func_2, QStringList listFunc)
     }
 }
 
+/**
+@brief Получает тип оптимизации по входной функции.
+Функция анализирует строку func_2 и подсчитывает количество единиц и нулей.
+Если в строке содержатся символы, отличные от '0' и '1', возвращает -1.
+Иначе, возвращает:
+0, если количество нулей больше количества единиц;
+1, если количество единиц больше количества нулей;
+2, если количество нулей и единиц равны.
+@param func_2 Входная функция в виде строки.
+@return Тип оптимизации:
+- (-1) при неверной входной функции;
+CopyCopy
+- 0, если количество нулей больше количества единиц;
+CopyCopy
+- 1, если количество единиц больше количества нулей;
+CopyCopy
+- 2, если количество нулей и единиц равны.
+CopyCopy
+*/
 int MainWindow::getOptimizeType(QString func_2)
 {
     int count = func_2.count(); // получаем количество символов
@@ -1323,65 +1270,23 @@ int MainWindow::getOptimizeType(QString func_2)
     qDebug() << "Исходная функция:" << func_2 << "Количество нулей: " << zeroCount << " Количество единиц: " << oneCount;
     if(zeroCount < oneCount) // если нулей больше, чем единиц
     {
-//        if(mdnf != nullptr) // если объект мак класки создан
-//        {
-//            if(mdnf->canCalculateMnf(0)) // проверяем, можно-ли рассчитать МКНФ
-//            {
-                return 0;
-//            }
-//        }
+        return 0;
     }
     if(zeroCount > oneCount) // если нулей меньше, чем единиц
     {
-//        if(mdnf != nullptr) // если объект мак класки создан
-//        {
-//            if(mdnf->canCalculateMnf(1)) // проверяем, можно-ли рассчитать МДНФ
-//            {
-                return 1;
-//            }
-//        }
+        return 1;
     }
     if(zeroCount == oneCount) // если количество равно
     {
-//        bool canCalculateMknf = false; // флаг возможности рассчёта МКНФ
-//        bool canCalculateMdnf = false; // флаг возможности рассчёта МДНФ
-//        if(mdnf != nullptr) // если объект мак класки создан
-//        {
-//            canCalculateMknf = mdnf->canCalculateMnf(0); // считаем возможность рассчёта МКНФ
-//            canCalculateMdnf = mdnf->canCalculateMnf(1); // считаем возможность рассчёта МДНФ
-//            if(canCalculateMknf && canCalculateMdnf) // если можно рассчитать оба варианта
-//            {
-//                return 2;
-//            }
-//            else if(canCalculateMknf) // если МДНФ рассчитать нельзя, но МКНФ можно
-//            {
-//                return 3;
-//            }
-//            else if(canCalculateMdnf) // если МКНФ рассчитать нельзя, но МДНФ можно
-//            {
-//                return 4;
-//            }
-//        }
         return 2;
     }
     return -1;
 }
 
-//void MainWindow::pushButtonCheckTableOfTrueClicked() // проверка таблицы истинности
-//{
-
-//}
-
 void MainWindow::pushButton_delete_last_onesClicked()
 {
     deletelastRow(tableWidgetOnesOnlyEditing);
 }
-
-
-//void MainWindow::pushButton_nextStep_totClicked()
-//{
-
-//}
 
 void MainWindow::pushButtonClearOneOnlyClicked()
 {
@@ -1391,11 +1296,6 @@ void MainWindow::pushButtonClearOneOnlyClicked()
     tableWidgetOnesOnlyEditing->setColumnCount(0);
 
 }
-
-//void MainWindow::pushButtonProverkaClicked() // проверка правильности где функция равна 1
-//{
-
-//}
 
 void MainWindow::on_pushButton_tot_move_to_skeyki_1_clicked()
 {
@@ -1428,6 +1328,19 @@ void MainWindow::on_pushButton_setWhiteColor_clicked()
     setKartaColor(Qt::white); // задём белый цвет выделенным значениям
 }
 
+/**
+@brief Добавляет символ в редактор формул.
+Функция добавляет указанный символ в редактор формул. Перед добавлением выполняется
+проверка наличия активного объекта редактора формул. Если объект не создан, функция
+просто возвращает управление.
+Если включена функция автоматического ввода, функция проверяет, является ли символ буквой или
+специальным символом. В зависимости от предыдущего символа и типа оптимизации, функция добавляет
+соответствующий операнд.
+При редактировании выбранного элемента, функция проверяет, выбран ли только один символ,
+после которого необходимо добавить операнд.
+@param symvol Символ, который требуется добавить в редактор формул.
+@param inversiya Флаг инверсии символа (true - инвертированный символ, false - обычный символ).
+*/
 void MainWindow::addSymvol(QString symvol, bool inversiya)
 {
     if(editor == nullptr) // если не создан объект редакора формул
@@ -1520,16 +1433,6 @@ void MainWindow::setAutoInput(bool value)
 {
     autoInput = value;
 }
-
-//void MainWindow::on_pushButton_proverkaAll_clicked()
-//{
-//    QString hardLevel = "";
-//    int count = function_16.count(); // получаем, сколько значений в исходном 16м числе
-//    hardLevel = QString::number(count) + " переменных";
-//    fpl = new formProverkaAll(this);
-//    fpl->show();
-//    fpl->setData(proverkaTableOfTrue(), proverkaOnesOnly(), proverkaSkleyki1(), proverkaSkleyki2(), proverkaSkleyki3(), proverkaKartaMinimizacii(), proverkaItogMdnf(), hardLevel);
-//}
 
 void MainWindow::on_checkBox_autoInputFormula_stateChanged(int arg1)
 {
@@ -2069,6 +1972,18 @@ void MainWindow::on_pushButton_add_skleyki_2_clicked()  // кнопка созд
     createSkleyka(tableWidgetsSkleyki[1], checkBoxes_skleyki_2, tableWidgetsSkleykiEditing[2]); // создаем склейки 3
 }
 
+/**
+@brief Обрабатывает нажатие кнопки "Далее" на второй вкладке редактора склеек.
+Функция переходит к следующему шагу на второй вкладке редактора склеек и
+выполняет ряд операций для сортировки склеек и отображения результатов.
+Перед выполнением операций, функция получает количество строк и столбцов в таблице.
+Затем создает двумерный массив для хранения элементов таблицы и получает данные из таблицы.
+В дальнейшем функция сортирует склейки и сохраняет их в список sortSkleikyList.
+После выполнения сортировки, функция освобождает память, выделенную для двумерного массива,
+и отображает отсортированные склейки в таблице.
+Затем функция добавляет флажки CheckBox в последний столбец таблицы,
+выполняет переход к следующему шагу и завершает свою работу.
+*/
 void MainWindow::on_pushButton_nextStep_skleyki_2_clicked()
 {
     goToNextStep(tableWidgetsSkleykiEditing[1], tableWidgetsSkleyki[1], 3);
