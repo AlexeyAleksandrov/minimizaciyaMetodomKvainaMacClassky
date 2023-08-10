@@ -83,7 +83,7 @@ public:
     XORCrypter *getXorCrypter() const;
     void setXorCrypter(XORCrypter *newXorCrypter);
 
-private:
+public:
     Ui::MainWindow *ui;
     // vars
     int typeMin = 0; // тип минимизации - 0 для МКНФ и 1 для МДНФ
@@ -237,7 +237,7 @@ private:
     bool autoInput = false; // автоматический ввод синтаксиса формулы
 
 
-private slots:
+public slots:
     // таблица истинности
 //    void pushButtonFunctionClicked(); // кнопка выбора функции
 //    void pushButtonTotAddClicked(); // кнопка добавляения строк из таблицы истинности в таблицу, где только 1
@@ -359,7 +359,7 @@ private slots:
 
     void on_pushButton_nextStep_skleyki_2_clicked();
 
-private: // функции проверки
+public: // функции проверки
     bool proverkaTableOfTrue(); // функция проверки таблицы истинности
     bool proverkaOnesOnly(); // фунция проверки таблицы, где F(abcd) = 1
     bool proverkaSkleyki(QTableWidget *tableValues, QTableWidget *tableSkleyki); // функция проверки склеек
@@ -370,7 +370,7 @@ private: // функции проверки
 //    bool proverkaItogMdnf(); // функция проверки итоговой функции МДНФ
     bool proverkaItogMdnfByKartaPokritiya(); // функция проверки итоговой функции МДНФ по карте покрытия
 
-private:
+public:
     struct skleyka
     {
         QStringList text;
