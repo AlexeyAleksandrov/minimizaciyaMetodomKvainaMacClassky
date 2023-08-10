@@ -1,13 +1,21 @@
 #include "logiceditor.h"
 #include "qdebug.h"
 
-#define AUTOINPUT_MKNF_SYMVOL "+"
-#define AUTOINPUT_MDNF_SYMVOL "*"
+#define AUTOINPUT_MKNF_SYMVOL "+" /**< Символ операции МКНФ */
+#define AUTOINPUT_MDNF_SYMVOL "*" /**< Символ операции МДНФ */
 
 LogicEditor::LogicEditor(QTableWidget *parent)
 {
     setTableWidget(parent);
     allowSymvolsList << "(" << ")" << "+" << "v" << "*" << "^" << "=" << "!";
+
+    /*!
+       * \brief Конструктор класса LogicEditor
+       *
+       * \param parent Указатель на родительский QTableWidget
+       */
+
+      // Устанавливаем родительский QTableWidget
 }
 
 
@@ -15,6 +23,16 @@ int LogicEditor::getNumberEmptyItem()
 {
     if(!formulaTableWidget)
         return -1; // если указатель пустой
+
+    /*!
+         * \brief Получить номер пустой ячейки
+         *
+         * Возвращает номер пустой ячейки в таблице формулы,
+         * в которую можно внести инверсию или символ операции
+         *
+         * \return Номер пустой ячейки или -1, если все заняты
+         */
+
     int rows = formulaTableWidget->rowCount(); // получаем количество строк
     int cols = formulaTableWidget->columnCount(); // получаем колдичество колонок
     if(rows < 2)
@@ -44,6 +62,15 @@ void LogicEditor::scrollToLastSymvol(QTableWidget *tableWidgetInput)
     {
         return;
     }
+
+    /*!
+        * \brief Прокрутить таблицу до последнего символа
+        *
+        * Прокручивает таблицу до последнего символа
+        *
+        * \param tableWidgetInput Указатель на таблицу
+        */
+
     int rows = tableWidgetInput->rowCount(); // поулчаем количество строк
     int cols = tableWidgetInput->columnCount(); // получаем количество столбцов
     if(!rows || !cols) // если нет строк или нет столбцов
@@ -55,11 +82,28 @@ void LogicEditor::scrollToLastSymvol(QTableWidget *tableWidgetInput)
 
 bool LogicEditor::isEditChoseItem() const
 {
+    /*!
+        * \brief Получить значение флага editChoseItem
+        *
+        * Возвращает значение флага editChoseItem
+        *
+        * \return Значение флага editChoseItem
+        */
     return editChoseItem;
 }
 
 int LogicEditor::insertColumnAftreSelected(QTableWidget *tableWidgetInput)
 {
+    /*!
+     * \brief Вставить столбец после выбранного
+     *
+     * Вставляет новый столбец в таблицу после выбранного столбца.
+     * Если нет выбранного столбца, то добавляет столбец в конец таблицы.
+     *
+     * \param tableWidgetInput Указатель на таблицу
+     * \return Номер вставленного столбца или -1, если произошла ошибка
+     */
+
     int c = -1; // переменная для хранения номера выделенного столбца
     for (int i=0; i<tableWidgetInput->rowCount(); i++)
     {
@@ -104,19 +148,50 @@ int LogicEditor::insertColumnAftreSelected(QTableWidget *tableWidgetInput)
 
 void LogicEditor::setEditChoseItem(bool value)
 {
+    /*!
+     * \brief Установить состояние флага editChoseItem
+     *
+     * Устанавливает состояние флага editChoseItem.
+     *
+     * \param value Значение флага
+     */
     editChoseItem = value;
 }
 
 void LogicEditor::setAutoInputType(int value)
 {
+    /*!
+     * \brief Установить тип автоматического ввода
+     *
+     * Устанавливает тип автоматического ввода.
+     *
+     * \param value Тип автоматического ввода
+     */
     autoInputType = value;
 }
 
 void LogicEditor::setAutoInput(bool value)
 {
+    /*!
+    * \brief Установить флаг автоматического ввода
+    *
+    * Устанавливает состояние флага автоматического ввода.
+    *
+    * \param value Значение флага
+    */
     autoInput = value;
 }
 
+/**
+ * @brief Проверяет, является ли символ разрешенным символом.
+ *
+ * Функция проверяет, является ли переданный символ symvol разрешенным символом.
+ *
+ * @param symvol Строка - символ для проверки.
+ *
+ * @return true, если символ является разрешенным.
+ * @return false, если символ не является разрешенным или formulaTableWidget равен nullptr.
+ */
 bool LogicEditor::isAllowSymvol(QString symvol)
 {
     if(formulaTableWidget == nullptr)
@@ -139,6 +214,16 @@ bool LogicEditor::isAllowSymvol(QString symvol)
     return false;
 }
 
+/**
+ * @brief Удаляет выделенные столбцы в таблице.
+ *
+ * Функция удаляет выделенные столбцы в переданной таблице tableWidgetInput.
+ *
+ * @param tableWidgetInput Указатель на QTableWidget - таблицу, в которой нужно удалить столбцы.
+ *
+ * @return true, если был удален хотя бы один столбец.
+ * @return false, если не было выделено ни одного столбца.
+ */
 bool LogicEditor::deleteSelectedColumns(QTableWidget *tableWidgetInput)
 {
     int c = -1; // переменная для хранения номера выделенного столбца
@@ -176,6 +261,17 @@ bool LogicEditor::deleteSelectedColumns(QTableWidget *tableWidgetInput)
     return (c != -1); // если с == -1, то значит не было выделено ни одного элемента и возвращаем false, иначе был удален хотя бы один элемент и возвращаем true
 }
 
+/**
+ * @brief Возвращает номер выделенного столбца и количество выделенных столбцов в таблице.
+ *
+ * Функция возвращает номер выделенного столбца в переданной таблице tableWidgetInput
+ * и подсчитывает количество выделенных столбцов, записывая его в переменную count,
+ * если count не равно nullptr.
+ *
+ * @param tableWidgetInput Указатель на QTableWidget - таблицу, из которой нужно получить номер выделенного столбца и количество выделенных столбцов.
+ * @param itemNumber Ссылка на int - переменную, в которую будет записан номер выделенного столбца.
+ * @param count Указатель на int - переменную, в которую будет записано количество выделенных столбцов (если не равно nullptr).
+ */
 void LogicEditor::getSelectedItemNumber(QTableWidget *tableWidgetInput, int &itemNumber, int *count)
 {
     itemNumber = -1; // переменная для хранения номера выделенного столбца
@@ -248,6 +344,14 @@ void LogicEditor::getSelectedItemNumber(QTableWidget *tableWidgetInput, int &ite
 //    return number;
 //}
 
+/**
+ * @brief Добавляет символ в таблицу.
+ *
+ * Функция добавляет заданный символ в формулу в таблице formulaTableWidget.
+ *
+ * @param symvol Строка - добавляемый символ.
+ * @param inversiya Флаг, указывающий, нужна ли инверсия над символом.
+ */
 void LogicEditor::addSymvol(QString symvol, bool inversiya)
 {
     if(formulaTableWidget == nullptr)
@@ -304,6 +408,16 @@ void LogicEditor::addSymvol(QString symvol, bool inversiya)
     emit onStatusChanged(); // отправляем сигнал, что что-то изменилось
 }
 
+/**
+   * @brief Форматирует таблицу в редакторе логики.
+   *
+   * Если таблица не существует или не содержит ни одной строки, то создает 5 строк.
+   * Если таблица содержит строки, но не содержит столбцов, то возвращает управление.
+   * Для каждой ячейки таблицы:
+   *   - Если ячейка пустая, выделяет память, устанавливает белый фон и шрифт Segoe UI размером 13.
+   *   - Если ячейка не пустая, удаляет текст ячейки.
+   * Устанавливает ширину столбцов и высоту строк.
+   */
 void LogicEditor::formatTable()
 {
     if(formulaTableWidget == nullptr)
