@@ -178,6 +178,7 @@ public:
 
     QColor *redColor = nullptr;
     QColor *greenColor = nullptr;
+    QColor *yellowColor = nullptr;
 
     // работа с таблицей истинности
     int getType(QString func_2, QStringList listFunc); // возвращает определнный тип минимизации 0 - МКНФ, 1 - МДНФ, -1 - не удалось определить
@@ -384,6 +385,7 @@ public:
     FormResultCorrect *formResult = nullptr; // форма результата
     XORCrypter *xorCrypter = nullptr;
     //    formProverkaAll *fpl = nullptr;
+
 };
 
 #endif // MAINWINDOW_H

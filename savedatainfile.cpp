@@ -57,6 +57,10 @@ void MainWindow::saveDataToFile()
                 {
                     str_tableWidgetKartaMinimizacii.append("g");
                 }
+                else if(itemColor == *yellowColor)
+                {
+                    str_tableWidgetKartaMinimizacii.append("y");
+                }
                 else
                 {
                     str_tableWidgetKartaMinimizacii.append("w");
@@ -505,6 +509,10 @@ void MainWindow::readDataFromFile()
                         else if(rowList[c].contains("r")) // если цвет - красный
                         {
                             tableWidgetKartaMinimizacii->item(i, j)->setBackground(QBrush(*redColor));
+                        }
+                        else if(rowList[c].contains("y")) // если цвет - красный
+                        {
+                            tableWidgetKartaMinimizacii->item(i, j)->setBackground(QBrush(*yellowColor));
                         }
                         c++; // переходим к следующему символу
                     }

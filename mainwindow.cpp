@@ -4,6 +4,9 @@
 //#define OPTYMIZE_TYPE_ONLY
 //#define CUSTON_INPUT_FUNCTION
 
+//#define RED_COLOR_FOR_CORES_ONLY    // если выбран данный флаг, то закрашивать красным цветом можно только ядра, инче - все значения
+#define ENABLE_AUTO_CHECK_KORRECT_KATRA_POKRITIYA   // включение проверки на лету правильности устанвоки + в карту покрытия
+
 /**
 Конструктор главного окна. @param parent Указатель на родительское окно
 */
@@ -147,8 +150,9 @@ MainWindow::MainWindow(QWidget *parent) :
 #endif
 
     // для карты покрытия
-    redColor = new QColor(255,101,96); // красный цвет
-    greenColor = new QColor(185,255,141); // зеленый цвет
+    redColor = new QColor(255,101,96);          // красный цвет
+    greenColor = new QColor(185,255,141);       // зеленый цвет
+    yellowColor = new QColor(255, 253, 208);    // желтый цвет
 
     //    pushButton_loadDataFromFile->setVisible(false); // выключаем видимость кнопки загрузки решения из уже начатой работы
 }
@@ -467,7 +471,7 @@ void MainWindow::setKartaColor(QColor color)
     // функция покраски ячейки
     auto setItemColor = [&](int i, int j, QColor color)
     {
-        if ((color == Qt::white || color == *redColor) || ((color == *greenColor) && (tableWidget_kartaMinimizacii->item(i, j)->background() != *redColor))) // необходимо установить белый или красный цвет, или зеленый, но при том, что ячейка не выделена красным
+        if ((color == Qt::white || color == *redColor || color == *yellowColor) || ((color == *greenColor) && (tableWidget_kartaMinimizacii->item(i, j)->background() != *redColor) && (tableWidget_kartaMinimizacii->item(i, j)->background() != *yellowColor))) // необходимо установить белый или красный цвет, или зеленый, но при том, что ячейка не выделена красным
         {
             tableWidget_kartaMinimizacii->item(i, j)->setBackground(color); // устанавливаем цвет
         }
@@ -476,15 +480,23 @@ void MainWindow::setKartaColor(QColor color)
     // функция, выделяющая все значения, покрывающееся ядром
     auto fillCorePokritie = [&](int i, int j)
     {
-        if(!checkCore(i, j))    // если значение не является ядром
+
+//#ifdef RED_COLOR_FOR_CORES_ONLY
+//        if(!checkCore(i, j))    // если значение не является ядром
+//        {
+//            return;
+//        }
+//#else
+        if(tableWidget_kartaMinimizacii->item(i, j) == nullptr || tableWidget_kartaMinimizacii->item(i, j)->text() != "+") // если ячейка не существует или пустая
         {
             return;
         }
+//#endif
 
         // закрашиваем все значения, покрываемые ядром
         for (int col=0; col<cols; col++)
         {
-            if(tableWidget_kartaMinimizacii->item(i, col) != nullptr) // если ячейка существует и в ней стоит +
+            if(tableWidget_kartaMinimizacii->item(i, col) != nullptr) // если ячейка существует
             {
                 setItemColor(i, col, *greenColor);    // закрашиваем ячейку в зелёный цвет
 
@@ -513,6 +525,7 @@ void MainWindow::setKartaColor(QColor color)
                 {
                     if(color == *redColor)   // если выделенное значение не является ядром, но оно должно быть закрашено
                     {
+//#ifdef RED_COLOR_FOR_CORES_ONLY
                         if(checkCore(i, j)) // если значение является ядром
                         {
                             fillCorePokritie(i, j);     // закрашиваем все значения, которые покрываются ядром
@@ -522,8 +535,39 @@ void MainWindow::setKartaColor(QColor color)
                             showCoreErrorMessage = true;    // ставим флаг и пропускаем значение
                             break;
                         }
+//#else
+//                        fillCorePokritie(i, j);     // закрашиваем все значения, которые покрываются ядром
+//#endif
                     }
+                    else if(color == *yellowColor)  // если мы хотим выделить вариативную часть
+                    {
+                        if(tableWidget_kartaMinimizacii->item(i, j) == nullptr || tableWidget_kartaMinimizacii->item(i, j)->text() != "+") // если ячейка не существует или пустая
+                        {
+                            showCoreErrorMessage = true;    // ставим флаг и пропускаем значение
+                            break;
+                        }
+                        else if(tableWidget_kartaMinimizacii->item(i, j)->background() == Qt::white) // если ячейка без выделения
+                        {
+                           fillCorePokritie(i, j);     // закрашиваем все значения, которые покрываются ядром
+                        }
+                        else
+                        {
+                            showCoreErrorMessage = true;    // ставим флаг и пропускаем значение
+                            break;
+                        }
+                    }
+//#ifdef RED_COLOR_FOR_CORES_ONLY
                     setItemColor(i, j, color);  // задаем цвет
+//#else
+//                    if(color == *redColor && !checkCore(i, j))  // если мы хотим выделить ядро, но значение ядром не является
+//                    {
+//                        setItemColor(i, j, *yellowColor);  // задаем цвет
+//                    }
+//                    else
+//                    {
+//                        setItemColor(i, j, color);  // задаем цвет
+//                    }
+//#endif
                 }
             }
         }
@@ -535,7 +579,7 @@ void MainWindow::setKartaColor(QColor color)
     // показываем сообщение об ошибки выделения ядер
     if(showCoreErrorMessage)
     {
-        warningError("Выделенное значение не является ядром!\nЯдром является склейка, которая покрывает только одно значение функции.");
+        warningError("Выделенное значение не является ядром!");
     }
 }
 
@@ -1320,7 +1364,7 @@ void MainWindow::on_pushButton_setRedColor_clicked()
 
 void MainWindow::on_pushButton_setGreenColor_clicked()
 {
-    setKartaColor(*greenColor); // задём зелёный цвет выделенным значениям
+    setKartaColor(*yellowColor); // задём желтый цвет выделенным значениям
 }
 
 void MainWindow::on_pushButton_setWhiteColor_clicked()
@@ -1866,8 +1910,10 @@ void MainWindow::on_tableWidget_kartaMinimizacii_cellDoubleClicked(int row, int 
 
         if(item != nullptr)
         {
+#ifdef ENABLE_AUTO_CHECK_KORRECT_KATRA_POKRITIYA
             if(item->text() != "+")
             {
+#endif
                 QString nextItemText;
                 if (item->text().isEmpty())
                 {
@@ -1880,6 +1926,7 @@ void MainWindow::on_tableWidget_kartaMinimizacii_cellDoubleClicked(int row, int 
 
                 item->setText(nextItemText);
 
+#ifdef ENABLE_AUTO_CHECK_KORRECT_KATRA_POKRITIYA
                 // проверяем, должен ли в этой ячейке быть + или нет
                 int rows = tableWidgetKartaMinimizacii->rowCount(); // получаем количество строк
                 int cols = tableWidgetKartaMinimizacii->columnCount(); // получаем количество строк
@@ -1903,6 +1950,7 @@ void MainWindow::on_tableWidget_kartaMinimizacii_cellDoubleClicked(int row, int 
 //                    warningError("Данное значение не покрывавется выбранной склейкой!");
                 }
             }
+#endif
 
             item->setFlags(item->flags()&0xfffffffd);
             ui->tableWidget_kartaMinimizacii->clearSelection();
@@ -2083,3 +2131,4 @@ void MainWindow::setXorCrypter(XORCrypter *newXorCrypter)
 {
     xorCrypter = newXorCrypter;
 }
+
