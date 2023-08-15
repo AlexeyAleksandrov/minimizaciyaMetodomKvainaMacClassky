@@ -368,7 +368,7 @@ public: // функции проверки
     bool proverkaSkleyki3(); // функция проверки 3й склейки
     bool proverkaKartaMinimizacii(); //функция проверки карты минимизации
 //    bool proverkaItogMdnf(); // функция проверки итоговой функции МДНФ
-    bool proverkaItogMdnfByKartaPokritiya(); // функция проверки итоговой функции МДНФ по карте покрытия
+    int proverkaItogMdnfByKartaPokritiya(); // функция проверки итоговой функции МДНФ по карте покрытия, 0 - неправильно, 1 - правильно, -1 - не оптимальный вариант
 
 public:
     struct skleyka

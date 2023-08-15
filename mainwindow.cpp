@@ -1523,31 +1523,39 @@ void MainWindow::on_checkBox_spiltToTetrads_stateChanged(int arg1)
 void MainWindow::on_pushButton_proverka_result_function_clicked()
 {
 //    if(proverkaItogMdnf())
-    if(proverkaItogMdnfByKartaPokritiya())
+    int result = proverkaItogMdnfByKartaPokritiya();
+    if(result != 0)
     {
-        // проверка на подмену функции в файле
-        QString func16; // число в 16й системе, которое переведено в 2ю систему (на 2 этапе)
-        to16ssch(function_2, func16);    // переводим число из 2 в 16ю систему
-
-        bool validFunction = true;  // флаг валидности функции
-        if(func16.toUpper() != function_16.toUpper())   // если функция не совпадает
+        if(result == -1)
         {
-//            qDebug() << "функции не совпадают: " << func16.toUpper() << function_16.toUpper();
-            validFunction = false;  // ставим флаг некорретности
+            warningError("Ошибка! Решение не оптимальное, можно уменьшить кол-во переменных.");
         }
-
-        //        message();
-        if(formResult == nullptr)
+        else
         {
-            formResult = new FormResultCorrect;
+            // проверка на подмену функции в файле
+            QString func16; // число в 16й системе, которое переведено в 2ю систему (на 2 этапе)
+            to16ssch(function_2, func16);    // переводим число из 2 в 16ю систему
+
+            bool validFunction = true;  // флаг валидности функции
+            if(func16.toUpper() != function_16.toUpper())   // если функция не совпадает
+            {
+    //            qDebug() << "функции не совпадают: " << func16.toUpper() << function_16.toUpper();
+                validFunction = false;  // ставим флаг некорретности
+            }
+
+            //        message();
+            if(formResult == nullptr)
+            {
+                formResult = new FormResultCorrect;
+            }
+            formResult->setFunction(function_16);
+            formResult->setStudent_name(studentName);
+            formResult->setGroup(StudentGroup);
+            formResult->setType(typeMin == 0 ? "МКНФ" : "МДНФ");
+            formResult->setValidFunction(validFunction);
+            formResult->show();
+            formResult->applyData();
         }
-        formResult->setFunction(function_16);
-        formResult->setStudent_name(studentName);
-        formResult->setGroup(StudentGroup);
-        formResult->setType(typeMin == 0 ? "МКНФ" : "МДНФ");
-        formResult->setValidFunction(validFunction);
-        formResult->show();
-        formResult->applyData();
     }
     else
     {
