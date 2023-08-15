@@ -201,6 +201,7 @@ public:
     QString createSkleyka(QString value1, QString value2, bool *ok = nullptr);  // функция создания склейки
     void addCheckBoxesInLastColumn(QTableWidget *tableWidget, QCheckBox **&checkBoxes, bool applyDefaultColor = true);  // функция добавления checkBox в последний столбец таблицы
 //    void addCheckBoxesInLastColumn(QTableWidget *tableWidget, QCheckBox **&checkBoxes, Qt::ConnectionType &connectFunction);  // функция добавления checkBox в последний столбец таблицы, связывает сигнал изменения состояния
+    bool checkLists(const QStringList& list1, const QStringList& list2);    // если все элементы обоих списков содержатся в каждом из них, возвращает true
 
     // перемещение по этапам работы
     void setStep(int step); // устанавливает текущий этап, соответственно блокируя или разблокируя определенные поля

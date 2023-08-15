@@ -548,7 +548,7 @@ void MainWindow::setKartaColor(QColor color)
                         }
                         else if(tableWidget_kartaMinimizacii->item(i, j)->background() == Qt::white) // если ячейка без выделения
                         {
-                           fillCorePokritie(i, j);     // закрашиваем все значения, которые покрываются ядром
+                            fillCorePokritie(i, j);     // закрашиваем все значения, которые покрываются ядром
                         }
                         else
                         {
@@ -2132,3 +2132,28 @@ void MainWindow::setXorCrypter(XORCrypter *newXorCrypter)
     xorCrypter = newXorCrypter;
 }
 
+bool MainWindow::checkLists(const QStringList &list1, const QStringList &list2)
+{
+    // перебираем все элементы первого списка
+    for (const QString& item : list1)
+    {
+        // проверяем, содержится ли текущий элемент во втором списке
+        if (!list2.contains(item))
+        {
+            return false; // Если элемент не найден, возвращаем false
+        }
+    }
+
+    // перебираем все элементы второго списка
+    for (const QString& item : list2)
+    {
+        // проверяем, содержится ли текущий элемент в первом списке
+        if (!list1.contains(item))
+        {
+            return false; // Если элемент не найден, возвращаем false
+        }
+    }
+
+    // если все элементы обоих списков содержатся в каждом из них, возвращаем true
+    return true;
+}

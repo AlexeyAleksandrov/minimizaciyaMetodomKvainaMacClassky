@@ -417,7 +417,7 @@ int MainWindow::proverkaItogMdnfByKartaPokritiya()
             for(const QStringList &variativeVariants : variativeVariantsListCopy)      // перебираем все уже имеющиеся наборы
             {
                 bool valueClosedInThisList = false;     // флаг покрытия этого вариативного значения хоть одной склейкой из текущего набора
-                for(QString variativeVariant : variativeVariants)   // перебираем все склейки текущего варианта
+                for(const QString &variativeVariant : variativeVariants)   // перебираем все склейки текущего варианта
                 {
                     if(checkPokritie(variativeValue, variativeVariant))     // если значение покрывается
                     {
@@ -444,6 +444,35 @@ int MainWindow::proverkaItogMdnfByKartaPokritiya()
             }
         }
     }
+
+    // удаляем дубликаты
+    auto removeDuplicates = [&](QList<QStringList>& list)
+    {
+        // создаем список индексов элементов, которые будут удалены
+        QList<int> indexesToRemove;
+
+        // проходим по всем парам списков внутри QList
+        for (int i = 0; i < list.size(); i++)
+        {
+            for (int j = i + 1; j < list.size(); j++)
+            {
+                // проверяем, содержатся ли все элементы текущих списков друг в друге
+                if (checkLists(list[i], list[j]))
+                {
+                    indexesToRemove.append(j);
+                }
+            }
+        }
+
+        // удаляем списки по индексам
+        std::sort(indexesToRemove.begin(), indexesToRemove.end(), std::greater<int>());
+        for (int index : indexesToRemove)
+        {
+            list.removeAt(index);
+        }
+    };
+
+    removeDuplicates(variativeVariantsList);    // удаляем дубюликаты в списке
 
     qDebug() << "Получено вариантов решения: " << variativeVariantsList.size();
 
