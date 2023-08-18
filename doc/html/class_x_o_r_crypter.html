@@ -1,0 +1,348 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.7"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Лабораторная работа по минимизации логических функций методом Куайна Мак-Класски: Класс XORCrypter</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Лабораторная работа по минимизации логических функций методом Куайна Мак-Класски
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.9.7 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Загрузка...</div>
+<div class="SRStatus" id="Searching">Поиск...</div>
+<div class="SRStatus" id="NoMatches">Не найдено</div>
+</div>
+</div>
+</div>
+</div>
+
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Открытые члены</a> &#124;
+<a href="class_x_o_r_crypter-members.html">Полный список членов класса</a>  </div>
+  <div class="headertitle"><div class="title">Класс XORCrypter</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p><code>#include &lt;<a class="el" href="xorcrypter_8h_source.html">xorcrypter.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Открытые члены</h2></td></tr>
+<tr class="memitem:a523af0424ce72a1c977f3e447f392803"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_x_o_r_crypter.html#a523af0424ce72a1c977f3e447f392803">XORCrypter</a> ()</td></tr>
+<tr class="separator:a523af0424ce72a1c977f3e447f392803"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4ad3597fbff119bc51d9b28ec4bd2247"><td class="memItemLeft" align="right" valign="top">const QByteArray &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_x_o_r_crypter.html#a4ad3597fbff119bc51d9b28ec4bd2247">getKey</a> () const</td></tr>
+<tr class="separator:a4ad3597fbff119bc51d9b28ec4bd2247"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae060a5c7332a7169a5d896b66923deeb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_x_o_r_crypter.html#ae060a5c7332a7169a5d896b66923deeb">setKey</a> (const QByteArray &amp;newKey)</td></tr>
+<tr class="separator:ae060a5c7332a7169a5d896b66923deeb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a31ea6c4e7cd02b2d5ce0b2fbaea8bbe1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_x_o_r_crypter.html#a31ea6c4e7cd02b2d5ce0b2fbaea8bbe1">writeEncryptenFile</a> (QFile &amp;encryptedFile, const QByteArray &amp;text, const QByteArray &amp;key, bool *ok=nullptr)</td></tr>
+<tr class="separator:a31ea6c4e7cd02b2d5ce0b2fbaea8bbe1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a136d2d336c0e3272695786d81fa810f1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_x_o_r_crypter.html#a136d2d336c0e3272695786d81fa810f1">writeEncryptenFile</a> (QFile &amp;encryptedFile, const QByteArray &amp;text, bool *ok=nullptr)</td></tr>
+<tr class="separator:a136d2d336c0e3272695786d81fa810f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a97eeed2e6065460bf2ddffd0063c32e5"><td class="memItemLeft" align="right" valign="top">QByteArray&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_x_o_r_crypter.html#a97eeed2e6065460bf2ddffd0063c32e5">readEncryptenFile</a> (QFile &amp;file, const QByteArray &amp;key, bool *ok=nullptr)</td></tr>
+<tr class="separator:a97eeed2e6065460bf2ddffd0063c32e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae763d666199191cda2a37a4c38df0da9"><td class="memItemLeft" align="right" valign="top">QByteArray&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_x_o_r_crypter.html#ae763d666199191cda2a37a4c38df0da9">readEncryptenFile</a> (QFile &amp;file, bool *ok=nullptr)</td></tr>
+<tr class="separator:ae763d666199191cda2a37a4c38df0da9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3d32faefc3eb0d2f9328ebd3b4e4158f"><td class="memItemLeft" align="right" valign="top">QByteArray&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_x_o_r_crypter.html#a3d32faefc3eb0d2f9328ebd3b4e4158f">xorEncryptDecrypt</a> (const QByteArray &amp;text, const QByteArray &amp;key)</td></tr>
+<tr class="separator:a3d32faefc3eb0d2f9328ebd3b4e4158f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a63a7ea4808684587af6031a920207df7"><td class="memItemLeft" align="right" valign="top">QByteArray&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_x_o_r_crypter.html#a63a7ea4808684587af6031a920207df7">xorEncryptDecrypt</a> (const QByteArray &amp;text)</td></tr>
+<tr class="separator:a63a7ea4808684587af6031a920207df7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Конструктор(ы)</h2>
+<a id="a523af0424ce72a1c977f3e447f392803" name="a523af0424ce72a1c977f3e447f392803"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a523af0424ce72a1c977f3e447f392803">&#9670;&#160;</a></span>XORCrypter()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">XORCrypter::XORCrypter </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Методы</h2>
+<a id="a4ad3597fbff119bc51d9b28ec4bd2247" name="a4ad3597fbff119bc51d9b28ec4bd2247"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4ad3597fbff119bc51d9b28ec4bd2247">&#9670;&#160;</a></span>getKey()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const QByteArray &amp; XORCrypter::getKey </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae763d666199191cda2a37a4c38df0da9" name="ae763d666199191cda2a37a4c38df0da9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae763d666199191cda2a37a4c38df0da9">&#9670;&#160;</a></span>readEncryptenFile() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">QByteArray XORCrypter::readEncryptenFile </td>
+          <td>(</td>
+          <td class="paramtype">QFile &amp;&#160;</td>
+          <td class="paramname"><em>file</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool *&#160;</td>
+          <td class="paramname"><em>ok</em> = <code>nullptr</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a97eeed2e6065460bf2ddffd0063c32e5" name="a97eeed2e6065460bf2ddffd0063c32e5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a97eeed2e6065460bf2ddffd0063c32e5">&#9670;&#160;</a></span>readEncryptenFile() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">QByteArray XORCrypter::readEncryptenFile </td>
+          <td>(</td>
+          <td class="paramtype">QFile &amp;&#160;</td>
+          <td class="paramname"><em>file</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const QByteArray &amp;&#160;</td>
+          <td class="paramname"><em>key</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool *&#160;</td>
+          <td class="paramname"><em>ok</em> = <code>nullptr</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae060a5c7332a7169a5d896b66923deeb" name="ae060a5c7332a7169a5d896b66923deeb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae060a5c7332a7169a5d896b66923deeb">&#9670;&#160;</a></span>setKey()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void XORCrypter::setKey </td>
+          <td>(</td>
+          <td class="paramtype">const QByteArray &amp;&#160;</td>
+          <td class="paramname"><em>newKey</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a136d2d336c0e3272695786d81fa810f1" name="a136d2d336c0e3272695786d81fa810f1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a136d2d336c0e3272695786d81fa810f1">&#9670;&#160;</a></span>writeEncryptenFile() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void XORCrypter::writeEncryptenFile </td>
+          <td>(</td>
+          <td class="paramtype">QFile &amp;&#160;</td>
+          <td class="paramname"><em>encryptedFile</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const QByteArray &amp;&#160;</td>
+          <td class="paramname"><em>text</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool *&#160;</td>
+          <td class="paramname"><em>ok</em> = <code>nullptr</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a31ea6c4e7cd02b2d5ce0b2fbaea8bbe1" name="a31ea6c4e7cd02b2d5ce0b2fbaea8bbe1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a31ea6c4e7cd02b2d5ce0b2fbaea8bbe1">&#9670;&#160;</a></span>writeEncryptenFile() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void XORCrypter::writeEncryptenFile </td>
+          <td>(</td>
+          <td class="paramtype">QFile &amp;&#160;</td>
+          <td class="paramname"><em>encryptedFile</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const QByteArray &amp;&#160;</td>
+          <td class="paramname"><em>text</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const QByteArray &amp;&#160;</td>
+          <td class="paramname"><em>key</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool *&#160;</td>
+          <td class="paramname"><em>ok</em> = <code>nullptr</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a63a7ea4808684587af6031a920207df7" name="a63a7ea4808684587af6031a920207df7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a63a7ea4808684587af6031a920207df7">&#9670;&#160;</a></span>xorEncryptDecrypt() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">QByteArray XORCrypter::xorEncryptDecrypt </td>
+          <td>(</td>
+          <td class="paramtype">const QByteArray &amp;&#160;</td>
+          <td class="paramname"><em>text</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3d32faefc3eb0d2f9328ebd3b4e4158f" name="a3d32faefc3eb0d2f9328ebd3b4e4158f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3d32faefc3eb0d2f9328ebd3b4e4158f">&#9670;&#160;</a></span>xorEncryptDecrypt() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">QByteArray XORCrypter::xorEncryptDecrypt </td>
+          <td>(</td>
+          <td class="paramtype">const QByteArray &amp;&#160;</td>
+          <td class="paramname"><em>text</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const QByteArray &amp;&#160;</td>
+          <td class="paramname"><em>key</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<hr/>Объявления и описания членов классов находятся в файлах:<ul>
+<li>C:/Users/ASUS/Documents/minimizaciyaMetodomKvainaMacClassky/<a class="el" href="xorcrypter_8h_source.html">xorcrypter.h</a></li>
+<li>C:/Users/ASUS/Documents/minimizaciyaMetodomKvainaMacClassky/<a class="el" href="xorcrypter_8cpp.html">xorcrypter.cpp</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Создано системой&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7
+</small></address>
+</body>
+</html>

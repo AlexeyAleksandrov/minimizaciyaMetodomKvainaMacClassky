@@ -1,0 +1,161 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.7"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Лабораторная работа по минимизации логических функций методом Куайна Мак-Класски: Исходный файл C:/Users/ASUS/Documents/minimizaciyaMetodomKvainaMacClassky/logiceditor.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Лабораторная работа по минимизации логических функций методом Куайна Мак-Класски
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.9.7 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Загрузка...</div>
+<div class="SRStatus" id="Searching">Поиск...</div>
+<div class="SRStatus" id="NoMatches">Не найдено</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_d522931ffa1371640980b621734a4381.html">Users</a></li><li class="navelem"><a class="el" href="dir_652e80cb60c7c7dc9126e3efd6737727.html">ASUS</a></li><li class="navelem"><a class="el" href="dir_f564811ae8af00aff5a46d99bae606c8.html">Documents</a></li><li class="navelem"><a class="el" href="dir_b67c30b37d8ee04171a32912daf12f2e.html">minimizaciyaMetodomKvainaMacClassky</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle"><div class="title">logiceditor.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="logiceditor_8h.html">См. документацию.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef LOGICEDITOR_H</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define LOGICEDITOR_H</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno"><a class="line" href="logiceditor_8h.html#a5afa4038b2aff780cd2dea832ca23cf0">    4</a></span><span class="preprocessor">#define COLUMN_WIDTH 20</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno"><a class="line" href="logiceditor_8h.html#af5afede26f9d2b29f3b520986e761249">    5</a></span><span class="preprocessor">#define ROW_HEIGH_INV 5</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno"><a class="line" href="logiceditor_8h.html#a8eeaed92fffcc06ca97c0b40eb8659ee">    6</a></span><span class="preprocessor">#define ROW_HEIGH_VAR 35</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno"><a class="line" href="logiceditor_8h.html#a2a4be860f2cb76696150819472b823eb">    7</a></span><span class="preprocessor">#define START_ROW_COUNT 2</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &lt;QObject&gt;</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &lt;QTableWidget&gt;</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &lt;QTableWidgetItem&gt;</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno"><a class="line" href="class_logic_editor.html">   13</a></span><span class="keyword">class </span><a class="code hl_class" href="class_logic_editor.html">LogicEditor</a></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>{</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    <a class="code hl_class" href="class_logic_editor.html">LogicEditor</a>(QTableWidget *parent);</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_logic_editor.html#aa39d593bf195726799dbfd216e3968fb">addSymvol</a>(QString symvol, <span class="keywordtype">bool</span> inversiya = <span class="keyword">false</span>); <span class="comment">// фобавление символа (кроме инверсии)</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_logic_editor.html#a76994ecdea0b8923096dd30cf85a003c">formatTable</a>(); <span class="comment">// форматирует таблицу (устанавливает ширину и высоту строк и столбцов</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_logic_editor.html#a79d9237bf2221d5828181f5ed177a7ba">clearTable</a>();  <span class="comment">// функция очистки таблицы</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_logic_editor.html#a906202a42320b4e5cefc9bf6fbe0cedf">deleteLastSymvol</a>(); <span class="comment">// удаление последнего символа</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_logic_editor.html#a37db801bb3ef545ec0107164e2307c4c">addInv</a>(); <span class="comment">// добавляет инверсию</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_logic_editor.html#a079a1564a2e1ef543f4eabcd6ca74663">addInvLine</a>(); <span class="comment">// функция добавления строки инверсии *</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="class_logic_editor.html#a71950baf63c7f1dc821ca2e5639aa05c">   24</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_logic_editor.html#a71950baf63c7f1dc821ca2e5639aa05c">delInvLine</a>(); <span class="comment">// функция удаления строки инверсии *</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    QString <a class="code hl_function" href="class_logic_editor.html#a063b9394186242610506aa83bb4961a2">getFormulaText</a>(); <span class="comment">// возвращает текстовый вид формулы</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="class_logic_editor.html#a7b208b45aafc17d12e7ec15e9c0d09ea">isAllowSymvol</a>(QString symvol); <span class="comment">// возвращает, является-ли символ разрешённым</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="comment">//    int getColChosedItem(); // возвращает номер столбца выделенного элемента. Вернёт -1, если выбрано более 1 элемента. Вернёт номер последнего столбца, если не выбрано ничего</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    <span class="keywordtype">int</span> <a class="code hl_function" href="class_logic_editor.html#a7d217bf64da8b566df304078f943e47d">insertColumnAftreSelected</a>(QTableWidget *tableWidgetInput); <span class="comment">// вставляет столбец после выбранного</span></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="class_logic_editor.html#a32f3de2b0ce1ba57fa6343c9754f78db">deleteSelectedColumns</a>(QTableWidget *tableWidgetInput); <span class="comment">// удаляет выделенные столбцы</span></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_logic_editor.html#adc3ebe5937dc27d78afdeee2277f5066">getSelectedItemNumber</a>(QTableWidget *tableWidgetInput, <span class="keywordtype">int</span> &amp;itemNumber, <span class="keywordtype">int</span> *count = <span class="keyword">nullptr</span>);</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_logic_editor.html#af04023d385e33c53e33ea0d0da70f2bd">setTableWidget</a>(QTableWidget *value); <span class="comment">// получает указатель на tableWidget, в котором будет строиться выражение</span></div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_logic_editor.html#ac084fd80316a9e8078b946745245e80d">setFormula</a>(QString virazhenie); <span class="comment">// устанавливает выражение в tableWidget, нет добавления инверсии над скобкой</span></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_logic_editor.html#a0ba0125e8ab4b4f015ae0423c3105673">setAutoInput</a>(<span class="keywordtype">bool</span> value);</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_logic_editor.html#a7c0e56935ea7650f76573045f397501c">setAutoInputType</a>(<span class="keywordtype">int</span> value); <span class="comment">// тип автоввода (МДНФ/МКНФ)</span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_logic_editor.html#a713f81e35850127c8ed25ab84df24deb">setEditChoseItem</a>(<span class="keywordtype">bool</span> value);</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="class_logic_editor.html#a7c503fd582655c3016c42e79a9703857">isEditChoseItem</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>signals:</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    <span class="keywordtype">void</span> <a class="code hl_signal" href="class_logic_editor.html#a34698a3e4c7ed00bab076fa9ae7c4f68">onStatusChanged</a>(); <span class="comment">// вызывается при каждом действии</span></div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    QTableWidget *formulaTableWidget = <span class="keyword">nullptr</span>; <span class="comment">// указатель на главный tableWidget</span></div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    QStringList allowSymvolsList; <span class="comment">// список разрешённых символов</span></div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    <span class="keywordtype">int</span> getNumberEmptyItem(); <span class="comment">// функция, возвращающающая номер пустой ячейки</span></div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    <span class="keywordtype">void</span> scrollToLastSymvol(QTableWidget *tableWidgetInput); <span class="comment">// прокручивает tableWidget до крайнего нижнего правого item</span></div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    <span class="keywordtype">bool</span> autoInput = <span class="keyword">false</span>; <span class="comment">// флаг автоматического ввода для МКНФ/МДНФ</span></div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    <span class="keywordtype">int</span> autoInputType = 0; <span class="comment">// тип автоматического ввода (0 - МКНФ/ 1 - МДНФ)</span></div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    <span class="keywordtype">bool</span> editChoseItem = <span class="keyword">false</span>; <span class="comment">// флаг, для редактирования выбранного мышкой элемента (true), или последнего (false)</span></div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>};</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="preprocessor">#endif </span><span class="comment">// LOGICEDITOR_H</span></div>
+<div class="ttc" id="aclass_logic_editor_html"><div class="ttname"><a href="class_logic_editor.html">LogicEditor</a></div><div class="ttdef"><b>Definition</b> logiceditor.h:14</div></div>
+<div class="ttc" id="aclass_logic_editor_html_a063b9394186242610506aa83bb4961a2"><div class="ttname"><a href="class_logic_editor.html#a063b9394186242610506aa83bb4961a2">LogicEditor::getFormulaText</a></div><div class="ttdeci">QString getFormulaText()</div><div class="ttdoc">Возвращает текстовое представление формулы.</div><div class="ttdef"><b>Definition</b> logiceditor.cpp:611</div></div>
+<div class="ttc" id="aclass_logic_editor_html_a079a1564a2e1ef543f4eabcd6ca74663"><div class="ttname"><a href="class_logic_editor.html#a079a1564a2e1ef543f4eabcd6ca74663">LogicEditor::addInvLine</a></div><div class="ttdeci">void addInvLine()</div><div class="ttdef"><b>Definition</b> logiceditor.cpp:583</div></div>
+<div class="ttc" id="aclass_logic_editor_html_a0ba0125e8ab4b4f015ae0423c3105673"><div class="ttname"><a href="class_logic_editor.html#a0ba0125e8ab4b4f015ae0423c3105673">LogicEditor::setAutoInput</a></div><div class="ttdeci">void setAutoInput(bool value)</div><div class="ttdef"><b>Definition</b> logiceditor.cpp:173</div></div>
+<div class="ttc" id="aclass_logic_editor_html_a32f3de2b0ce1ba57fa6343c9754f78db"><div class="ttname"><a href="class_logic_editor.html#a32f3de2b0ce1ba57fa6343c9754f78db">LogicEditor::deleteSelectedColumns</a></div><div class="ttdeci">bool deleteSelectedColumns(QTableWidget *tableWidgetInput)</div><div class="ttdoc">Удаляет выделенные столбцы в таблице.</div><div class="ttdef"><b>Definition</b> logiceditor.cpp:227</div></div>
+<div class="ttc" id="aclass_logic_editor_html_a34698a3e4c7ed00bab076fa9ae7c4f68"><div class="ttname"><a href="class_logic_editor.html#a34698a3e4c7ed00bab076fa9ae7c4f68">LogicEditor::onStatusChanged</a></div><div class="ttdeci">void onStatusChanged()</div><div class="ttdef"><b>Definition</b> logiceditor.cpp:719</div></div>
+<div class="ttc" id="aclass_logic_editor_html_a37db801bb3ef545ec0107164e2307c4c"><div class="ttname"><a href="class_logic_editor.html#a37db801bb3ef545ec0107164e2307c4c">LogicEditor::addInv</a></div><div class="ttdeci">void addInv()</div><div class="ttdoc">Добавляет или удаляет инверсию для выделенных ячеек в таблице формул. Если таблица формул не инициали...</div><div class="ttdef"><b>Definition</b> logiceditor.cpp:548</div></div>
+<div class="ttc" id="aclass_logic_editor_html_a713f81e35850127c8ed25ab84df24deb"><div class="ttname"><a href="class_logic_editor.html#a713f81e35850127c8ed25ab84df24deb">LogicEditor::setEditChoseItem</a></div><div class="ttdeci">void setEditChoseItem(bool value)</div><div class="ttdef"><b>Definition</b> logiceditor.cpp:149</div></div>
+<div class="ttc" id="aclass_logic_editor_html_a71950baf63c7f1dc821ca2e5639aa05c"><div class="ttname"><a href="class_logic_editor.html#a71950baf63c7f1dc821ca2e5639aa05c">LogicEditor::delInvLine</a></div><div class="ttdeci">void delInvLine()</div></div>
+<div class="ttc" id="aclass_logic_editor_html_a76994ecdea0b8923096dd30cf85a003c"><div class="ttname"><a href="class_logic_editor.html#a76994ecdea0b8923096dd30cf85a003c">LogicEditor::formatTable</a></div><div class="ttdeci">void formatTable()</div><div class="ttdoc">Форматирует таблицу в редакторе логики.</div><div class="ttdef"><b>Definition</b> logiceditor.cpp:421</div></div>
+<div class="ttc" id="aclass_logic_editor_html_a79d9237bf2221d5828181f5ed177a7ba"><div class="ttname"><a href="class_logic_editor.html#a79d9237bf2221d5828181f5ed177a7ba">LogicEditor::clearTable</a></div><div class="ttdeci">void clearTable()</div><div class="ttdoc">Очищает таблицу редактора логики. Если указатель formulaTableWidget равен nullptr,...</div><div class="ttdef"><b>Definition</b> logiceditor.cpp:469</div></div>
+<div class="ttc" id="aclass_logic_editor_html_a7b208b45aafc17d12e7ec15e9c0d09ea"><div class="ttname"><a href="class_logic_editor.html#a7b208b45aafc17d12e7ec15e9c0d09ea">LogicEditor::isAllowSymvol</a></div><div class="ttdeci">bool isAllowSymvol(QString symvol)</div><div class="ttdoc">Проверяет, является ли символ разрешенным символом.</div><div class="ttdef"><b>Definition</b> logiceditor.cpp:195</div></div>
+<div class="ttc" id="aclass_logic_editor_html_a7c0e56935ea7650f76573045f397501c"><div class="ttname"><a href="class_logic_editor.html#a7c0e56935ea7650f76573045f397501c">LogicEditor::setAutoInputType</a></div><div class="ttdeci">void setAutoInputType(int value)</div><div class="ttdef"><b>Definition</b> logiceditor.cpp:161</div></div>
+<div class="ttc" id="aclass_logic_editor_html_a7c503fd582655c3016c42e79a9703857"><div class="ttname"><a href="class_logic_editor.html#a7c503fd582655c3016c42e79a9703857">LogicEditor::isEditChoseItem</a></div><div class="ttdeci">bool isEditChoseItem() const</div><div class="ttdef"><b>Definition</b> logiceditor.cpp:83</div></div>
+<div class="ttc" id="aclass_logic_editor_html_a7d217bf64da8b566df304078f943e47d"><div class="ttname"><a href="class_logic_editor.html#a7d217bf64da8b566df304078f943e47d">LogicEditor::insertColumnAftreSelected</a></div><div class="ttdeci">int insertColumnAftreSelected(QTableWidget *tableWidgetInput)</div><div class="ttdef"><b>Definition</b> logiceditor.cpp:95</div></div>
+<div class="ttc" id="aclass_logic_editor_html_a906202a42320b4e5cefc9bf6fbe0cedf"><div class="ttname"><a href="class_logic_editor.html#a906202a42320b4e5cefc9bf6fbe0cedf">LogicEditor::deleteLastSymvol</a></div><div class="ttdeci">void deleteLastSymvol()</div><div class="ttdoc">Удаляет последний символ в таблице редактора логики. Если указатель formulaTableWidget равен nullptr,...</div><div class="ttdef"><b>Definition</b> logiceditor.cpp:506</div></div>
+<div class="ttc" id="aclass_logic_editor_html_aa39d593bf195726799dbfd216e3968fb"><div class="ttname"><a href="class_logic_editor.html#aa39d593bf195726799dbfd216e3968fb">LogicEditor::addSymvol</a></div><div class="ttdeci">void addSymvol(QString symvol, bool inversiya=false)</div><div class="ttdoc">Добавляет символ в таблицу.</div><div class="ttdef"><b>Definition</b> logiceditor.cpp:355</div></div>
+<div class="ttc" id="aclass_logic_editor_html_ac084fd80316a9e8078b946745245e80d"><div class="ttname"><a href="class_logic_editor.html#ac084fd80316a9e8078b946745245e80d">LogicEditor::setFormula</a></div><div class="ttdeci">void setFormula(QString virazhenie)</div><div class="ttdoc">Устанавливает формулу.</div><div class="ttdef"><b>Definition</b> logiceditor.cpp:677</div></div>
+<div class="ttc" id="aclass_logic_editor_html_adc3ebe5937dc27d78afdeee2277f5066"><div class="ttname"><a href="class_logic_editor.html#adc3ebe5937dc27d78afdeee2277f5066">LogicEditor::getSelectedItemNumber</a></div><div class="ttdeci">void getSelectedItemNumber(QTableWidget *tableWidgetInput, int &amp;itemNumber, int *count=nullptr)</div><div class="ttdoc">Возвращает номер выделенного столбца и количество выделенных столбцов в таблице.</div><div class="ttdef"><b>Definition</b> logiceditor.cpp:275</div></div>
+<div class="ttc" id="aclass_logic_editor_html_af04023d385e33c53e33ea0d0da70f2bd"><div class="ttname"><a href="class_logic_editor.html#af04023d385e33c53e33ea0d0da70f2bd">LogicEditor::setTableWidget</a></div><div class="ttdeci">void setTableWidget(QTableWidget *value)</div><div class="ttdoc">Устанавливает таблицу формул.</div><div class="ttdef"><b>Definition</b> logiceditor.cpp:657</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Создано системой&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7
+</small></address>
+</body>
+</html>

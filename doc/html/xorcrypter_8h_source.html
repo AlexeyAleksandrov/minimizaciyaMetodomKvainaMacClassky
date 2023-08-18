@@ -1,0 +1,120 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.7"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Лабораторная работа по минимизации логических функций методом Куайна Мак-Класски: Исходный файл C:/Users/ASUS/Documents/minimizaciyaMetodomKvainaMacClassky/xorcrypter.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Лабораторная работа по минимизации логических функций методом Куайна Мак-Класски
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.9.7 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Загрузка...</div>
+<div class="SRStatus" id="Searching">Поиск...</div>
+<div class="SRStatus" id="NoMatches">Не найдено</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_d522931ffa1371640980b621734a4381.html">Users</a></li><li class="navelem"><a class="el" href="dir_652e80cb60c7c7dc9126e3efd6737727.html">ASUS</a></li><li class="navelem"><a class="el" href="dir_f564811ae8af00aff5a46d99bae606c8.html">Documents</a></li><li class="navelem"><a class="el" href="dir_b67c30b37d8ee04171a32912daf12f2e.html">minimizaciyaMetodomKvainaMacClassky</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle"><div class="title">xorcrypter.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="xorcrypter_8h.html">См. документацию.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef XORCRYPTER_H</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define XORCRYPTER_H</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;QByteArray&gt;</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &lt;QFile&gt;</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno"><a class="line" href="class_x_o_r_crypter.html">    7</a></span><span class="keyword">class </span><a class="code hl_class" href="class_x_o_r_crypter.html">XORCrypter</a></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span>{</div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>    <a class="code hl_function" href="class_x_o_r_crypter.html#a523af0424ce72a1c977f3e447f392803">XORCrypter</a>();</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>    <span class="keyword">const</span> QByteArray &amp;<a class="code hl_function" href="class_x_o_r_crypter.html#a4ad3597fbff119bc51d9b28ec4bd2247">getKey</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_x_o_r_crypter.html#ae060a5c7332a7169a5d896b66923deeb">setKey</a>(<span class="keyword">const</span> QByteArray &amp;newKey);</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_x_o_r_crypter.html#a31ea6c4e7cd02b2d5ce0b2fbaea8bbe1">writeEncryptenFile</a>(QFile &amp;encryptedFile, <span class="keyword">const</span> QByteArray &amp;text, <span class="keyword">const</span> QByteArray&amp; key, <span class="keywordtype">bool</span> *ok = <span class="keyword">nullptr</span>);   <span class="comment">// записать зашифрованный файл</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_x_o_r_crypter.html#a31ea6c4e7cd02b2d5ce0b2fbaea8bbe1">writeEncryptenFile</a>(QFile &amp;encryptedFile, <span class="keyword">const</span> QByteArray &amp;text, <span class="keywordtype">bool</span> *ok = <span class="keyword">nullptr</span>);   <span class="comment">// записать зашифрованный файл</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    QByteArray <a class="code hl_function" href="class_x_o_r_crypter.html#a97eeed2e6065460bf2ddffd0063c32e5">readEncryptenFile</a>(QFile &amp;file, <span class="keyword">const</span> QByteArray &amp;key, <span class="keywordtype">bool</span> *ok = <span class="keyword">nullptr</span>);      <span class="comment">// прочитать зашифрованный файл</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    QByteArray <a class="code hl_function" href="class_x_o_r_crypter.html#a97eeed2e6065460bf2ddffd0063c32e5">readEncryptenFile</a>(QFile &amp;file, <span class="keywordtype">bool</span> *ok = <span class="keyword">nullptr</span>);      <span class="comment">// прочитать зашифрованный файл</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    QByteArray <a class="code hl_function" href="class_x_o_r_crypter.html#a3d32faefc3eb0d2f9328ebd3b4e4158f">xorEncryptDecrypt</a>(<span class="keyword">const</span> QByteArray &amp;text, <span class="keyword">const</span> QByteArray &amp;key);    <span class="comment">// функция для шифрования/расшифрования текста с использованием операции XOR</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    QByteArray <a class="code hl_function" href="class_x_o_r_crypter.html#a3d32faefc3eb0d2f9328ebd3b4e4158f">xorEncryptDecrypt</a>(<span class="keyword">const</span> QByteArray &amp;text);   <span class="comment">// функция для шифрования/расшифрования текста с использованием операции XOR</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    QByteArray key = <span class="stringliteral">&quot;0123456789&quot;</span>;      <span class="comment">// ключ шифрования</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>};</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="preprocessor">#endif </span><span class="comment">// XORCRYPTER_H</span></div>
+<div class="ttc" id="aclass_x_o_r_crypter_html"><div class="ttname"><a href="class_x_o_r_crypter.html">XORCrypter</a></div><div class="ttdef"><b>Definition</b> xorcrypter.h:8</div></div>
+<div class="ttc" id="aclass_x_o_r_crypter_html_a31ea6c4e7cd02b2d5ce0b2fbaea8bbe1"><div class="ttname"><a href="class_x_o_r_crypter.html#a31ea6c4e7cd02b2d5ce0b2fbaea8bbe1">XORCrypter::writeEncryptenFile</a></div><div class="ttdeci">void writeEncryptenFile(QFile &amp;encryptedFile, const QByteArray &amp;text, const QByteArray &amp;key, bool *ok=nullptr)</div><div class="ttdef"><b>Definition</b> xorcrypter.cpp:18</div></div>
+<div class="ttc" id="aclass_x_o_r_crypter_html_a3d32faefc3eb0d2f9328ebd3b4e4158f"><div class="ttname"><a href="class_x_o_r_crypter.html#a3d32faefc3eb0d2f9328ebd3b4e4158f">XORCrypter::xorEncryptDecrypt</a></div><div class="ttdeci">QByteArray xorEncryptDecrypt(const QByteArray &amp;text, const QByteArray &amp;key)</div><div class="ttdef"><b>Definition</b> xorcrypter.cpp:61</div></div>
+<div class="ttc" id="aclass_x_o_r_crypter_html_a4ad3597fbff119bc51d9b28ec4bd2247"><div class="ttname"><a href="class_x_o_r_crypter.html#a4ad3597fbff119bc51d9b28ec4bd2247">XORCrypter::getKey</a></div><div class="ttdeci">const QByteArray &amp; getKey() const</div><div class="ttdef"><b>Definition</b> xorcrypter.cpp:8</div></div>
+<div class="ttc" id="aclass_x_o_r_crypter_html_a523af0424ce72a1c977f3e447f392803"><div class="ttname"><a href="class_x_o_r_crypter.html#a523af0424ce72a1c977f3e447f392803">XORCrypter::XORCrypter</a></div><div class="ttdeci">XORCrypter()</div><div class="ttdef"><b>Definition</b> xorcrypter.cpp:3</div></div>
+<div class="ttc" id="aclass_x_o_r_crypter_html_a97eeed2e6065460bf2ddffd0063c32e5"><div class="ttname"><a href="class_x_o_r_crypter.html#a97eeed2e6065460bf2ddffd0063c32e5">XORCrypter::readEncryptenFile</a></div><div class="ttdeci">QByteArray readEncryptenFile(QFile &amp;file, const QByteArray &amp;key, bool *ok=nullptr)</div><div class="ttdef"><b>Definition</b> xorcrypter.cpp:38</div></div>
+<div class="ttc" id="aclass_x_o_r_crypter_html_ae060a5c7332a7169a5d896b66923deeb"><div class="ttname"><a href="class_x_o_r_crypter.html#ae060a5c7332a7169a5d896b66923deeb">XORCrypter::setKey</a></div><div class="ttdeci">void setKey(const QByteArray &amp;newKey)</div><div class="ttdef"><b>Definition</b> xorcrypter.cpp:13</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Создано системой&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7
+</small></address>
+</body>
+</html>

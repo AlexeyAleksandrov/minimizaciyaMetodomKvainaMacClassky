@@ -1,0 +1,662 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.7"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Лабораторная работа по минимизации логических функций методом Куайна Мак-Класски: Класс LogicEditor</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Лабораторная работа по минимизации логических функций методом Куайна Мак-Класски
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.9.7 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Загрузка...</div>
+<div class="SRStatus" id="Searching">Поиск...</div>
+<div class="SRStatus" id="NoMatches">Не найдено</div>
+</div>
+</div>
+</div>
+</div>
+
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#signals">Сигналы</a> &#124;
+<a href="#pub-methods">Открытые члены</a> &#124;
+<a href="class_logic_editor-members.html">Полный список членов класса</a>  </div>
+  <div class="headertitle"><div class="title">Класс LogicEditor</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p><code>#include &lt;<a class="el" href="logiceditor_8h_source.html">logiceditor.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="signals" name="signals"></a>
+Сигналы</h2></td></tr>
+<tr class="memitem:a34698a3e4c7ed00bab076fa9ae7c4f68"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_logic_editor.html#a34698a3e4c7ed00bab076fa9ae7c4f68">onStatusChanged</a> ()</td></tr>
+<tr class="separator:a34698a3e4c7ed00bab076fa9ae7c4f68"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Открытые члены</h2></td></tr>
+<tr class="memitem:afe7136ceb69cc73a8330f4b8428ad862"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_logic_editor.html#afe7136ceb69cc73a8330f4b8428ad862">LogicEditor</a> (QTableWidget *parent)</td></tr>
+<tr class="separator:afe7136ceb69cc73a8330f4b8428ad862"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa39d593bf195726799dbfd216e3968fb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_logic_editor.html#aa39d593bf195726799dbfd216e3968fb">addSymvol</a> (QString symvol, bool inversiya=false)</td></tr>
+<tr class="memdesc:aa39d593bf195726799dbfd216e3968fb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Добавляет символ в таблицу.  <br /></td></tr>
+<tr class="separator:aa39d593bf195726799dbfd216e3968fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a76994ecdea0b8923096dd30cf85a003c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_logic_editor.html#a76994ecdea0b8923096dd30cf85a003c">formatTable</a> ()</td></tr>
+<tr class="memdesc:a76994ecdea0b8923096dd30cf85a003c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Форматирует таблицу в редакторе логики.  <br /></td></tr>
+<tr class="separator:a76994ecdea0b8923096dd30cf85a003c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a79d9237bf2221d5828181f5ed177a7ba"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_logic_editor.html#a79d9237bf2221d5828181f5ed177a7ba">clearTable</a> ()</td></tr>
+<tr class="memdesc:a79d9237bf2221d5828181f5ed177a7ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Очищает таблицу редактора логики. Если указатель formulaTableWidget равен nullptr, ничего не делает. Иначе производит следующие действия: Получает количество строк и столбцов таблицы. Перебирает все ячейки таблицы и устанавливает пустую строку в каждую ячейку. Освобождает память, выделенную для каждой ячейки таблицы. Устанавливает количество строк и столбцов таблицы в 0. Форматирует таблицу заново. Отправляет сигнал о изменении статуса.  <br /></td></tr>
+<tr class="separator:a79d9237bf2221d5828181f5ed177a7ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a906202a42320b4e5cefc9bf6fbe0cedf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_logic_editor.html#a906202a42320b4e5cefc9bf6fbe0cedf">deleteLastSymvol</a> ()</td></tr>
+<tr class="memdesc:a906202a42320b4e5cefc9bf6fbe0cedf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Удаляет последний символ в таблице редактора логики. Если указатель formulaTableWidget равен nullptr, ничего не делает. Иначе производит следующие действия: Получает количество строк и столбцов таблицы. Если количество столбцов равно 0, ничего не делает. Если режим редактирования выбранных включен:  <br /></td></tr>
+<tr class="separator:a906202a42320b4e5cefc9bf6fbe0cedf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a37db801bb3ef545ec0107164e2307c4c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_logic_editor.html#a37db801bb3ef545ec0107164e2307c4c">addInv</a> ()</td></tr>
+<tr class="memdesc:a37db801bb3ef545ec0107164e2307c4c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Добавляет или удаляет инверсию для выделенных ячеек в таблице формул. Если таблица формул не инициализирована, функция ничего не делает.  <br /></td></tr>
+<tr class="separator:a37db801bb3ef545ec0107164e2307c4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a079a1564a2e1ef543f4eabcd6ca74663"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_logic_editor.html#a079a1564a2e1ef543f4eabcd6ca74663">addInvLine</a> ()</td></tr>
+<tr class="separator:a079a1564a2e1ef543f4eabcd6ca74663"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a71950baf63c7f1dc821ca2e5639aa05c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_logic_editor.html#a71950baf63c7f1dc821ca2e5639aa05c">delInvLine</a> ()</td></tr>
+<tr class="separator:a71950baf63c7f1dc821ca2e5639aa05c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a063b9394186242610506aa83bb4961a2"><td class="memItemLeft" align="right" valign="top">QString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_logic_editor.html#a063b9394186242610506aa83bb4961a2">getFormulaText</a> ()</td></tr>
+<tr class="memdesc:a063b9394186242610506aa83bb4961a2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Возвращает текстовое представление формулы.  <br /></td></tr>
+<tr class="separator:a063b9394186242610506aa83bb4961a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7b208b45aafc17d12e7ec15e9c0d09ea"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_logic_editor.html#a7b208b45aafc17d12e7ec15e9c0d09ea">isAllowSymvol</a> (QString symvol)</td></tr>
+<tr class="memdesc:a7b208b45aafc17d12e7ec15e9c0d09ea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Проверяет, является ли символ разрешенным символом.  <br /></td></tr>
+<tr class="separator:a7b208b45aafc17d12e7ec15e9c0d09ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7d217bf64da8b566df304078f943e47d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_logic_editor.html#a7d217bf64da8b566df304078f943e47d">insertColumnAftreSelected</a> (QTableWidget *tableWidgetInput)</td></tr>
+<tr class="separator:a7d217bf64da8b566df304078f943e47d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a32f3de2b0ce1ba57fa6343c9754f78db"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_logic_editor.html#a32f3de2b0ce1ba57fa6343c9754f78db">deleteSelectedColumns</a> (QTableWidget *tableWidgetInput)</td></tr>
+<tr class="memdesc:a32f3de2b0ce1ba57fa6343c9754f78db"><td class="mdescLeft">&#160;</td><td class="mdescRight">Удаляет выделенные столбцы в таблице.  <br /></td></tr>
+<tr class="separator:a32f3de2b0ce1ba57fa6343c9754f78db"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adc3ebe5937dc27d78afdeee2277f5066"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_logic_editor.html#adc3ebe5937dc27d78afdeee2277f5066">getSelectedItemNumber</a> (QTableWidget *tableWidgetInput, int &amp;itemNumber, int *count=nullptr)</td></tr>
+<tr class="memdesc:adc3ebe5937dc27d78afdeee2277f5066"><td class="mdescLeft">&#160;</td><td class="mdescRight">Возвращает номер выделенного столбца и количество выделенных столбцов в таблице.  <br /></td></tr>
+<tr class="separator:adc3ebe5937dc27d78afdeee2277f5066"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af04023d385e33c53e33ea0d0da70f2bd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_logic_editor.html#af04023d385e33c53e33ea0d0da70f2bd">setTableWidget</a> (QTableWidget *value)</td></tr>
+<tr class="memdesc:af04023d385e33c53e33ea0d0da70f2bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Устанавливает таблицу формул.  <br /></td></tr>
+<tr class="separator:af04023d385e33c53e33ea0d0da70f2bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac084fd80316a9e8078b946745245e80d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_logic_editor.html#ac084fd80316a9e8078b946745245e80d">setFormula</a> (QString virazhenie)</td></tr>
+<tr class="memdesc:ac084fd80316a9e8078b946745245e80d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Устанавливает формулу.  <br /></td></tr>
+<tr class="separator:ac084fd80316a9e8078b946745245e80d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0ba0125e8ab4b4f015ae0423c3105673"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_logic_editor.html#a0ba0125e8ab4b4f015ae0423c3105673">setAutoInput</a> (bool value)</td></tr>
+<tr class="separator:a0ba0125e8ab4b4f015ae0423c3105673"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7c0e56935ea7650f76573045f397501c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_logic_editor.html#a7c0e56935ea7650f76573045f397501c">setAutoInputType</a> (int value)</td></tr>
+<tr class="separator:a7c0e56935ea7650f76573045f397501c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a713f81e35850127c8ed25ab84df24deb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_logic_editor.html#a713f81e35850127c8ed25ab84df24deb">setEditChoseItem</a> (bool value)</td></tr>
+<tr class="separator:a713f81e35850127c8ed25ab84df24deb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7c503fd582655c3016c42e79a9703857"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_logic_editor.html#a7c503fd582655c3016c42e79a9703857">isEditChoseItem</a> () const</td></tr>
+<tr class="separator:a7c503fd582655c3016c42e79a9703857"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Конструктор(ы)</h2>
+<a id="afe7136ceb69cc73a8330f4b8428ad862" name="afe7136ceb69cc73a8330f4b8428ad862"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afe7136ceb69cc73a8330f4b8428ad862">&#9670;&#160;</a></span>LogicEditor()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">LogicEditor::LogicEditor </td>
+          <td>(</td>
+          <td class="paramtype">QTableWidget *&#160;</td>
+          <td class="paramname"><em>parent</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Конструктор класса <a class="el" href="class_logic_editor.html">LogicEditor</a></p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">parent</td><td>Указатель на родительский QTableWidget</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Методы</h2>
+<a id="a37db801bb3ef545ec0107164e2307c4c" name="a37db801bb3ef545ec0107164e2307c4c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a37db801bb3ef545ec0107164e2307c4c">&#9670;&#160;</a></span>addInv()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void LogicEditor::addInv </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Добавляет или удаляет инверсию для выделенных ячеек в таблице формул. Если таблица формул не инициализирована, функция ничего не делает. </p>
+<p>Функция проверяет количество строк и колонок в таблице формул. Если количество строк меньше 2 или количество колонок равно 0, функция завершает свою работу. Затем происходит итерация по ячейкам таблицы формул. Если ячейка существует и выделена, проверяется текущий цвет фона. Если цвет черный, это означает, что в ячейке уже есть инверсия, и она удаляется, устанавливая белый цвет фона. Если цвет не черный, то инверсия отсутствует, и она добавляется, устанавливая цвет фона ячейки в черный. По окончании процесса изменения цветов в ячейках, функция отправляет сигнал <a class="el" href="class_logic_editor.html#a34698a3e4c7ed00bab076fa9ae7c4f68">onStatusChanged()</a> для указания, что произошли изменения. </p>
+
+</div>
+</div>
+<a id="a079a1564a2e1ef543f4eabcd6ca74663" name="a079a1564a2e1ef543f4eabcd6ca74663"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a079a1564a2e1ef543f4eabcd6ca74663">&#9670;&#160;</a></span>addInvLine()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void LogicEditor::addInvLine </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa39d593bf195726799dbfd216e3968fb" name="aa39d593bf195726799dbfd216e3968fb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa39d593bf195726799dbfd216e3968fb">&#9670;&#160;</a></span>addSymvol()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void LogicEditor::addSymvol </td>
+          <td>(</td>
+          <td class="paramtype">QString&#160;</td>
+          <td class="paramname"><em>symvol</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>inversiya</em> = <code>false</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Добавляет символ в таблицу. </p>
+<p>Функция добавляет заданный символ в формулу в таблице formulaTableWidget.</p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">symvol</td><td>Строка - добавляемый символ. </td></tr>
+    <tr><td class="paramname">inversiya</td><td>Флаг, указывающий, нужна ли инверсия над символом. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a79d9237bf2221d5828181f5ed177a7ba" name="a79d9237bf2221d5828181f5ed177a7ba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a79d9237bf2221d5828181f5ed177a7ba">&#9670;&#160;</a></span>clearTable()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void LogicEditor::clearTable </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Очищает таблицу редактора логики. Если указатель formulaTableWidget равен nullptr, ничего не делает. Иначе производит следующие действия: Получает количество строк и столбцов таблицы. Перебирает все ячейки таблицы и устанавливает пустую строку в каждую ячейку. Освобождает память, выделенную для каждой ячейки таблицы. Устанавливает количество строк и столбцов таблицы в 0. Форматирует таблицу заново. Отправляет сигнал о изменении статуса. </p>
+
+</div>
+</div>
+<a id="a906202a42320b4e5cefc9bf6fbe0cedf" name="a906202a42320b4e5cefc9bf6fbe0cedf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a906202a42320b4e5cefc9bf6fbe0cedf">&#9670;&#160;</a></span>deleteLastSymvol()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void LogicEditor::deleteLastSymvol </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Удаляет последний символ в таблице редактора логики. Если указатель formulaTableWidget равен nullptr, ничего не делает. Иначе производит следующие действия: Получает количество строк и столбцов таблицы. Если количество столбцов равно 0, ничего не делает. Если режим редактирования выбранных включен: </p>
+<ul>
+<li>Удаляет выделенные столбцы из таблицы. В противном случае:</li>
+<li>Устанавливает пустую строку в последнюю ячейку каждой строки.</li>
+<li>Освобождает память, выделенную для последней ячейки каждой строки.</li>
+<li>Уменьшает количество столбцов таблицы на 1. Форматирует таблицу заново. Отправляет сигнал о изменении статуса. </li>
+</ul>
+
+</div>
+</div>
+<a id="a32f3de2b0ce1ba57fa6343c9754f78db" name="a32f3de2b0ce1ba57fa6343c9754f78db"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a32f3de2b0ce1ba57fa6343c9754f78db">&#9670;&#160;</a></span>deleteSelectedColumns()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool LogicEditor::deleteSelectedColumns </td>
+          <td>(</td>
+          <td class="paramtype">QTableWidget *&#160;</td>
+          <td class="paramname"><em>tableWidgetInput</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Удаляет выделенные столбцы в таблице. </p>
+<p>Функция удаляет выделенные столбцы в переданной таблице tableWidgetInput.</p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">tableWidgetInput</td><td>Указатель на QTableWidget - таблицу, в которой нужно удалить столбцы.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>true, если был удален хотя бы один столбец. </dd>
+<dd>
+false, если не было выделено ни одного столбца. </dd></dl>
+
+</div>
+</div>
+<a id="a71950baf63c7f1dc821ca2e5639aa05c" name="a71950baf63c7f1dc821ca2e5639aa05c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a71950baf63c7f1dc821ca2e5639aa05c">&#9670;&#160;</a></span>delInvLine()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void LogicEditor::delInvLine </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a76994ecdea0b8923096dd30cf85a003c" name="a76994ecdea0b8923096dd30cf85a003c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a76994ecdea0b8923096dd30cf85a003c">&#9670;&#160;</a></span>formatTable()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void LogicEditor::formatTable </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Форматирует таблицу в редакторе логики. </p>
+<p>Если таблица не существует или не содержит ни одной строки, то создает 5 строк. Если таблица содержит строки, но не содержит столбцов, то возвращает управление. Для каждой ячейки таблицы:</p><ul>
+<li>Если ячейка пустая, выделяет память, устанавливает белый фон и шрифт Segoe UI размером 13.</li>
+<li>Если ячейка не пустая, удаляет текст ячейки. Устанавливает ширину столбцов и высоту строк. </li>
+</ul>
+
+</div>
+</div>
+<a id="a063b9394186242610506aa83bb4961a2" name="a063b9394186242610506aa83bb4961a2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a063b9394186242610506aa83bb4961a2">&#9670;&#160;</a></span>getFormulaText()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">QString LogicEditor::getFormulaText </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Возвращает текстовое представление формулы. </p>
+<p>Если таблица формул пуста или содержит недостаточное количество строк и столбцов, возвращается строка "ERROR". </p><dl class="section return"><dt>Возвращает</dt><dd>Текстовое представление формулы. </dd></dl>
+
+</div>
+</div>
+<a id="adc3ebe5937dc27d78afdeee2277f5066" name="adc3ebe5937dc27d78afdeee2277f5066"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adc3ebe5937dc27d78afdeee2277f5066">&#9670;&#160;</a></span>getSelectedItemNumber()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void LogicEditor::getSelectedItemNumber </td>
+          <td>(</td>
+          <td class="paramtype">QTableWidget *&#160;</td>
+          <td class="paramname"><em>tableWidgetInput</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int &amp;&#160;</td>
+          <td class="paramname"><em>itemNumber</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>count</em> = <code>nullptr</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Возвращает номер выделенного столбца и количество выделенных столбцов в таблице. </p>
+<p>Функция возвращает номер выделенного столбца в переданной таблице tableWidgetInput и подсчитывает количество выделенных столбцов, записывая его в переменную count, если count не равно nullptr.</p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">tableWidgetInput</td><td>Указатель на QTableWidget - таблицу, из которой нужно получить номер выделенного столбца и количество выделенных столбцов. </td></tr>
+    <tr><td class="paramname">itemNumber</td><td>Ссылка на int - переменную, в которую будет записан номер выделенного столбца. </td></tr>
+    <tr><td class="paramname">count</td><td>Указатель на int - переменную, в которую будет записано количество выделенных столбцов (если не равно nullptr). </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a7d217bf64da8b566df304078f943e47d" name="a7d217bf64da8b566df304078f943e47d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7d217bf64da8b566df304078f943e47d">&#9670;&#160;</a></span>insertColumnAftreSelected()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int LogicEditor::insertColumnAftreSelected </td>
+          <td>(</td>
+          <td class="paramtype">QTableWidget *&#160;</td>
+          <td class="paramname"><em>tableWidgetInput</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Вставить столбец после выбранного</p>
+<p>Вставляет новый столбец в таблицу после выбранного столбца. Если нет выбранного столбца, то добавляет столбец в конец таблицы.</p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">tableWidgetInput</td><td>Указатель на таблицу </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>Номер вставленного столбца или -1, если произошла ошибка</dd></dl>
+
+</div>
+</div>
+<a id="a7b208b45aafc17d12e7ec15e9c0d09ea" name="a7b208b45aafc17d12e7ec15e9c0d09ea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7b208b45aafc17d12e7ec15e9c0d09ea">&#9670;&#160;</a></span>isAllowSymvol()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool LogicEditor::isAllowSymvol </td>
+          <td>(</td>
+          <td class="paramtype">QString&#160;</td>
+          <td class="paramname"><em>symvol</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Проверяет, является ли символ разрешенным символом. </p>
+<p>Функция проверяет, является ли переданный символ symvol разрешенным символом.</p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">symvol</td><td>Строка - символ для проверки.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>true, если символ является разрешенным. </dd>
+<dd>
+false, если символ не является разрешенным или formulaTableWidget равен nullptr. </dd></dl>
+
+</div>
+</div>
+<a id="a7c503fd582655c3016c42e79a9703857" name="a7c503fd582655c3016c42e79a9703857"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7c503fd582655c3016c42e79a9703857">&#9670;&#160;</a></span>isEditChoseItem()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool LogicEditor::isEditChoseItem </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Получить значение флага editChoseItem</p>
+<p>Возвращает значение флага editChoseItem</p>
+<dl class="section return"><dt>Возвращает</dt><dd>Значение флага editChoseItem</dd></dl>
+
+</div>
+</div>
+<a id="a34698a3e4c7ed00bab076fa9ae7c4f68" name="a34698a3e4c7ed00bab076fa9ae7c4f68"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a34698a3e4c7ed00bab076fa9ae7c4f68">&#9670;&#160;</a></span>onStatusChanged</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void LogicEditor::onStatusChanged </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">signal</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0ba0125e8ab4b4f015ae0423c3105673" name="a0ba0125e8ab4b4f015ae0423c3105673"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0ba0125e8ab4b4f015ae0423c3105673">&#9670;&#160;</a></span>setAutoInput()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void LogicEditor::setAutoInput </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>value</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Установить флаг автоматического ввода</p>
+<p>Устанавливает состояние флага автоматического ввода.</p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>Значение флага</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a7c0e56935ea7650f76573045f397501c" name="a7c0e56935ea7650f76573045f397501c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7c0e56935ea7650f76573045f397501c">&#9670;&#160;</a></span>setAutoInputType()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void LogicEditor::setAutoInputType </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>value</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Установить тип автоматического ввода</p>
+<p>Устанавливает тип автоматического ввода.</p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>Тип автоматического ввода</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a713f81e35850127c8ed25ab84df24deb" name="a713f81e35850127c8ed25ab84df24deb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a713f81e35850127c8ed25ab84df24deb">&#9670;&#160;</a></span>setEditChoseItem()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void LogicEditor::setEditChoseItem </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>value</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Установить состояние флага editChoseItem</p>
+<p>Устанавливает состояние флага editChoseItem.</p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>Значение флага</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ac084fd80316a9e8078b946745245e80d" name="ac084fd80316a9e8078b946745245e80d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac084fd80316a9e8078b946745245e80d">&#9670;&#160;</a></span>setFormula()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void LogicEditor::setFormula </td>
+          <td>(</td>
+          <td class="paramtype">QString&#160;</td>
+          <td class="paramname"><em>virazhenie</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Устанавливает формулу. </p>
+<p>Удаляет пробелы из выражения и проверяет наличие символов. Если выражение пустое, функция ничего не выполняет. Переводит символы в верхний регистр, если они находятся в нижнем регистре. Добавляет символы в таблицу формул и форматирует таблицу. Отправляет сигнал onStatusChanged. </p><dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">virazhenie</td><td>Формула в виде строки. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="af04023d385e33c53e33ea0d0da70f2bd" name="af04023d385e33c53e33ea0d0da70f2bd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af04023d385e33c53e33ea0d0da70f2bd">&#9670;&#160;</a></span>setTableWidget()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void LogicEditor::setTableWidget </td>
+          <td>(</td>
+          <td class="paramtype">QTableWidget *&#160;</td>
+          <td class="paramname"><em>value</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Устанавливает таблицу формул. </p>
+<p>Если передается нулевой указатель, функция ничего не выполняет. </p><dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>Указатель на QTableWidget. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<hr/>Объявления и описания членов классов находятся в файлах:<ul>
+<li>C:/Users/ASUS/Documents/minimizaciyaMetodomKvainaMacClassky/<a class="el" href="logiceditor_8h_source.html">logiceditor.h</a></li>
+<li>C:/Users/ASUS/Documents/minimizaciyaMetodomKvainaMacClassky/<a class="el" href="logiceditor_8cpp.html">logiceditor.cpp</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Создано системой&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7
+</small></address>
+</body>
+</html>

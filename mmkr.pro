@@ -28,6 +28,8 @@ SOURCES += \
     formresultcorrect.cpp \
         main.cpp \
         mainwindow.cpp \
+    mmkcalculator.cpp \
+    mmkdata.cpp \
     sschfunctions.cpp \
     tablewidgetfunctions.cpp \
     savedatainfile.cpp \
@@ -44,6 +46,8 @@ HEADERS += \
     md5crypter.h \
     logiceditor.h \
     formlogin.h \
+    mmkcalculator.h \
+    mmkdata.h \
     tooltip.h \
     xorcrypter.h
 
