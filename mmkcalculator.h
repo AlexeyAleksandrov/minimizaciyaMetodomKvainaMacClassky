@@ -14,6 +14,8 @@ public:
 
     bool calculateFunction(QString func16, MmkData::MmkType type, MmkData &result);    // рассчитать минимизацию функции
 
+    QString getFormulaByResult(QStringList result, MmkData::MmkType type);     // конвертирует набор значений ДНФ в формулу
+
 private:
     bool to2ssch(QString number16, QString &number2); // перевод из 16 в 2ю
     bool to16ssch(QString number2, QString &number16); // перевод из 2 в 16ю

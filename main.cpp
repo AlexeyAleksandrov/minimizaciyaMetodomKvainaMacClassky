@@ -73,6 +73,10 @@ int main(int argc, char *argv[])
     MmkData mdnf;
     bool ok = mk.calculateFunction("7D73", MmkData::MmkType::MDNF, mdnf);
     qDebug() << "Calculate: " << ok << mdnf.toString();
+    for(const QStringList &result : mdnf.getResults())
+    {
+        qDebug() << "Полученная формула: " << mk.getFormulaByResult(result, mdnf.getMmkType());
+    }
 
     QFile file("out.txt");
     file.open(QIODevice::WriteOnly);

@@ -69,6 +69,45 @@ bool MmkCalculator::calculateFunction(QString func16, MmkData::MmkType type, Mmk
     return true;
 }
 
+QString MmkCalculator::getFormulaByResult(QStringList result, MmkData::MmkType type)
+{
+    const QString separatorIn = (type == MmkData::MmkType::MDNF ? "*" : "+");   // разделитель внутри скобок
+    const QString separatorOut = (type == MmkData::MmkType::MDNF ? "+" : "*");   // разделитель между скобок
+
+    // собираем формулу
+    QString formula;
+    for(const QString &value : result)     // перебор значений
+    {
+        if(!formula.isEmpty())      // если формула не пустая
+        {
+            formula.append(separatorOut);   // доабвляем внешний разделитель между скобками
+        }
+        formula.append("(");
+        QString disunkt;    // формируемый дизъюнкт
+        for(int i=0; i<value.size(); i++)     // перебор символов внутри значения
+        {
+            QString ch = value[i];      // символ
+            if(ch == "0" || ch == "1")      // если символ значащий
+            {
+                if(!disunkt.isEmpty())  // если дизъюнкт не пустой
+                {
+                    disunkt.append(separatorIn);    // добавляем внутренний разделитель
+                }
+                if(ch.toInt() != type)  // если значение не совпадает с типом минимизации, значит нужна инверсия
+                {
+                    disunkt.append("!");    // доабавляем инферсию
+                }
+                char v = 'A' + i;   // смещаемся от A на нужное кол-во символов
+                disunkt.append(v);  // добавляем символ
+            }
+        }
+        formula.append(disunkt);    // доабвляем дизъюнкт в формулу
+        formula.append(")");
+    }
+
+    return formula;
+}
+
 bool MmkCalculator::to2ssch(QString number16, QString &number2)
 {
     int razryad = number16.count(); // получаем количество разрядов числа
