@@ -118,40 +118,39 @@ bool MmkCalculator::to16ssch(QString number2, QString &number16)
 QStringList MmkCalculator::getTruthTable(QString &function2)
 {
     int razryad = function2.count(); // поличество разрядов в исходном числе
+    if(razryad == 0)
+    {
+        return QStringList();
+    }
     // заносим в таблицу нашу функцию
     // определяем, сколько переменных нужно, чтобы описать функцию
     QStringList funcList = function2.split("", SPLITTER); // разбиваем число в 2й ССЧ на символы
-    int rowsTot = static_cast<int>(razryad); // получаем количество строк в таблице
-    double stepen = log2(rowsTot); // получаем, в какую степень над овозвести число 2, чтобы получить такую длину числа
+//    int rowsTot = static_cast<int>(razryad); // получаем количество строк в таблице
+    double stepen = log2(razryad); // получаем, в какую степень над овозвести число 2, чтобы получить такую длину числа
     if(abs(stepen - static_cast<double>(static_cast<int>(stepen))) > 0.0) // если степень не целая
     {
         stepen = static_cast<double>(static_cast<int>(stepen)); // откидываем дробную часть
         stepen += 1.0; // прибавляем 1
     }
     int colsTot = static_cast<int>(stepen) + 1;// количство столбцов равно степени в которую надо возвезти 2, чтобы получить количество строк + 1 для функции
-    if(!rowsTot || !colsTot)
-    {
-        return QStringList();
-    }
     QStringList sschTableList;
-    for (int i=0; i<rowsTot; i++)
+    for (int i=0; i<razryad; i++)
     {
-        QString num = QString::number(i, 2); // перевод из 10 в 16
+        QString num = QString::number(i, 2); // перевод из 10 в 2
         while (num.count() < colsTot-1) // пока количество разрядов меньше, чем количество колонок -1, т.к. последняя колонка это значение функции
         {
             num = "0" + num;
         }
         sschTableList.append(num);
     }
-    int sschTableListSize = sschTableList.size();
-    for (int i=0; i<sschTableListSize; i++)
+    for (int i=0; i<sschTableList.size(); i++)
     {
-        sschTableList[i] = sschTableList[i] +  funcList[i]; // добавляем значение функции к элементу таблицы истинности
+        sschTableList[i] += funcList[i]; // добавляем значение функции к элементу таблицы истинности
     }
     return sschTableList;
 }
 
-QStringList MmkCalculator::getValuesTable(QString &ch2, QStringList &truthTable, MmkData::MmkType &type)
+QStringList MmkCalculator::getValuesTable(QString &ch2, QStringList truthTable, MmkData::MmkType &type)
 {
     QStringList funcList = ch2.split("", SPLITTER); // разбиваем число в 2й ССЧ на символы
 

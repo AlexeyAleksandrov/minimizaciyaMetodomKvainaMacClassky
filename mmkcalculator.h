@@ -19,7 +19,7 @@ private:
     bool to16ssch(QString number2, QString &number16); // перевод из 2 в 16ю
 
     QStringList getTruthTable(QString &function2);  // получить таблицу истинности для значения
-    QStringList getValuesTable(QString &function16, QStringList &truthTable, MmkData::MmkType &type);  // получить список значений для данного типа минимизации (все равны 0 или все равны 1)
+    QStringList getValuesTable(QString &function16, QStringList truthTable, MmkData::MmkType &type);  // получить список значений для данного типа минимизации (все равны 0 или все равны 1)
 
     void createGlue(QStringList numbersList, QStringList &skleykiList, bool *wasSkleyka = nullptr);  // функция создания склеек
     void createAllGlues(QStringList numbersList, QStringList &skleykiList);      // функция, которая создает все возможные склейки
