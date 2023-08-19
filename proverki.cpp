@@ -257,17 +257,6 @@ int MainWindow::proverkaItogMdnfByKartaPokritiya()
             line.append(correctValue);  // добавляем, покрывается значение или нет
 
             qDebug() << "Значения " << verticalValue << " и " << horizontalValue << (correctValue ? "" : " НЕ ") << " покрываются";
-
-//            if(count <= 1 && verticalValue[position].toUpper() == "X")  // если отличий нет, или отличие в позиции с Х
-//            {
-//                line.append(true);
-//                qDebug() << "Значения " << verticalValue << " и " << horizontalValue << " покрываются";
-//            }
-//            else    // если не совпадают
-//            {
-//                line.append(false);
-//                qDebug() << "Значения " << verticalValue << " и " << horizontalValue << " НЕ покрываются";
-//            }
         }
         pokritie.append(line);  // добавляем строку карты
     }

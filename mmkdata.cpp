@@ -1,8 +1,102 @@
 #include "mmkdata.h"
 
-MmkData::MmkData()
-{
+MmkData::MmkData(const QString &func16, const QString &func2, const QStringList &truthTable, MmkType mmkType, const QStringList &valuesTable, const QList<QStringList> &glueList, const CoverageMap &coverageMap, const QStringList &coreDnf, const QList<QStringList> &allVariativePart, const QList<QStringList> &optimalVariativePart, const QList<QStringList> &results) : func16(func16),
+    func2(func2),
+    truthTable(truthTable),
+    mmkType(mmkType),
+    valuesTable(valuesTable),
+    glueList(glueList),
+    coverageMap(coverageMap),
+    coreDnf(coreDnf),
+    allVariativePart(allVariativePart),
+    optimalVariativePart(optimalVariativePart),
+    results(results)
+{}
 
+const QList<QStringList> &MmkData::getResults() const
+{
+    return results;
+}
+
+// Реализация функции toString()
+QString MmkData::toString() const
+{
+    QString result;
+
+    // Добавляем информацию о функции в 16-й ССЧ
+    result += "func16: " + func16 + "\n";
+
+    // Добавляем информацию о функции в 2-й ССЧ
+    result += "func2: " + func2 + "\n";
+
+    // Добавляем информацию о таблице истинности
+    result += "truthTable:\n";
+    for (const QString& row : truthTable)
+    {
+        result += row + "\n";
+    }
+
+    // Добавляем информацию о типе минимизации
+    result += "mmkType: ";
+    result += (mmkType == MKNF) ? "MKNF\n" : "MDNF\n";
+
+    // Добавляем информацию о таблице значений
+    result += "valuesTable:\n";
+    for (const QString& value : valuesTable)
+    {
+        result += value + "\n";
+    }
+
+    // Добавляем информацию о списке склеек
+    result += "glueList:\n";
+    for (const QStringList& list : glueList)
+    {
+        for (const QString& value : list)
+        {
+            result += value + " ";
+        }
+        result += "\n";
+    }
+
+    // Добавляем информацию о карте покрытия
+    result += "coverageMap:\n";
+    result += "horizontalHeaders: " + coverageMap.horizontalHeaders.join(", ") + "\n";
+    result += "verticalHeaders: " + coverageMap.verticalHeaders.join(", ") + "\n";
+    for (const QVector<bool>& row : coverageMap.coating)
+    {
+        for (bool value : row)
+        {
+            result += value ? "true " : "false ";
+        }
+        result += "\n";
+    }
+
+    // Добавляем информацию о ядровой ДНФ
+    result += "coreDnf:\n";
+    result += coreDnf.join(", ") + "\n";
+
+    // Добавляем информацию о всех возможных наборах значений вариативной части
+    result += "allVariativePart:\n";
+    for (const QStringList& list : allVariativePart)
+    {
+        result += list.join(", ") + "\n";
+    }
+
+    // Добавляем информацию об оптимальных наборах значений вариативной части
+    result += "optimalVariativePart:\n";
+    for (const QStringList& list : optimalVariativePart)
+    {
+        result += list.join(", ") + "\n";
+    }
+
+    // Добавляем информацию о результирующих минимализированных наборах
+    result += "results:\n";
+    for (const QStringList& list : results)
+    {
+        result += list.join(", ") + "\n";
+    }
+
+    return result;
 }
 
 const QString &MmkData::getFunc16() const
@@ -10,19 +104,9 @@ const QString &MmkData::getFunc16() const
     return func16;
 }
 
-void MmkData::setFunc16(const QString &newFunc16)
-{
-    func16 = newFunc16;
-}
-
 const QString &MmkData::getFunc2() const
 {
     return func2;
-}
-
-void MmkData::setFunc2(const QString &newFunc2)
-{
-    func2 = newFunc2;
 }
 
 const QStringList &MmkData::getTruthTable() const
@@ -30,9 +114,9 @@ const QStringList &MmkData::getTruthTable() const
     return truthTable;
 }
 
-void MmkData::setTruthTable(const QStringList &newTruthTable)
+MmkData::MmkType MmkData::getMmkType() const
 {
-    truthTable = newTruthTable;
+    return mmkType;
 }
 
 const QStringList &MmkData::getValuesTable() const
@@ -40,29 +124,14 @@ const QStringList &MmkData::getValuesTable() const
     return valuesTable;
 }
 
-void MmkData::setValuesTable(const QStringList &newValuesTable)
-{
-    valuesTable = newValuesTable;
-}
-
 const QList<QStringList> &MmkData::getGlueList() const
 {
     return glueList;
 }
 
-void MmkData::setGlueList(const QList<QStringList> &newGlueList)
-{
-    glueList = newGlueList;
-}
-
-const MmkData::CoverageMap &MmkData::getCoverageMap() const
+const CoverageMap &MmkData::getCoverageMap() const
 {
     return coverageMap;
-}
-
-void MmkData::setCoverageMap(const MmkData::CoverageMap &newCoverageMap)
-{
-    coverageMap = newCoverageMap;
 }
 
 const QStringList &MmkData::getCoreDnf() const
@@ -70,17 +139,12 @@ const QStringList &MmkData::getCoreDnf() const
     return coreDnf;
 }
 
-void MmkData::setCoreDnf(const QStringList &newCoreDnf)
+const QList<QStringList> &MmkData::getAllVariativePart() const
 {
-    coreDnf = newCoreDnf;
+    return allVariativePart;
 }
 
-const QList<QStringList> &MmkData::getVariativePart() const
+const QList<QStringList> &MmkData::getOptimalVariativePart() const
 {
-    return variativePart;
-}
-
-void MmkData::setVariativePart(const QList<QStringList> &newVariativePart)
-{
-    variativePart = newVariativePart;
+    return optimalVariativePart;
 }

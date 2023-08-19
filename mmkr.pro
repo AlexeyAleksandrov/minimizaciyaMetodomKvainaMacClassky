@@ -25,6 +25,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 CONFIG += c++11
 
 SOURCES += \
+    coveragemap.cpp \
     formresultcorrect.cpp \
         main.cpp \
         mainwindow.cpp \
@@ -41,6 +42,7 @@ SOURCES += \
     xorcrypter.cpp
 
 HEADERS += \
+    coveragemap.h \
     formresultcorrect.h \
         mainwindow.h \
     md5crypter.h \
@@ -48,6 +50,7 @@ HEADERS += \
     formlogin.h \
     mmkcalculator.h \
     mmkdata.h \
+    splitter.h \
     tooltip.h \
     xorcrypter.h
 

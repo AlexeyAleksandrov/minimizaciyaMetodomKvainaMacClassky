@@ -2,6 +2,7 @@
 #include "formlogin.h"
 #include <QTextCodec>
 #include "xorcrypter.h"
+#include "mmkcalculator.h"
 
 #include <QApplication>
 #define XOR_CRYPT_KEY "0A1F85C6B908372D4E5F6B17C82D39A5D8290EC8CC7256B3F19ECDCE5089F3BC2B21834E0B7A6E5D6B3C34A1B9820D3F4E5A109C8F932614B295C4B3E49568B68094DD92FBDD1A2529E1E9C0845FA3ECB937D8FA3BC47A98C0A6D591321BD840356C720498BF853DACFB20DCF0A4CE5F29328EDA05D1F96C61"
@@ -66,6 +67,17 @@ int main(int argc, char *argv[])
 //    w.setStudentName("Иванов Иван Иванович"); // передаём имя
 //    w.setStudentGroup("КИБО-00-22"); // передаём группу
 //    w.loadDataFromFile(); // загружаем данные
+
+
+    MmkCalculator mk;
+    MmkData mdnf;
+    bool ok = mk.calculateFunction("7D73", MmkData::MmkType::MDNF, mdnf);
+    qDebug() << "Calculate: " << ok << mdnf.toString();
+
+    QFile file("out.txt");
+    file.open(QIODevice::WriteOnly);
+    file.write(mdnf.toString().toUtf8());
+    file.close();
 
     return a.exec();
 }
