@@ -46,9 +46,9 @@ bool MmkCalculator::calculateFunction(QString func16, MmkData::MmkType type, Mmk
 
     // считаем склейки
     QStringList glue[3];    // 3 этапа склеек
-    createAllSkleyki(valuesTable, glue[0]);     // первый этап
-    createAllSkleyki(glue[0], glue[1]);     // второй этап
-    createAllSkleyki(glue[1], glue[2]);     // третий этап
+    createAllGlues(valuesTable, glue[0]);     // первый этап
+    createAllGlues(glue[0], glue[1]);     // второй этап
+    createAllGlues(glue[1], glue[2]);     // третий этап
 
     // добавляем все этапы склеек в список
     QList<QStringList> glueList;
@@ -169,7 +169,7 @@ QStringList MmkCalculator::getValuesTable(QString &ch2, QStringList &truthTable,
     return values;
 }
 
-void MmkCalculator::createAllSkleyki(QStringList numbersList, QStringList &skleykiList, bool *wasSkleyka)
+void MmkCalculator::createGlue(QStringList numbersList, QStringList &skleykiList, bool *wasSkleyka)
 {
     bool wasSkleykaTemp = false;
     QStringList listFunc = numbersList; // объявляем для удобства
@@ -345,6 +345,44 @@ void MmkCalculator::createAllSkleyki(QStringList numbersList, QStringList &skley
     {
         *wasSkleyka = wasSkleykaTemp;
     }
+}
+
+void MmkCalculator::createAllGlues(QStringList numbersList, QStringList &skleykiList)
+{
+    QStringList passedGluing;   // список прошедших склейку
+    for(QString value1 : numbersList)    // перебираем все значения
+    {
+        for(QString value2 : numbersList)    // перебираем все значения для сравнения
+        {
+            if(value1 != value2)    // если значения разные
+            {
+                bool ok = false;
+                QStringList out;
+                createGlue(QStringList() << value1 << value2, out, &ok);    // пробуем создать склейку
+                if(ok)  // если склейка создана
+                {
+                    skleykiList.append(out);    // добавляем получившуюся склейку в список
+                    passedGluing.append(value1);    // добавляем значения, прошедшие склейку
+                    passedGluing.append(value2);    // добавляем значения, прошедшие склейку
+                }
+            }
+        }
+    }
+
+    // удаляем дубликаты в списке прошедших склейку
+    passedGluing.removeDuplicates();
+
+    // ищем значения, которые не прошли склейку
+    for(QString value : numbersList)    // перебираем все значения
+    {
+        if(!passedGluing.contains(value))   // если значение не прошло склейку
+        {
+            skleykiList.append(value);  // добавляем значение без склейки
+        }
+    }
+
+    // удаляем дубликаты в списке склеек
+    skleykiList.removeDuplicates();
 }
 
 bool MmkCalculator::checkPokritie(QString &value, QString &skleyka)

@@ -21,7 +21,8 @@ private:
     QStringList getTruthTable(QString &function2);  // получить таблицу истинности для значения
     QStringList getValuesTable(QString &function16, QStringList &truthTable, MmkData::MmkType &type);  // получить список значений для данного типа минимизации (все равны 0 или все равны 1)
 
-    void createAllSkleyki(QStringList numbersList, QStringList &skleykiList, bool *wasSkleyka = nullptr);  // функция создания склеек
+    void createGlue(QStringList numbersList, QStringList &skleykiList, bool *wasSkleyka = nullptr);  // функция создания склеек
+    void createAllGlues(QStringList numbersList, QStringList &skleykiList);      // функция, которая создает все возможные склейки
 
     bool checkPokritie(QString &value, QString &skleyka);       // функция, проверяющая, покрывается ли данное значение данной склейкой
     CoverageMap calculateCoverageMap(QStringList &valuesList, QStringList &gluesList);   // функция рассчёта карты покрытия
