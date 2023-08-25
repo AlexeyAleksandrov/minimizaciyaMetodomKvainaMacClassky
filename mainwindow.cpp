@@ -5,7 +5,7 @@
 //#define CUSTON_INPUT_FUNCTION
 
 //#define RED_COLOR_FOR_CORES_ONLY    // если выбран данный флаг, то закрашивать красным цветом можно только ядра, инче - все значения
-#define ENABLE_AUTO_CHECK_KORRECT_KATRA_POKRITIYA   // включение проверки на лету правильности устанвоки + в карту покрытия
+//#define ENABLE_AUTO_CHECK_KORRECT_KATRA_POKRITIYA   // включение проверки на лету правильности устанвоки + в карту покрытия
 
 /**
 Конструктор главного окна. @param parent Указатель на родительское окно
@@ -1967,6 +1967,8 @@ void MainWindow::on_tableWidget_kartaMinimizacii_cellDoubleClicked(int row, int 
         ui->tableWidget_kartaMinimizacii->clearSelection();
         ui->tableWidget_kartaMinimizacii->setCurrentCell(-1, -1);
     }
+
+    center_text_in_table(ui->tableWidget_kartaMinimizacii);     // центрируем текст
 }
 
 

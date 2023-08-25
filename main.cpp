@@ -69,19 +69,19 @@ int main(int argc, char *argv[])
 //    w.loadDataFromFile(); // загружаем данные
 
 
-    MmkCalculator mk;
-    MmkData mdnf;
-    bool ok = mk.calculateFunction("7D73", MmkData::MmkType::MDNF, mdnf);
-    qDebug() << "Calculate: " << ok << mdnf.toString();
-    for(const QStringList &result : mdnf.getResults())
-    {
-        qDebug() << "Полученная формула: " << mk.getFormulaByResult(result, mdnf.getMmkType());
-    }
+//    MmkCalculator mk;
+//    MmkData mdnf;
+//    bool ok = mk.calculateFunction("7D73", MmkData::MmkType::MDNF, mdnf);
+//    qDebug() << "Calculate: " << ok << mdnf.toString();
+//    for(const QStringList &result : mdnf.getResults())
+//    {
+//        qDebug() << "Полученная формула: " << mk.getFormulaByResult(result, mdnf.getMmkType());
+//    }
 
-    QFile file("out.txt");
-    file.open(QIODevice::WriteOnly);
-    file.write(mdnf.toString().toUtf8());
-    file.close();
+//    QFile file("out.txt");
+//    file.open(QIODevice::WriteOnly);
+//    file.write(mdnf.toString().toUtf8());
+//    file.close();
 
     return a.exec();
 }
