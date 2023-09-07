@@ -515,6 +515,37 @@ void MainWindow::setKartaColor(QColor color)
     // закрашивание выбранных ячеек
     bool showCoreErrorMessage = false;  // флаг, надо ли показать ошибку выдления ядер
 
+    // проверка корректности выделенного диапазона
+    for (int i = 0; i < rows; ++i)
+    {
+        for (int j = 0; j < cols; ++j)
+        {
+            if(tableWidget_kartaMinimizacii->item(i, j) != nullptr) // если ячейка существует
+            {
+                if(tableWidget_kartaMinimizacii->item(i, j)->isSelected()) // если выделен
+                {
+                    if(color == *redColor)   // если выделенное значение не является ядром, но оно должно быть закрашено
+                    {
+                        if(!checkCore(i, j)) // если значение является ядром
+                        {
+                            warningError("Выделенные значения не являются ядрами!");
+                            return;
+                        }
+                    }
+                    else if(color == *yellowColor)  // если мы хотим выделить вариативную часть
+                    {
+                        if(tableWidget_kartaMinimizacii->item(i, j) == nullptr || tableWidget_kartaMinimizacii->item(i, j)->text() != "+" || tableWidget_kartaMinimizacii->item(i, j)->background() != Qt::white || checkCore(i, j)) // если ячейка не существует, пустая или является ядром
+                        {
+                            warningError("Одно или несколько выделенных значений не могут быть исполльзованы для формирования вариативной части!");
+                            return;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // закраска
     for (int i = 0; i < rows; ++i)
     {
         for (int j = 0; j < cols; ++j)
@@ -576,11 +607,11 @@ void MainWindow::setKartaColor(QColor color)
     // убирам выделение
     clearSelectionAdDisableClickTableWidget(ui->tableWidget_kartaMinimizacii);
 
-    // показываем сообщение об ошибки выделения ядер
-    if(showCoreErrorMessage)
-    {
-        warningError("Выделенное значение не является ядром!");
-    }
+//    // показываем сообщение об ошибки выделения ядер
+//    if(showCoreErrorMessage)
+//    {
+//        warningError("Выделенное значение не является ядром!");
+//    }
 }
 
 void MainWindow::pusbButton_move_skleyki_to_coresTable() // кнопка переноса склеек в таблицу
