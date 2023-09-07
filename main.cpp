@@ -35,7 +35,12 @@ int main(int argc, char *argv[])
     xorCrypter.setKey(XOR_CRYPT_KEY);
 
     MainWindow w;
-    w.setXorCrypter(&xorCrypter);
+    w.setXorCrypter(&xorCrypter);    
+
+//    QFont font = w.centralWidget()->font();
+//    font.setWeight(7);
+//    w.centralWidget()->setFont(font);
+
 //    w.setMinimumWidth(564);
 //    w.setMaximumWidth(564);
 //    w.setMinimumHeight(796);

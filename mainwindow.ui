@@ -16,6 +16,9 @@
     <verstretch>0</verstretch>
    </sizepolicy>
   </property>
+  <property name="font">
+   <font/>
+  </property>
   <property name="contextMenuPolicy">
    <enum>Qt::ActionsContextMenu</enum>
   </property>
@@ -36,7 +39,13 @@ QTabWidget
 QPushButton
 {
 	background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(229, 235, 232, 255), stop:1 rgba(225, 249, 250, 255));
-}</string>
+}
+
+-QWidget{
+font: 7pt &quot;Segoe UI&quot;;
+}
+
+</string>
   </property>
   <widget class="QWidget" name="centralWidget">
    <property name="styleSheet">
@@ -146,7 +155,8 @@ QGroupBox
 	background-color: rgb(239, 245, 242);
 	background-color:rgb(230, 240, 240);
 	border: 1px solid rgb(135, 149, 150);
-}</string>
+}
+</string>
     </property>
     <property name="tabPosition">
      <enum>QTabWidget::North</enum>

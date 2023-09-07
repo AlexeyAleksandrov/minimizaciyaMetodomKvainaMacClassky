@@ -23,6 +23,19 @@ MainWindow::MainWindow(QWidget *parent) :
     this->setMaximumWidth(geometry().width());
     this->setMaximumHeight(geometry().height());
 
+#ifdef __linux__
+    // регулируем размер шрифта
+    const QString fontSizeStyleSheet = "QWidget{font: 7pt \"Segoe UI\";}";
+
+    QString styleSheet = this->styleSheet();
+    styleSheet.append(fontSizeStyleSheet);
+    this->setStyleSheet(styleSheet);
+
+    styleSheet = ui->tabWidget->styleSheet();
+    styleSheet.append(fontSizeStyleSheet);
+    ui->tabWidget->setStyleSheet(styleSheet);
+#endif
+
     editor = new LogicEditor(ui->tableWidget_formulaEditor);
     //    editor->setEditChoseItem(true);
     //    editor->setAutoInput(false); // включаем автоматический ввод выражения
