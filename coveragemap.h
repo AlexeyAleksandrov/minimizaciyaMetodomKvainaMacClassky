@@ -2,6 +2,7 @@
 #define COVERAGEMAP_H
 
 #include <QStringList>
+#include <QVector>
 
 class CoverageMap   // карта покрытия
 {

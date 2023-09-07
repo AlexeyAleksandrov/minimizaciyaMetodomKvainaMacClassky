@@ -12,6 +12,7 @@
 #include <math.h>
 //#include "mdnfmacklassky.h"
 #include <QFile>
+#include <QShowEvent>
 #include <QTextStream>
 #include "logiceditor.h"
 #include <QTableWidgetItem>
@@ -371,6 +372,9 @@ public: // функции проверки
     bool proverkaKartaMinimizacii(); //функция проверки карты минимизации
 //    bool proverkaItogMdnf(); // функция проверки итоговой функции МДНФ
     int proverkaItogMdnfByKartaPokritiya(); // функция проверки итоговой функции МДНФ по карте покрытия, 0 - неправильно, 1 - правильно, -1 - не оптимальный вариант
+
+private:
+    void showEvent(QShowEvent *event);
 
 public:
     struct skleyka
